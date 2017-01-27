@@ -1,5 +1,4 @@
 ## Portal de Datos
-12345678901234567890123456789012345678901234567890123456789012345678901234567890
 El Portal de Datos del Instituto de Investigación de Recursos Biológicos
 Alexander von Humboldt.  es un esfuerzo por poner a disposición de los
 colombianos y del mundo entero la información de registros que se han realizado
