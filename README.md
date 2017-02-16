@@ -1,20 +1,18 @@
-## Portal de Datos
-El Portal de Datos del Instituto de Investigación de Recursos Biológicos
-Alexander von Humboldt.  es un esfuerzo por poner a disposición de los
+## Biodiversity Catalogue of SIB Colombia Version 2 
+
+El Catalogo de la Biodiversidad del Instituto de Investigación de Recursos
+Biológicos Alexander von Humboldt es un esfuerzo por poner a disposición de los
 colombianos y del mundo entero la información de registros que se han realizado
 en el Colombia.
 
-
-Es una plataforma en donde se puede explorar, usar y contribuir a la calidad de
-los datos sobre más de 54.000 especies de la biodiversidad del país.
 
 
 
 ## Descarga
 
 ```sh
-$ git clone https://github.com/REPOSITORIO/PORTA_DATOS portal_datos
-$ cd portal_datos
+$ git clone https://github.com/SIB-Colombia/biodiversity_catalogue_v2_frontend catalogo
+$ cd catalogo
 $ rm -rf .git
 $ npm install # or yarn
 ```
@@ -46,5 +44,4 @@ copiados en la carpeta `public`en el proceso de construcción.
 
 ## License
 
-[ToDo] Por definir, ver si el codigo fuente también se licencia en:
-Creative Commons 4.0 · 2016
+MIT · 2016
