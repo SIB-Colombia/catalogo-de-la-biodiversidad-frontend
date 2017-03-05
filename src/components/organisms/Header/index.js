@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { IconLink, PrimaryNavigation, Block } from 'components'
+import { IconLink, PrimaryNavigation, Nombre, Block } from 'components'
 
 const Wrapper = styled(Block)`
   display: flex;
@@ -20,8 +20,9 @@ const StyledIconLink = styled(IconLink)`
 
 const Header = (props) => {
   return (
-    <Wrapper opaque reverse {...props}>
-      <StyledIconLink to="/" icon="arc" height={100} />
+    <Wrapper opaque {...props}>
+      <StyledIconLink to="/" icon="catalogo" height={100} />
+      <Nombre titulo="Catálogo" posttitulo="de" subtitulo="la Biodiversidad" />
       <PrimaryNavigation reverse />
     </Wrapper>
   )
