@@ -51,10 +51,10 @@ const StyledLink = styled(({ disabled, transparent, reverse, palette, height, th
 const Anchor = styled.a`${styles}`
 const StyledButton = styled.button`${styles}`
 
-const Button = ({ type, ...props, to, href }) => {
-  if (to) {
+const Button = ({ type, ...props }) => {
+  if (props.to) {
     return <StyledLink {...props} />
-  } else if (href) {
+  } else if (props.href) {
     return <Anchor {...props} />
   }
   return <StyledButton {...props} type={type} />
@@ -68,13 +68,13 @@ Button.propTypes = {
   height: PropTypes.number,
   type: PropTypes.string,
   to: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
 }
 
 Button.defaultProps = {
   palette: 'primary',
   type: 'button',
-  height: 40
+  height: 40,
 }
 
 export default Button
