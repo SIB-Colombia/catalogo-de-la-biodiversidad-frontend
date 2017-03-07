@@ -58,7 +58,8 @@ const StyledIcon = styled(Icon)`
   flex: none;
 `
 
-const IconButton = ({ icon, children, ...props, breakpoint, right, responsive, height }) => {
+const IconButton = ({ icon, children, ...props }) => {
+  const { breakpoint, right, responsive, height } = props
   const iconElement = <StyledIcon height={height / 2.5} icon={icon} />
   return (
     <StyledButton hasText={!!children} {...props}>
@@ -80,11 +81,11 @@ IconButton.propTypes = {
   collapsed: PropTypes.bool,
   right: PropTypes.bool,
   height: PropTypes.number,
-  children: PropTypes.node
+  children: PropTypes.node,
 }
 
 IconButton.defaultProps = {
-  breakpoint: 420
+  breakpoint: 420,
 }
 
 export default IconButton
