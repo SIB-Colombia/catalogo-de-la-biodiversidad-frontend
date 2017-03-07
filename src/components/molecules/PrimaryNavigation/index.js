@@ -6,7 +6,6 @@ import { Link } from 'components'
 
 const Ul = styled.ul`
 
-
 form{
 
 	width:300px;
@@ -25,33 +24,26 @@ form{
 		margin-left: 20px;
 	}
 }
-
 `
 
-const PrimaryNavigation = (props) => {
-	return (
-		<Ul {...props} className="right hide-on-med-and-down">
-		<li>
+class PrimaryNavigation extends React.Component {
+
+	componentDidMount() {
 
 
-		<form>
-		<div className="input-field col s12">
-		<i className="material-icons prefix">search</i>
-		<input id="icon_prefix" type="text" className="validate" />
-		<label for="icon_prefix">Buscar</label>
-		</div>
-		</form>
+	}
 
+	render() {
+		return (
+			<Ul {...this.props} className="right hide-on-med-and-down">
+			<li>
 
-		</li>
-		<li><Link to="/" onlyActiveOnIndex className="grey-text text-darken-3" activeClassName="active"  >Registrarse</Link></li>
-		<li><Link to="/sample-page" className="grey-text text-darken-3" activeClassName="active">Ingresar</Link></li>
-		</Ul>
-		)
+			</li>
+			<li><Link to="/" onlyActiveOnIndex className="grey-text text-darken-3" activeClassName="active"  >Registrarse</Link></li>
+			<li><Link to="/sample-page" className="grey-text text-darken-3" activeClassName="active">Ingresar</Link></li>
+			</Ul>
+			)
+	}
 }
 
-PrimaryNavigation.propTypes = {
-	reverse: PropTypes.bool,
-}
-
-export default PrimaryNavigation
+export default PrimaryNavigation;

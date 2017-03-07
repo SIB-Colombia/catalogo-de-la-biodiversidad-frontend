@@ -9,7 +9,7 @@ const routes = (
 	<Route path="/" component={App}>
 	<IndexRoute component={HomePage} />
 	<Route path="/sample-page" component={SamplePage} />
-	<Route path="/ficha/:id_file" component={FilePage} />
+	<Route path="/ficha/:fileId" component={FilePage} />
 	<Route path="*" component={NotFoundPage} />
 	</Route>
 	)
