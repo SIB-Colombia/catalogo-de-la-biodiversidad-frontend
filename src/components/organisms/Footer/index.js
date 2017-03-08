@@ -14,17 +14,15 @@ a{
 const FooterPage = (props) => {
 	return (
 		<Wrapper className="page-footer grey darken-4">
-
-		<div className="footer-copyright">
-		<div className="container">
-
-		<a className="grey-text text-lighten-4 left" href="#!"> Sobre el Catálogo |</a>
-		<a className="grey-text text-lighten-4 left" href="#!"> SIB Colombia |</a> 
-		<a className="grey-text text-lighten-4 left" href="#!"> Términos </a>
-		<a className="grey-text text-lighten-4 right" href="#!">SIB Colombia</a>
-		</div>
-		</div>
+			<div className="footer-copyright">
+				<div className="container">
+					<a className="grey-text text-lighten-4 left" href=""> Sobre el Catálogo |</a>
+					<a className="grey-text text-lighten-4 left" href=""> SIB Colombia |</a> 
+					<a className="grey-text text-lighten-4 left" href=""> Términos </a>
+					<a className="grey-text text-lighten-4 right" href="">SIB Colombia</a>
+				</div>
+			</div>
 		</Wrapper>
 		) 
 	}
-	export default FooterPage
+export default FooterPage

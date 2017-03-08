@@ -12,27 +12,28 @@ const Hero = styled.section`
 `
 
 const Content = styled.section`
+margin-top:65px;
 `
 
 const Footer = styled.footer`
 `
 
-const PageTemplate = ({ header, hero, children, footer, ...props }) => {
+const PageTemplate = ({ header, children, footer, ...props }) => {
   return (
     <Wrapper {...props}>
-      <Header>{header}</Header>
-      {hero && <Hero>{hero}</Hero>}
-      <Content>{children}</Content>
-      <Footer>{footer}</Footer>
+    <Header>{header}</Header>
+    <Content>{children}</Content>
+    <Footer>{footer}</Footer>
     </Wrapper>
-  )
+    )
 }
 
 PageTemplate.propTypes = {
   header: PropTypes.node.isRequired,
-  hero: PropTypes.node,
   footer: PropTypes.node.isRequired,
   children: PropTypes.any.isRequired,
 }
 
 export default PageTemplate
+
+

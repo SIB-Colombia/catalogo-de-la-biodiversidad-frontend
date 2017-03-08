@@ -1,243 +1,173 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import Slider from 'react-slick'
-
-import { Tabs, Tab, Card, Row, Col, MediaBox, Chip } from 'react-materialize';
-
-
-import { Block, Link } from 'components'
-
-
-const Cover = styled(Block)`
-background:red;
-width:100%;
-height:calc(60% - 50px);
-position:absolute;
-left:0px;
-top:100px;
-z-index:0;
-`
+import { palette } from 'styled-theme'
+import { Block, Paragraph, IconLink, IconButton, LogoImage, Tooltip, Image } from 'components'
+import { Tabs, Tab, Card, Row, Col, MediaBox, Chip, Icon } from 'react-materialize';
 
 
 const Wrapper = styled(Block)`
 
-background:#f5f5f5 !important;
-
-.materialboxed{
-  display:inline-block;
-}
-
-h4{
-  padding:40px;
-}
-
-.tabs{
-
-  background:#00838f;
-
-}
 
 h5{
   padding: 10px 0px;
+  font-weight: bold;
 }
-
-.tabs .tab a{
-  color :white;
-}
-
-.imagesPreview{
-
-  margin:0px 3px;
-
-}
-
 .material-placeholder{
 
+  display:inline-block !important; 
+  margin:2px 5px;
 }
-
-.slick-next:before, .slick-prev:before {
-  font-size: 20px;
-  line-height: 1;
-  opacity: .75;
-  color: #00838f;
+.lateral-menu{
+    
+    position:fixed;
+    left:0px;
+    top:100px;
+    z-index:1;
+    width:200px;
+    .table-of-contents a.active{
+            border-left: 2px solid #00838f;
+    }
+    .material-icons{
+            vertical-align: middle;
+    }
 }
-
 `
-
-const defaultProps = {
-  center: {
-    lat: 59.95,
-    lng: 30.33
-  },
-  zoom: 11
-};
-
-
 
 
 class FileDetail extends React.Component {
 
-
-  constructor(props) {
-    super(props);
-  }
-
-  render(){
-
-    var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      draggable: false,
-      centerMode:true,
-      responsive:[ 
-      { breakpoint: 768, settings: { slidesToShow: 1 } }, 
-      { breakpoint: 1024, settings: { slidesToShow: 2 } }, 
-      { breakpoint: 2000, settings: { slidesToShow: 4 } }, 
-      { breakpoint: 100000, settings: 'unslick'  }
-      ] 
-    };
-
-
-    return (
-      <Wrapper>
-      <div className="container">
-
-
-      <br/>
-      <div className="card-panel">
-      <h3 className="cyan-text text-darken-4">Coragyps atratus</h3>
-
-
-      <Tabs className='tab-demo z-depth-1'>
-      <Tab title="Resumen" active  >
-
-      <div className="row">
-
-
-      <div className="col l12 align-center">
-
-      <h5 className="cyan-text text-darken-4">Imágenes</h5>
-
-      <Slider {...settings}>
-      {this.props.data.summary.images.map((record, i) => (
-        <div key={i}>
-     
-        <MediaBox  src={record.url} caption={'Autor: ' + record.author} width="150" className="imagesPreview" />
-        
-        </div>
-        ))}
-      </Slider>
-      <br/>
-      </div>
-
-      <div className="col l8">
-      <h5 className="cyan-text text-darken-4">Nombres Comunes</h5>
-      <div className="row">
-      {this.props.data.summary.names.map((record, i) => (
-        <div className="col l6" key={i}>  
-        <div>{record.title}</div>
-        <div>{record.description}</div>
-        <br/>
-        </div>
-        ))}
-        <br/>
-        </div>
-
-
-        <div className="">
-        <h5 className="cyan-text text-darken-4">Distribución</h5>
-        <p>Mapa de registro publicados</p>
-
-        <div className="row">
-        <img src="https://assets.metrolatam.com/co/2015/03/20/captura-de-pantalla-2015-03-20-a-las-12-42-23-1200x600.jpg" className="col l12" />
-
-
-        </div>
-        </div>
-        </div>
-
-
-
-
-
-        <div className="col l4">
-        <div className="card-panel grey lighten-5">
-
-        <h5 className="cyan-text text-darken-4">Editores</h5>
-        {this.props.data.summary.editors.map((record, i) => (
-          <div className="center-align" key={i}>  
-          <div className="chip">
-          <img src={record.url} alt="Contact Person" />
-          {record.name}
-          </div>
-          </div>
-
-          ))}
-
-        <br/>
-        <h5 className="cyan-text text-darken-4">Actividad Reciente</h5>
-        {this.props.data.summary.activity.map((record, i) => (
-          <div className="center-align" key={i}>  
-          <div className="chip">
-          <img src={record.url} alt="Contact Person" />
-          {record.name}
-          </div>
-          <p>
-          {record.description}
-          </p>
-          <hr />
-          </div>
-
-          ))}
-
-
-          <br/>
-          <h5 className="cyan-text text-darken-4">Grupos</h5>
-          {this.props.data.summary.groups.map((record, i) => (
-            <div key={i} className="card-panel ">
-            <div className="row valign-wrapper">
-            <div className="col s2">
-            <img src={record.url} alt="" className="circle responsive-img" /> 
-            </div>
-            <div className="col s10">
-            <span className="black-text">
-            <b>{record.name}</b>
-            <p>{record.description}</p>
-            </span>
-            </div>
-            </div>
-            </div>
-            ))}
-
-            </div>
-            </div>
-
-
-
-
-            </div>
-
-
-            </Tab>
-            <Tab title="Detalles">
-
-            </Tab>
-            <Tab title="Imágenes">Test 3</Tab>
-            <Tab title="Mapas">Test 4</Tab>
-            <Tab title="Comunidad">Test 4</Tab>
-            <Tab title="Comentarios">Test 4</Tab>
-            </Tabs>
-
-            </div>
-            </div>
-            </Wrapper>
-            );
-
+    componentDidMount() {
 
     }
-  }
 
-  export default FileDetail
+    render() {
+
+
+
+      return (
+        <Wrapper className="animated fadeIn">
+            <Row>
+
+                <div className="lateral-menu card-panel animated bounceInDown">
+                    <Col className="hide-on-small-only">
+                      <Icon>list</Icon> Índice de ficha
+                      <ul className="section table-of-contents">
+                        <li><a href="#taxo">Taxonomía</a></li>
+                        <li><a href="#stateCons">Estado Conservación</a></li>
+                        <li><a href="#usetrafic">Uso y tráfico</a></li>
+                      </ul>
+                    </Col>
+                </div>
+
+                <Col l={8} m={12} s={12}>
+                    <h5 className="cyan-text text-darken-4">Nombres Comunes</h5>
+
+                    {this.props.data.names.map((record, i) => (
+                        <Col s={6} key={i} >  
+                            <div>{record.title}</div>
+                            <div>{record.description}</div>
+                            <br/>
+                        </Col>
+                    ))}
+            
+                    <h5 className="cyan-text text-darken-4">Distribución</h5>
+                    <p>Mapa de registro publicados</p>
+                    <img src="https://assets.metrolatam.com/co/2015/03/20/captura-de-pantalla-2015-03-20-a-las-12-42-23-1200x600.jpg" className="responsive-img" />
+                    
+
+                    <h5 className="cyan-text text-darken-4">Taxonomía</h5>
+                    <div id="taxo" className="scrollspy">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus.
+
+                    Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada.
+
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+
+                    Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit.
+
+                    Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.
+                    </div>
+
+                    <h5 className="cyan-text text-darken-4">Estado Conservación</h5>
+                    <div id="stateCons" className="scrollspy">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus.
+
+                    Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada.
+
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+
+                    Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit.
+
+                    Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.
+                    </div>
+                    
+                    <h5 className="cyan-text text-darken-4">Uso y tráfico</h5>
+                    <div id="usetrafic" className="scrollspy">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus.
+
+                    Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada.
+
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+
+                    Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit.
+
+                    Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    </div>
+                
+                </Col>
+
+                <Col l={4}>
+
+
+                <h5 className="cyan-text text-darken-4">Jerarquía Taxonómica</h5>
+                <ul className="collection">
+                  {this.props.data.taxo.map((record, i) => (
+                        <li className="collection-item" key={i}>  
+                                {record.name} 
+                                <b>{record.value}</b>
+                        </li>
+                  ))}
+                </ul>
+           
+
+                <h5 className="cyan-text text-darken-4">Autores</h5>
+                    {this.props.data.authors.map((record, i) => (
+                        <div className="center-align" key={i}>  
+                            <div className="chip">
+                                <img src={record.url} alt="Contact Person" />
+                                {record.name}
+                            </div>
+                        </div>
+                    ))}
+
+
+
+                <h5 className="cyan-text text-darken-4">Información básica de la ficha</h5>
+                <ul className="collection">
+                  {this.props.data.basic.map((record, i) => (
+                    <li className="collection-item" key={i}>  
+                      {record.name}<br/>
+                      {record.value}
+                    </li>
+                  ))}
+                </ul>    
+               
+
+                </Col>
+
+
+
+            </Row>
+        </Wrapper>
+
+        
+        )
+    }
+}
+
+export default FileDetail;

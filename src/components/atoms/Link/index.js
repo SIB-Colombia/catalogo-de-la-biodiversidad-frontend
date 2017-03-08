@@ -4,13 +4,9 @@ import { font, palette } from 'styled-theme'
 import { Link as RouterLink } from 'react-router'
 
 const styles = css`
-  font-family: ${font('primary')};
-  text-decoration: none;
-  font-weight: 500;
-  color: ${palette({ grayscale: 0 }, 1)};
 
   &:hover {
-    text-decoration: underline;
+
   }
 `
 

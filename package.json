@@ -73,7 +73,7 @@
     "react-materialize": "^0.18.1",
     "react-modal": "^1.6.5",
     "react-router": "^3.0.0",
-    "react-slick": "^0.14.6",
+    "react-slick": "0.14.5",
     "slick-carousel": "^1.6.0",
     "styled-components": "^1.2.1",
     "styled-theme": "^0.3.0",

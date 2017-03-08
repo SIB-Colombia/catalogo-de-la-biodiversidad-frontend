@@ -49,7 +49,7 @@ const FileContent = ({...props}) => (
   <div className="row">
   <div className="col l2 offset-l2">
   
-  <div class="row">
+  <div className="row">
   <div className="input-field col s12">
   <input  id="first_name" type="text" className="validate" />
   <label for="first_name">Nombre de usuario</label>
