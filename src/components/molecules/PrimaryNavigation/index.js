@@ -1,36 +1,30 @@
 import React, { PropTypes } from 'react'
 import styled from 'styled-components'
-import { palette } from 'styled-theme'
 
 import { Link } from 'components'
 
-const Nav = styled.nav`
-  display: flex;
-  list-style: none;
-  > :not(:first-child) {
-    margin-left: 1rem;
-  }
-  a {
-    font-weight: 300;
-    color: ${palette('grayscale', 2)};
-    font-size: 1.25rem;
-    &.active {
-      color: ${palette('grayscale', 0)};
-    }
-  }
+const Ul = styled.ul`
+
 `
 
-const PrimaryNavigation = (props) => {
-  return (
-    <Nav {...props}>
-      <li><Link to="/" onlyActiveOnIndex activeClassName="active">Home</Link></li>
-      <li><Link to="/sample-page" activeClassName="active">Sample page</Link></li>
-    </Nav>
-  )
-}
+class PrimaryNavigation extends React.Component {
 
-PrimaryNavigation.propTypes = {
-  reverse: PropTypes.bool
-}
+	render() {
+		return (
+			<Ul {...this.props} className="right hide-on-med-and-down">
+				<li>
+					<Link to="/" onlyActiveOnIndex  className="grey-text text-darken-2" activeClassName="active"  >
+						Registrarse
+					</Link>
+				</li>
+				<li>
+					<Link to="/sample-page"  className="grey-text text-darken-2" activeClassName="active">
+						Ingresar
+					</Link>
+				</li>
+			</Ul>
+			)
+		}
+	}
 
-export default PrimaryNavigation
+export default PrimaryNavigation;

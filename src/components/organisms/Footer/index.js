@@ -2,27 +2,27 @@ import React from 'react'
 import styled from 'styled-components'
 import { palette } from 'styled-theme'
 
-import { Paragraph, Link, Icon } from 'components'
+import { Block, Footer } from 'components'
+// import { Footer } from 'react-materialize';
 
-const Wrapper = styled.div`
-  background-color: ${palette('grayscale', 1, true)};
-  padding: 2rem;
-`
+const Wrapper = styled(Footer)`
 
-const Credits = styled(Paragraph)`
-  vertical-align: center;
-  text-align: center;
-  margin: 0;
-`
-
-const Footer = (props) => {
-  return (
-    <Wrapper {...props}>
-      <Credits>
-        Made with <Icon icon="heart" /> by <Link href="https://github.com/diegohaz">Haz</Link>
-      </Credits>
-    </Wrapper>
-  )
+a{
+	margin:0px 5px;
 }
-
-export default Footer
+`
+const FooterPage = (props) => {
+	return (
+		<Wrapper className="page-footer grey darken-4">
+			<div className="footer-copyright">
+				<div className="container">
+					<a className="grey-text text-lighten-4 left" href=""> Sobre el Catálogo |</a>
+					<a className="grey-text text-lighten-4 left" href=""> SIB Colombia |</a> 
+					<a className="grey-text text-lighten-4 left" href=""> Términos </a>
+					<a className="grey-text text-lighten-4 right" href="">SIB Colombia</a>
+				</div>
+			</div>
+		</Wrapper>
+		) 
+	}
+export default FooterPage
