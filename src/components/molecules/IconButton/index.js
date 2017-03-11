@@ -1,22 +1,24 @@
-import React, { PropTypes } from 'react'
-import styled, { css, keyframes } from 'styled-components'
-import { ifProp, get } from 'styled-tools'
+import React, {PropTypes} from 'react'
+import styled, {css, keyframes} from 'styled-components'
+import {ifProp, get} from 'styled-tools'
 
-import { Icon, Button } from 'components'
+import {Icon, Button} from 'components'
 
-const fadeIn = keyframes`
+const fadeIn = keyframes `
   0% { display: none; opacity: 0; }
   1% { display: block: opacity: 0; }
   100% { display: block; opacity: 1; }
 `
 
 const StyledButton = styled(Button)`
-  max-width: ${props => props.hasText && !props.collapsed ? '100%' : '2.5em'};
+  max-width: ${props => props.hasText && !props.collapsed
+  ? '100%'
+  : '2.5em'};
   width: ${ifProp('hasText', 'auto', '2.5em')};
   padding: ${ifProp('hasText', '0 0.4375em', 0)};
   flex: 0 0 2.5em;
   box-sizing: border-box;
-  ${ifProp('collapsed', css`
+  ${ifProp('collapsed', css `
     overflow: hidden;
     transition: max-width 250ms ease-in-out;
     will-change: max-width;
@@ -31,7 +33,7 @@ const StyledButton = styled(Button)`
       }
     }
   `)}
-  ${ifProp('responsive', css`
+  ${ifProp('responsive', css `
     @media screen and (max-width: ${get('breakpoint')}px) {
       width: auto;
       flex: 0 !important;
@@ -39,14 +41,14 @@ const StyledButton = styled(Button)`
   `)}
 `
 
-const Text = styled.span`
+const Text = styled.span `
   padding: 0.4375em;
   @media screen and (max-width: ${get('breakpoint')}px) {
     display: ${ifProp('responsive', 'none !important')};
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,16 +60,19 @@ const StyledIcon = styled(Icon)`
   flex: none;
 `
 
-const IconButton = ({ icon, children, ...props }) => {
-  const { breakpoint, right, responsive, height } = props
-  const iconElement = <StyledIcon height={height / 2.5} icon={icon} />
+const IconButton = ({
+  icon,
+  children,
+  ...props
+}) => {
+  const {breakpoint, right, responsive, height} = props
+  const iconElement = <StyledIcon height={height / 2.5} icon={icon}/>
   return (
     <StyledButton hasText={!!children} {...props}>
       <Wrapper>
         {right || iconElement}
-        {children &&
-          <Text className="text" responsive={responsive} breakpoint={breakpoint}>{children}</Text>
-        }
+        {children && <Text className="text" responsive={responsive} breakpoint={breakpoint}>{children}</Text>
+}
         {right && iconElement}
       </Wrapper>
     </StyledButton>
@@ -81,11 +86,11 @@ IconButton.propTypes = {
   collapsed: PropTypes.bool,
   right: PropTypes.bool,
   height: PropTypes.number,
-  children: PropTypes.node,
+  children: PropTypes.node
 }
 
 IconButton.defaultProps = {
-  breakpoint: 420,
+  breakpoint: 420
 }
 
 export default IconButton

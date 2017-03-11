@@ -5,5 +5,4 @@ const GenericPage = () => {
     <div>Generic Page</div>
   )
 }
-
 export default GenericPage

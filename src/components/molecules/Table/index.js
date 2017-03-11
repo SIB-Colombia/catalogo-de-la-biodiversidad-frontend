@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 import styled from 'styled-components'
-import { font, palette } from 'styled-theme'
+import {font, palette} from 'styled-theme'
 
-import { Caption } from 'components'
+import {Caption} from 'components'
 
-const StyledTable = styled.table`
+const StyledTable = styled.table `
   font-family: ${font('primary')};
   border-collapse: collapse;
   width: 100%;
@@ -12,7 +12,13 @@ const StyledTable = styled.table`
   color: ${palette('grayscale', 0)};
 `
 
-const Table = ({ caption, head, foot, children, ...props }) => {
+const Table = ({
+  caption,
+  head,
+  foot,
+  children,
+  ...props
+}) => {
   return (
     <StyledTable {...props}>
       {caption && <Caption reverse={props.reverse}>{caption}</Caption>}
@@ -28,7 +34,7 @@ Table.propTypes = {
   head: PropTypes.node,
   foot: PropTypes.node,
   children: PropTypes.any,
-  reverse: PropTypes.bool,
+  reverse: PropTypes.bool
 }
 
 export default Table

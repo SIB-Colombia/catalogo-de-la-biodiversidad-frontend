@@ -1,35 +1,40 @@
-import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
-import { font, palette } from 'styled-theme'
-import { Link as RouterLink } from 'react-router'
+import React, {PropTypes} from 'react'
+import styled, {css} from 'styled-components'
+import {font, palette} from 'styled-theme'
+import {Link as RouterLink} from 'react-router'
 
-const styles = css`
-
+const styles = css `
   &:hover {
 
   }
-`
+`;
 
-const StyledLink = styled(({ theme, reverse, palette, ...props }) =>
-  <RouterLink {...props} />
-)`${styles}`
-const Anchor = styled.a`${styles}`
+const StyledLink = styled(({
+  theme,
+  reverse,
+  palette,
+  ...props
+}) => <RouterLink {...props}/>)`${styles}`;
 
-const Link = ({ ...props }) => {
+const Anchor = styled.a `${styles}`;
+
+const Link = ({
+  ...props
+}) => {
   if (props.to) {
-    return <StyledLink {...props} />
+    return <StyledLink {...props}/>
   }
-  return <Anchor {...props} />
+  return <Anchor {...props}/>
 }
 
 Link.propTypes = {
   palette: PropTypes.string,
   reverse: PropTypes.bool,
-  to: PropTypes.string,
+  to: PropTypes.string
 }
 
 Link.defaultProps = {
-  palette: 'primary',
+  palette: 'primary'
 }
 
 export default Link

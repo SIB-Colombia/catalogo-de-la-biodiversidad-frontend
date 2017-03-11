@@ -1,21 +1,27 @@
-import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'react-router'
-import { font, palette } from 'styled-theme'
-import { ifProp } from 'styled-tools'
+import React, {PropTypes} from 'react'
+import styled, {css} from 'styled-components'
+import {Link} from 'react-router'
+import {font, palette} from 'styled-theme'
+import {ifProp} from 'styled-tools'
 
-const fontSize = ({ height }) => `${height / 40}rem`
+const fontSize = ({height}) => `${height / 40}rem`
 
-const backgroundColor = ({ transparent, disabled }) =>
-  transparent ? 'transparent' : palette(disabled ? 2 : 1)
+const backgroundColor = ({transparent, disabled}) => transparent
+  ? 'transparent'
+  : palette(disabled
+    ? 2
+    : 1)
 
-const foregroundColor = ({ transparent, disabled }) =>
-  transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true)
+const foregroundColor = ({transparent, disabled}) => transparent
+  ? palette(disabled
+    ? 2
+    : 1)
+  : palette('grayscale', 0, true)
 
-const hoverBackgroundColor = ({ disabled, transparent }) => !disabled && !transparent && palette(0)
-const hoverForegroundColor = ({ disabled, transparent }) => !disabled && transparent && palette(0)
+const hoverBackgroundColor = ({disabled, transparent}) => !disabled && !transparent && palette(0)
+const hoverForegroundColor = ({disabled, transparent}) => !disabled && transparent && palette(0)
 
-const styles = css`
+const styles = css `
   display: inline-flex;
   font-family: ${font('primary')};
   align-items: center;
@@ -45,19 +51,28 @@ const styles = css`
   }
 `
 
-const StyledLink = styled(({ disabled, transparent, reverse, palette, height, theme, ...props }) =>
-  <Link {...props} />
-)`${styles}`
-const Anchor = styled.a`${styles}`
-const StyledButton = styled.button`${styles}`
+const StyledLink = styled(({
+  disabled,
+  transparent,
+  reverse,
+  palette,
+  height,
+  theme,
+  ...props
+}) => <Link {...props}/>)`${styles}`
+const Anchor = styled.a `${styles}`
+const StyledButton = styled.button `${styles}`
 
-const Button = ({ type, ...props }) => {
+const Button = ({
+  type,
+  ...props
+}) => {
   if (props.to) {
-    return <StyledLink {...props} />
+    return <StyledLink {...props}/>
   } else if (props.href) {
-    return <Anchor {...props} />
+    return <Anchor {...props}/>
   }
-  return <StyledButton {...props} type={type} />
+  return <StyledButton {...props} type={type}/>
 }
 
 Button.propTypes = {
@@ -68,13 +83,13 @@ Button.propTypes = {
   height: PropTypes.number,
   type: PropTypes.string,
   to: PropTypes.string,
-  href: PropTypes.string,
+  href: PropTypes.string
 }
 
 Button.defaultProps = {
   palette: 'primary',
   type: 'button',
-  height: 40,
+  height: 40
 }
 
 export default Button

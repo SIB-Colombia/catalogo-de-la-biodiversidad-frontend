@@ -1,13 +1,13 @@
-import { PropTypes } from 'react'
-import styled, { keyframes } from 'styled-components'
-import { palette } from 'styled-theme'
+import {PropTypes} from 'react'
+import styled, {keyframes} from 'styled-components'
+import {palette} from 'styled-theme'
 
-const spin = keyframes`
+const spin = keyframes `
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 `
 
-const Spinner = styled.div`
+const Spinner = styled.div `
   position: relative;
   border: 0.2em solid ${palette('grayscale', 1, true)};
   border-bottom-color: ${palette(1)};
@@ -20,11 +20,11 @@ const Spinner = styled.div`
 
 Spinner.propTypes = {
   palette: PropTypes.string,
-  reverse: PropTypes.bool,
+  reverse: PropTypes.bool
 }
 
 Spinner.defaultProps = {
-  palette: 'primary',
+  palette: 'primary'
 }
 
 export default Spinner

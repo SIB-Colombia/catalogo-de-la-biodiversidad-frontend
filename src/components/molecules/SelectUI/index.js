@@ -1,20 +1,20 @@
-import React, { PropTypes } from 'react'
-import styled, { css } from 'styled-components'
+import React, {PropTypes} from 'react'
+import styled, {css} from 'styled-components'
 
-import {Row, Col } from 'react-materialize';
+import {Row, Col} from 'react-materialize';
 
 class SelectUI extends React.Component {
 
-  componentDidMount() {
-
+  constructor() {
+    super()
   }
 
-  componentWillMount() {
+  componentDidMount() {}
 
-  }
+  componentWillMount() {}
 
-  render(){
-    return(
+  render() {
+    return (
       <div>
         <label>{this.props.title}</label>
         <select className="browser-default" defaultValue=''>
@@ -22,11 +22,11 @@ class SelectUI extends React.Component {
           <option value="1">Option 1</option>
           <option value="2">Option 2</option>
           <option value="3">Option 3</option>
-        </select>   
-      </div> 
-      )
-    }
+        </select>
+      </div>
+    )
   }
+}
 
 SelectUI.propTypes = {
   // children: PropTypes.node,

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import { Block, Link } from 'components'
+import {Block, Link} from 'components'
 import Slider from 'react-slick'
 
 const Wrapper = styled(Block)`
@@ -20,7 +19,6 @@ img{
   color: #00838f;
 }
 `
-
 class CommunityList extends React.Component {
 
   render() {
@@ -32,12 +30,27 @@ class CommunityList extends React.Component {
       slidesToShow: 4,
       slidesToScroll: 1,
       draggable: false,
-      responsive:[ 
-      { breakpoint: 768, settings: { slidesToShow: 1 } }, 
-      { breakpoint: 1024, settings: { slidesToShow: 2 } }, 
-      { breakpoint: 2000, settings: { slidesToShow: 4 } }, 
-      { breakpoint: 100000, settings: 'unslick'  }
-      ] 
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 2000,
+          settings: {
+            slidesToShow: 4
+          }
+        }, {
+          breakpoint: 100000,
+          settings: 'unslick'
+        }
+      ]
     };
 
     return (
@@ -47,14 +60,14 @@ class CommunityList extends React.Component {
           <div className="row">
             <Slider {...settings}>
               {this.props.data.map((record, i) => (
-                  <div key={i}>
-                    <div className="center-align" >
-                      <center>
-                        <img width="200" src="http://www.iconsfind.com/wp-content/uploads/2015/08/20150831_55e46b12d72da.png" alt="" className="circle" />
-                        <h6>{record.name} {i}</h6>
-                      </center>
-                    </div>
+                <div key={i}>
+                  <div className="center-align">
+                    <center>
+                      <img width="200" src="http://www.iconsfind.com/wp-content/uploads/2015/08/20150831_55e46b12d72da.png" alt="" className="circle"/>
+                      <h6>{record.name} {i}</h6>
+                    </center>
                   </div>
+                </div>
               ))}
             </Slider>
           </div>
@@ -66,7 +79,7 @@ class CommunityList extends React.Component {
           </div>
         </div>
       </Wrapper>
-      )
+    )
   }
 }
 

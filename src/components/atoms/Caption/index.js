@@ -1,8 +1,8 @@
-import { PropTypes } from 'react'
+import {PropTypes} from 'react'
 import styled from 'styled-components'
-import { font, palette } from 'styled-theme'
+import {font, palette} from 'styled-theme'
 
-const Caption = styled.caption`
+const Caption = styled.caption `
   font-family: ${font('primary')};
   color: ${palette('grayscale', 1)};
   font-weight: 500;
@@ -12,7 +12,7 @@ const Caption = styled.caption`
 `
 
 Caption.propTypes = {
-  reverse: PropTypes.bool,
+  reverse: PropTypes.bool
 }
 
 export default Caption

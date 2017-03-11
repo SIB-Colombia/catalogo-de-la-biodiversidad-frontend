@@ -1,9 +1,9 @@
-import { PropTypes } from 'react'
+import {PropTypes} from 'react'
 import styled from 'styled-components'
-import { font, palette } from 'styled-theme'
-import { ifProp } from 'styled-tools'
+import {font, palette} from 'styled-theme'
+import {ifProp} from 'styled-tools'
 
-const Footer = styled.footer`
+const Footer = styled.footer `
 	margin-top: 40px;
 	padding-top: 0px !important;
 `

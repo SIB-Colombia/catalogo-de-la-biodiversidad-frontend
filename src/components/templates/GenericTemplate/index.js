@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   display: flex;
   flex-direction: column;
   padding-top: 3.75rem;
@@ -9,14 +9,17 @@ const Wrapper = styled.div`
   box-sizing: border-box;
 `
 
-const Content = styled.section`
+const Content = styled.section `
   width: 100%;
   box-sizing: border-box;
   margin: 2rem auto;
   max-width: 920px;
 `
 
-const GenericTemplate = ({ children, ...props }) => {
+const GenericTemplate = ({
+  children,
+  ...props
+}) => {
   return (
     <Wrapper {...props}>
       <Content>{children}</Content>
@@ -25,7 +28,7 @@ const GenericTemplate = ({ children, ...props }) => {
 }
 
 GenericTemplate.propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.any.isRequired
 }
 
 export default GenericTemplate

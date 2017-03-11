@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Block, Link } from 'components'
+import {Block, Link} from 'components'
 import Slider from 'react-slick'
 
 const Wrapper = styled(Block)`
@@ -21,8 +21,7 @@ h4{
 `
 class GroupsList extends React.Component {
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
 
@@ -33,12 +32,27 @@ class GroupsList extends React.Component {
       slidesToShow: 4,
       slidesToScroll: 1,
       draggable: false,
-      responsive:[ 
-      { breakpoint: 768, settings: { slidesToShow: 1 } }, 
-      { breakpoint: 1024, settings: { slidesToShow: 2 } }, 
-      { breakpoint: 2000, settings: { slidesToShow: 4 } }, 
-      { breakpoint: 100000, settings: 'unslick'  }
-      ] 
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 2000,
+          settings: {
+            slidesToShow: 4
+          }
+        }, {
+          breakpoint: 100000,
+          settings: 'unslick'
+        }
+      ]
     };
 
     return (
@@ -51,7 +65,7 @@ class GroupsList extends React.Component {
                 <div key={i}>
                   <div className="card space">
                     <div className="card-image waves-effect waves-block waves-light">
-                      <img className="activator" src="https://maxcdn.icons8.com/Color/PNG/512/Animals/pelican-512.png" />
+                      <img className="activator" src="https://maxcdn.icons8.com/Color/PNG/512/Animals/pelican-512.png"/>
                     </div>
                     <div className="card-content">
                       <span className="card-title activator grey-text text-darken-4">
@@ -65,18 +79,18 @@ class GroupsList extends React.Component {
                       <span className="card-title grey-text text-darken-4">
                         {record.name}<i className="material-icons right">close</i>
                       </span>
-                    <p>{record.body}</p>
+                      <p>{record.body}</p>
                     </div>
                   </div>
                 </div>
-               ))}
+              ))}
             </Slider>
           </div>
           <div className=" col s12 center-align">
-          <br/>
-          <button className="btn waves-effect waves-light cyan darken-3">Explorar todos los grupos
-            <i className="material-icons right">more_horiz</i>
-          </button>
+            <br/>
+            <button className="btn waves-effect waves-light cyan darken-3">Explorar todos los grupos
+              <i className="material-icons right">more_horiz</i>
+            </button>
           </div>
         </div>
       </Wrapper>

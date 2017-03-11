@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
+import React, {PropTypes} from 'react'
 import styled from 'styled-components'
-import { font, palette } from 'styled-theme'
+import {font, palette} from 'styled-theme'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
 `
@@ -14,7 +14,7 @@ const Organism = (props) => {
 }
 
 Organism.propTypes = {
-  reverse: PropTypes.bool,
+  reverse: PropTypes.bool
 }
 
 export default Organism

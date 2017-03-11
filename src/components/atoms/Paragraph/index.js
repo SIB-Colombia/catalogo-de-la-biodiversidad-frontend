@@ -1,8 +1,8 @@
-import { PropTypes } from 'react'
+import {PropTypes} from 'react'
 import styled from 'styled-components'
-import { font, palette } from 'styled-theme'
+import {font, palette} from 'styled-theme'
 
-const Paragraph = styled.p`
+const Paragraph = styled.p `
   font-family: ${font('primary')};
   color: ${palette('grayscale', 0)};
   font-size: 1rem;
@@ -11,7 +11,7 @@ const Paragraph = styled.p`
 `
 
 Paragraph.propTypes = {
-  reverse: PropTypes.bool,
+  reverse: PropTypes.bool
 }
 
 export default Paragraph
