@@ -1,6 +1,7 @@
-import React, {PropTypes} from 'react'
-import styled from 'styled-components'
-import {palette} from 'styled-theme'
+import React, {PropTypes} from 'react';
+import styled from 'styled-components';
+import {palette} from 'styled-theme';
+
 import {
   Block,
   Paragraph,
@@ -8,7 +9,8 @@ import {
   IconButton,
   LogoImage,
   Tooltip,
-  Image
+  Image,
+  ReactSchemaEasyForm
 } from 'components'
 import {
   Tabs,
@@ -48,14 +50,32 @@ h5{
 
 class FileDetail extends React.Component {
 
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      schema: {},
+      form: {}
+    }
+
+  }
+
+  componentDidMount() {
+    $('.parallax').parallax();
+    $('.scrollspy').scrollSpy();
+  }
 
   render() {
 
     return (
       <Wrapper className="animated fadeIn">
-        <Row>
 
+        pruebas
+        <br/>
+        <ReactSchemaEasyForm schema={this.state.schema} form={this.state.form} model={this.props.model}/>
+
+        <br/>
+        <Row>
           <div className="lateral-menu card-panel animated bounceInDown">
             <Col className="hide-on-small-only">
               <Icon>list</Icon>

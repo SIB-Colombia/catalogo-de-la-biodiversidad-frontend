@@ -31,35 +31,18 @@ class FilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      summary: {},
-      detail: {},
-      files: [],
-      viewDetail: false
+      id: this.props.params.fileId,
+      summary: false,
+      detail: false,
+      files: []
     }
   }
 
   componentDidMount() {
-
-    $('.materialboxed').materialbox();
-    $('.parallax').parallax();
-    $('.scrollspy').scrollSpy();
     window.scrollTo(0, 0);
-
-    /*var _this = this;
-		$('.tab-demo .tab').on('click',function(e){
-			switch($(this).find('a').text()){
-				case 'Detalles':
-				_this.setState({viewDetail: true});
-				break;
-			}
-		})*/
-
   }
 
   componentWillMount() {
-    //Asi llegan parámetros por url
-    console.log('procesar->', this.props.params.fileId);
-
     var options = {
       method: 'GET',
       // mode: 'cors',
@@ -74,147 +57,24 @@ class FilePage extends React.Component {
       this.setState({files: data})
     })
 
-    this.setState({
-      summary: {
+    fetch('http://localhost:9000/api/file/summary/' + this.state.id, options).then((response) => {
+      return response.json()
+    }).then((data) => {
+      this.setState({summary: data})
+    })
 
-        images: [
-          {
-            url: 'https://ih1.redbubble.net/image.22685802.7502/flat,800x800,075,t.u1.jpg',
-            author: 'Hola Mundo'
-          }, {
-            url: 'https://ih1.redbubble.net/image.22685802.7502/flat,800x800,075,t.u1.jpg',
-            author: 'Hola Mundo'
-          }, {
-            url: 'https://ih1.redbubble.net/image.22685802.7502/flat,800x800,075,t.u1.jpg',
-            author: 'Hola Mundo'
-          }, {
-            url: 'https://ih1.redbubble.net/image.22685802.7502/flat,800x800,075,t.u1.jpg',
-            author: 'Hola Mundo'
-          }, {
-            url: 'https://ih1.redbubble.net/image.22685802.7502/flat,800x800,075,t.u1.jpg',
-            author: 'Hola Mundo'
-          }
-        ],
-        names: [
-          {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }, {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }, {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }, {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }
+    fetch('http://localhost:9000/api/file/detail/' + this.state.id, options).then((response) => {
+      return response.json()
+    }).then((data) => {
+      this.setState({detail: data})
+    })
 
-        ],
-        distribution: {},
-        editors: [
-          {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg'
-          }, {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg'
-          }
-        ],
-        activity: [
-          {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            description: 'Instituo Humboldt agregó 20 fotos'
-          }, {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            description: 'Instituo Humboldt eliminó 20 fotos'
-          }, {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            description: 'Instituo Humboldt agregó 20 fotos'
-          }, {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            description: 'Instituo Humboldt agregó 20 fotos'
-          }
-        ],
-        groups: [
-          {
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            name: 'Aves de colombia',
-            description: '350.900 lorem ipsum'
-          }, {
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            name: 'Aves de colombia',
-            description: '350.900 lorem ipsum'
-          }, {
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg',
-            name: 'Aves de colombia',
-            description: '350.900 lorem ipsum'
-          }
-        ]
-      },
+    /*Schemas*/
 
-      detail: {
-
-        names: [
-          {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }, {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }, {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }, {
-            title: 'CHULO',
-            description: 'Español Colombia- Región Andina'
-          }
-        ],
-        authors: [
-          {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg'
-          }, {
-            name: 'Instituo Humboldt',
-            url: 'http://adaptacion-orotoy.org/wp-content/uploads/2014/04/logo_verde.jpg'
-          }
-        ],
-        taxo: [
-          {
-            name: 'Reino ',
-            value: 'Animalia'
-          }, {
-            name: 'Reino ',
-            value: 'Animalia'
-          }, {
-            name: 'Reino ',
-            value: 'Animalia'
-          }, {
-            name: 'Reino ',
-            value: 'Animalia'
-          }
-        ],
-        basic: [
-          {
-            name: 'Fecha de Elaboración ',
-            value: '2014-04-01'
-          }, {
-            name: 'Fecha de Elaboración ',
-            value: '2014-04-01'
-          }, {
-            name: 'Fecha de Elaboración ',
-            value: '2014-04-01'
-          }, {
-            name: 'Fecha de Elaboración ',
-            value: '2014-04-01'
-          }
-        ]
-
-      }
+    fetch('http://localhost:9000/api/schema/build').then((response) => {
+      return response.json()
+    }).then((data) => {
+      this.setState({'ancillary.AncillaryData': data})
     })
 
   }
@@ -230,13 +90,13 @@ class FilePage extends React.Component {
               <Tab title="Resumen" active>
                 {this.state.summary
                   ? <FileSummary data={this.state.summary}/>
-                  : <div classname="center-align">Cargando resumen....
+                  : <div className="center-align">Cargando resumen....
                     <ProgressBar/></div>}
               </Tab>
               <Tab title="Detalles">
                 {this.state.detail
                   ? <FileDetail data={this.state.detail}/>
-                  : <div classname="center-align">Cargando detalle....
+                  : <div className="center-align">Cargando detalle....
                     <ProgressBar/></div>}
               </Tab>
               <Tab title="Imágenes"></Tab>
