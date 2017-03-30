@@ -1,6 +1,7 @@
-import React, {PropTypes} from 'react'
-import styled from 'styled-components'
-import {palette} from 'styled-theme'
+import React, {PropTypes} from 'react';
+import styled from 'styled-components';
+import {palette} from 'styled-theme';
+
 import {
   Block,
   Paragraph,
@@ -8,7 +9,9 @@ import {
   IconButton,
   LogoImage,
   Tooltip,
-  Image
+  Image,
+  ModalUI,
+  ReactSchemaEasyForm
 } from 'components'
 import {
   Tabs,
@@ -18,7 +21,11 @@ import {
   Col,
   MediaBox,
   Chip,
-  Icon
+  Icon,
+  Dropdown,
+  NavItem,
+  Button,
+  Input
 } from 'react-materialize';
 
 const Wrapper = styled(Block)`
@@ -44,19 +51,193 @@ h5{
             vertical-align: middle;
     }
 }
+
 `
 
 class FileDetail extends React.Component {
 
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      schema: {},
+      form: {},
+      contact: {
+        name: '',
+        email: '',
+        tel: ''
+      },
+      associatedParty: {}
+
+    }
+
+    // // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    $('.parallax').parallax();
+    $('.scrollspy').scrollSpy();
+
+    $(document).ready(function() {
+
+      $('.modal').modal();
+    });
+
+  }
+
+  openModalForm = (record) => {
+    this.setState({associatedParty: record})
+    $('#modalForm').modal('open');
+  }
+
+  change(propertyName, event) {
+    var contact = this.state.contact;
+    contact[propertyName] = event.target.value;
+    this.setState({contact: contact});
+  }
 
   render() {
 
+    console.log(this.props);
+
     return (
       <Wrapper className="animated fadeIn">
-        <Row>
 
+        {/* <input type="text" value={this.state.contact.name} onChange={(e) => this.change('name', e)}/> */}
+        {/* <input type="text" value={this.state.contact.email} onChange={(e) => this.change('email', e)}/> */}
+        {/* <input type="text" value={this.state.contact.tel} onChange={(e) => this.change('tel', e)}/> */}
+        {/* this.state.answers.map(function(a) {
+            return(<Answer name={a.name} value={a.value} handleChange={this._handleChange} />)
+          }); */}
+        {/* {JSON.stringify(this.state.contact)} */}
+        {/* <ReactSchemaEasyForm schema={this.state.schema} form={this.state.form} model={this.props.model}/> */}
+        <br/>
+        <Row>
+          <h5 className="cyan-text text-darken-4">associatedPartys</h5>
+          <ul className="collection">
+            {this.props.associatedParty.map((record, i) => (
+              <Col s={6} key={i}>
+                <li className="collection-item avatar">
+                  <i className="material-icons circle green">insert_chart</i>
+                  <span className="title">
+                    <b>associatedParty</b>
+                  </span>
+                  <p>
+                    <b>address</b>:{record.address}<br/>
+                    <b>city:</b>
+                    {record.city}<br/>
+                    <b>country:</b>
+                    {record.country}<br/>
+                    <b>email:</b>
+                    {record.email}<br/>
+                    <b>firstName:</b>
+                    {record.firstName}<br/>
+                    <b>homepage:</b>
+                    {record.homepage}<br/>
+                    <b>lastName:</b>
+                    {record.lastName}<br/>
+                    <b>organisation:</b>
+                    {record.organisation}<br/>
+                    <b>personnelDirectory:</b>
+                    {record.personnelDirectory}<br/>
+                    <b>personnelIdentifier:</b>
+                    {record.personnelIdentifier}<br/>
+                    <b>phone:</b>
+                    {record.phone}<br/>
+                    <b>position:</b>
+                    {record.position}<br/>
+                    <b>postalCode:</b>
+                    {record.postalCode}<br/>
+                    <b>role:</b>
+                    {record.role}<br/>
+                    <b>state:</b>
+                    {record.state}<br/>
+                  </p>
+                  <a onClick={() => this.openModalForm(record)} className="secondary-content dropdown-button">
+                    <i className="material-icons">more_horiz</i>
+                  </a>
+                </li>
+              </Col>
+            ))}
+          </ul>
+        </Row>
+
+        <Row>
+          <h5 className="cyan-text text-darken-4">reference</h5>
+          <ul className="collection">
+            {this.props.reference.map((record, i) => (
+              <Col s={6} key={i}>
+                <li className="collection-item avatar">
+                  <i className="material-icons circle blue">insert_chart</i>
+                  <span className="title">
+                    <b>reference</b>
+                  </span>
+                  <p>
+                    <b>abstract</b>:{record.abstract}<br/>
+                    <b>accessed:</b>
+                    {record.accessed}<br/>
+                    <b>address:</b>
+                    {record.address}<br/>
+                    <b>chapter:</b>
+                    {record.chapter}<br/>
+                    <b>created:</b>
+                    {record.created}<br/>
+                    <b>doi:</b>
+                    {record.doi}<br/>
+                    <b>edition:</b>
+                    {record.edition}<br/>
+                    <b>group_id:</b>
+                    {record.group_id}<br/>
+                    <b>id:</b>
+                    {record.id}<br/>
+                    <b>institution:</b>
+                    {record.institution}<br/>
+                    <b>isbn:</b>
+                    {record.isbn}<br/>
+                    <b>issn:</b>
+                    {record.issn}<br/>
+                    <b>issue:</b>
+                    {record.issue}<br/>
+                    <b>last_modified:</b>
+                    {record.last_modified}<br/>
+                    <b>link:</b>
+                    {record.link}<br/>
+                    <b>pages:</b>
+                    {record.pages}<br/>
+                    <b>profile_id:</b>
+                    {record.profile_id}<br/>
+                    <b>publisher:</b>
+                    {record.publisher}<br/>
+                    <b>series:</b>
+                    {record.series}<br/>
+                    <b>source:</b>
+                    {record.source}<br/>
+                    <b>tags:</b>
+                    {record.tags}<br/>
+                    <b>title:</b>
+                    {record.title}<br/>
+                    <b>type:</b>
+                    {record.type}<br/>
+                    <b>volume:</b>
+                    {record.volume}<br/>
+                    <b>websites:</b>
+                    {record.websites}<br/>
+                    <b>year:</b>
+                    {record.year}<br/>
+                  </p>
+                  <a className="secondary-content dropdown-button">
+                    <i className="material-icons">more_horiz</i>
+                  </a>
+                </li>
+              </Col>
+            ))}
+          </ul>
+        </Row>
+
+        <Row>
           <div className="lateral-menu card-panel animated bounceInDown">
+
             <Col className="hide-on-small-only">
               <Icon>list</Icon>
               Índice de ficha
@@ -144,6 +325,26 @@ class FileDetail extends React.Component {
           </Col>
 
         </Row>
+        <ModalUI title="Formulario" refe="modalForm">
+          <Row>
+            <Col l={12} s={12}>
+              <Input s={6} label="address" value={this.state.associatedParty.address}/>
+              <Input s={6} label="country" value={this.state.associatedParty.country}/>
+              <Input s={6} label="email" value={this.state.associatedParty.email}/>
+              <Input s={6} label="firstName" value={this.state.associatedParty.firstName}/>
+              <Input s={6} label="homepage" value={this.state.associatedParty.homepage}/>
+              <Input s={6} label="lastName" value={this.state.associatedParty.lastName}/>
+              <Input s={6} label="organisation" value={this.state.associatedParty.organisation}/>
+              <Input s={6} label="personnelDirectory" value={this.state.associatedParty.personnelDirectory}/>
+              <Input s={6} label="personnelIdentifier" value={this.state.associatedParty.personnelIdentifier}/>
+              <Input s={6} label="phone" value={this.state.associatedParty.phone}/>
+              <Input s={6} label="position" value={this.state.associatedParty.position}/>
+              <Input s={6} label="postalCode" value={this.state.associatedParty.postalCode}/>
+              <Input s={6} label="role" value={this.state.associatedParty.role}/>
+              <Input s={6} label="state" value={this.state.associatedParty.state}/>
+            </Col>
+          </Row>
+        </ModalUI>
       </Wrapper>
 
     )

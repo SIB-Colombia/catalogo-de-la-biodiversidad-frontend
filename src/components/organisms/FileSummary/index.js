@@ -34,7 +34,10 @@ h5{
 
 class FileSummary extends React.Component {
 
-  componentDidMount() {}
+  componentDidMount() {
+    $('.materialboxed').materialbox();
+
+  }
 
   render() {
 
@@ -68,7 +71,6 @@ class FileSummary extends React.Component {
         }
       ]
     };
-
     return (
       <Wrapper className="animated fadeIn">
         <Row>

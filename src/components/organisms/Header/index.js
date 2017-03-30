@@ -73,7 +73,7 @@ class Header extends React.Component {
               <Col s={1} className="grey-text text-darken-2 center-align">
                 <span onClick={this.openAdvance}>
                   <Icon>
-                    settings
+                    tune
                   </Icon>
                 </span>
               </Col>
