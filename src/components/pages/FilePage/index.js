@@ -6,6 +6,7 @@ import {
   Footer,
   FileSummary,
   FileDetail,
+  FileImage,
   FileList
 } from 'components'
 import {Tabs, Tab, Row, Col, ProgressBar} from 'react-materialize';
@@ -33,8 +34,13 @@ class FilePage extends React.Component {
     this.state = {
       id: this.props.params.fileId,
       summary: false,
-      detail: false,
-      files: []
+      files: [],
+      // detail
+      info: false,
+      schema: false,
+      associatedParty: [],
+      reference: [],
+      ancillaryData: []
     }
   }
 
@@ -66,7 +72,7 @@ class FilePage extends React.Component {
     fetch('http://localhost:9000/api/file/detail/' + this.state.id, options).then((response) => {
       return response.json()
     }).then((data) => {
-      this.setState({detail: data})
+      this.setState({'detail': data})
     })
 
     /*Schemas*/
@@ -74,12 +80,33 @@ class FilePage extends React.Component {
     fetch('http://localhost:9000/api/schema/build').then((response) => {
       return response.json()
     }).then((data) => {
-      this.setState({'ancillary.AncillaryData': data})
+      this.setState({'schema': data})
+    })
+
+    /* data for models*/
+
+    fetch('http://localhost:9000/api/schema/generate/associatedParty/10').then((response) => {
+      return response.json()
+    }).then((data) => {
+      this.setState({'associatedParty': data})
+    })
+    fetch('http://localhost:9000/api/schema/generate/reference/10').then((response) => {
+      return response.json()
+    }).then((data) => {
+      this.setState({'reference': data})
+    })
+    fetch('http://localhost:9000/api/schema/generate/ancillaryData/10').then((response) => {
+      return response.json()
+    }).then((data) => {
+      this.setState({'ancillaryData': data})
     })
 
   }
 
   render() {
+
+
+
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
         <br/>
@@ -94,12 +121,14 @@ class FilePage extends React.Component {
                     <ProgressBar/></div>}
               </Tab>
               <Tab title="Detalles">
-                {this.state.detail
-                  ? <FileDetail data={this.state.detail}/>
+                {this.state.detail && this.state.schema && this.state.associatedParty.length > 0 && this.state.reference.length > 0 && this.state.ancillaryData.length > 0
+                  ? <FileDetail data={this.state.detail} schema={this.state.schema} associatedParty={this.state.associatedParty} reference={this.state.reference}  ancillaryData={this.state.ancillaryData} />
                   : <div className="center-align">Cargando detalle....
                     <ProgressBar/></div>}
               </Tab>
-              <Tab title="Imágenes"></Tab>
+              <Tab title="Imágenes">
+                <FileImage/>
+              </Tab>
               <Tab title="Mapas"></Tab>
               <Tab title="Comunidad"></Tab>
               <Tab title="Comentarios"></Tab>
