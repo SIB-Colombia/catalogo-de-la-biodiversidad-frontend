@@ -81,7 +81,7 @@ class FileList extends React.Component {
                       <p>{record.description}</p>
                     </div>
                     <div className="card-action cyan darken-3">
-                      <Link to={`/ficha/${i}`} className="white-text">Ver descripción...</Link>
+                      <Link to={`/ficha/${record.id}`} className="white-text">Ver descripción...</Link>
                     </div>
                   </div>
                 </div>
