@@ -37,10 +37,10 @@ class FilePage extends React.Component {
     this.state = {
       id: this.props.params.fileId,
       summary: false,
-      files: [],
+      // files: [],
       // detail
       info: false,
-      schema: false,
+      // schema: false,
       // associatedParty: false,
       reference: false,
       ancillaryData: false
@@ -60,11 +60,12 @@ class FilePage extends React.Component {
       // })
     };
 
-    // fetch(`${config.server}/api/hello/home`, options).then((response) => {
-    //   return response.json()
-    // }).then((data) => {
-    //   this.setState({files: data})
-    // })
+    fetch(`${config.serverAmazon}/record/5661b2a2f3b30194336dc7a6`, options).then((response) => {
+      return response.json()
+    }).then((data) => {
+      // this.setState({files: data})
+      this.setState({info: data})
+    })
 
     fetch(`${config.server}/api/file/summary/${this.state.id}`, options).then((response) => {
       return response.json()
@@ -134,5 +135,3 @@ class FilePage extends React.Component {
 }
 
 export default FilePage;
-//{ this.state.files.length > 0 ? <FileList data={this.state.files} /> : <div>ergergergergerg</div> }
-//{this.state.viewDetail ? (this.state.files ? <FileList data={this.state.files} /> : null) : null}
