@@ -69,17 +69,17 @@ class GroupsList extends React.Component {
                     </div>
                     <div className="card-content">
                       <span className="card-title activator grey-text text-darken-4">
-                        {record.name}
+                        {record.title}
                       </span>
                       <p>
-                        <a href="#">{record.body}</a>
+                        <a href="#">{record.description}</a>
                       </p>
                     </div>
                     <div className="card-reveal">
                       <span className="card-title grey-text text-darken-4">
-                        {record.name}<i className="material-icons right">close</i>
+                        {record.title}<i className="material-icons right">close</i>
                       </span>
-                      <p>{record.body}</p>
+                      <p>{record.description}</p>
                     </div>
                   </div>
                 </div>

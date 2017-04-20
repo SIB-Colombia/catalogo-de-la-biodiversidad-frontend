@@ -45,6 +45,12 @@ z-index: 99999;
 		line-height: 2;
 	}
 }
+.hover-cursor{
+  cursor: pointer;
+  &:hover .material-icons{
+    opacity: 0.5;
+  }
+}
 `
 
 class Header extends React.Component {
@@ -71,7 +77,7 @@ class Header extends React.Component {
               </Col>
               <Input s={10} label="Buscar..." className="grey-text text-darken-2"></Input>
               <Col s={1} className="grey-text text-darken-2 center-align">
-                <span onClick={this.openAdvance}>
+                <span onClick={this.openAdvance} className="hover-cursor">
                   <Icon>
                     tune
                   </Icon>
@@ -110,6 +116,7 @@ class Header extends React.Component {
             </Col>
           </Row>
         </ModalUI>
+
       </Wrapper>
     )
   }

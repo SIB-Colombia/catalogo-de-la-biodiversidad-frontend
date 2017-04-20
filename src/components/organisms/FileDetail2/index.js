@@ -54,24 +54,24 @@ h5{
 
 `
 
-class FileDetail extends React.Component {
+class FileDetailOld extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      referenceSchema: {},
-      ancillaryDataSchema: {},
+      schema: {},
       form: {},
       contact: {
         name: '',
         email: '',
         tel: ''
-      }
+      },
+      associatedParty: {}
+
     }
 
-    this.updateReference = this.updateReference.bind(this);
-    //this.handleChange = this.handleChange.bind(this);
+    // // this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -80,71 +80,29 @@ class FileDetail extends React.Component {
     $('.scrollspy').scrollSpy();
 
     $(document).ready(function() {
+
       $('.modal').modal();
     });
-  }
-
-  componentWillMount() {
-    this.setState({
-      referenceSchema: this.empty(this.props.reference.schema)
-    });
-    this.setState({
-      ancillaryDataSchema: this.empty(this.props.ancillaryData.schema)
-    });
-  }
-
-  updateReference(propertyName, event) {
-    let model = this.state.referenceSchema;
-    model[propertyName].value = event.target.value;
-    this.setState({referenceSchema: model});
-  }
-
-  empty(schema) {
-    for (let control in schema) {
-      schema[control].value = '';
-    }
-    return schema;
-  }
-
-  load(record, event) {
-    for (let control in this.props.reference.schema) {
-      this.props.reference.schema[control].value = record[control] || '';
-    }
-    this.setState({referenceSchema: this.props.reference.schema});
-    setTimeout(function() {
-      Materialize.updateTextFields();
-      $('#modalForm').modal('open');
-    }, 100);
-  }
-
-  save(event) {
-
-    console.log('save ->', this.state.referenceSchema);
 
   }
 
-  create(type) {
-    switch (type) {
-      case 'referenceSchema':
-        this.setState({
-          referenceSchema: this.empty(this.props.reference.schema)
-        });
-        $('#modalForm').modal('open');
-        break;
-      case 'ancillaryDataSchema':
-        this.setState({
-          ancillaryDataSchema: this.empty(this.props.ancillaryData.schema)
-        });
-        $('#modalAD').modal('open');
-        break;
-      default:
-    }
+  openModalForm = (record) => {
+    this.setState({associatedParty: record})
+    $('#modalForm').modal('open');
+  }
 
+  change(propertyName, event) {
+    var contact = this.state.contact;
+    contact[propertyName] = event.target.value;
+    this.setState({contact: contact});
   }
 
   render() {
+
+    console.log(this.props);
+
     return (
-      <Wrapper>
+      <Wrapper className="animated fadeIn">
 
         {/* <input type="text" value={this.state.contact.name} onChange={(e) => this.change('name', e)}/> */}
         {/* <input type="text" value={this.state.contact.email} onChange={(e) => this.change('email', e)}/> */}
@@ -155,42 +113,131 @@ class FileDetail extends React.Component {
         {/* {JSON.stringify(this.state.contact)} */}
         {/* <ReactSchemaEasyForm schema={this.state.schema} form={this.state.form} model={this.props.model}/> */}
         <br/>
-
         <Row>
-          <h5 className="cyan-text text-darken-4">reference
-            <a className="btn-floating waves-effect waves-light grey" onClick={(e) => this.create('referenceSchema', e)}>
-              <i className="material-icons">add</i>
-            </a>
-          </h5>
+          <h5 className="cyan-text text-darken-4">associatedPartys</h5>
           <ul className="collection">
-
-            {this.props.reference.data.map((record, i) => (
+            {this.props.associatedParty.map((record, i) => (
               <Col s={6} key={i}>
                 <li className="collection-item avatar">
-                  <i className="material-icons circle blue">insert_chart</i>
+                  <i className="material-icons circle green">insert_chart</i>
                   <span className="title">
-                    <b>{record.title}</b>
+                    <b>associatedParty</b>
                   </span>
                   <p>
-                    <b>Tags:</b>
-                    {record.tags}<br/>
-                    <em>Last modified: {record.last_modified}<br/></em>
+                    <b>address</b>:{record.address}<br/>
+                    <b>city:</b>
+                    {record.city}<br/>
+                    <b>country:</b>
+                    {record.country}<br/>
+                    <b>email:</b>
+                    {record.email}<br/>
+                    <b>firstName:</b>
+                    {record.firstName}<br/>
+                    <b>homepage:</b>
+                    {record.homepage}<br/>
+                    <b>lastName:</b>
+                    {record.lastName}<br/>
+                    <b>organisation:</b>
+                    {record.organisation}<br/>
+                    <b>personnelDirectory:</b>
+                    {record.personnelDirectory}<br/>
+                    <b>personnelIdentifier:</b>
+                    {record.personnelIdentifier}<br/>
+                    <b>phone:</b>
+                    {record.phone}<br/>
+                    <b>position:</b>
+                    {record.position}<br/>
+                    <b>postalCode:</b>
+                    {record.postalCode}<br/>
+                    <b>role:</b>
+                    {record.role}<br/>
+                    <b>state:</b>
+                    {record.state}<br/>
                   </p>
-                  <a className="secondary-content dropdown-button" onClick={(e) => this.load(record, e)}>
+                  <a onClick={() => this.openModalForm(record)} className="secondary-content dropdown-button">
                     <i className="material-icons">more_horiz</i>
                   </a>
                 </li>
               </Col>
             ))}
           </ul>
+        </Row>
 
-          {/* {JSON.stringify(this.state.referenceSchema)} */}
-          {/* <ReactSchemaEasyForm schema={this.state.referenceSchema} update={this.updateReference}/> */}
-
+        <Row>
+          <h5 className="cyan-text text-darken-4">reference</h5>
+          <ul className="collection">
+            {this.props.reference.map((record, i) => (
+              <Col s={6} key={i}>
+                <li className="collection-item avatar">
+                  <i className="material-icons circle blue">insert_chart</i>
+                  <span className="title">
+                    <b>reference</b>
+                  </span>
+                  <p>
+                    <b>abstract</b>:{record.abstract}<br/>
+                    <b>accessed:</b>
+                    {record.accessed}<br/>
+                    <b>address:</b>
+                    {record.address}<br/>
+                    <b>chapter:</b>
+                    {record.chapter}<br/>
+                    <b>created:</b>
+                    {record.created}<br/>
+                    <b>doi:</b>
+                    {record.doi}<br/>
+                    <b>edition:</b>
+                    {record.edition}<br/>
+                    <b>group_id:</b>
+                    {record.group_id}<br/>
+                    <b>id:</b>
+                    {record.id}<br/>
+                    <b>institution:</b>
+                    {record.institution}<br/>
+                    <b>isbn:</b>
+                    {record.isbn}<br/>
+                    <b>issn:</b>
+                    {record.issn}<br/>
+                    <b>issue:</b>
+                    {record.issue}<br/>
+                    <b>last_modified:</b>
+                    {record.last_modified}<br/>
+                    <b>link:</b>
+                    {record.link}<br/>
+                    <b>pages:</b>
+                    {record.pages}<br/>
+                    <b>profile_id:</b>
+                    {record.profile_id}<br/>
+                    <b>publisher:</b>
+                    {record.publisher}<br/>
+                    <b>series:</b>
+                    {record.series}<br/>
+                    <b>source:</b>
+                    {record.source}<br/>
+                    <b>tags:</b>
+                    {record.tags}<br/>
+                    <b>title:</b>
+                    {record.title}<br/>
+                    <b>type:</b>
+                    {record.type}<br/>
+                    <b>volume:</b>
+                    {record.volume}<br/>
+                    <b>websites:</b>
+                    {record.websites}<br/>
+                    <b>year:</b>
+                    {record.year}<br/>
+                  </p>
+                  <a className="secondary-content dropdown-button">
+                    <i className="material-icons">more_horiz</i>
+                  </a>
+                </li>
+              </Col>
+            ))}
+          </ul>
         </Row>
 
         <Row>
           <div className="lateral-menu card-panel animated bounceInDown">
+
             <Col className="hide-on-small-only">
               <Icon>list</Icon>
               Índice de ficha
@@ -274,27 +321,34 @@ class FileDetail extends React.Component {
                 </li>
               ))}
             </ul>
+
           </Col>
+
         </Row>
-
         <ModalUI title="Formulario" refe="modalForm">
-          <ReactSchemaEasyForm schema={this.state.referenceSchema} update={this.updateReference}/>
-          <div className="center-align">
-            <a className="waves-effect waves-light btn" onClick={(e) => this.save(e)}>Guardar</a>
-          </div>
+          <Row>
+            <Col l={12} s={12}>
+              <Input s={6} label="address" value={this.state.associatedParty.address}/>
+              <Input s={6} label="country" value={this.state.associatedParty.country}/>
+              <Input s={6} label="email" value={this.state.associatedParty.email}/>
+              <Input s={6} label="firstName" value={this.state.associatedParty.firstName}/>
+              <Input s={6} label="homepage" value={this.state.associatedParty.homepage}/>
+              <Input s={6} label="lastName" value={this.state.associatedParty.lastName}/>
+              <Input s={6} label="organisation" value={this.state.associatedParty.organisation}/>
+              <Input s={6} label="personnelDirectory" value={this.state.associatedParty.personnelDirectory}/>
+              <Input s={6} label="personnelIdentifier" value={this.state.associatedParty.personnelIdentifier}/>
+              <Input s={6} label="phone" value={this.state.associatedParty.phone}/>
+              <Input s={6} label="position" value={this.state.associatedParty.position}/>
+              <Input s={6} label="postalCode" value={this.state.associatedParty.postalCode}/>
+              <Input s={6} label="role" value={this.state.associatedParty.role}/>
+              <Input s={6} label="state" value={this.state.associatedParty.state}/>
+            </Col>
+          </Row>
         </ModalUI>
-
-        <ModalUI title="Formulario" refe="modalAD">
-          <ReactSchemaEasyForm schema={this.state.ancillaryDataSchema} update={this.updateReference}/>
-          <div className="center-align">
-            <a className="waves-effect waves-light btn" onClick={(e) => this.save(e)}>Guardar</a>
-          </div>
-        </ModalUI>
-
       </Wrapper>
 
     )
   }
 }
 
-export default FileDetail;
+export default FileDetailOld;

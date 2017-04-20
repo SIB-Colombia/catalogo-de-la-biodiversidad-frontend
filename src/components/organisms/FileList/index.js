@@ -69,16 +69,16 @@ class FileList extends React.Component {
                     </div>
                     <div className="card-content">
                       <span className="card-title activator grey-text text-darken-4">
-                        {record.name}
+                        {record.title}
                         <i className="material-icons right">more_vert</i>
                       </span>
-                      <p>{record.body}</p>
+                      <p>{record.description}</p>
                     </div>
                     <div className="card-reveal">
-                      <span className="card-title grey-text text-darken-4">{record.name}
+                      <span className="card-title grey-text text-darken-4">{record.title}
                         <i className="material-icons right">close</i>
                       </span>
-                      <p>{record.body}</p>
+                      <p>{record.description}</p>
                     </div>
                     <div className="card-action cyan darken-3">
                       <Link to={`/ficha/${i}`} className="white-text">Ver descripción...</Link>

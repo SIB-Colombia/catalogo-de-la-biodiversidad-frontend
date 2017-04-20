@@ -72,7 +72,7 @@ class FileSummary extends React.Component {
       ]
     };
     return (
-      <Wrapper className="animated fadeIn">
+      <Wrapper className="">
         <Row>
           <Col l={12}>
             <h5 className="cyan-text text-darken-4">Imágenes</h5>

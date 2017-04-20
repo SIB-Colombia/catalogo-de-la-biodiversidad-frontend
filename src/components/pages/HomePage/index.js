@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react'
-import fetch from 'isomorphic-fetch'
+import React, {PropTypes} from 'react';
+import config from '../../config';
+import fetch from 'isomorphic-fetch';
 import {Row, Col, ProgressBar} from 'react-materialize';
 import {
   PageTemplate,
@@ -39,25 +40,25 @@ class HomePage extends React.Component {
       // })
     };
 
-    fetch('https://jsonplaceholder.typicode.com/posts/1/comments', options).then((response) => {
+    fetch(`${config.server}/api/hello/home`, options).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({files: data})
     })
 
-    fetch('https://jsonplaceholder.typicode.com/posts/1/comments', options).then((response) => {
+    fetch(`${config.server}/api/hello/home`, options).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({categories: data})
     })
 
-    fetch('https://jsonplaceholder.typicode.com/posts/1/comments', options).then((response) => {
+    fetch(`${config.server}/api/hello/home`, options).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({groups: data})
     })
 
-    fetch('https://jsonplaceholder.typicode.com/posts/1/comments', options).then((response) => {
+    fetch(`${config.server}/api/hello/home`, options).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({communities: data})

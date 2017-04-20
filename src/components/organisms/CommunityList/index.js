@@ -64,7 +64,7 @@ class CommunityList extends React.Component {
                   <div className="center-align">
                     <center>
                       <img width="200" src="http://www.iconsfind.com/wp-content/uploads/2015/08/20150831_55e46b12d72da.png" alt="" className="circle"/>
-                      <h6>{record.name} {i}</h6>
+                      <h6>{record.title} {i}</h6>
                     </center>
                   </div>
                 </div>

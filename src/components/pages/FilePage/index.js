@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import config from '../../config'
+
 import {
   PageTemplate,
   Header,
@@ -9,6 +11,7 @@ import {
   FileImage,
   FileList
 } from 'components'
+
 import {Tabs, Tab, Row, Col, ProgressBar} from 'react-materialize';
 
 const Wrapper = styled.div `
@@ -38,9 +41,9 @@ class FilePage extends React.Component {
       // detail
       info: false,
       schema: false,
-      associatedParty: [],
-      reference: [],
-      ancillaryData: []
+      // associatedParty: false,
+      reference: false,
+      ancillaryData: false
     }
   }
 
@@ -57,45 +60,33 @@ class FilePage extends React.Component {
       // })
     };
 
-    fetch('https://jsonplaceholder.typicode.com/posts/1/comments', options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({files: data})
-    })
+    // fetch(`${config.server}/api/hello/home`, options).then((response) => {
+    //   return response.json()
+    // }).then((data) => {
+    //   this.setState({files: data})
+    // })
 
-    fetch('http://localhost:9000/api/file/summary/' + this.state.id, options).then((response) => {
+    fetch(`${config.server}/api/file/summary/${this.state.id}`, options).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({summary: data})
     })
 
-    fetch('http://localhost:9000/api/file/detail/' + this.state.id, options).then((response) => {
+    fetch(`${config.server}/api/file/detail/${this.state.id}`, options).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({'detail': data})
     })
 
-    /*Schemas*/
+    /*get Schemas and Data */
 
-    fetch('http://localhost:9000/api/schema/build').then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({'schema': data})
-    })
-
-    /* data for models*/
-
-    fetch('http://localhost:9000/api/schema/generate/associatedParty/10').then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({'associatedParty': data})
-    })
-    fetch('http://localhost:9000/api/schema/generate/reference/10').then((response) => {
+    fetch(`${config.server}/api/reference/show/${this.state.id}`).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({'reference': data})
     })
-    fetch('http://localhost:9000/api/schema/generate/ancillaryData/10').then((response) => {
+
+    fetch(`${config.server}/api/ancillaryData/show/${this.state.id}`).then((response) => {
       return response.json()
     }).then((data) => {
       this.setState({'ancillaryData': data})
@@ -104,8 +95,6 @@ class FilePage extends React.Component {
   }
 
   render() {
-
-
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
@@ -121,10 +110,14 @@ class FilePage extends React.Component {
                     <ProgressBar/></div>}
               </Tab>
               <Tab title="Detalles">
-                {this.state.detail && this.state.schema && this.state.associatedParty.length > 0 && this.state.reference.length > 0 && this.state.ancillaryData.length > 0
-                  ? <FileDetail data={this.state.detail} schema={this.state.schema} associatedParty={this.state.associatedParty} reference={this.state.reference}  ancillaryData={this.state.ancillaryData} />
+                {this.state.detail && this.state.reference && this.state.ancillaryData
+                  ? <FileDetail data={this.state.detail} reference={this.state.reference} ancillaryData={this.state.ancillaryData}/>
                   : <div className="center-align">Cargando detalle....
                     <ProgressBar/></div>}
+                {/* {this.state.detail && this.state.schema && this.state.reference.length > 0 && this.state.ancillaryData.length > 0
+                  ? <FileDetail data={this.state.detail} schema={this.state.schema} data-reference={this.state.reference} data-ancillaryData={this.state.ancillaryData}/>
+                  : <div className="center-align">Cargando detalle....
+                    <ProgressBar/></div>} */}
               </Tab>
               <Tab title="Imágenes">
                 <FileImage/>
