@@ -1,3 +1,3 @@
 export default {
-  server : 'http://localhost:8000'
+  server : 'http://catalogodelabiodiversidaddecolombia.humboldt.lumon.com.co'
 }
