@@ -22,7 +22,10 @@ import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import Carousel from 'react-slick'
-import {Gallery} from 'components';
+import {Gallery, HumboldtMap} from 'components';
+
+
+
 
 const Wrapper = styled.div `
 padding-top: 120px;
@@ -157,7 +160,7 @@ class FileSummary extends React.Component {
                               <Subheader>Distribución</Subheader>
                               <div className="align-center map">
                                 <Paper zDepth={2}>
-                                  <img src="../../map.jpg"/>
+                                  <HumboldtMap />
                                 </Paper>
                                 <br/>
                                 <br/>
