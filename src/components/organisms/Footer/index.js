@@ -4,6 +4,8 @@ import {Grid, Row, Col} from 'react-flexbox-grid'
 // import {Block, Footer} from 'components'
 // import { Footer } from 'react-materialize';
 
+import {Link} from 'components';
+
 const Wrapper = styled.footer `
 
 position: absolute;
@@ -26,16 +28,23 @@ const FooterPage = (props) => {
       <Grid fluid>
         <Row>
           <Col xs={12} sm={6} md={6} lg={6}>
-            <a href="">
-              Sobre el Catálogo |</a>
-            <a href="">
-              SIB Colombia |</a>
-            <a href="">
+	        <Link to={`static/about`}>
+              Sobre el Catálogo
+            </Link>
+            |
+	        <Link to={`static/about`}>
+              SIB Colombia
+            </Link>
+            |
+	        <Link to={`static/about`}>
               Términos
-            </a>
+            </Link>
           </Col>
           <Col xs={12} sm={6} md={6} lg={6}>
-            <a href="">SIB Colombia</a>
+	        <Link to={`static/about`}>
+	        	SIB Colombia
+            </Link>
+            
           </Col>
         </Row>
       </Grid>
