@@ -19,12 +19,15 @@ html {
   box-sizing: inherit;
 }
 
+*{
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 body {
   background-color: #e4e4e4;
   position: relative;
   margin: 0;
   min-height: calc(100% - 65px);
-  font-family: 'Roboto', sans-serif;
 }
 
 .modal-header-style{

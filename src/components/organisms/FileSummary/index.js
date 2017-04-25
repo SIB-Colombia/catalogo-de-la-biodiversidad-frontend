@@ -18,7 +18,6 @@ import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
-
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
 
@@ -80,6 +79,8 @@ class FileSummary extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInRight">
+
+
           <FloatingActionButton>
             <ContentAdd/>
           </FloatingActionButton>
