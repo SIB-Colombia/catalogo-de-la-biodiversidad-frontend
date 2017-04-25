@@ -70,6 +70,9 @@ h3{
 .colorTab > div:first-child{
     /* background-color: #009688 !important;*/
 }
+.viewMoreButton{
+	width: 100%;
+}
 `
 
 class FileSummary extends React.Component {
@@ -154,8 +157,8 @@ class FileSummary extends React.Component {
                                 <br/>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
                               </div>
-                              <div className="align-right">
-                                <FlatButton label="Ver más" primary={true}/>
+                              <div className="align-center">
+                                <FlatButton className="viewMoreButton" label="Ver más" primary={true}/>
                               </div>
                             </Paper>
                           </Col>
@@ -167,8 +170,8 @@ class FileSummary extends React.Component {
                               <Subheader>Historia natural</Subheader>
                               <div className="align-justify">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
-                                <div className="align-right">
-                                  <FlatButton label="Ver más" primary={true}/>
+                                <div className="align-center">
+                                  <FlatButton className="viewMoreButton" label="Ver más" primary={true}/>
                                 </div>
                               </div>
                             </Paper>
