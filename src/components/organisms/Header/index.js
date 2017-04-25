@@ -63,7 +63,7 @@ svg{
  font-size: 2.1rem;
  padding: 0;
  white-space: nowrap;
-	margin-top: 11px;
+ margin-top: 6px;
 }
 `
 const Title = styled.div `
