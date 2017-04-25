@@ -24,7 +24,12 @@ z-index: 2000;
 .box-nav-search-content{
 
 	text-align: center;
-	background: #eee;
+	padding: 6px 0px;
+
+	.box-search-color{
+		background: #eee;
+
+	}
 
 	.box-nav-advance{
 	  cursor: pointer;
@@ -34,11 +39,11 @@ z-index: 2000;
 	}
 
 	.box-nav-search{
-	  padding: 8px;
+	  padding:2px;
 	}
 
 	.box-nav-icon{
-	  padding: 18px;
+	  padding-top: 13px;
 
 	}
 }
@@ -137,19 +142,21 @@ class Header extends React.Component {
                 </IconLink>
               </Col>
               <Col xs={6} sm={6} md={6} lg={6} className="box-nav-search-content">
-                <Row>
-                  <Col xs={1} sm={2} md={2} lg={1} className="box-nav-icon">
-                    <Search/>
-                  </Col>
-                  <Col xs={10} sm={8} md={8} lg={10} className="box-nav-search">
-                    <TextField hintText="Buscar..." fullWidth={true}/>
-                  </Col>
-                  <Col xs={1} sm={1} md={2} lg={1} className="box-nav-icon">
-                    <a onTouchTap={this.handleOpen} className="box-nav-advance">
-                      <Tune/>
-                    </a>
-                  </Col>
-                </Row>
+                <div className="box-search-color">
+                  <Row>
+                    <Col xs={1} sm={2} md={2} lg={1} className="box-nav-icon">
+                      <Search/>
+                    </Col>
+                    <Col xs={10} sm={8} md={8} lg={10} className="box-nav-search">
+                      <TextField hintText="Buscar..." fullWidth={true}/>
+                    </Col>
+                    <Col xs={1} sm={1} md={2} lg={1} className="box-nav-icon">
+                      <a onTouchTap={this.handleOpen} className="box-nav-advance">
+                        <Tune/>
+                      </a>
+                    </Col>
+                  </Row>
+                </div>
               </Col>
               <Col xs={3} sm={3} md={3} lg={3} className="box-link">
                 <Link to="/login/signup" onlyActiveOnIndex className="grey-text text-darken-2" activeClassName="active">
