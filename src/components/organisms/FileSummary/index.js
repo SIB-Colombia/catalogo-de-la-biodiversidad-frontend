@@ -15,6 +15,9 @@ import Subheader from 'material-ui/Subheader';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+
 
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
@@ -25,6 +28,13 @@ import {Gallery} from 'components';
 
 const Wrapper = styled.div `
 padding-top: 120px;
+
+.btnFilters{
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 10;
+}
 
 .map{
   padding: 20px;
@@ -69,6 +79,11 @@ class FileSummary extends React.Component {
 
     return (
       <Wrapper>
+        <div className="btnFilters animated fadeInRight">
+          <FloatingActionButton>
+            <ContentAdd/>
+          </FloatingActionButton>
+        </div>
         <Row>
           <Col xs={12} lg={12}>
             {/* <Paper zDepth={1} className="box-content"> */}
@@ -159,7 +174,7 @@ class FileSummary extends React.Component {
                                 <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../avatar3.png" />}/>
                                 <ListItem primaryText="James Anderson" leftAvatar={< Avatar src = "../../avatar4.png" />}/>
                               </List>
-                              <RaisedButton label="Añadir sección de ficha" primary={true} fullWidth={true}/>
+                              {/* <RaisedButton label="Añadir sección de ficha" primary={true} fullWidth={true}/> */}
                             </Paper>
                           </Col>
                         </Row>
