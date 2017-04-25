@@ -1,21 +1,24 @@
-import React, {PropTypes} from 'react'
+// https://github.com/diegohaz/arc/wiki/Atomic-Design#templates
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Wrapper = styled.div `
-background: #e8e8e8;
-`
 
+`
 const Header = styled.header `
+    margin-bottom:65px;
 `
 
-const Hero = styled.section `
-`
+const Hero = styled.section ``
 
 const Content = styled.section `
-margin-top:65px;
-`
+  height: 100%;
+  padding-bottom: 80px;
 
+`
 const Footer = styled.footer `
+  margin-top: 10px;
 `
 
 const PageTemplate = ({
@@ -26,17 +29,21 @@ const PageTemplate = ({
 }) => {
   return (
     <Wrapper {...props}>
-      <Header>{header}</Header>
+      {header
+        ? <Header>{header}</Header>
+        : false}
       <Content>{children}</Content>
-      <Footer>{footer}</Footer>
+      {footer
+        ? <Footer>{footer}</Footer>
+        : false}
     </Wrapper>
   )
 }
 
-PageTemplate.propTypes = {
-  header: PropTypes.node.isRequired,
-  footer: PropTypes.node.isRequired,
-  children: PropTypes.any.isRequired
-}
+// PageTemplate.propTypes = {
+//   header: PropTypes.node.isRequired,
+//   footer: PropTypes.node.isRequired,
+//   children: PropTypes.any.isRequired
+// }
 
 export default PageTemplate

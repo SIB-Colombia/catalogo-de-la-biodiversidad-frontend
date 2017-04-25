@@ -1,135 +1,232 @@
 import React, {PropTypes} from 'react'
 import styled from 'styled-components'
-import {palette} from 'styled-theme'
-import {
-  Block,
-  Paragraph,
-  IconLink,
-  IconButton,
-  LogoImage,
-  Tooltip,
-  Image
-} from 'components'
-import {
-  Tabs,
-  Tab,
-  Card,
-  Row,
-  Col,
-  MediaBox,
-  Chip
-} from 'react-materialize';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import {IconLink, Link} from 'components'
+import Avatar from 'material-ui/Avatar';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
+import ActionAssignment from 'material-ui/svg-icons/action/assignment';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 
-const Wrapper = styled(Block)`
-h5{
-  padding: 10px 0px;
+import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
+import {blue500, yellow600} from 'material-ui/styles/colors';
+
+import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+import Carousel from 'react-slick'
+import {Gallery} from 'components';
+
+const Wrapper = styled.div `
+padding-top: 120px;
+
+.map{
+  padding: 20px;
+  img{
+    width: 100%;
+
+  }
+}
+h3{
+  text-align: center;
+  margin: 0;
+  color:#444;
+  margin-bottom: 30px;
   font-weight: bold;
 }
-.material-placeholder{
+.main-title{
+  text-align: left;
+  color: white;
+  font-size: 43px;
+  text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;
 
-  display:inline-block !important;
-  margin:2px 5px;
+}
+.box-content{
+  padding: 20px;
+}
+.colorTab > div:first-child{
+    /* background-color: #009688 !important;*/
 }
 `
 
 class FileSummary extends React.Component {
 
-  componentDidMount() {
-    $('.materialboxed').materialbox();
+  constructor(props) {
+    super(props);
+  }
 
+  changeTab(tab) {
+    console.log(tab.props['data-route']);
   }
 
   render() {
 
-    var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      draggable: false,
-      centerMode: true,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1
-          }
-        }, {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 2
-          }
-        }, {
-          breakpoint: 2000,
-          settings: {
-            slidesToShow: 4
-          }
-        }, {
-          breakpoint: 100000,
-          settings: 'unslick'
-        }
-      ]
-    };
     return (
-      <Wrapper className="">
+      <Wrapper>
         <Row>
-          <Col l={12}>
-            <h5 className="cyan-text text-darken-4">Imágenes</h5>
-            <center>
-              {this.props.data.images.map((record, i) => (<img width="150" key={i} className="materialboxed" data-caption={'Autor: ' + record.author} src={record.url}/>))}
-            </center>
-          </Col>
-          <Col l={8} m={12} s={12}>
-            <h5 className="cyan-text text-darken-4">Nombres Comunes</h5>
+          <Col xs={12} lg={12}>
+            {/* <Paper zDepth={1} className="box-content"> */}
+            <h3 className="main-title">Coragyps Atratus</h3>
+            {/* </Paper> */}
+            <Row>
+              <Col xs={12} lg={12}>
+                <Tabs initialSelectedIndex={0} className="colorTab">
+                  <Tab label="Resumen">
+                    <Row>
+                      <Col xs={12} lg={12}>
+                        <br/>
+                        <Paper zDepth={1} className="box-content">
+                          <Subheader>Imágenes</Subheader>
+                          <div>
+                            <Gallery images={this.props.images}/>
+                          </div>
+                        </Paper>
+                      </Col>
+                    </Row>
+                    <br/>
+                    <Row>
+                      <Col xs={12} lg={8}>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <List>
+                                <Subheader>Nombres comunes</Subheader>
+                                <Row>
+                                  <Col xs={12} lg={6}>
+                                    <ListItem primaryText="Chulo" secondaryText="Hola Mundo Hola Mundo Hola Mundo"/>
+                                  </Col>
+                                  <Col xs={12} lg={6}>
+                                    <ListItem primaryText="Gallinazo" secondaryText="Hola Mundo Hola Mundo Hola Mundo"/>
+                                  </Col>
+                                  <Col xs={12} lg={6}>
+                                    <ListItem primaryText="Gamuro" secondaryText="Hola Mundo Hola Mundo Hola Mundo"/>
+                                  </Col>
+                                  <Col xs={12} lg={6}>
+                                    <ListItem primaryText="Gamuro" secondaryText="Hola Mundo Hola Mundo Hola Mundo"/>
+                                  </Col>
+                                </Row>
+                              </List>
+                            </Paper>
+                          </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <Subheader>Distribución</Subheader>
+                              <div className="align-center map">
+                                <Paper zDepth={2}>
+                                  <img src="../../map.jpg"/>
+                                </Paper>
+                                <br/>
+                                <br/>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
+                              </div>
+                              <div className="align-right">
+                                <FlatButton label="Ver más" primary={true}/>
+                              </div>
+                            </Paper>
+                          </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <Subheader>Historia natural</Subheader>
+                              <div className="align-justify">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
+                                <div className="align-right">
+                                  <FlatButton label="Ver más" primary={true}/>
+                                </div>
+                              </div>
+                            </Paper>
+                          </Col>
+                        </Row>
 
-            {this.props.data.names.map((record, i) => (
-              <Col s={6} key={i}>
-                <div>{record.title}</div>
-                <div>{record.description}</div>
-                <br/>
+                      </Col>
+                      <Col xs={12} lg={4}>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <List>
+                                <Subheader>Editores</Subheader>
+                                <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../avatar3.png" />}/>
+                                <ListItem primaryText="James Anderson" leftAvatar={< Avatar src = "../../avatar4.png" />}/>
+                              </List>
+                              <RaisedButton label="Añadir sección de ficha" primary={true} fullWidth={true}/>
+                            </Paper>
+                          </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <List>
+                                <Subheader>Activida reciente</Subheader>
+                                <ListItem leftAvatar={< Avatar src = "../../avatar.png" />} primaryText="Brunch this weekend?" secondaryText={< p > <span style={{
+                                  color: darkBlack
+                                }}>Brendan Lim</span> - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch
+                                  ? </p>} secondaryTextLines={2}/>
+                                <Divider inset={true}/>
+                                <ListItem leftAvatar={< Avatar src = "../../avatar3.png" />} primaryText={< p > Summer BBQ < span style = {{color: lightBlack}} > 4 < /span></p >} secondaryText={< p > <span style={{
+                                  color: darkBlack
+                                }}>to me, Scott, Jennifer</span>--Wish I could come,
+                                but I & apos;
+                                m out of town this weekend. < /p>} secondaryTextLines={2}/>
+                              </List>
+                            </Paper>
+                          </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <List>
+                                <Subheader>Grupos</Subheader>
+                                <ListItem leftAvatar={< Avatar icon = { < ActionAssignment />
+                                }
+                                backgroundColor = {
+                                  blue500
+                                } />} primaryText="Aves de Colombia" secondaryText="Jan 20, 2014"/>
+                                <ListItem leftAvatar={< Avatar icon = { < EditorInsertChart />
+                                }
+                                backgroundColor = {
+                                  yellow600
+                                } />} primaryText="Aves de Colombia" secondaryText="Jan 10, 2014"/>
+                              </List>
+                            </Paper>
+                          </Col>
+                        </Row>
+                        <br/>
+                        <Row>
+                          <Col xs={12} lg={12}>
+                            <Paper zDepth={1} className="box-content">
+                              <List>
+                                <Subheader>Información básica de la ficha</Subheader>
+                                <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>
+                                <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>
+                                <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>
+                              </List>
+                            </Paper>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Tab>
+                  <Tab label="Detalles" data-route={`/file/detail/${this.props.id}`} onActive={this.changeTab}></Tab>
+                  <Tab label="Imágenes" data-route={`/file/images/${this.props.id}`} onActive={this.changeTab}></Tab>
+                  <Tab label="Mapas" data-route={`/file/maps/${this.props.id}`} onActive={this.changeTab}></Tab>
+                  <Tab label="Comunidad" data-route={`/file/community/${this.props.id}`} onActive={this.changeTab}></Tab>
+                  <Tab label="Comentarios" data-route={`/file/comments/${this.props.id}`} onActive={this.changeTab}></Tab>
+                </Tabs>
               </Col>
-            ))}
-
-            <h5 className="cyan-text text-darken-4">Distribución</h5>
-            <p>Mapa de registro publicados</p>
-            <img src="https://assets.metrolatam.com/co/2015/03/20/captura-de-pantalla-2015-03-20-a-las-12-42-23-1200x600.jpg" className="responsive-img"/>
-          </Col>
-          <Col l={4}>
-            <h5 className="cyan-text text-darken-4">Editores</h5>
-            {this.props.data.editors.map((record, i) => (
-              <div className="center-align" key={i}>
-                <div className="chip">
-                  <img src={record.url} alt="Contact Person"/> {record.name}
-                </div>
-              </div>
-            ))}
-            <h5 className="cyan-text text-darken-4">Actividad reciente</h5>
-            <ul className="collection">
-              {this.props.data.activity.map((record, i) => (
-                <li key={i} className="collection-item avatar">
-                  <img src={record.url} className="circle"/>
-                  <span className="title">{record.name}</span>
-                  <p>
-                    {record.description}
-                    <br/> {record.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
-            <h5 className="cyan-text text-darken-4">Grupos</h5>
-            <ul className="collection">
-              {this.props.data.groups.map((record, i) => (
-                <li key={i} className="collection-item avatar">
-                  <img src={record.url} className="circle"/>
-                  <span className="title">{record.name}</span>
-                  <p>
-                    {record.description}
-                    <br/> {record.description}
-                  </p>
-                </li>
-              ))}
-            </ul>
+            </Row>
           </Col>
         </Row>
       </Wrapper>
