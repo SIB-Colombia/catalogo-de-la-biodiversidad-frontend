@@ -110,17 +110,21 @@ class Header extends React.Component {
 
   render() {
 
-    const actions = [ < FlatButton label = "Cancelar" primary = {
-        true
-      }
-      onTouchTap = {
-        this.handleClose
-      } />, < RaisedButton label = "Buscar" primary = {
-        true
-      }
-      onTouchTap = {
-        this.handleSearch
-      } />
+    const actions = [
+		< FlatButton label = "Cancelar" primary = {
+				true
+			}
+			onTouchTap = {
+				this.handleClose
+			} />, 
+      <Link to="/file/search">
+		  < RaisedButton label = "Buscar" primary = {
+		    true
+		  }
+		  onTouchTap = {
+		    this.handleSearch
+	      } />
+      </Link>
     ]
 
     return (
