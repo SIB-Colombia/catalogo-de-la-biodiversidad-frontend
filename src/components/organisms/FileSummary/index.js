@@ -51,13 +51,21 @@ h3{
 }
 .main-title{
   text-align: left;
-  color: white;
+  color: #316971;
   font-size: 43px;
-  text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;
-
+  font-style: italic;
+  /*text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;*/
+  float:left;
+  margin-bottom: 0px;
+}
+.main-subtitle{
+  color: #316971;
+  line-height: 80px;
+  margin-left: 40px;
 }
 .box-content{
   padding: 20px;
+  overflow:hidden;
 }
 .colorTab > div:first-child{
     /* background-color: #009688 !important;*/
@@ -87,9 +95,11 @@ class FileSummary extends React.Component {
         </div>
         <Row>
           <Col xs={12} lg={12}>
-            {/* <Paper zDepth={1} className="box-content"> */}
-            <h3 className="main-title">Coragyps Atratus</h3>
-            {/* </Paper> */}
+            <Paper zDepth={1} className="box-content">
+	            <h3 className="main-title">Coragyps Atratus</h3>
+	            <span className="main-subtitle">Bechstein, 1793</span>
+	            
+            </Paper>
             <Row>
               <Col xs={12} lg={12}>
                 <Tabs initialSelectedIndex={0} className="colorTab">
