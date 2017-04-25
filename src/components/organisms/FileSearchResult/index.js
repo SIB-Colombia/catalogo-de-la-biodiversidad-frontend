@@ -93,10 +93,10 @@ class FileSearchResult extends React.Component {
     return (
       <Wrapper>
         <Grid>
-          <Row>
+          <Row className="animated fadeInDown">
             <Col xs={12}>
               <br/>
-              <Paper className="paper animated fadeInDown">
+              <Paper className="paper">
                 <Row>
                   <Col xs={12} sm={6} md={6} lg={6}></Col>
                   <Col xs={12} sm={6} md={6} lg={6}>
