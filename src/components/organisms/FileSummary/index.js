@@ -17,22 +17,24 @@ import ActionInfo from 'material-ui/svg-icons/action/info';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-
+import Badge from 'material-ui/Badge';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
-
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import Carousel from 'react-slick'
 import {Gallery} from 'components';
 
 const Wrapper = styled.div `
 padding-top: 120px;
-
 .btnFilters{
   position: fixed;
   right: 15px;
   bottom: 15px;
   z-index: 10;
+}
+
+.box-history{
+  float: right;
 }
 
 .map{
@@ -88,7 +90,6 @@ class FileSummary extends React.Component {
       <Wrapper>
         <div className="btnFilters animated fadeInRight">
 
-
           <FloatingActionButton>
             <ContentAdd/>
           </FloatingActionButton>
@@ -96,9 +97,14 @@ class FileSummary extends React.Component {
         <Row>
           <Col xs={12} lg={12}>
             <Paper zDepth={1} className="box-content">
-	            <h3 className="main-title">Coragyps Atratus</h3>
-	            <span className="main-subtitle">Bechstein, 1793</span>
-	            
+              <div className="box-history align-right">
+                <Badge badgeContent={'EX'} secondary={true}/>
+                <Badge badgeContent={'CR'} primary={true}/>
+                <Badge badgeContent={'EN'} secondary={true}/>
+              </div>
+              <h3 className="main-title">Coragyps Atratus</h3>
+              <span className="main-subtitle">Bechstein, 1793</span>
+
             </Paper>
             <Row>
               <Col xs={12} lg={12}>
