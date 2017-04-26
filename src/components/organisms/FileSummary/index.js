@@ -72,8 +72,16 @@ h3{
   padding: 20px;
   overflow:hidden;
 }
+.colorTab{
+	margin-top:20px;
+}
 .colorTab > div:first-child{
-    /* background-color: #009688 !important;*/
+	background-color: #FFFFFF !important;
+}
+.colorTab > div > button{
+  color: #316971 !important;
+  font-weight: 700 !important;
+  border-right: 2px solid #CCC !important;
 }
 .viewMoreButton{
 	width: 100%;
