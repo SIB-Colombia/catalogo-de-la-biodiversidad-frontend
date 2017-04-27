@@ -13,8 +13,6 @@ import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 
 const Wrapper = styled.div `
 
-
-
 .box-search{
   margin-top: 8px;
 }

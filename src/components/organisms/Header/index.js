@@ -1,69 +1,53 @@
-import React from 'react'
-import styled from 'styled-components'
-import {Grid, Row, Col} from 'react-flexbox-grid'
-import Dialog from 'material-ui/Dialog'
-import FlatButton from 'material-ui/FlatButton'
+import React from 'react';
+import styled from 'styled-components';
+import {IconLink, Link, HeaderSearchAdvance} from 'components';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import FontIcon from 'material-ui/FontIcon'
-import TextField from 'material-ui/TextField'
-import Paper from 'material-ui/Paper'
-import Tune from 'material-ui/svg-icons/image/tune'
-import Search from 'material-ui/svg-icons/action/search'
-
-import {IconLink, Link, HeaderSearchAdvance} from 'components'
+import FontIcon from 'material-ui/FontIcon';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import Tune from 'material-ui/svg-icons/image/tune';
+import Search from 'material-ui/svg-icons/action/search';
+import theme from '../../themes/default';
 
 const Wrapper = styled.nav `
-
 position:fixed;
 top:0%;
 width:100%;
+background: red !important;
 z-index: 2000;
-
-
-
 .box-nav-search-content{
-
 	text-align: center;
 	padding: 6px 0px;
-
 	.box-search-color{
-		background: #eee;
-
+		background: ${theme.palette.grayscale[1]};
 	}
-
 	.box-nav-advance{
 	  cursor: pointer;
 	  &:hover{
 	    opacity: 0.5;
 	  }
 	}
-
 	.box-nav-search{
 	  padding:2px;
 	}
-
 	.box-nav-icon{
 	  padding-top: 13px;
-
 	}
 }
-
 svg{
-	color: #555 !important;
+	color: ${theme.palette.grayscale[5]} !important;
 }
-
 .box-link{
-
 	text-align:right;
 	a {
 		height:100% !important;
 		line-height: 4 !important;
 	}
 }
-
 .brand-logo {
- position: absolute;
- color: #fff;
  display: inline-block;
  font-size: 2.1rem;
  padding: 0;
@@ -71,10 +55,11 @@ svg{
  margin-top: 6px;
 }
 `
+
 const Title = styled.div `
 display:inline-block;
 vertical-align: middle;
-color:#616161;
+color:${theme.palette.grayscale[6]};
 `
 const TitleMain = styled.div `
 font-size:14px;
@@ -89,7 +74,6 @@ font-size:14px;
 text-transform: uppercase;
 line-height:1;
 `
-
 class Header extends React.Component {
 
   state = {
@@ -110,21 +94,14 @@ class Header extends React.Component {
 
   render() {
 
-    const actions = [
-		< FlatButton label = "Cancelar" primary = {
-				true
-			}
-			onTouchTap = {
-				this.handleClose
-			} />, 
-      <Link to="/file/search">
-		  < RaisedButton label = "Buscar" primary = {
-		    true
-		  }
-		  onTouchTap = {
-		    this.handleSearch
-	      } />
-      </Link>
+    const actions = [ < FlatButton label = "Cancelar" primary = {
+        true
+      }
+      onTouchTap = {
+        this.handleClose
+      } />, < Link to = "/file/search" > < RaisedButton label = "Buscar" className = "btn-secondary-modal" onTouchTap = {
+        this.handleSearch
+      } /> </Link>
     ]
 
     return (
@@ -132,7 +109,7 @@ class Header extends React.Component {
         <Paper>
           <Grid fluid>
             <Row>
-              <Col xs={3} sm={3} md={3} lg={3}>
+              <Col xs={12} sm={3} md={3} lg={3}>
                 <IconLink to="/" icon="catalogo" className="brand-logo">
                   <Title>
                     <TitleMain>
@@ -145,7 +122,7 @@ class Header extends React.Component {
                   </Title>
                 </IconLink>
               </Col>
-              <Col xs={6} sm={6} md={6} lg={6} className="box-nav-search-content">
+              <Col xs={12} sm={6} md={6} lg={6} className="box-nav-search-content">
                 <div className="box-search-color">
                   <Row>
                     <Col xs={1} sm={2} md={2} lg={1} className="box-nav-icon">
@@ -162,7 +139,7 @@ class Header extends React.Component {
                   </Row>
                 </div>
               </Col>
-              <Col xs={3} sm={3} md={3} lg={3} className="box-link">
+              <Col xs={12} sm={3} md={3} lg={3} className="box-link">
                 <Link to="/login/signup" onlyActiveOnIndex className="grey-text text-darken-2" activeClassName="active">
                   <FlatButton label="Registrarse"/>
                 </Link>

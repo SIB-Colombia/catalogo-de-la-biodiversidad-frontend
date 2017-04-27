@@ -45,7 +45,7 @@ class LoginSignin extends React.Component {
                 <TextField hintText="Escriba aquí su contraseña" floatingLabelText="Contraseña" type="password" fullWidth={true}/>
                 <br/>
                 <br/>
-                <RaisedButton label="Ingresar" primary={true} fullWidth={true}/>
+                <RaisedButton label="Ingresar" primary={true} fullWidth={true} className="btn-secondary-modal"/>
                 <br/>
                 <br/>
                 <Link to="/login/signup" className="grey-text text-darken-2" activeClassName="active">

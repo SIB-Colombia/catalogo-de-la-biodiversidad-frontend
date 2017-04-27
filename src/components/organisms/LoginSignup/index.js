@@ -49,7 +49,7 @@ class LoginSignup extends React.Component {
                 <TextField hintText="Escriba aquí nuevamente su contraseña" floatingLabelText="Verificar contraseña" type="password" fullWidth={true}/>
                 <br/>
                 <br/>
-                <RaisedButton label="Crear Cuenta" primary={true} fullWidth={true}/>
+                <RaisedButton label="Crear Cuenta" primary={true} fullWidth={true} className="btn-secondary-modal" />
               </Paper>
             </Col>
           </Row>

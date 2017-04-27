@@ -1,7 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Carousel from 'react-slick'
-import {Grid, Row, Col} from 'react-flexbox-grid'
+import React from 'react';
+import styled from 'styled-components';
+import {Link} from 'components';
+import Carousel from 'react-slick';
+import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
   Card,
   CardActions,
@@ -14,17 +15,15 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-
-import {Link} from 'components';
+import theme from '../../themes/default';
 
 const Wrapper = styled.div `
 
-margin-bottom:20px;
-padding-bottom:30px;
+background: ${theme.palette.grayscale[3]};
+padding: 35px 0 55px 0;
 
 .space{
   margin: 4px;
-
 }
 
 .slick-next:before, .slick-prev:before {
@@ -108,20 +107,17 @@ class GroupCarousel extends React.Component {
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
-                    <Card className="space">
-                      <CardHeader title="URL Avatar" subtitle="Subtítulo" avatar="/star.png"/>
-                      <CardMedia>
-                        <img src="/avatar5.jpg"/>
-                      </CardMedia>
-                      <CardTitle title="Título" subtitle="Subtítulo"/> {/* <CardText>
+                    <Link to={`/file/summary/${record.id}`}>
+                      <Card className="space">
+                        <CardHeader avatar="/star2.png" className="card-star"/>
+                        <CardMedia>
+                          <img src="/bird1.jpg"/>
+                        </CardMedia>
+                        <CardTitle title="Título" subtitle="Subtítulo"/> {/* <CardText>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </CardText> */}
-                      <CardActions className="align-center">
-                        <Link to={`/file/summary/${record.id}`}>
-                          <RaisedButton label="Ver Grupo" primary={true} fullWidth={true}/>
-                        </Link>
-                      </CardActions>
-                    </Card>
+                      </Card>
+                    </Link>
                   </div>
                 ))}
               </Carousel>

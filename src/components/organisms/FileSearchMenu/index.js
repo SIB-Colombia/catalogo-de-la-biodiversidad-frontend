@@ -13,6 +13,7 @@ import {
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Menu from 'material-ui/svg-icons/navigation/menu';
 
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
@@ -31,6 +32,9 @@ import {Link} from 'components';
 
 const Wrapper = styled.div `
 
+.back{
+  margin-top: 60px;
+}
   .btnFilters{
     position: fixed;
     left: 15px;
@@ -160,7 +164,7 @@ class FileSearchMenu extends React.Component {
   renderChip(data) {
 
     return (
-      <Chip key={data.value} onRequestDelete={() => this.handleRequestDelete(data)} style={this.styles.chip}>
+      <Chip className="animated fadeInUp" key={data.value} onRequestDelete={() => this.handleRequestDelete(data)} style={this.styles.chip}>
         {data.name}
       </Chip>
     );
@@ -174,17 +178,13 @@ class FileSearchMenu extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInLeft">
-          <FloatingActionButton onTouchTap={this.handleToggleMenu}>
-            <ContentFilter/>
+          <FloatingActionButton onTouchTap={this.handleToggleMenu} className="btn-primary-floating">
+            <Menu/>
           </FloatingActionButton>
         </div>
         <Drawer open={this.state.open}>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <RaisedButton label="Ocultar Menú" onTouchTap={this.handleToggleMenu} icon={< ArrowBack />} fullWidth={true} labelPosition="after"/>
           <List>
+            <RaisedButton label="Ocultar Menú" onTouchTap={this.handleToggleMenu} icon={< ArrowBack />} fullWidth={true} labelPosition="after" className="back"/>
             <Subheader>Filtros activos</Subheader>
             <div style={this.styles.wrapper}>
               {this.state.chipData.map(this.renderChip, this)}

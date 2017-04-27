@@ -59,7 +59,7 @@ class StaticAbout extends React.Component {
                 <h3 className="about-main-subtitle">¿Qué tipo de información se puede aportar?</h3>
                 <Row>
                   {Array(8).fill(1).map((el, i) => <Col key={i} xs={12} sm={6} md={4} lg={3}>
-                    <img src="../zoo2.png" className="img-size"/>
+                    <img src="/zoo9.png" className="img-size"/>
                     <h3 className="about-section-title">
                       Taxonomía
                     </h3>

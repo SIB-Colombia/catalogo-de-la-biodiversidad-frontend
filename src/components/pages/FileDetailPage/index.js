@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import config from '../../config';
-// import fetch from 'isomorphic-fetch';
 import Paper from 'material-ui/Paper';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';

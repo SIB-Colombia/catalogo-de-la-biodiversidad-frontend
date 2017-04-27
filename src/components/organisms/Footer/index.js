@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Grid, Row, Col} from 'react-flexbox-grid'
-// import {Block, Footer} from 'components'
-// import { Footer } from 'react-materialize';
-
 import {Link} from 'components';
 
 const Wrapper = styled.footer `
@@ -28,23 +25,23 @@ const FooterPage = (props) => {
       <Grid fluid>
         <Row>
           <Col xs={12} sm={6} md={6} lg={6}>
-	        <Link to={`static/about`}>
+            <Link to={`static/about`}>
               Sobre el Catálogo
             </Link>
             |
-	        <Link to={`static/about`}>
+            <Link to={`static/about`}>
               SIB Colombia
             </Link>
             |
-	        <Link to={`static/about`}>
+            <Link to={`static/about`}>
               Términos
             </Link>
           </Col>
           <Col xs={12} sm={6} md={6} lg={6}>
-	        <Link to={`static/about`}>
-	        	SIB Colombia
+            <Link to={`static/about`}>
+              SIB Colombia
             </Link>
-            
+
           </Col>
         </Row>
       </Grid>

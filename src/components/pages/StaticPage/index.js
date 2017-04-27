@@ -1,6 +1,4 @@
 import React, {PropTypes} from 'react';
-import config from '../../config';
-// import fetch from 'isomorphic-fetch';
 
 import {PageTemplate, Header, Footer, StaticAbout} from 'components';
 

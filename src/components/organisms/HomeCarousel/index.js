@@ -24,6 +24,7 @@ class HomeCarousel extends React.Component {
       width: 0,
       height: 0
     }
+
     this.updateDimensions = this.updateDimensions.bind(this);
   }
 
@@ -45,7 +46,7 @@ class HomeCarousel extends React.Component {
 
   render() {
 
-    var settings = {
+    const settings = {
       dots: true,
       arrows: false,
       infinite: true,
@@ -76,27 +77,20 @@ class HomeCarousel extends React.Component {
       ]
     };
 
+    const background = ['11285_orig.jpg', '89714_orig.jpg', '77419_orig.jpg', '53388_orig.jpg'];
+
     return (
       <Wrapper className="grey lighten-4">
         <Carousel ref={c => this.slider = c} {...settings}>
-          <div className="box-home" style={{
-            color: "white",
-            height: this.state.height - 250,
-            backgroundImage: 'url(/hero1.jpg)',
-            backgroundSize: 'cover'
-          }}></div>
-          <div className="box-home" style={{
-            color: "white",
-            height: this.state.height - 250,
-            backgroundImage: 'url(/hero2.png)',
-            backgroundSize: 'cover'
-          }}></div>
-          <div className="box-home" style={{
-            color: "white",
-            height: this.state.height - 250,
-            backgroundImage: 'url(/hero3.png)',
-            backgroundSize: 'cover'
-          }}></div>
+          {background.map((record, i) => (
+            <div key={i} className="box-home" style={{
+              color: "white",
+              height: this.state.height - 250,
+              backgroundImage: `url(/background/${record})`,
+              backgroundPosition: 'center center',
+              backgroundSize: 'cover'
+            }}></div>
+          ))}
         </Carousel>
       </Wrapper>
     )

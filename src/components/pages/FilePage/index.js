@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import config from '../../config';
 
 import {PageTemplate, Header, Footer} from 'components';
 
@@ -12,7 +11,7 @@ class FilePage extends React.Component {
   componentWillMount() {}
 
   componentDidMount() {
-    window.scrollTo(0, 0);
+
   }
 
   render() {

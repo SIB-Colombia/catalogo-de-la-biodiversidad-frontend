@@ -1,5 +1,10 @@
-import React, {PropTypes} from 'react'
-import styled from 'styled-components'
+import React, {PropTypes} from 'react';
+import styled from 'styled-components';
+import {font, palette} from 'styled-theme';
+import {IconLink, Link, Gallery, HumboldtMap} from 'components';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import Carousel from 'react-slick';
+import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
@@ -7,10 +12,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
-import {Grid, Row, Col} from 'react-flexbox-grid';
-import {IconLink, Link} from 'components'
 import Avatar from 'material-ui/Avatar';
-import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import ActionInfo from 'material-ui/svg-icons/action/info';
@@ -21,14 +23,11 @@ import Badge from 'material-ui/Badge';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
-import Carousel from 'react-slick'
-import {Gallery, HumboldtMap} from 'components';
-
-
-
+import theme from '../../themes/default';
 
 const Wrapper = styled.div `
-padding-top: 120px;
+padding-top: 200px;
+
 .btnFilters{
   position: fixed;
   right: 15px;
@@ -44,47 +43,38 @@ padding-top: 120px;
   padding: 20px;
   img{
     width: 100%;
-
   }
 }
-h3{
-  text-align: center;
-  margin: 0;
-  color:#444;
-  margin-bottom: 30px;
-  font-weight: bold;
-}
+
 .main-title{
-  text-align: left;
-  color: #316971;
-  font-size: 43px;
+  color: ${theme.palette.grayscale[6]};
   font-style: italic;
-  /*text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;*/
   float:left;
-  margin-bottom: 0px;
 }
 .main-subtitle{
-  color: #316971;
-  line-height: 80px;
-  margin-left: 40px;
+  color: ${theme.palette.grayscale[5]};
+  line-height: 4;
+  margin-left: 30px;
 }
 .box-content{
   padding: 20px;
   overflow:hidden;
 }
 .colorTab{
-	margin-top:20px;
+	/*margin-top:20px;*/
 }
 .colorTab > div:first-child{
-	background-color: #FFFFFF !important;
+	background-color: ${theme.palette.grayscale[1]} !important;
+}
+.colorTab > div:nth-child(2) div{
+	background-color: ${theme.palette.secondary[0]} !important;
 }
 .colorTab > div > button{
-  color: #316971 !important;
+  color: ${theme.palette.grayscale[6]} !important;
   font-weight: 700 !important;
-  border-right: 2px solid #CCC !important;
-}
-.viewMoreButton{
-	width: 100%;
+  &:not(:last-child){
+    border-right: 2px solid ${theme.palette.grayscale[1]} !important;
+  }
 }
 `
 
@@ -95,6 +85,7 @@ class FileSummary extends React.Component {
   }
 
   changeTab(tab) {
+
     console.log(tab.props['data-route']);
   }
 
@@ -103,8 +94,7 @@ class FileSummary extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInRight">
-
-          <FloatingActionButton>
+          <FloatingActionButton className="btn-primary-floating">
             <ContentAdd/>
           </FloatingActionButton>
         </div>
@@ -112,23 +102,23 @@ class FileSummary extends React.Component {
           <Col xs={12} lg={12}>
             <Paper zDepth={1} className="box-content">
               <div className="box-history align-right">
-                <Badge badgeContent={'EX'} secondary={true}/>
-                <Badge badgeContent={'CR'} primary={true}/>
-                <Badge badgeContent={'EN'} secondary={true}/>
+                <Badge badgeContent={'EX'} className="badge cr"/>
+                <Badge badgeContent={'CR'} className="badge ex"/>
+                <Badge badgeContent={'EN'} className="badge en"/>
               </div>
-              <h3 className="main-title">Coragyps Atratus</h3>
+              <h3 className="title-lg align-left main-title bold">Coragyps Atratus</h3>
               <span className="main-subtitle">Bechstein, 1793</span>
-
             </Paper>
             <Row>
               <Col xs={12} lg={12}>
+
                 <Tabs initialSelectedIndex={0} className="colorTab">
                   <Tab label="Resumen">
-                    <Row>
-                      <Col xs={12} lg={12}>
+                    <Row className="animated slideInUp">
+                      <Col xs={12} lg={12} >
                         <br/>
                         <Paper zDepth={1} className="box-content">
-                          <Subheader>Imágenes</Subheader>
+                          <h3 className="title-xs align-left color-secondary bold">Imágenes</h3>
                           <div>
                             <Gallery images={this.props.images}/>
                           </div>
@@ -138,11 +128,11 @@ class FileSummary extends React.Component {
                     <br/>
                     <Row>
                       <Col xs={12} lg={8}>
-                        <Row>
+                        <Row className="animated slideInUp">
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
                               <List>
-                                <Subheader>Nombres comunes</Subheader>
+                                <h3 className="title-xs align-left color-secondary bold">Nombres comunes</h3>
                                 <Row>
                                   <Col xs={12} lg={6}>
                                     <ListItem primaryText="Chulo" secondaryText="Hola Mundo Hola Mundo Hola Mundo"/>
@@ -165,17 +155,17 @@ class FileSummary extends React.Component {
                         <Row>
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
-                              <Subheader>Distribución</Subheader>
+                              <h3 className="title-xs align-left color-secondary bold">Distribución</h3>
                               <div className="align-center map">
                                 <Paper zDepth={2}>
-                                  <HumboldtMap />
+                                  <HumboldtMap/>
                                 </Paper>
                                 <br/>
                                 <br/>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
                               </div>
                               <div className="align-center">
-                                <FlatButton className="viewMoreButton" label="Ver más" primary={true}/>
+                                <FlatButton fullWidth={true} label="Ver más" primary={true}/>
                               </div>
                             </Paper>
                           </Col>
@@ -184,11 +174,11 @@ class FileSummary extends React.Component {
                         <Row>
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
-                              <Subheader>Historia natural</Subheader>
+                              <h3 className="title-xs align-left color-secondary bold">Historia natural</h3>
                               <div className="align-justify">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
                                 <div className="align-center">
-                                  <FlatButton className="viewMoreButton" label="Ver más" primary={true}/>
+                                  <FlatButton fullWidth={true} label="Ver más" primary={true}/>
                                 </div>
                               </div>
                             </Paper>
@@ -197,11 +187,11 @@ class FileSummary extends React.Component {
 
                       </Col>
                       <Col xs={12} lg={4}>
-                        <Row>
+                        <Row className="animated slideInUp">
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
                               <List>
-                                <Subheader>Editores</Subheader>
+                                <h3 className="title-xs align-left color-secondary bold">Editores</h3>
                                 <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../avatar3.png" />}/>
                                 <ListItem primaryText="James Anderson" leftAvatar={< Avatar src = "../../avatar4.png" />}/>
                               </List>
@@ -214,7 +204,7 @@ class FileSummary extends React.Component {
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
                               <List>
-                                <Subheader>Activida reciente</Subheader>
+                                <h3 className="title-xs align-left color-secondary bold">Activida reciente</h3>
                                 <ListItem leftAvatar={< Avatar src = "../../avatar.png" />} primaryText="Brunch this weekend?" secondaryText={< p > <span style={{
                                   color: darkBlack
                                 }}>Brendan Lim</span> - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch
@@ -234,7 +224,7 @@ class FileSummary extends React.Component {
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
                               <List>
-                                <Subheader>Grupos</Subheader>
+                                <h3 className="title-xs align-left color-secondary bold">Grupos</h3>
                                 <ListItem leftAvatar={< Avatar icon = { < ActionAssignment />
                                 }
                                 backgroundColor = {
@@ -254,7 +244,7 @@ class FileSummary extends React.Component {
                           <Col xs={12} lg={12}>
                             <Paper zDepth={1} className="box-content">
                               <List>
-                                <Subheader>Información básica de la ficha</Subheader>
+                                <h3 className="title-xs align-left color-secondary bold">Información básica de la ficha</h3>
                                 <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>
                                 <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>
                                 <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>

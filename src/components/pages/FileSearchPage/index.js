@@ -1,9 +1,14 @@
 import React, {PropTypes} from 'react';
-import config from '../../config';
 import fetch from 'isomorphic-fetch';
 import RaisedButton from 'material-ui/RaisedButton';
-
-import {PageTemplate, Header, Footer, FileSearchMenu, FileSearchResult} from 'components';
+import {
+  PageTemplate,
+  Header,
+  Footer,
+  Config,
+  FileSearchMenu,
+  FileSearchResult
+} from 'components';
 
 class FileSearchPage extends React.Component {
 
@@ -17,15 +22,7 @@ class FileSearchPage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
-
-    // fetch(`${config.server}/api/hello/home`, config.http).then((response) => {
-    //   return response.json()
-    // }).then((data) => {
-    //   this.setState({files: data})
-    // })
-
-    this.setState({files: config.demo})
-
+    this.setState({files: Config.service.files})
   }
 
   render() {

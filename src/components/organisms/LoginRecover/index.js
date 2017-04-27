@@ -44,7 +44,7 @@ class LoginRecover extends React.Component {
                 <TextField hintText="Ingrese aquí su correo electrónico" type="email" floatingLabelText="Ingrese su correo electrónico" fullWidth={true}/>
                 <br/>
                 <br/>
-                <RaisedButton label="Aceptar" primary={true} fullWidth={true}/>
+                <RaisedButton label="Aceptar" primary={true} fullWidth={true} className="btn-secondary-modal"/>
               </Paper>
             </Col>
           </Row>

@@ -1,11 +1,13 @@
 import React, {Component, PropTypes} from 'react';
 import {css, StyleSheet} from 'aphrodite/no-important';
+import {Link} from 'components';
 import Lightbox from 'react-images';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Carousel from 'react-slick';
 import RaisedButton from 'material-ui/RaisedButton';
-
-
+import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
+import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
+import FlatButton from 'material-ui/FlatButton';
 
 class Gallery extends Component {
   constructor() {
@@ -123,11 +125,9 @@ class Gallery extends Component {
         </Carousel>
         <br/>
         <br/>
-        <div style={{
-          textAlign: 'center'
-        }}>
-          <RaisedButton label="Anterior" onTouchTap={this.previous}/>
-          <RaisedButton label="Siguiente" onTouchTap={this.next}/>
+        <div className="align-center">
+          <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
+          <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
         </div>
       </div>
 

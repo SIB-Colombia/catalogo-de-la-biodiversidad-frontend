@@ -1,7 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Carousel from 'react-slick'
-import {Grid, Row, Col} from 'react-flexbox-grid'
+import React from 'react';
+import styled from 'styled-components';
+import {Link} from 'components';
+import Carousel from 'react-slick';
+import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
   Card,
   CardActions,
@@ -12,28 +13,30 @@ import {
 } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-
-import {Link} from 'components';
+import Comment from 'material-ui/svg-icons/communication/comment';
+import Badge from 'material-ui/Badge';
 
 const Wrapper = styled.div `
 
 margin-bottom:20px;
 padding-bottom:30px;
 
-.space{
+.space   {
   margin: 4px;
 }
 
+.box-history{
+  float: right;
+}
+
 .slick-next:before, .slick-prev:before {
-  font-size: 20px;
+  font-size:   20px;
   line-height: 1;
   opacity: .75;
   color: grey;
 }
-
 `
 class FileCarousel extends React.Component {
 
@@ -100,21 +103,30 @@ class FileCarousel extends React.Component {
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
-                    <Card className="space">
-                      <CardHeader title="URL Avatar" subtitle="Subtítulo" avatar="/avatar4.png"/>
-                      <CardMedia>
-                        <img src="/file.jpg"/>
-                      </CardMedia>
-                      <CardTitle title="Título" subtitle="Subtítulo"/> {/* <CardText>
+                    <Link to={`/file/summary/${record.id}`}>
+                      <Card className="space">
+                        <CardMedia>
+                          <img src={record.image} />
+                        </CardMedia>
+                        <CardTitle title={record.name} subtitle={record.description}>
+                          <div className="box-history align-right">
+                            <Badge badgeContent={'EX'} className="badge cr"/>
+                            <Badge badgeContent={'CR'} className="badge ex"/>
+                            <Badge badgeContent={'EN'} className="badge en"/>
+                          </div>
+                        </CardTitle>
+                        {/* <CardText>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </CardText> */}
-                      <CardActions className="align-center">
-                        <Link to={`/file/summary/${record.id}`}>
-                          <RaisedButton label="Ver ficha" primary={true} fullWidth={true}/>
-                        </Link>
-                        {/* <FlatButton label="Action2"/> */}
-                      </CardActions>
-                    </Card>
+                        <CardActions>
+                          {/* <RaisedButton label="Ver ficha" primary={true} fullWidth={true}/> */}
+                          <FlatButton fullWidth={true} className="btn-secondary">
+                            <Comment/>
+                            {record.comment}
+                          </FlatButton>
+                        </CardActions>
+                      </Card>
+                    </Link>
                   </div>
                 ))}
               </Carousel>
