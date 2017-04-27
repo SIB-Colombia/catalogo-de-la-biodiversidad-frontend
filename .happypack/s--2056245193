@@ -1,0 +1,134 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-top: 150px;\n\n.img-size{\n  width: 60%;\n  padding: 15px;\n}\nh3{\n  text-align: center;\n  margin: 0;\n  color:#444;\n  font-weight: bold;\n}\n.detail-content{\n  padding: 20px;\n}\n'], ['\npadding-top: 150px;\n\n.img-size{\n  width: 60%;\n  padding: 15px;\n}\nh3{\n  text-align: center;\n  margin: 0;\n  color:#444;\n  font-weight: bold;\n}\n.detail-content{\n  padding: 20px;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { IconLink, Link } from 'components';
+
+var Wrapper = styled.div(_templateObject);
+
+var FileDetail = function (_React$Component) {
+  _inherits(FileDetail, _React$Component);
+
+  function FileDetail(props) {
+    _classCallCheck(this, FileDetail);
+
+    var _this = _possibleConstructorReturn(this, (FileDetail.__proto__ || Object.getPrototypeOf(FileDetail)).call(this, props));
+
+    _this.state = {
+      id: null
+    };
+    return _this;
+  }
+
+  _createClass(FileDetail, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.setState({ id: this.props.params.id });
+    }
+  }, {
+    key: 'changeTab',
+    value: function changeTab(tab) {
+      console.log(tab.props['data-route']);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { xs: 12 },
+              React.createElement(
+                Paper,
+                { zDepth: 1, className: 'detail-content' },
+                React.createElement(
+                  'h3',
+                  { className: 'about-main-title' },
+                  'Coragyps Atratus'
+                ),
+                React.createElement(
+                  Row,
+                  null,
+                  React.createElement(
+                    Col,
+                    { lg: 12 },
+                    React.createElement(
+                      Tabs,
+                      { initialSelectedIndex: 1 },
+                      React.createElement(Tab, { label: 'Resumen', 'data-route': '/file/summary/' + this.state.id, onActive: this.changeTab }),
+                      React.createElement(
+                        Tab,
+                        { label: 'Detalles' },
+                        React.createElement(
+                          'div',
+                          null,
+                          React.createElement(
+                            'h2',
+                            null,
+                            'Tab Two'
+                          ),
+                          React.createElement(
+                            'p',
+                            null,
+                            'This is another example tab.'
+                          )
+                        )
+                      ),
+                      React.createElement(Tab, { label: 'Im\xE1genes', 'data-route': '/file/images/' + this.state.id, onActive: this.changeTab }),
+                      React.createElement(Tab, { label: 'Mapas', 'data-route': '/file/maps/' + this.state.id, onActive: this.changeTab }),
+                      React.createElement(Tab, { label: 'Comunidad', 'data-route': '/file/community/' + this.state.id, onActive: this.changeTab }),
+                      React.createElement(Tab, { label: 'Comentarios', 'data-route': '/file/comments/' + this.state.id, onActive: this.changeTab })
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement('br', null),
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { lg: 8 },
+              React.createElement(
+                Paper,
+                { zDepth: 1, className: 'detail-content' },
+                'e'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileDetail;
+}(React.Component);
+
+export default FileDetail;

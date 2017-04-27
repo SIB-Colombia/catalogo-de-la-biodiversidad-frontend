@@ -1,0 +1,119 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\ntext-align: center;\npadding: 40px 0px;\n\nh3{\n  margin: 0;\n  color:#333;\n  font-weight: lighter;\n}\n.brand-logo{\n  font-size: 10em;\n}\n.login-content{\n  padding: 20px;\n  height: 100%;\n}\n.po{\n  height: 100% !important;\n}\n'], ['\n\ntext-align: center;\npadding: 40px 0px;\n\nh3{\n  margin: 0;\n  color:#333;\n  font-weight: lighter;\n}\n.brand-logo{\n  font-size: 10em;\n}\n.login-content{\n  padding: 20px;\n  height: 100%;\n}\n.po{\n  height: 100% !important;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var LoginRecover = function (_React$Component) {
+  _inherits(LoginRecover, _React$Component);
+
+  function LoginRecover() {
+    _classCallCheck(this, LoginRecover);
+
+    return _possibleConstructorReturn(this, (LoginRecover.__proto__ || Object.getPrototypeOf(LoginRecover)).apply(this, arguments));
+  }
+
+  _createClass(LoginRecover, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          null,
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 10, sm: 6, md: 4, lg: 4, lgOffset: 4, mdOffset: 4, smOffset: 3, xsOffset: 1 },
+              _react2.default.createElement(
+                _Paper2.default,
+                { zDepth: 1, className: 'login-content animated fadeIn' },
+                _react2.default.createElement(_components.IconLink, { to: '/', icon: 'catalogo', className: 'brand-logo' }),
+                _react2.default.createElement(
+                  'h3',
+                  null,
+                  'Recuperar contrase\xF1a'
+                ),
+                _react2.default.createElement(_TextField2.default, { hintText: 'Ingrese aqu\xED su correo electr\xF3nico', type: 'email', floatingLabelText: 'Ingrese su correo electr\xF3nico', fullWidth: true }),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement('br', null),
+                _react2.default.createElement(_RaisedButton2.default, { label: 'Aceptar', primary: true, fullWidth: true })
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return LoginRecover;
+}(_react2.default.Component);
+
+var _default = LoginRecover;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/LoginRecover/index.js');
+
+  __REACT_HOT_LOADER__.register(LoginRecover, 'LoginRecover', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/LoginRecover/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/LoginRecover/index.js');
+}();
+
+;

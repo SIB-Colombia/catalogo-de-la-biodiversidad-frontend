@@ -1,0 +1,91 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fontSize = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  display: block;\n  width: 100%;\n  margin: 0;\n  box-sizing: border-box;\n  font-size: ', ';\n  padding: ', ';\n  height: ', ';\n  color: ', ';\n  background-color: ', ';\n  border: 1px solid ', ';\n  border-radius: 2px;\n\n  &[type=checkbox], &[type=radio] {\n    display: inline-block;\n    border: 0;\n    border-radius: 0;\n    width: auto;\n    height: auto;\n    margin: 0 0.2rem 0 0;\n  }\n'], ['\n  font-family: ', ';\n  display: block;\n  width: 100%;\n  margin: 0;\n  box-sizing: border-box;\n  font-size: ', ';\n  padding: ', ';\n  height: ', ';\n  color: ', ';\n  background-color: ', ';\n  border: 1px solid ', ';\n  border-radius: 2px;\n\n  &[type=checkbox], &[type=radio] {\n    display: inline-block;\n    border: 0;\n    border-radius: 0;\n    width: auto;\n    height: auto;\n    margin: 0 0.2rem 0 0;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _styledTools = require('styled-tools');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var fontSize = exports.fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height / 35.5555555556 + 'rem';
+};
+
+var styles = (0, _styledComponents.css)(_templateObject, (0, _styledTheme.font)('primary'), fontSize, (0, _styledTools.ifProp)({ type: 'textarea' }, '0.4444444444em', '0 0.4444444444em'), (0, _styledTools.ifProp)({ type: 'textarea' }, 'auto', '2.2222222222em'), (0, _styledTheme.palette)('grayscale', 0), (0, _styledTheme.palette)('grayscale', 0, true), (0, _styledTools.ifProp)('invalid', (0, _styledTheme.palette)('danger', 2), (0, _styledTheme.palette)('grayscale', 3)));
+
+var StyledTextarea = _styledComponents2.default.textarea(_templateObject2, styles);
+var StyledSelect = _styledComponents2.default.select(_templateObject2, styles);
+var StyledInput = _styledComponents2.default.input(_templateObject2, styles);
+
+var Input = function Input(_ref2) {
+  var props = _objectWithoutProperties(_ref2, []);
+
+  if (props.type === 'textarea') {
+    return _react2.default.createElement(StyledTextarea, props);
+  } else if (props.type === 'select') {
+    return _react2.default.createElement(StyledSelect, props);
+  }
+  return _react2.default.createElement(StyledInput, props);
+};
+
+Input.propTypes = {
+  type: _propTypes2.default.string,
+  reverse: _propTypes2.default.bool,
+  height: _propTypes2.default.number,
+  invalid: _propTypes2.default.bool
+};
+
+Input.defaultProps = {
+  type: 'text',
+  height: 40
+};
+
+var _default = Input;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+
+  __REACT_HOT_LOADER__.register(StyledTextarea, 'StyledTextarea', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+
+  __REACT_HOT_LOADER__.register(StyledSelect, 'StyledSelect', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+
+  __REACT_HOT_LOADER__.register(StyledInput, 'StyledInput', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+
+  __REACT_HOT_LOADER__.register(Input, 'Input', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/atoms/Input/index.js');
+}();
+
+;

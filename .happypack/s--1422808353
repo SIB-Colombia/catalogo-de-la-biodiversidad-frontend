@@ -1,0 +1,57 @@
+var _templateObject = _taggedTemplateLiteral(['\n\n'], ['\n\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    margin-bottom:65px;\n'], ['\n    margin-bottom:65px;\n']),
+    _templateObject3 = _taggedTemplateLiteral([''], ['']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  height: 100%;\n  padding-bottom: 80px;\n\n'], ['\n  height: 100%;\n  padding-bottom: 80px;\n\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n  margin-top: 10px;\n'], ['\n  margin-top: 10px;\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// https://github.com/diegohaz/arc/wiki/Atomic-Design#templates
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+var Wrapper = styled.div(_templateObject);
+var Header = styled.header(_templateObject2);
+
+var Hero = styled.section(_templateObject3);
+
+var Content = styled.section(_templateObject4);
+var Footer = styled.footer(_templateObject5);
+
+var PageTemplate = function PageTemplate(_ref) {
+  var header = _ref.header,
+      children = _ref.children,
+      footer = _ref.footer,
+      props = _objectWithoutProperties(_ref, ['header', 'children', 'footer']);
+
+  return React.createElement(
+    Wrapper,
+    props,
+    header ? React.createElement(
+      Header,
+      null,
+      header
+    ) : false,
+    React.createElement(
+      Content,
+      null,
+      children
+    ),
+    footer ? React.createElement(
+      Footer,
+      null,
+      footer
+    ) : false
+  );
+};
+
+// PageTemplate.propTypes = {
+//   header: PropTypes.node.isRequired,
+//   footer: PropTypes.node.isRequired,
+//   children: PropTypes.any.isRequired
+// }
+
+export default PageTemplate;

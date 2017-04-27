@@ -1,0 +1,174 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\nmargin-bottom:20px;\npadding-bottom:30px;\n\n.space{\n  margin: 4px;\n}\n\n.slick-next:before, .slick-prev:before {\n  font-size: 20px;\n  line-height: 1;\n  opacity: .75;\n  color: grey;\n}\n\n'], ['\n\nmargin-bottom:20px;\npadding-bottom:30px;\n\n.space{\n  margin: 4px;\n}\n\n.slick-next:before, .slick-prev:before {\n  font-size: 20px;\n  line-height: 1;\n  opacity: .75;\n  color: grey;\n}\n\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import Slider from 'react-slick';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+
+var Wrapper = styled.div(_templateObject);
+
+var FileCarousel = function (_React$Component) {
+  _inherits(FileCarousel, _React$Component);
+
+  function FileCarousel(props) {
+    _classCallCheck(this, FileCarousel);
+
+    var _this = _possibleConstructorReturn(this, (FileCarousel.__proto__ || Object.getPrototypeOf(FileCarousel)).call(this, props));
+
+    _this.handleChange = function (event, index, value) {
+      return _this.setState({ value: value });
+    };
+
+    _this.next = _this.next.bind(_this);
+    _this.previous = _this.previous.bind(_this);
+    _this.state = {
+      value: 1
+    };
+
+    return _this;
+  }
+
+  _createClass(FileCarousel, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'next',
+    value: function next() {
+      this.slider.slickNext();
+    }
+  }, {
+    key: 'previous',
+    value: function previous() {
+      this.slider.slickPrev();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var settings = {
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        draggable: false,
+        responsive: [{
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3
+          }
+        }, {
+          breakpoint: 1368,
+          settings: {
+            slidesToShow: 4
+          }
+        }, {
+          breakpoint: 2000,
+          settings: {
+            slidesToShow: 5
+          }
+        }, {
+          breakpoint: 100000,
+          settings: 'unslick'
+        }]
+      };
+
+      return React.createElement(
+        Wrapper,
+        { className: 'grey lighten-4' },
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { xs: 12 },
+              React.createElement(
+                'div',
+                { className: 'align-center' },
+                React.createElement(
+                  DropDownMenu,
+                  { value: this.state.value, onChange: this.handleChange },
+                  React.createElement(MenuItem, { value: 1, primaryText: 'Fichas recientes' }),
+                  React.createElement(MenuItem, { value: 2, primaryText: 'Fichas m\xE1s vistadas' }),
+                  React.createElement(MenuItem, { value: 3, primaryText: 'Fichas en peligro' }),
+                  React.createElement(MenuItem, { value: 4, primaryText: 'Fichas por actualizar' })
+                )
+              ),
+              React.createElement(
+                Slider,
+                _extends({ ref: function ref(c) {
+                    return _this2.slider = c;
+                  } }, settings),
+                this.props.data.map(function (record, i) {
+                  return React.createElement(
+                    'div',
+                    { key: i },
+                    React.createElement(
+                      Card,
+                      { className: 'space' },
+                      React.createElement(CardHeader, { title: 'URL Avatar', subtitle: 'Subt\xEDtulo', avatar: 'avatar4.png' }),
+                      React.createElement(
+                        CardMedia,
+                        null,
+                        React.createElement('img', { src: 'file.jpg' })
+                      ),
+                      React.createElement(CardTitle, { title: 'T\xEDtulo', subtitle: 'Subt\xEDtulo' }),
+                      ' ',
+                      React.createElement(
+                        CardActions,
+                        null,
+                        React.createElement(FlatButton, { label: 'Action1' }),
+                        React.createElement(FlatButton, { label: 'Action2' })
+                      )
+                    )
+                  );
+                })
+              )
+            )
+          ),
+          React.createElement('br', null),
+          React.createElement('br', null),
+          React.createElement(
+            'div',
+            { style: {
+                textAlign: 'center'
+              } },
+            React.createElement(RaisedButton, { label: 'Anterior', onTouchTap: this.previous }),
+            React.createElement(RaisedButton, { label: 'Siguiente', onTouchTap: this.next })
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileCarousel;
+}(React.Component);
+
+export default FileCarousel;

@@ -1,0 +1,403 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-top: 120px;\n\n.btnFilters{\n  position: fixed;\n  right: 15px;\n  bottom: 15px;\n  z-index: 10;\n}\n\n.box-history{\n  float: right;\n}\n\n.map{\n  padding: 20px;\n  img{\n    width: 100%;\n\n  }\n}\nh3{\n  text-align: center;\n  margin: 0;\n  color:#444;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.main-title{\n  text-align: left;\n  color: #316971;\n  font-size: 43px;\n  font-style: italic;\n  /*text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;*/\n  float:left;\n  margin-bottom: 0px;\n}\n.main-subtitle{\n  color: #316971;\n  line-height: 80px;\n  margin-left: 40px;\n}\n.box-content{\n  padding: 20px;\n  overflow:hidden;\n}\n.colorTab{\n\tmargin-top:20px;\n}\n.colorTab > div:first-child{\n\tbackground-color: #FFFFFF !important;\n}\n.colorTab > div > button{\n  color: #316971 !important;\n  font-weight: 700 !important;\n  border-right: 2px solid #CCC !important;\n}\n.viewMoreButton{\n\twidth: 100%;\n}\n'], ['\npadding-top: 120px;\n\n.btnFilters{\n  position: fixed;\n  right: 15px;\n  bottom: 15px;\n  z-index: 10;\n}\n\n.box-history{\n  float: right;\n}\n\n.map{\n  padding: 20px;\n  img{\n    width: 100%;\n\n  }\n}\nh3{\n  text-align: center;\n  margin: 0;\n  color:#444;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.main-title{\n  text-align: left;\n  color: #316971;\n  font-size: 43px;\n  font-style: italic;\n  /*text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;*/\n  float:left;\n  margin-bottom: 0px;\n}\n.main-subtitle{\n  color: #316971;\n  line-height: 80px;\n  margin-left: 40px;\n}\n.box-content{\n  padding: 20px;\n  overflow:hidden;\n}\n.colorTab{\n\tmargin-top:20px;\n}\n.colorTab > div:first-child{\n\tbackground-color: #FFFFFF !important;\n}\n.colorTab > div > button{\n  color: #316971 !important;\n  font-weight: 700 !important;\n  border-right: 2px solid #CCC !important;\n}\n.viewMoreButton{\n\twidth: 100%;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import Carousel from 'react-slick';
+import { List, ListItem, Gallery, HumboldtMap } from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { IconLink, Link } from 'components';
+import Avatar from 'material-ui/Avatar';
+import Subheader from 'material-ui/Subheader';
+import ActionAssignment from 'material-ui/svg-icons/action/assignment';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import Badge from 'material-ui/Badge';
+import { grey400, darkBlack, lightBlack } from 'material-ui/styles/colors';
+import { blue500, yellow600 } from 'material-ui/styles/colors';
+import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+
+var Wrapper = styled.div(_templateObject);
+
+var FileSummary = function (_React$Component) {
+  _inherits(FileSummary, _React$Component);
+
+  function FileSummary(props) {
+    _classCallCheck(this, FileSummary);
+
+    return _possibleConstructorReturn(this, (FileSummary.__proto__ || Object.getPrototypeOf(FileSummary)).call(this, props));
+  }
+
+  _createClass(FileSummary, [{
+    key: 'changeTab',
+    value: function changeTab(tab) {
+      console.log(tab.props['data-route']);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          'div',
+          { className: 'btnFilters animated fadeInRight' },
+          React.createElement(
+            FloatingActionButton,
+            null,
+            React.createElement(ContentAdd, null)
+          )
+        ),
+        React.createElement(
+          Row,
+          null,
+          React.createElement(
+            Col,
+            { xs: 12, lg: 12 },
+            React.createElement(
+              Paper,
+              { zDepth: 1, className: 'box-content' },
+              React.createElement(
+                'div',
+                { className: 'box-history align-right' },
+                React.createElement(Badge, { badgeContent: 'EX', secondary: true }),
+                React.createElement(Badge, { badgeContent: 'CR', primary: true }),
+                React.createElement(Badge, { badgeContent: 'EN', secondary: true })
+              ),
+              React.createElement(
+                'h3',
+                { className: 'main-title' },
+                'Coragyps Atratus'
+              ),
+              React.createElement(
+                'span',
+                { className: 'main-subtitle' },
+                'Bechstein, 1793'
+              )
+            ),
+            React.createElement(
+              Row,
+              null,
+              React.createElement(
+                Col,
+                { xs: 12, lg: 12 },
+                React.createElement(
+                  Tabs,
+                  { initialSelectedIndex: 0, className: 'colorTab' },
+                  React.createElement(
+                    Tab,
+                    { label: 'Resumen' },
+                    React.createElement(
+                      Row,
+                      null,
+                      React.createElement(
+                        Col,
+                        { xs: 12, lg: 12 },
+                        React.createElement('br', null),
+                        React.createElement(
+                          Paper,
+                          { zDepth: 1, className: 'box-content' },
+                          React.createElement(
+                            Subheader,
+                            null,
+                            'Im\xE1genes'
+                          ),
+                          React.createElement(
+                            'div',
+                            null,
+                            React.createElement(Gallery, { images: this.props.images })
+                          )
+                        )
+                      )
+                    ),
+                    React.createElement('br', null),
+                    React.createElement(
+                      Row,
+                      null,
+                      React.createElement(
+                        Col,
+                        { xs: 12, lg: 8 },
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                List,
+                                null,
+                                React.createElement(
+                                  Subheader,
+                                  null,
+                                  'Nombres comunes'
+                                ),
+                                React.createElement(
+                                  Row,
+                                  null,
+                                  React.createElement(
+                                    Col,
+                                    { xs: 12, lg: 6 },
+                                    React.createElement(ListItem, { primaryText: 'Chulo', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  ),
+                                  React.createElement(
+                                    Col,
+                                    { xs: 12, lg: 6 },
+                                    React.createElement(ListItem, { primaryText: 'Gallinazo', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  ),
+                                  React.createElement(
+                                    Col,
+                                    { xs: 12, lg: 6 },
+                                    React.createElement(ListItem, { primaryText: 'Gamuro', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  ),
+                                  React.createElement(
+                                    Col,
+                                    { xs: 12, lg: 6 },
+                                    React.createElement(ListItem, { primaryText: 'Gamuro', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement('br', null),
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                Subheader,
+                                null,
+                                'Distribuci\xF3n'
+                              ),
+                              React.createElement(
+                                'div',
+                                { className: 'align-center map' },
+                                React.createElement(
+                                  Paper,
+                                  { zDepth: 2 },
+                                  React.createElement(HumboldtMap, null)
+                                ),
+                                React.createElement('br', null),
+                                React.createElement('br', null),
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.'
+                              ),
+                              React.createElement(
+                                'div',
+                                { className: 'align-center' },
+                                React.createElement(FlatButton, { className: 'viewMoreButton', label: 'Ver m\xE1s', primary: true })
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement('br', null),
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                Subheader,
+                                null,
+                                'Historia natural'
+                              ),
+                              React.createElement(
+                                'div',
+                                { className: 'align-justify' },
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.',
+                                React.createElement(
+                                  'div',
+                                  { className: 'align-center' },
+                                  React.createElement(FlatButton, { className: 'viewMoreButton', label: 'Ver m\xE1s', primary: true })
+                                )
+                              )
+                            )
+                          )
+                        )
+                      ),
+                      React.createElement(
+                        Col,
+                        { xs: 12, lg: 4 },
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                List,
+                                null,
+                                React.createElement(
+                                  Subheader,
+                                  null,
+                                  'Editores'
+                                ),
+                                React.createElement(ListItem, { primaryText: 'Chelsea Otakan', leftAvatar: React.createElement(Avatar, { src: '../../avatar3.png' }) }),
+                                React.createElement(ListItem, { primaryText: 'James Anderson', leftAvatar: React.createElement(Avatar, { src: '../../avatar4.png' }) })
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement('br', null),
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                List,
+                                null,
+                                React.createElement(
+                                  Subheader,
+                                  null,
+                                  'Activida reciente'
+                                ),
+                                React.createElement(ListItem, { leftAvatar: React.createElement(Avatar, { src: '../../avatar.png' }), primaryText: 'Brunch this weekend?', secondaryText: React.createElement(
+                                    'p',
+                                    null,
+                                    ' ',
+                                    React.createElement(
+                                      'span',
+                                      { style: {
+                                          color: darkBlack
+                                        } },
+                                      'Brendan Lim'
+                                    ),
+                                    ' - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch ? '
+                                  ), secondaryTextLines: 2 }),
+                                React.createElement(Divider, { inset: true }),
+                                React.createElement(ListItem, { leftAvatar: React.createElement(Avatar, { src: '../../avatar3.png' }), primaryText: React.createElement(
+                                    'p',
+                                    null,
+                                    ' Summer BBQ ',
+                                    React.createElement(
+                                      'span',
+                                      { style: { color: lightBlack } },
+                                      ' 4 '
+                                    )
+                                  ), secondaryText: React.createElement(
+                                    'p',
+                                    null,
+                                    ' ',
+                                    React.createElement(
+                                      'span',
+                                      { style: {
+                                          color: darkBlack
+                                        } },
+                                      'to me, Scott, Jennifer'
+                                    ),
+                                    '--Wish I could come, but I & apos; m out of town this weekend. '
+                                  ), secondaryTextLines: 2 })
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement('br', null),
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                List,
+                                null,
+                                React.createElement(
+                                  Subheader,
+                                  null,
+                                  'Grupos'
+                                ),
+                                React.createElement(ListItem, { leftAvatar: React.createElement(Avatar, { icon: React.createElement(ActionAssignment, null),
+                                    backgroundColor: blue500 }), primaryText: 'Aves de Colombia', secondaryText: 'Jan 20, 2014' }),
+                                React.createElement(ListItem, { leftAvatar: React.createElement(Avatar, { icon: React.createElement(EditorInsertChart, null),
+                                    backgroundColor: yellow600 }), primaryText: 'Aves de Colombia', secondaryText: 'Jan 10, 2014' })
+                              )
+                            )
+                          )
+                        ),
+                        React.createElement('br', null),
+                        React.createElement(
+                          Row,
+                          null,
+                          React.createElement(
+                            Col,
+                            { xs: 12, lg: 12 },
+                            React.createElement(
+                              Paper,
+                              { zDepth: 1, className: 'box-content' },
+                              React.createElement(
+                                List,
+                                null,
+                                React.createElement(
+                                  Subheader,
+                                  null,
+                                  'Informaci\xF3n b\xE1sica de la ficha'
+                                ),
+                                React.createElement(ListItem, { primaryText: 'Fecha de elaboraci\xF3n', secondaryText: 'Jan 20, 2014' }),
+                                React.createElement(ListItem, { primaryText: 'Fecha de elaboraci\xF3n', secondaryText: 'Jan 20, 2014' }),
+                                React.createElement(ListItem, { primaryText: 'Fecha de elaboraci\xF3n', secondaryText: 'Jan 20, 2014' })
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  React.createElement(Tab, { label: 'Detalles', 'data-route': '/file/detail/' + this.props.id, onActive: this.changeTab }),
+                  React.createElement(Tab, { label: 'Im\xE1genes', 'data-route': '/file/images/' + this.props.id, onActive: this.changeTab }),
+                  React.createElement(Tab, { label: 'Mapas', 'data-route': '/file/maps/' + this.props.id, onActive: this.changeTab }),
+                  React.createElement(Tab, { label: 'Comunidad', 'data-route': '/file/community/' + this.props.id, onActive: this.changeTab }),
+                  React.createElement(Tab, { label: 'Comentarios', 'data-route': '/file/comments/' + this.props.id, onActive: this.changeTab })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileSummary;
+}(React.Component);
+
+export default FileSummary;

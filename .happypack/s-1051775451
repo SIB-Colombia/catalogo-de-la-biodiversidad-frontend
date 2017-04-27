@@ -1,0 +1,94 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  margin: 0.5rem 0 0;\n'], ['\n  margin: 0.5rem 0 0;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  margin-bottom: 1rem;\n  input[type="checkbox"],\n  input[type="radio"] {\n    margin-right: 0.5rem;\n  }\n  label {\n    vertical-align: middle;\n  }\n'], ['\n  margin-bottom: 1rem;\n  input[type="checkbox"],\n  input[type="radio"] {\n    margin-right: 0.5rem;\n  }\n  label {\n    vertical-align: middle;\n  }\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Error = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var Wrapper = _styledComponents2.default.div(_templateObject2);
+
+var Field = function Field(_ref) {
+  var error = _ref.error,
+      name = _ref.name,
+      invalid = _ref.invalid,
+      label = _ref.label,
+      type = _ref.type,
+      props = _objectWithoutProperties(_ref, ['error', 'name', 'invalid', 'label', 'type']);
+
+  var inputProps = _extends({ id: name, name: name, type: type, invalid: invalid, 'aria-describedby': name + 'Error' }, props);
+  var renderInputFirst = type === 'checkbox' || type === 'radio';
+  return _react2.default.createElement(
+    Wrapper,
+    null,
+    renderInputFirst && _react2.default.createElement(_components.Input, inputProps),
+    label && _react2.default.createElement(
+      _components.Label,
+      { htmlFor: inputProps.id },
+      label
+    ),
+    renderInputFirst || _react2.default.createElement(_components.Input, inputProps),
+    invalid && error && _react2.default.createElement(
+      Error,
+      { id: name + 'Error', role: 'alert', palette: 'danger' },
+      error
+    )
+  );
+};
+
+Field.propTypes = {
+  name: _propTypes2.default.string.isRequired,
+  invalid: _propTypes2.default.bool,
+  error: _propTypes2.default.string,
+  label: _propTypes2.default.string,
+  type: _propTypes2.default.string
+};
+
+Field.defaultProps = {
+  type: 'text'
+};
+
+var _default = Field;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Error, 'Error', '/home/leo/htdocs/bio/src/components/molecules/Field/index.js');
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/bio/src/components/molecules/Field/index.js');
+
+  __REACT_HOT_LOADER__.register(Field, 'Field', '/home/leo/htdocs/bio/src/components/molecules/Field/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/molecules/Field/index.js');
+}();
+
+;

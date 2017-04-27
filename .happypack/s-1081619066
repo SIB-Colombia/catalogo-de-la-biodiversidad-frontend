@@ -1,0 +1,258 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nposition:fixed;\ntop:0%;\nwidth:100%;\nbackground: red !important;\nz-index: 2000;\n.box-nav-search-content{\n\ttext-align: center;\n\tpadding: 6px 0px;\n\t.box-search-color{\n\t\tbackground: ', ';\n\t}\n\t.box-nav-advance{\n\t  cursor: pointer;\n\t  &:hover{\n\t    opacity: 0.5;\n\t  }\n\t}\n\t.box-nav-search{\n\t  padding:2px;\n\t}\n\t.box-nav-icon{\n\t  padding-top: 13px;\n\t}\n}\nsvg{\n\tcolor: ', ' !important;\n}\n.box-link{\n\ttext-align:right;\n\ta {\n\t\theight:100% !important;\n\t\tline-height: 4 !important;\n\t}\n}\n.brand-logo {\n display: inline-block;\n font-size: 2.1rem;\n padding: 0;\n white-space: nowrap;\n margin-top: 6px;\n}\n'], ['\nposition:fixed;\ntop:0%;\nwidth:100%;\nbackground: red !important;\nz-index: 2000;\n.box-nav-search-content{\n\ttext-align: center;\n\tpadding: 6px 0px;\n\t.box-search-color{\n\t\tbackground: ', ';\n\t}\n\t.box-nav-advance{\n\t  cursor: pointer;\n\t  &:hover{\n\t    opacity: 0.5;\n\t  }\n\t}\n\t.box-nav-search{\n\t  padding:2px;\n\t}\n\t.box-nav-icon{\n\t  padding-top: 13px;\n\t}\n}\nsvg{\n\tcolor: ', ' !important;\n}\n.box-link{\n\ttext-align:right;\n\ta {\n\t\theight:100% !important;\n\t\tline-height: 4 !important;\n\t}\n}\n.brand-logo {\n display: inline-block;\n font-size: 2.1rem;\n padding: 0;\n white-space: nowrap;\n margin-top: 6px;\n}\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\ndisplay:inline-block;\nvertical-align: middle;\ncolor:', ';\n'], ['\ndisplay:inline-block;\nvertical-align: middle;\ncolor:', ';\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\nb{\n\tmargin-right: 2px;\n}\n'], ['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\nb{\n\tmargin-right: 2px;\n}\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\n'], ['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _Dialog = require('material-ui/Dialog');
+
+var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FontIcon = require('material-ui/FontIcon');
+
+var _FontIcon2 = _interopRequireDefault(_FontIcon);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _tune = require('material-ui/svg-icons/image/tune');
+
+var _tune2 = _interopRequireDefault(_tune);
+
+var _search = require('material-ui/svg-icons/action/search');
+
+var _search2 = _interopRequireDefault(_search);
+
+var _default2 = require('../../themes/default');
+
+var _default3 = _interopRequireDefault(_default2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.nav(_templateObject, _default3.default.palette.grayscale[1], _default3.default.palette.grayscale[5]);
+
+var Title = _styledComponents2.default.div(_templateObject2, _default3.default.palette.grayscale[6]);
+var TitleMain = _styledComponents2.default.div(_templateObject3);
+var TitleSub = _styledComponents2.default.div(_templateObject4);
+
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Header);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Header.__proto__ || Object.getPrototypeOf(Header)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      open: false
+    }, _this.handleOpen = function () {
+      var _this2;
+
+      return (_this2 = _this).__handleOpen__REACT_HOT_LOADER__.apply(_this2, arguments);
+    }, _this.handleClose = function () {
+      var _this3;
+
+      return (_this3 = _this).__handleClose__REACT_HOT_LOADER__.apply(_this3, arguments);
+    }, _this.handleSearch = function () {
+      var _this4;
+
+      return (_this4 = _this).__handleSearch__REACT_HOT_LOADER__.apply(_this4, arguments);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Header, [{
+    key: '__handleOpen__REACT_HOT_LOADER__',
+    value: function __handleOpen__REACT_HOT_LOADER__() {
+      this.setState({ open: true });
+    }
+  }, {
+    key: '__handleClose__REACT_HOT_LOADER__',
+    value: function __handleClose__REACT_HOT_LOADER__() {
+      this.setState({ open: false });
+    }
+  }, {
+    key: '__handleSearch__REACT_HOT_LOADER__',
+    value: function __handleSearch__REACT_HOT_LOADER__() {
+      console.log('buscar');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      var actions = [_react2.default.createElement(_FlatButton2.default, { label: 'Cancelar', primary: true,
+        onTouchTap: this.handleClose }), _react2.default.createElement(
+        _components.Link,
+        { to: '/file/search' },
+        ' ',
+        _react2.default.createElement(_RaisedButton2.default, { label: 'Buscar', className: 'btn-secondary-modal', onTouchTap: this.handleSearch }),
+        ' '
+      )];
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _Paper2.default,
+          null,
+          _react2.default.createElement(
+            _reactFlexboxGrid.Grid,
+            { fluid: true },
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, sm: 3, md: 3, lg: 3 },
+                _react2.default.createElement(
+                  _components.IconLink,
+                  { to: '/', icon: 'catalogo', className: 'brand-logo' },
+                  _react2.default.createElement(
+                    Title,
+                    null,
+                    _react2.default.createElement(
+                      TitleMain,
+                      null,
+                      _react2.default.createElement(
+                        'b',
+                        null,
+                        'Cat\xE1logo'
+                      ),
+                      'de'
+                    ),
+                    _react2.default.createElement(
+                      TitleSub,
+                      null,
+                      'la Biodiversidad'
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, sm: 6, md: 6, lg: 6, className: 'box-nav-search-content' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'box-search-color' },
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Row,
+                    null,
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { xs: 1, sm: 2, md: 2, lg: 1, className: 'box-nav-icon' },
+                      _react2.default.createElement(_search2.default, null)
+                    ),
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { xs: 10, sm: 8, md: 8, lg: 10, className: 'box-nav-search' },
+                      _react2.default.createElement(_TextField2.default, { hintText: 'Buscar...', fullWidth: true })
+                    ),
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { xs: 1, sm: 1, md: 2, lg: 1, className: 'box-nav-icon' },
+                      _react2.default.createElement(
+                        'a',
+                        { onTouchTap: this.handleOpen, className: 'box-nav-advance' },
+                        _react2.default.createElement(_tune2.default, null)
+                      )
+                    )
+                  )
+                )
+              ),
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, sm: 3, md: 3, lg: 3, className: 'box-link' },
+                _react2.default.createElement(
+                  _components.Link,
+                  { to: '/login/signup', onlyActiveOnIndex: true, className: 'grey-text text-darken-2', activeClassName: 'active' },
+                  _react2.default.createElement(_FlatButton2.default, { label: 'Registrarse' })
+                ),
+                _react2.default.createElement(
+                  _components.Link,
+                  { to: '/login/signin', onlyActiveOnIndex: true, className: 'grey-text text-darken-2', activeClassName: 'active' },
+                  _react2.default.createElement(_FlatButton2.default, { label: 'Ingresar' })
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _Dialog2.default,
+            { titleClassName: 'modal-header-style', title: 'B\xFAsqueda avanzada', actions: actions, modal: false, open: this.state.open, onRequestClose: this.handleClose, autoScrollBodyContent: true },
+            _react2.default.createElement(_components.HeaderSearchAdvance, null)
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(_react2.default.Component);
+
+var _default = Header;
+exports.default = _default;
+;
+
+var _temp2 = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(Title, 'Title', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(TitleMain, 'TitleMain', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(TitleSub, 'TitleSub', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+}();
+
+;

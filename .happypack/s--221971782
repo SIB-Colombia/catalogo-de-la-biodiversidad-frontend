@@ -1,0 +1,205 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\nmargin-bottom:20px;\npadding-bottom:30px;\nbackground: #dadada;\n\n.space{\n  margin: 4px;\n}\n\n.slick-next:before, .slick-prev:before {\n  font-size: 20px;\n  line-height: 1;\n  opacity: .75;\n  color: grey;\n}\nh3{\n  color:#333;\n  text-align: center;\n  font-weight: lighter;\n}\n\n.box-community{\n\n  text-align: center;\n  padding: 30px;\n\n.box-circle{\n\n  border-radius: 100%;\n  border:10px solid white;\n  img{\n    width: 100%;\n  }\n\n}\n.name-user{\n  color:#333;\n  padding-top: 10px;\n}\n\n\n}\n\n'], ['\n\nmargin-bottom:20px;\npadding-bottom:30px;\nbackground: #dadada;\n\n.space{\n  margin: 4px;\n}\n\n.slick-next:before, .slick-prev:before {\n  font-size: 20px;\n  line-height: 1;\n  opacity: .75;\n  color: grey;\n}\nh3{\n  color:#333;\n  text-align: center;\n  font-weight: lighter;\n}\n\n.box-community{\n\n  text-align: center;\n  padding: 30px;\n\n.box-circle{\n\n  border-radius: 100%;\n  border:10px solid white;\n  img{\n    width: 100%;\n  }\n\n}\n.name-user{\n  color:#333;\n  padding-top: 10px;\n}\n\n\n}\n\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactSlick = require('react-slick');
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _keyboardArrowLeft = require('material-ui/svg-icons/hardware/keyboard-arrow-left');
+
+var _keyboardArrowLeft2 = _interopRequireDefault(_keyboardArrowLeft);
+
+var _keyboardArrowRight = require('material-ui/svg-icons/hardware/keyboard-arrow-right');
+
+var _keyboardArrowRight2 = _interopRequireDefault(_keyboardArrowRight);
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var CommunityCarousel = function (_React$Component) {
+  _inherits(CommunityCarousel, _React$Component);
+
+  function CommunityCarousel(props) {
+    _classCallCheck(this, CommunityCarousel);
+
+    var _this = _possibleConstructorReturn(this, (CommunityCarousel.__proto__ || Object.getPrototypeOf(CommunityCarousel)).call(this, props));
+
+    _this.next = _this.next.bind(_this);
+    _this.previous = _this.previous.bind(_this);
+
+    return _this;
+  }
+
+  _createClass(CommunityCarousel, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'next',
+    value: function next() {
+      this.slider.slickNext();
+    }
+  }, {
+    key: 'previous',
+    value: function previous() {
+      this.slider.slickPrev();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var settings = {
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        draggable: false,
+        responsive: [{
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3
+          }
+        }, {
+          breakpoint: 1368,
+          settings: {
+            slidesToShow: 4
+          }
+        }, {
+          breakpoint: 2000,
+          settings: {
+            slidesToShow: 5
+          }
+        }, {
+          breakpoint: 100000,
+          settings: 'unslick'
+        }]
+      };
+
+      return _react2.default.createElement(
+        Wrapper,
+        { className: 'grey lighten-4' },
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          null,
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12 },
+              _react2.default.createElement(
+                'h3',
+                null,
+                'Comunidad'
+              ),
+              _react2.default.createElement(
+                _reactSlick2.default,
+                _extends({ ref: function ref(c) {
+                    return _this2.slider = c;
+                  } }, settings),
+                this.props.data.map(function (record, i) {
+                  return _react2.default.createElement(
+                    'div',
+                    { key: i, className: 'box-community' },
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'box-circle' },
+                      _react2.default.createElement(
+                        'center',
+                        null,
+                        _react2.default.createElement('img', { src: '/avatar.png' })
+                      )
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'name-user' },
+                      'Usuario'
+                    )
+                  );
+                })
+              )
+            )
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'div',
+            { className: 'align-center' },
+            _react2.default.createElement(_FlatButton2.default, { icon: _react2.default.createElement(_keyboardArrowLeft2.default, null), onTouchTap: this.previous }),
+            _react2.default.createElement(
+              _components.Link,
+              { to: 'file/detail/11' },
+              _react2.default.createElement(_RaisedButton2.default, { label: 'Ver toda la comunidad', 'default': true })
+            ),
+            _react2.default.createElement(_FlatButton2.default, { icon: _react2.default.createElement(_keyboardArrowRight2.default, null), onTouchTap: this.next })
+          )
+        )
+      );
+    }
+  }]);
+
+  return CommunityCarousel;
+}(_react2.default.Component);
+
+var _default = CommunityCarousel;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/bio/src/components/organisms/CommunityCarousel/index.js');
+
+  __REACT_HOT_LOADER__.register(CommunityCarousel, 'CommunityCarousel', '/home/leo/htdocs/bio/src/components/organisms/CommunityCarousel/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/organisms/CommunityCarousel/index.js');
+}();
+
+;

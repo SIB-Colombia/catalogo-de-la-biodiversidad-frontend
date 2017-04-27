@@ -1,0 +1,79 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n  font-family: ', ';\n  font-style: italic;\n  font-size: 1.2rem;\n  line-height: 2rem;\n  box-sizing: border-box;\n  color: ', ';\n  border-left: 5px solid ', ';\n  margin: 1rem 0;\n  padding: 0.5rem 0 0.5rem 1.5rem;\n'], ['\n  position: relative;\n  font-family: ', ';\n  font-style: italic;\n  font-size: 1.2rem;\n  line-height: 2rem;\n  box-sizing: border-box;\n  color: ', ';\n  border-left: 5px solid ', ';\n  margin: 1rem 0;\n  padding: 0.5rem 0 0.5rem 1.5rem;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  font-family: ', ';\n  font-weight: 300;\n  font-style: normal;\n  margin-top: 0.4rem;\n'], ['\n  display: block;\n  font-family: ', ';\n  font-weight: 300;\n  font-style: normal;\n  margin-top: 0.4rem;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StyledBlockquote = _styledComponents2.default.blockquote(_templateObject, (0, _styledTheme.font)('quote'), (0, _styledTheme.palette)('grayscale', 1), (0, _styledTheme.palette)('grayscale', 2, true));
+
+var Cite = _styledComponents2.default.cite(_templateObject2, (0, _styledTheme.font)('primary'));
+
+var Blockquote = function Blockquote(_ref) {
+  var cite = _ref.cite,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['cite', 'children']);
+
+  return _react2.default.createElement(
+    StyledBlockquote,
+    props,
+    _react2.default.createElement(
+      'div',
+      null,
+      children
+    ),
+    cite && _react2.default.createElement(
+      Cite,
+      null,
+      cite
+    )
+  );
+};
+
+Blockquote.propTypes = {
+  cite: _propTypes2.default.string,
+  children: _propTypes2.default.node,
+  reverse: _propTypes2.default.bool
+};
+
+var _default = Blockquote;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(StyledBlockquote, 'StyledBlockquote', '/home/leo/htdocs/bio/src/components/molecules/Blockquote/index.js');
+
+  __REACT_HOT_LOADER__.register(Cite, 'Cite', '/home/leo/htdocs/bio/src/components/molecules/Blockquote/index.js');
+
+  __REACT_HOT_LOADER__.register(Blockquote, 'Blockquote', '/home/leo/htdocs/bio/src/components/molecules/Blockquote/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/molecules/Blockquote/index.js');
+}();
+
+;

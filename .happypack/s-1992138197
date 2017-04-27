@@ -1,0 +1,33 @@
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
+
+import App from 'components/App';
+import { NotFoundPage, HomePage, LoginPage, LoginSignin, LoginSignup, LoginRecover, StaticPage, StaticAbout, FilePage, FileSummaryPage, FileDetailPage, FileSearchPage } from 'components';
+
+var routes = React.createElement(
+  Route,
+  { path: '/', component: App },
+  React.createElement(IndexRoute, { component: HomePage }),
+  React.createElement(
+    Route,
+    { path: '/login', component: LoginPage },
+    React.createElement(Route, { path: 'signin', component: LoginSignin }),
+    React.createElement(Route, { path: 'signup', component: LoginSignup }),
+    React.createElement(Route, { path: 'recover', component: LoginRecover })
+  ),
+  React.createElement(
+    Route,
+    { path: '/file', component: FilePage },
+    React.createElement(Route, { path: 'summary/:id', component: FileSummaryPage }),
+    React.createElement(Route, { path: 'detail/:id', component: FileDetailPage }),
+    React.createElement(Route, { path: 'search', component: FileSearchPage })
+  ),
+  React.createElement(
+    Route,
+    { path: '/static', component: StaticPage },
+    React.createElement(Route, { path: 'about', component: StaticAbout })
+  ),
+  React.createElement(Route, { path: '*', component: NotFoundPage })
+);
+
+export default routes;
