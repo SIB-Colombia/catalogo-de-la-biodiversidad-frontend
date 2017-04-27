@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+// https://github.com/diegohaz/arc/wiki/Testing-components
+import React from 'react'
+import PropTypes from 'prop-types'
 
 module.exports = new Proxy({}, {
   get: (target, property) => {
@@ -6,9 +8,9 @@ module.exports = new Proxy({}, {
 
     Mock.displayName = property
     Mock.propTypes = {
-      children: PropTypes.any
+      children: PropTypes.any,
     }
 
     return Mock
-  }
+  },
 })

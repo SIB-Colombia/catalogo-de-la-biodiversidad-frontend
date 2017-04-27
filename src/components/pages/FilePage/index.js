@@ -1,134 +1,23 @@
-import React from 'react'
-import styled from 'styled-components'
-import config from '../../config'
+import React, {PropTypes} from 'react';
 
-import {
-  PageTemplate,
-  Header,
-  Footer,
-  FileSummary,
-  FileDetail,
-  FileImage,
-  FileList
-} from 'components'
-
-import {Tabs, Tab, Row, Col, ProgressBar} from 'react-materialize';
-
-const Wrapper = styled.div `
-background:#ffffff !important;
-z-index:1 !important;
-.tabs{
-	background:#00838f;
-}
-.tabs .tab a{
-	color :white;
-}
-.main-title{
-	margin: 10px 0px 30px 0px;
-}
-.background-section{
-}
-`
+import {PageTemplate, Header, Footer} from 'components';
 
 class FilePage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      id: this.props.params.fileId,
-      summary: false,
-      // files: [],
-      // detail
-      info: false,
-      // schema: false,
-      // associatedParty: false,
-      reference: false,
-      ancillaryData: false
-    }
   }
+
+  componentWillMount() {}
 
   componentDidMount() {
-    window.scrollTo(0, 0);
-  }
-
-  componentWillMount() {
-    var options = {
-      method: 'GET',
-      // mode: 'cors',
-      // headers: new Headers({
-      // 'Authorization': 'bearer example'
-      // })
-    };
-
-    fetch(`${config.serverAmazon}/record/5661b2a2f3b30194336dc7a6`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      // this.setState({files: data})
-      this.setState({info: data})
-    })
-
-    fetch(`${config.server}/api/file/summary/${this.state.id}`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({summary: data})
-    })
-
-    fetch(`${config.server}/api/file/detail/${this.state.id}`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({'detail': data})
-    })
-
-    /*get Schemas and Data */
-
-    fetch(`${config.server}/api/reference/show/${this.state.id}`).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({'reference': data})
-    })
-
-    fetch(`${config.server}/api/ancillaryData/show/${this.state.id}`).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({'ancillaryData': data})
-    })
 
   }
 
   render() {
-
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
-        <br/>
-        <Wrapper className="container">
-          <div className="card-panel">
-            <h3 className="cyan-text text-darken-4 main-title">Coragyps atratus</h3>
-            <Tabs className='tab-demo z-depth-1'>
-              <Tab title="Resumen" active>
-                {this.state.summary
-                  ? <FileSummary data={this.state.summary}/>
-                  : <div className="center-align">Cargando resumen....
-                    <ProgressBar/></div>}
-              </Tab>
-              <Tab title="Detalles">
-                {this.state.detail && this.state.reference && this.state.ancillaryData
-                  ? <FileDetail data={this.state.detail} reference={this.state.reference} ancillaryData={this.state.ancillaryData}/>
-                  : <div className="center-align">Cargando detalle....
-                    <ProgressBar/></div>}
-                {/* {this.state.detail && this.state.schema && this.state.reference.length > 0 && this.state.ancillaryData.length > 0
-                  ? <FileDetail data={this.state.detail} schema={this.state.schema} data-reference={this.state.reference} data-ancillaryData={this.state.ancillaryData}/>
-                  : <div className="center-align">Cargando detalle....
-                    <ProgressBar/></div>} */}
-              </Tab>
-              <Tab title="Imágenes">
-                <FileImage/>
-              </Tab>
-              <Tab title="Mapas"></Tab>
-              <Tab title="Comunidad"></Tab>
-              <Tab title="Comentarios"></Tab>
-            </Tabs>
-          </div>
-        </Wrapper>
+        {this.props.children}
       </PageTemplate>
     )
   }

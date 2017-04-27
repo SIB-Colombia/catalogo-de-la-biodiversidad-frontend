@@ -1,31 +1,50 @@
 import React from 'react'
 import styled from 'styled-components'
-import {palette} from 'styled-theme'
+import {Grid, Row, Col} from 'react-flexbox-grid'
+import {Link} from 'components';
 
-import {Block, Footer} from 'components'
-// import { Footer } from 'react-materialize';
+const Wrapper = styled.footer `
 
-const Wrapper = styled(Footer)`
+position: absolute;
+right: 0;
+bottom: 0;
+left: 0;
+padding: 15px 0px;
+background-color: #212121;
+text-align: center;
 
 a{
 	margin:0px 5px;
+	color:#f5f5f5;
+	text-decoration: none;
 }
 `
 const FooterPage = (props) => {
   return (
-    <Wrapper className="page-footer grey darken-4">
-      <div className="footer-copyright">
-        <div className="container">
-          <a className="grey-text text-lighten-4 left" href="">
-            Sobre el Catálogo |</a>
-          <a className="grey-text text-lighten-4 left" href="">
-            SIB Colombia |</a>
-          <a className="grey-text text-lighten-4 left" href="">
-            Términos
-          </a>
-          <a className="grey-text text-lighten-4 right" href="">SIB Colombia</a>
-        </div>
-      </div>
+    <Wrapper>
+      <Grid fluid>
+        <Row>
+          <Col xs={12} sm={6} md={6} lg={6}>
+            <Link to={`static/about`}>
+              Sobre el Catálogo
+            </Link>
+            |
+            <Link to={`static/about`}>
+              SIB Colombia
+            </Link>
+            |
+            <Link to={`static/about`}>
+              Términos
+            </Link>
+          </Col>
+          <Col xs={12} sm={6} md={6} lg={6}>
+            <Link to={`static/about`}>
+              SIB Colombia
+            </Link>
+
+          </Col>
+        </Row>
+      </Grid>
     </Wrapper>
   )
 }
