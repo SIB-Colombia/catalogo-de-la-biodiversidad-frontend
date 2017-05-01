@@ -161,7 +161,7 @@ const gutter = {
 };
 const classes = StyleSheet.create({
   img: {
-    width: '70%'
+    width: '95%'
   },
 
   box: {
