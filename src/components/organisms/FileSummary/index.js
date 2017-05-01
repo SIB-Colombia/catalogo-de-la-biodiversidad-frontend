@@ -23,6 +23,8 @@ import Badge from 'material-ui/Badge';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+import MenuItem from 'material-ui/MenuItem';
+import IconMenu from 'material-ui/IconMenu';
 import theme from '../../themes/default';
 
 const Wrapper = styled.div `
@@ -94,9 +96,30 @@ class FileSummary extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInRight">
-          <FloatingActionButton className="btn-primary-floating">
+
+          <IconMenu iconButtonElement={< FloatingActionButton className = "btn-primary-floating" > <ContentAdd/> < /FloatingActionButton>} anchorOrigin={{
+            horizontal: 'right',
+            vertical: 'bottom'
+          }} targetOrigin={{
+            horizontal: 'right',
+            vertical: 'bottom'
+          }}>
+            <MenuItem primaryText="Nomenclatura y Clasificación"/>
+            <MenuItem primaryText="Descripción taxonómica"/>
+            <MenuItem primaryText="Historia Natural I"/>
+            <MenuItem primaryText="Historia Natural II"/>
+            <MenuItem primaryText="Invasividad"/>
+            <MenuItem primaryText="Hábitat y Distribución"/>
+            <MenuItem primaryText="Dinámica poblacional y Amenazas"/>
+            <MenuItem primaryText="Usos, Manejo y Conservación"/>
+            <MenuItem primaryText="Partes asociadas"/>
+            <MenuItem primaryText="Referencias"/>
+            <MenuItem primaryText="Información Adicional"/>
+          </IconMenu>
+
+          {/* <FloatingActionButton className="btn-primary-floating">
             <ContentAdd/>
-          </FloatingActionButton>
+          </FloatingActionButton> */}
         </div>
         <Row>
           <Col xs={12} lg={12}>
@@ -115,7 +138,7 @@ class FileSummary extends React.Component {
                 <Tabs initialSelectedIndex={0} className="colorTab">
                   <Tab label="Resumen">
                     <Row className="animated slideInUp">
-                      <Col xs={12} lg={12} >
+                      <Col xs={12} lg={12}>
                         <br/>
                         <Paper zDepth={1} className="box-content">
                           <h3 className="title-xs align-left color-secondary bold">Imágenes</h3>
