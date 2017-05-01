@@ -102,7 +102,12 @@ class Header extends React.Component {
       } />, < Link to = "/file/search" > < RaisedButton label = "Buscar" className = "btn-secondary-modal" onTouchTap = {
         this.handleSearch
       } /> </Link>
-    ]
+    ];
+
+    const customContentStyle = {
+      width: '90%',
+      maxWidth: 'none'
+    };
 
     return (
       <Wrapper>
@@ -149,7 +154,7 @@ class Header extends React.Component {
               </Col>
             </Row>
           </Grid>
-          <Dialog titleClassName="modal-header-style" title="Búsqueda avanzada" actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} autoScrollBodyContent={true}>
+          <Dialog titleClassName="modal-header-style" title="Búsqueda avanzada" contentStyle={customContentStyle} actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} autoScrollBodyContent={true}>
             <HeaderSearchAdvance/>
           </Dialog>
         </Paper>
