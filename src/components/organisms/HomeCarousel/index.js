@@ -1,25 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import Carousel from 'react-slick'
-import {Grid, Row, Col} from 'react-flexbox-grid'
-import FlatButton from 'material-ui/FlatButton';
+import React from 'react';
+import styled from 'styled-components';
+import {Link, HomeCard} from 'components';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import Carousel from 'react-slick';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import {Link} from 'components';
-
 const Wrapper = styled.div `
-
-.box-home{
-  background: white;
-  position: relative;
-
-}
 
 `
 class HomeCarousel extends React.Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       width: 0,
       height: 0
@@ -52,7 +44,7 @@ class HomeCarousel extends React.Component {
       infinite: true,
       speed: 500,
       autoplay: true,
-      // lazyLoad: true,
+      lazyLoad: true,
       slidesToShow: 1,
       adaptiveHeight: true,
       slidesToScroll: 1,
@@ -83,13 +75,9 @@ class HomeCarousel extends React.Component {
       <Wrapper className="grey lighten-4">
         <Carousel ref={c => this.slider = c} {...settings}>
           {background.map((record, i) => (
-            <div key={i} className="box-home" style={{
-              color: "white",
-              height: this.state.height - 250,
-              backgroundImage: `url(/background/${record})`,
-              backgroundPosition: 'center center',
-              backgroundSize: 'cover'
-            }}></div>
+            <div key={i}>
+              <HomeCard record={record} height={this.state.height}/>
+            </div>
           ))}
         </Carousel>
       </Wrapper>

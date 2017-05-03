@@ -1,6 +1,6 @@
-import React, {PropTypes} from 'react'
+import React, {PropTypes} from 'react';
 import {render} from 'react-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet';
 
 const Wrapper = styled.div `
@@ -18,7 +18,6 @@ class HumboldtMap extends React.Component {
   }
 
   render() {
-
     return (
       <Wrapper>
         <Map center={position} zoom={5}>
@@ -26,13 +25,6 @@ class HumboldtMap extends React.Component {
         </Map>
       </Wrapper>
     )
-    /*
-			<Marker position={position}>
-				<Popup>
-					<span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-				</Popup>
-			</Marker>
-	*/
   }
 }
 

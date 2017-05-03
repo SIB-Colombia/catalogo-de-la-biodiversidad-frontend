@@ -1,5 +1,6 @@
-// https://github.com/diegohaz/arc/wiki/Atomic-Design#do-not-worry
 const req = require.context('.', true, /\.\/[^/]+\/[^/]+\/index\.js$/)
+
+module.exports['Theme'] = require('./themes/default').default;
 
 req.keys().forEach((key) => {
   const componentName = key.replace(/^.+\/([^/]+)\/index\.js/, '$1')

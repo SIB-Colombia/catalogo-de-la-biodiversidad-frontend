@@ -1,23 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import Carousel from 'react-slick'
+import React from 'react';
+import styled from 'styled-components';
+import {Link, CommunityCard} from 'components';
+import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-import {Link} from 'components';
 
 const Wrapper = styled.div `
 
-margin-bottom:20px;
 padding-bottom:30px;
 background: #dadada;
-
-.space{
-  margin: 4px;
-}
-
 .slick-next:before, .slick-prev:before {
   font-size: 20px;
   line-height: 1;
@@ -29,29 +23,6 @@ h3{
   text-align: center;
   font-weight: lighter;
 }
-
-.box-community{
-
-  text-align: center;
-  padding: 30px;
-
-.box-circle{
-
-  border-radius: 100%;
-  border:10px solid white;
-  img{
-    width: 100%;
-  }
-
-}
-.name-user{
-  color:#333;
-  padding-top: 10px;
-}
-
-
-}
-
 `
 class CommunityCarousel extends React.Component {
 
@@ -79,6 +50,7 @@ class CommunityCarousel extends React.Component {
       infinite: true,
       speed: 500,
       slidesToShow: 4,
+      lazyLoad: true,
       slidesToScroll: 1,
       draggable: false,
       responsive: [
@@ -95,7 +67,7 @@ class CommunityCarousel extends React.Component {
         }, {
           breakpoint: 1368,
           settings: {
-            slidesToShow: 4
+            slidesToShow: 5
           }
         }, {
           breakpoint: 2000,
@@ -110,26 +82,18 @@ class CommunityCarousel extends React.Component {
     };
 
     return (
-      <Wrapper className="grey lighten-4">
+      <Wrapper>
         <Grid>
           <Row>
             <Col xs={12}>
-
               <h3>Comunidad</h3>
-
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
-                  <div key={i} className="box-community">
-                    <div className="box-circle">
-                      <center>
-                        <img src="/avatar.png"/>
-                      </center>
-                    </div>
-                    <div className="name-user">Usuario</div>
+                  <div key={i}>
+                    <CommunityCard record={record}/>
                   </div>
                 ))}
               </Carousel>
-
             </Col>
           </Row>
           <br/>

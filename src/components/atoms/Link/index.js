@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled, { css } from 'styled-components'
-import { font, palette } from 'styled-theme'
-import { Link as RouterLink } from 'react-router'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font, palette } from 'styled-theme';
+import { Link as RouterLink } from 'react-router';
 
 const styles = css`
   font-family: ${font('primary')};
@@ -37,4 +37,4 @@ Link.defaultProps = {
   palette: 'primary',
 }
 
-export default Link
+export default Link;

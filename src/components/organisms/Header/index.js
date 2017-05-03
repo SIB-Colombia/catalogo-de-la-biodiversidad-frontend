@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IconLink, Link, HeaderSearchAdvance} from 'components';
+import {IconLink, Link, HeaderSearchAdvance, Theme} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -10,7 +10,7 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import Tune from 'material-ui/svg-icons/image/tune';
 import Search from 'material-ui/svg-icons/action/search';
-import theme from '../../themes/default';
+// import theme from '../../themes/default';
 
 const Wrapper = styled.nav `
 position:fixed;
@@ -22,7 +22,7 @@ z-index: 2000;
 	text-align: center;
 	padding: 6px 0px;
 	.box-search-color{
-		background: ${theme.palette.grayscale[1]};
+		background: ${Theme.palette.grayscale[1]};
 	}
 	.box-nav-advance{
 	  cursor: pointer;
@@ -38,7 +38,7 @@ z-index: 2000;
 	}
 }
 svg{
-	color: ${theme.palette.grayscale[5]} !important;
+	color: ${Theme.palette.grayscale[5]} !important;
 }
 .box-link{
 	text-align:right;
@@ -59,7 +59,7 @@ svg{
 const Title = styled.div `
 display:inline-block;
 vertical-align: middle;
-color:${theme.palette.grayscale[6]};
+color:${Theme.palette.grayscale[6]};
 `
 const TitleMain = styled.div `
 font-size:14px;

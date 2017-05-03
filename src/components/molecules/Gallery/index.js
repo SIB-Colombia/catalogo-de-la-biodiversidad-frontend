@@ -1,10 +1,9 @@
 import React, {Component, PropTypes} from 'react';
 import {css, StyleSheet} from 'aphrodite/no-important';
 import {Link} from 'components';
-import Lightbox from 'react-images';
 import {Grid, Row, Col} from 'react-flexbox-grid';
+import Lightbox from 'react-images';
 import Carousel from 'react-slick';
-import RaisedButton from 'material-ui/RaisedButton';
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import FlatButton from 'material-ui/FlatButton';
@@ -17,38 +16,28 @@ class Gallery extends Component {
       lightboxIsOpen: false,
       currentImage: 0
     };
-
-    this.closeLightbox = this.closeLightbox.bind(this);
-    this.gotoNext = this.gotoNext.bind(this);
-    this.gotoPrevious = this.gotoPrevious.bind(this);
-    this.gotoImage = this.gotoImage.bind(this);
-    this.handleClickImage = this.handleClickImage.bind(this);
-    this.openLightbox = this.openLightbox.bind(this);
-    // carousel
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
   }
-  openLightbox(index, event) {
+  openLightbox = (index, event) => {
     event.preventDefault();
     this.setState({currentImage: index, lightboxIsOpen: true});
   }
-  closeLightbox() {
+  closeLightbox = () => {
     this.setState({currentImage: 0, lightboxIsOpen: false});
   }
-  gotoPrevious() {
+  gotoPrevious = () => {
     this.setState({
       currentImage: this.state.currentImage - 1
     });
   }
-  gotoNext() {
+  gotoNext = () => {
     this.setState({
       currentImage: this.state.currentImage + 1
     });
   }
-  gotoImage(index) {
+  gotoImage = (index) => {
     this.setState({currentImage: index});
   }
-  handleClickImage() {
+  handleClickImage = () => {
     if (this.state.currentImage === this.props.images.length - 1)
       return;
 
@@ -57,10 +46,10 @@ class Gallery extends Component {
 
   //Carousel
 
-  next() {
+  next = () => {
     this.slider.slickNext()
   }
-  previous() {
+  previous = () => {
     this.slider.slickPrev()
   }
 
@@ -87,7 +76,7 @@ class Gallery extends Component {
         }, {
           breakpoint: 1368,
           settings: {
-            slidesToShow: 4
+            slidesToShow: 5
           }
         }, {
           breakpoint: 2000,

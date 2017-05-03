@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'components';
+import {Link, Theme, GroupCard} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -15,17 +15,14 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-import theme from '../../themes/default';
+// import theme from '../../themes/default';
 
 const Wrapper = styled.div `
-
-background: ${theme.palette.grayscale[3]};
+background: ${Theme.palette.grayscale[3]};
 padding: 35px 0 55px 0;
-
-.space{
-  margin: 4px;
+.space-card{
+  margin: 0px 10px;
 }
-
 .slick-next:before, .slick-prev:before {
   font-size: 20px;
   line-height: 1;
@@ -37,8 +34,6 @@ h3{
   text-align: center;
   font-weight: lighter;
 }
-
-
 `
 class GroupCarousel extends React.Component {
 
@@ -66,6 +61,7 @@ class GroupCarousel extends React.Component {
       infinite: true,
       speed: 500,
       slidesToShow: 4,
+      lazyLoad: true,
       slidesToScroll: 1,
       draggable: false,
       responsive: [
@@ -82,7 +78,7 @@ class GroupCarousel extends React.Component {
         }, {
           breakpoint: 1368,
           settings: {
-            slidesToShow: 4
+            slidesToShow: 5
           }
         }, {
           breakpoint: 2000,
@@ -97,31 +93,18 @@ class GroupCarousel extends React.Component {
     };
 
     return (
-      <Wrapper className="grey lighten-4">
+      <Wrapper>
         <Grid>
           <Row>
             <Col xs={12}>
-
               <h3>Grupos</h3>
-
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
-                    <Link to={`/file/summary/${record.id}`}>
-                      <Card className="space">
-                        <CardHeader avatar="/star2.png" className="card-star"/>
-                        <CardMedia>
-                          <img src="/bird1.jpg"/>
-                        </CardMedia>
-                        <CardTitle title="Título" subtitle="Subtítulo"/> {/* <CardText>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </CardText> */}
-                      </Card>
-                    </Link>
+                    <GroupCard record={record}/>
                   </div>
                 ))}
               </Carousel>
-
             </Col>
           </Row>
           <br/>
@@ -139,4 +122,4 @@ class GroupCarousel extends React.Component {
   }
 }
 
-export default GroupCarousel
+export default GroupCarousel;

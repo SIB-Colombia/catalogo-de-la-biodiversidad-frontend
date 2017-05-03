@@ -1,7 +1,6 @@
-import React from 'react'
+import React from 'react';
+import logo from './logo.svg';
 
-import logo from './logo.svg'
+const LogoImage = props => <img alt="Logo" {...props} src={logo}/>
 
-const LogoImage = props => <img alt="Logo" {...props} src={logo} />
-
-export default LogoImage
+export default LogoImage;

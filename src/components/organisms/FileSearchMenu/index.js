@@ -1,33 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import Carousel from 'react-slick'
-import {Grid, Row, Col} from 'react-flexbox-grid'
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  CardTitle,
-  CardText
-} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import React from 'react';
+import styled from 'styled-components';
+import Carousel from 'react-slick';
+import {Grid, Row, Col} from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
-
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-
 import Drawer from 'material-ui/Drawer';
 import Chip from 'material-ui/Chip';
-
-import ContentFilter from 'material-ui/svg-icons/content/filter-list';
-
 import {List, ListItem} from 'material-ui/List';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Subheader from 'material-ui/Subheader';
-import _ from 'lodash';
-
 import {Link} from 'components';
 
 const Wrapper = styled.div `
@@ -197,4 +180,4 @@ class FileSearchMenu extends React.Component {
   }
 }
 
-export default FileSearchMenu
+export default FileSearchMenu;
