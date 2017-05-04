@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'components';
+import {Link, FileCard} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -19,18 +19,11 @@ import Comment from 'material-ui/svg-icons/communication/comment';
 import Badge from 'material-ui/Badge';
 
 const Wrapper = styled.div `
-
 margin-bottom:20px;
 padding-bottom:30px;
-
-.space   {
-  margin: 4px;
+.space-card{
+  margin: 0px 10px;
 }
-
-.box-history{
-  float: right;
-}
-
 .slick-next:before, .slick-prev:before {
   font-size:   20px;
   line-height: 1;
@@ -64,6 +57,7 @@ class FileCarousel extends React.Component {
       infinite: true,
       speed: 500,
       slidesToShow: 4,
+      lazyLoad: true,
       slidesToScroll: 1,
       draggable: false,
       responsive: [
@@ -80,7 +74,7 @@ class FileCarousel extends React.Component {
         }, {
           breakpoint: 1368,
           settings: {
-            slidesToShow: 4
+            slidesToShow: 5
           }
         }, {
           breakpoint: 2000,
@@ -99,38 +93,13 @@ class FileCarousel extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
-                    <Link to={`/file/summary/${record.id}`}>
-                      <Card className="space">
-                        <CardMedia>
-                          <img src={record.image} />
-                        </CardMedia>
-                        <CardTitle title={record.name} subtitle={record.description}>
-                          <div className="box-history align-right">
-                            <Badge badgeContent={'EX'} className="badge cr"/>
-                            <Badge badgeContent={'CR'} className="badge ex"/>
-                            <Badge badgeContent={'EN'} className="badge en"/>
-                          </div>
-                        </CardTitle>
-                        {/* <CardText>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </CardText> */}
-                        <CardActions>
-                          {/* <RaisedButton label="Ver ficha" primary={true} fullWidth={true}/> */}
-                          <FlatButton fullWidth={true} className="btn-secondary">
-                            <Comment/>
-                            {record.comment}
-                          </FlatButton>
-                        </CardActions>
-                      </Card>
-                    </Link>
+                    <FileCard record={record}/>
                   </div>
                 ))}
               </Carousel>
-
             </Col>
           </Row>
           <br/>

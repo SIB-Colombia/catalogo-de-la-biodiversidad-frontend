@@ -1,46 +1,49 @@
-import React from 'react'
-import styled from 'styled-components'
-import Carousel from 'react-slick'
-import {Grid, Row, Col} from 'react-flexbox-grid'
-import {
-  Card,
-  CardActions,
-  CardHeader,
-  CardMedia,
-  CardTitle,
-  CardText
-} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import React from 'react';
+import styled from 'styled-components';
+import Carousel from 'react-slick';
+import {Grid, Row, Col} from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Menu from 'material-ui/svg-icons/navigation/menu';
-
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-
 import Drawer from 'material-ui/Drawer';
 import Chip from 'material-ui/Chip';
-
-import ContentFilter from 'material-ui/svg-icons/content/filter-list';
-
 import {List, ListItem} from 'material-ui/List';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Subheader from 'material-ui/Subheader';
-import _ from 'lodash';
-
-import {Link} from 'components';
+import {Link, Theme} from 'components';
 
 const Wrapper = styled.div `
+display: inline-block;
+float: left;
+left: -32px;
+position: relative;
+width: 35px;
 
-.back{
-  margin-top: 60px;
+@media ${Theme.media.sm}{
+position: absolute;
+left: 0;
+top:0;
+button{
+    width: 30px !important;
 }
-  .btnFilters{
-    position: fixed;
-    left: 15px;
-    bottom: 15px;
-    z-index: 10;
+}
+.drawer{
+  margin-top: 65px;
+}
+.btnFilters{
+    /*position: fixed;
+    left: 0px;
+    top: 0px;*/
+}
+.style-btn{
+  box-shadow: none !important;
+
+  button{
+    height: 64px !important;
+    border-radius: 0 !important;
   }
+}
 
 `
 class FileSearchMenu extends React.Component {
@@ -178,13 +181,12 @@ class FileSearchMenu extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInLeft">
-          <FloatingActionButton onTouchTap={this.handleToggleMenu} className="btn-primary-floating">
+          <FloatingActionButton onTouchTap={this.handleToggleMenu} className="btn-primary-floating style-btn">
             <Menu/>
           </FloatingActionButton>
         </div>
-        <Drawer open={this.state.open}>
+        <Drawer open={this.state.open} containerClassName="drawer">
           <List>
-            <RaisedButton label="Ocultar Menú" onTouchTap={this.handleToggleMenu} icon={< ArrowBack />} fullWidth={true} labelPosition="after" className="back"/>
             <Subheader>Filtros activos</Subheader>
             <div style={this.styles.wrapper}>
               {this.state.chipData.map(this.renderChip, this)}
@@ -197,4 +199,4 @@ class FileSearchMenu extends React.Component {
   }
 }
 
-export default FileSearchMenu
+export default FileSearchMenu;

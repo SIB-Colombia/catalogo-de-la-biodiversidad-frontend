@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import Paper from 'material-ui/Paper';
-import {Link} from 'components';
-import theme from '../../themes/default';
+import {Link, Theme} from 'components';
 
 const Wrapper = styled.div `
-background: ${theme.palette.grayscale[2]};
+
+background: ${Theme.palette.grayscale[2]};
 padding: 50px 5px;
 .paper{
   text-align: center;

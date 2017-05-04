@@ -34,6 +34,11 @@ class FileSummaryPage extends React.Component {
     this.setState({images: Config.service.images})
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.params.id);
+
+  }
+
   render() {
 
     return (
@@ -43,7 +48,9 @@ class FileSummaryPage extends React.Component {
           <br/>
           <Row>
             <Col xs={12}>
-              <Paper zDepth={1} className="box-content" style={{paddingTop:'20px'}}>
+              <Paper zDepth={1} className="box-content" style={{
+                paddingTop: '20px'
+              }}>
                 <h3 className="title-xs color-secondary bold">Fichas relacionadas</h3>
                 {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}
               </Paper>

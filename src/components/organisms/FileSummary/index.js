@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import styled from 'styled-components';
 import {font, palette} from 'styled-theme';
-import {IconLink, Link, Gallery, HumboldtMap} from 'components';
+import {IconLink, Link, Gallery, HumboldtMap, Theme} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Carousel from 'react-slick';
 import {List, ListItem} from 'material-ui/List';
@@ -23,36 +23,33 @@ import Badge from 'material-ui/Badge';
 import {grey400, darkBlack, lightBlack} from 'material-ui/styles/colors';
 import {blue500, yellow600} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
-import theme from '../../themes/default';
+import MenuItem from 'material-ui/MenuItem';
+import IconMenu from 'material-ui/IconMenu';
 
 const Wrapper = styled.div `
 padding-top: 200px;
-
 .btnFilters{
   position: fixed;
   right: 15px;
   bottom: 15px;
   z-index: 10;
 }
-
 .box-history{
   float: right;
 }
-
 .map{
   padding: 20px;
   img{
     width: 100%;
   }
 }
-
 .main-title{
-  color: ${theme.palette.grayscale[6]};
+  color: ${Theme.palette.grayscale[6]};
   font-style: italic;
   float:left;
 }
 .main-subtitle{
-  color: ${theme.palette.grayscale[5]};
+  color: ${Theme.palette.grayscale[5]};
   line-height: 4;
   margin-left: 30px;
 }
@@ -64,16 +61,16 @@ padding-top: 200px;
 	/*margin-top:20px;*/
 }
 .colorTab > div:first-child{
-	background-color: ${theme.palette.grayscale[1]} !important;
+	background-color: ${Theme.palette.grayscale[1]} !important;
 }
 .colorTab > div:nth-child(2) div{
-	background-color: ${theme.palette.secondary[0]} !important;
+	background-color: ${Theme.palette.secondary[0]} !important;
 }
 .colorTab > div > button{
-  color: ${theme.palette.grayscale[6]} !important;
+  color: ${Theme.palette.grayscale[6]} !important;
   font-weight: 700 !important;
   &:not(:last-child){
-    border-right: 2px solid ${theme.palette.grayscale[1]} !important;
+    border-right: 2px solid ${Theme.palette.grayscale[1]} !important;
   }
 }
 `
@@ -94,9 +91,30 @@ class FileSummary extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInRight">
-          <FloatingActionButton className="btn-primary-floating">
+
+          <IconMenu iconButtonElement={< FloatingActionButton className = "btn-primary-floating" > <ContentAdd/> < /FloatingActionButton>} anchorOrigin={{
+            horizontal: 'right',
+            vertical: 'bottom'
+          }} targetOrigin={{
+            horizontal: 'right',
+            vertical: 'bottom'
+          }}>
+            <MenuItem primaryText="Nomenclatura y Clasificación"/>
+            <MenuItem primaryText="Descripción taxonómica"/>
+            <MenuItem primaryText="Historia Natural I"/>
+            <MenuItem primaryText="Historia Natural II"/>
+            <MenuItem primaryText="Invasividad"/>
+            <MenuItem primaryText="Hábitat y Distribución"/>
+            <MenuItem primaryText="Dinámica poblacional y Amenazas"/>
+            <MenuItem primaryText="Usos, Manejo y Conservación"/>
+            <MenuItem primaryText="Partes asociadas"/>
+            <MenuItem primaryText="Referencias"/>
+            <MenuItem primaryText="Información Adicional"/>
+          </IconMenu>
+
+          {/* <FloatingActionButton className="btn-primary-floating">
             <ContentAdd/>
-          </FloatingActionButton>
+          </FloatingActionButton> */}
         </div>
         <Row>
           <Col xs={12} lg={12}>
@@ -115,7 +133,7 @@ class FileSummary extends React.Component {
                 <Tabs initialSelectedIndex={0} className="colorTab">
                   <Tab label="Resumen">
                     <Row className="animated slideInUp">
-                      <Col xs={12} lg={12} >
+                      <Col xs={12} lg={12}>
                         <br/>
                         <Paper zDepth={1} className="box-content">
                           <h3 className="title-xs align-left color-secondary bold">Imágenes</h3>

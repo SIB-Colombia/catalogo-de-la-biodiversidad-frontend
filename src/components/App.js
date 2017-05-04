@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {injectGlobal, ThemeProvider} from 'styled-components'
-import theme from './themes/default'
+import Theme from './themes/default';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 injectGlobal `
@@ -20,61 +20,61 @@ body {
   box-sizing: inherit;
 }
 *{
-  font-family: ${theme.fonts.primary} !important;
+  font-family: ${Theme.fonts.primary} !important;
 }
 a{
   text-decoration: none !important;
 }
 .modal-header-style{
   color:white !important;
-  background:  ${theme.palette.secondary[0]};
+  background:  ${Theme.palette.secondary[0]};
 }
 
 /*Titles*/
 
 .title-xs{
-  font-size: ${theme.fonts.xs} !important;
+  font-size: ${Theme.fonts.xs} !important;
   text-align: center;
   margin: 0;
   font-weight: lighter;
   padding: 0 0 15px 0;
-  color:${theme.palette.grayscale[6]} !important;
+  color:${Theme.palette.grayscale[6]} !important;
   &.bold{
     font-weight: bold;
   }
 }
 
 .title-sm{
-  font-size: ${theme.fonts.xs} !important;
+  font-size: ${Theme.fonts.xs} !important;
   text-align: center;
   margin: 0;
   font-weight: lighter;
   padding: 0 0 15px 0;
-  font-size: ${theme.fonts.sm} !important;
+  font-size: ${Theme.fonts.sm} !important;
   &.bold{
     font-weight: bold;
   }
 }
 
 .title-md{
-  font-size: ${theme.fonts.xs} !important;
+  font-size: ${Theme.fonts.xs} !important;
   text-align: center;
   margin: 0;
   font-weight: lighter;
   padding: 0 0 15px 0;
-  font-size: ${theme.fonts.md} !important;
+  font-size: ${Theme.fonts.md} !important;
   &.bold{
     font-weight: bold;
   }
 }
 
 .title-lg{
-  font-size: ${theme.fonts.xs} !important;
+  font-size: ${Theme.fonts.xs} !important;
   text-align: center;
   margin: 0;
   font-weight: lighter;
   zpadding: 0 0 15px 0;
-  font-size: ${theme.fonts.lg} !important;
+  font-size: ${Theme.fonts.lg} !important;
   &.bold{
     font-weight: bold;
   }
@@ -83,24 +83,25 @@ a{
 /*Butons*/
 
 .btn-primary, .btn-primary-floating button{
-  background-color: ${theme.palette.primary[0]} !important;
+  background-color: ${Theme.palette.primary[0]} !important;
   color:white !important;
+
   svg{
     color:white !important;
     vertical-align: text-top;
   }
   &.inverse{
-    background-color: ${theme.palette.grayscale[0]} !important;
-    color:${theme.palette.primary[0]} !important;
+    background-color: ${Theme.palette.grayscale[0]} !important;
+    color:${Theme.palette.primary[0]} !important;
     svg{
-      color:${theme.palette.primary[0]} !important;
+      color:${Theme.palette.primary[0]} !important;
     }
   }
 }
 
 .btn-primary-modal{
   button{
-    background-color: ${theme.palette.primary[0]} !important;
+    background-color: ${Theme.palette.primary[0]} !important;
   }
   span{
     color:white !important;
@@ -108,24 +109,27 @@ a{
 }
 
 .btn-secondary, .btn-secondary-floating button,.btn-secondary.modal button{
-  background-color: ${theme.palette.secondary[0]} !important;
-  color:white !important;
+  background-color: ${Theme.palette.secondary[0]} !important;
+  &.padding{
+    color:white !important;
+  }
+  padding: 0 10px !important;
   svg{
     color:white !important;
     vertical-align: text-top;
   }
   &.inverse{
-    background-color: ${theme.palette.grayscale[0]} !important;
-    color:${theme.palette.secondary[0]} !important;
+    background-color: ${Theme.palette.grayscale[0]} !important;
+    color:${Theme.palette.secondary[0]} !important;
     svg{
-      color:${theme.palette.secondary[0]} !important;
+      color:${Theme.palette.secondary[0]} !important;
     }
   }
 }
 
 .btn-secondary-modal{
   button{
-    background-color: ${theme.palette.secondary[0]} !important;
+    background-color: ${Theme.palette.secondary[0]} !important;
   }
   span{
     color:white !important;
@@ -148,17 +152,17 @@ a{
     }
     &.cr{
       span{
-        background: ${theme.palette.basescale[9]} !important;
+        background: ${Theme.palette.basescale[9]} !important;
       }
     }
     &.ex{
       span{
-        background: ${theme.palette.basescale[7]} !important;
+        background: ${Theme.palette.basescale[7]} !important;
       }
     }
     &.en{
       span{
-        background: ${theme.palette.basescale[8]} !important;
+        background: ${Theme.palette.basescale[8]} !important;
       }
     }
 }
@@ -169,7 +173,7 @@ a{
   padding: 0 5px !important;
 
   img{
-    background-color: ${theme.palette.secondary[0]} !important;
+    background-color: ${Theme.palette.secondary[0]} !important;
     padding: 5px 5px 7px 5px !important;
     width: 30px !important;
     height: 30px !important;
@@ -181,34 +185,34 @@ a{
 
 
 span[role=menuitem] {
-    color: ${theme.palette.text[0]} !important;
+    color: ${Theme.palette.text[0]} !important;
 }
 
 /*Colors*/
 
 .color-primary{
-  color: ${theme.palette.primary[0]} !important;
+  color: ${Theme.palette.primary[0]} !important;
 }
 .color-secondary{
-  color: ${theme.palette.secondary[0]} !important;
+  color: ${Theme.palette.secondary[0]} !important;
 }
 .color-text{
-  color: ${theme.fonts.text[0]} !important;
+  color: ${Theme.fonts.text[0]} !important;
 }
 
 /*Aligns*/
 
 .align-center{
-  text-align: center;
+  text-align: center !important;
 }
 .align-justify{
-  text-align: justify;
+  text-align: justify !important;
 }
 .align-left{
-  text-align: left;
+  text-align: left !important;
 }
 .align-right{
-  text-align: right;
+  text-align: right !important;
 }
 `
 
@@ -240,7 +244,7 @@ const App = ({children}) => {
     background-position: center center;
     background-attachment:fixed;
     `
-    : `background: ${theme.palette.grayscale[1]};`;
+    : `background: ${Theme.palette.grayscale[1]};`;
 
   injectGlobal `
   body{
@@ -249,7 +253,7 @@ const App = ({children}) => {
   `
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={Theme}>
       {children}
     </MuiThemeProvider>
   )

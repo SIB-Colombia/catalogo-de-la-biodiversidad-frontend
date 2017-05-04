@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import {IconLink, Link} from 'components'
+import {IconLink, Link} from 'components';
 
 const Wrapper = styled.div `
 

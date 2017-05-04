@@ -1,7 +1,6 @@
-import React from 'react'
-import {Route, IndexRoute} from 'react-router'
-
-import App from 'components/App'
+import React from 'react';
+import {Route, IndexRoute} from 'react-router';
+import App from 'components/App';
 import {
   NotFoundPage,
   HomePage,
@@ -15,7 +14,7 @@ import {
   FileSummaryPage,
   FileDetailPage,
   FileSearchPage
-} from 'components'
+} from 'components';
 
 const routes = (
   <Route path="/" component={App}>
@@ -37,4 +36,4 @@ const routes = (
   </Route>
 )
 
-export default routes
+export default routes;
