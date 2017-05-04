@@ -28,8 +28,9 @@ class FileSearchPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={< Header />} footer={< Footer />}>
-        <FileSearchMenu/> {this.state.files.length > 0 && <FileSearchResult data={this.state.files}/>}
+      <PageTemplate header={< Header filter={<FileSearchMenu/>} />} footer={< Footer />}>
+        {/* <FileSearchMenu/>  */}
+        {this.state.files.length > 0 && <FileSearchResult data={this.state.files}/>}
       </PageTemplate>
     )
   }

@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import {Link, FileCard, FileCardHorizontal, Theme} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Carousel from 'react-slick';
@@ -113,4 +113,4 @@ class FileSearchResult extends React.Component {
   }
 }
 
-export default FileSearchResult
+export default FileSearchResult;
