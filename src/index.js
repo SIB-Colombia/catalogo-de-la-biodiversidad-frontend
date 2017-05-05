@@ -3,21 +3,24 @@ import React from 'react';
 import {render} from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
-import {createHistory} from 'history';
-import {Router, useRouterHistory} from 'react-router';
 
-import routes from 'routes';
+import {BrowserRouter} from 'react-router-dom';
+
+import {basename} from 'config';
+import App from 'components/App';
+
+const renderApp = () => (
+  <BrowserRouter basename={basename}>
+    <App/>
+  </BrowserRouter>
+);
 
 const root = document.getElementById('app');
-const history = useRouterHistory(createHistory)({basename: process.env.PUBLIC_PATH});
-
-const renderApp = () => <Router key={Math.random()} history={history} routes={routes}/>
-
 render(renderApp(), root);
 
 if (module.hot) {
-  module.hot.accept('routes', () => {
-    require('routes')
-    render(renderApp(), root)
+  module.hot.accept('components/App', () => {
+    require('components/App');
+    render(renderApp(), root);
   })
 }

@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Theme} from 'components';
 
 const Wrapper = styled.div `
-
 `
 const Header = styled.header `
     margin-bottom:65px;
 `
 
-const Hero = styled.section ``
+const Hero = styled.section `
+
+`
 
 const Content = styled.section `
   height: 100%;
@@ -46,4 +46,4 @@ const PageTemplate = ({
 //   children: PropTypes.any.isRequired
 // }
 
-export default PageTemplate
+export default PageTemplate;

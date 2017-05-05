@@ -1,4 +1,4 @@
-const associatedPartySchema = {
+const AssociatedPartySchema = {
   "schema": {
     "type": "object",
     "title": "Comment",
@@ -48,4 +48,4 @@ const associatedPartySchema = {
   ]
 }
 
-export default associatedPartySchema;
+export default AssociatedPartySchema;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import {
@@ -9,9 +9,10 @@ import {
   FileCarousel,
   CategoryCarousel,
   GroupCarousel,
-  CommunityCarousel,
-  Config
-} from 'components'
+  CommunityCarousel
+} from 'components';
+
+import * as FileService from '../../../services/FileService';
 
 class HomePage extends React.Component {
 
@@ -25,7 +26,8 @@ class HomePage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
-    this.setState({files: Config.service.files})
+    // console.log(this.props.location.pathname);
+    this.setState({files: FileService.getFiles()});
   }
 
   handleChange = (event, index, value) => this.setState({value});
@@ -52,4 +54,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage
+export default HomePage;

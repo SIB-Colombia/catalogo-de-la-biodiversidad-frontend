@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import fetch from 'isomorphic-fetch';
 import Paper from 'material-ui/Paper';
+import {injectGlobal} from 'styled-components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import SchemaForm from 'react-schema-form';
 
@@ -8,11 +9,12 @@ import {
   PageTemplate,
   Header,
   Footer,
-  Config,
   FileSummary,
   FileCarousel,
   FileComment
 } from 'components';
+
+import * as FileService from '../../../services/FileService';
 
 class FileSummaryPage extends React.Component {
 
@@ -28,15 +30,21 @@ class FileSummaryPage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
-
-    this.setState({id: this.props.params.id})
-    this.setState({files: Config.service.files})
-    this.setState({images: Config.service.images})
+    injectGlobal `
+      body{
+        background-image: url(/background/tucan.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-attachment:fixed;
+      }
+    `;
+    this.setState({id: this.props.match.params.id})
+    this.setState({files: FileService.getFiles()})
+    this.setState({images: FileService.getImages()})
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.params.id);
-
+    console.log(this.props.match.params.id);
   }
 
   render() {

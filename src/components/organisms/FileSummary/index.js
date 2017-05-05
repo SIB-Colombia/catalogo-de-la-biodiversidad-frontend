@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import styled from 'styled-components';
-import {font, palette} from 'styled-theme';
 import {IconLink, Link, Gallery, HumboldtMap, Theme} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Carousel from 'react-slick';
@@ -25,6 +24,7 @@ import {blue500, yellow600} from 'material-ui/styles/colors';
 import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
 import MenuItem from 'material-ui/MenuItem';
 import IconMenu from 'material-ui/IconMenu';
+import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 padding-top: 200px;
@@ -44,12 +44,12 @@ padding-top: 200px;
   }
 }
 .main-title{
-  color: ${Theme.palette.grayscale[6]};
+  color:${palette('grayscale', 6)};
   font-style: italic;
   float:left;
 }
 .main-subtitle{
-  color: ${Theme.palette.grayscale[5]};
+  color:${palette('grayscale', 5)};
   line-height: 4;
   margin-left: 30px;
 }
@@ -61,16 +61,16 @@ padding-top: 200px;
 	/*margin-top:20px;*/
 }
 .colorTab > div:first-child{
-	background-color: ${Theme.palette.grayscale[1]} !important;
+	background-color: ${palette('grayscale', 1)} !important;
 }
 .colorTab > div:nth-child(2) div{
-	background-color: ${Theme.palette.secondary[0]} !important;
+	background-color: ${palette('secondary', 0)} !important;
 }
 .colorTab > div > button{
-  color: ${Theme.palette.grayscale[6]} !important;
+  color: ${palette('grayscale', 6)} !important;
   font-weight: 700 !important;
   &:not(:last-child){
-    border-right: 2px solid ${Theme.palette.grayscale[1]} !important;
+    border-right: 2px solid ${palette('grayscale', 1)} !important;
   }
 }
 `

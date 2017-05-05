@@ -100,7 +100,7 @@ class CommunityCarousel extends React.Component {
           <br/>
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
-            <Link to={`file/detail/11`}>
+            <Link to={`/file/detail/11`}>
               <RaisedButton label="Ver toda la comunidad" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>

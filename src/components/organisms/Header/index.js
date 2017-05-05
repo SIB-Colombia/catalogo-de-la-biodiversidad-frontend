@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IconLink, Link, HeaderSearchAdvance, Theme} from 'components';
+import {IconLink, Link, HeaderSearchAdvance} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -10,25 +10,23 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import Tune from 'material-ui/svg-icons/image/tune';
 import Search from 'material-ui/svg-icons/action/search';
+import {size, palette} from 'styled-theme';
 
 const Wrapper = styled.nav `
-
 position:fixed;
 top:0%;
 width:100%;
 background: red !important;
-z-index: 9999 !important;
+z-index: 10 !important;
 .box-nav-search-content{
 	text-align: center;
 	padding: 6px 0px;
-	@media ${Theme.media.xs}{
-			display: none;
+	@media ${size('xs')}{
+		display: none;
 	}
 	.box-search-color{
-		background: ${Theme.palette.grayscale[1]};
-		@media ${Theme.media.xs}{
-				padding: 0 20px;
-		}
+		background: ${palette('grayscale', 1)};
+
 	}
 	.box-nav-advance{
 	  cursor: pointer;
@@ -45,12 +43,11 @@ z-index: 9999 !important;
 
 }
 svg{
-	color: ${Theme.palette.grayscale[5]} !important;
+	color: ${palette('grayscale', 3)} !important;
 }
 .box-logo{
-
-	@media ${Theme.media.xs}{
-			text-align: center;
+	@media ${size('xs')}{
+		text-align: center;
 	}
 }
 .box-link{
@@ -59,25 +56,23 @@ svg{
 		height:100% !important;
 		line-height: 4 !important;
 	}
-	@media ${Theme.media.xs}{
-			display: none;
+	@media ${size('xs')}{
+		display: none;
 	}
-
 }
 .brand-logo {
- display: inline-block;
- font-size: 2.1rem;
- padding: 0;
- white-space: nowrap;
- margin-top: 7px;
-
+	display: inline-block;
+	font-size: 2.1rem;
+	padding: 0;
+	white-space: nowrap;
+	margin-top: 7px;
 }
 `
 
 const Title = styled.div `
 display:inline-block;
 vertical-align: middle;
-color:${Theme.palette.grayscale[6]};
+color: ${palette('grayscale', 5)};
 `
 const TitleMain = styled.div `
 font-size:14px;
@@ -116,9 +111,7 @@ class Header extends React.Component {
   };
 
   render() {
-
-    console.log(this.props.filter);
-
+    //console.log(this.props.filter);
     const actions = [ < FlatButton label = "Cancelar" primary = {
         true
       }
@@ -171,10 +164,10 @@ class Header extends React.Component {
                 </div>
               </Col>
               <Col xs={12} sm={4} md={3} lg={3} className="box-link">
-                <Link to="/login/signup" onlyActiveOnIndex className="grey-text text-darken-2" activeClassName="active">
+                <Link to="/login/signup" activeClassName="active">
                   <FlatButton label="Registrarse"/>
                 </Link>
-                <Link to="/login/signin" onlyActiveOnIndex className="grey-text text-darken-2" activeClassName="active">
+                <Link to="/login/signin" activeClassName="active">
                   <FlatButton label="Ingresar"/>
                 </Link>
               </Col>
