@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import {PageTemplate, Header, Footer} from 'components'
+import {PageTemplate, Header, Footer} from 'components';
 
 const NotFoundPage = () => {
   return (
@@ -10,4 +10,4 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export default NotFoundPage;

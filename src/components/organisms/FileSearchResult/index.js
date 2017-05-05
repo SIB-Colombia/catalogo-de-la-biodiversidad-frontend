@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, FileCard, FileCardHorizontal, Theme} from 'components';
+import {Link, FileCard, FileCardHorizontal} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Carousel from 'react-slick';
 import Masonry from 'react-masonry-component';
@@ -18,6 +18,7 @@ import ViewHeadline from 'material-ui/svg-icons/action/view-headline';
 import Dashboard from 'material-ui/svg-icons/action/dashboard';
 import Apps from 'material-ui/svg-icons/navigation/apps';
 import ViewList from 'material-ui/svg-icons/action/view-list';
+import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 .paper{
@@ -28,6 +29,12 @@ const Wrapper = styled.div `
 }
 .col-list{
   margin-top: 10px;
+}
+.color-select{
+  color: ${palette('primary', 0)} !important;
+}
+.color-unselect{
+  color: ${palette('grayscale', 5)} !important;
 }
 `
 class FileSearchResult extends React.Component {
@@ -62,14 +69,14 @@ class FileSearchResult extends React.Component {
                     <Row>
                       <Col xs={12} sm={4} md={4} lg={4} className="align-right">
                         <IconButton tooltip="modo grilla" touch={true} tooltipPosition="bottom-center" onTouchTap={() => this.handleView('grid')}>
-                          <Apps color={this.state.mode == 'grid'
-                            ? Theme.palette.primary[0]
-                            : Theme.palette.grayscale[5]}/>
+                          <Apps className={this.state.mode == 'grid'
+                            ? 'color-select'
+                            : 'color-unselect'}/>
                         </IconButton>
                         <IconButton tooltip="modo lista" touch={true} tooltipPosition="bottom-center" onTouchTap={() => this.handleView('list')}>
-                          <ViewList color={this.state.mode == 'list'
-                            ? Theme.palette.primary[0]
-                            : Theme.palette.grayscale[5]}/>
+                          <ViewList className={this.state.mode == 'list'
+                            ? 'color-select'
+                            : 'color-unselect'}/>
                         </IconButton>
                       </Col>
                       <Col xs={12} sm={4} md={4} lg={4} className="align-center">

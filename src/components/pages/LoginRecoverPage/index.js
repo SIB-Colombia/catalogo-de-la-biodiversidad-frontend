@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react';
 import {injectGlobal} from 'styled-components';
-import {PageTemplate, Header, Footer, StaticAbout} from 'components';
+import {PageTemplate, Header, Footer, LoginRecover} from 'components';
 
-class StaticPage extends React.Component {
+class LoginSignupPage extends React.Component {
 
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class StaticPage extends React.Component {
   componentWillMount() {
     injectGlobal `
       body{
-        background-image: url(/background/82168_orig.jpg);
+        background-image: url(/background/23890_orig.jpg);
         background-size: cover;
         background-position: center center;
         background-attachment:fixed;
@@ -24,10 +24,10 @@ class StaticPage extends React.Component {
   render() {
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
-        <StaticAbout/>
+        <LoginRecover/>
       </PageTemplate>
     )
   }
 }
 
-export default StaticPage;
+export default LoginSignupPage;

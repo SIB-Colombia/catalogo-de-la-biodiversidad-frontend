@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
-import {PageTemplate, Header, Footer, Config, ReferenceSchema} from 'components';
+import {PageTemplate, Header, Footer} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
 import {SchemaForm, utils} from 'react-schema-form';
 import RcSelect from 'react-schema-form-rc-select/lib/RcSelect';
+import ReferenceSchema from '../../../schemas/ReferenceSchema';
 
 class FileDetailPage extends React.Component {
 
@@ -24,8 +25,9 @@ class FileDetailPage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
-    this.setState({id: this.props.params.id})
-    this.setState(ReferenceSchema)
+
+    this.setState({id: this.props.match.params.id});
+    this.setState(ReferenceSchema);
   }
 
   onModelChange = (key, val) => {

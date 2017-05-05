@@ -11,7 +11,8 @@ import Chip from 'material-ui/Chip';
 import {List, ListItem} from 'material-ui/List';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Subheader from 'material-ui/Subheader';
-import {Link, Theme} from 'components';
+import {Link} from 'components';
+import {size, palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 display: inline-block;
@@ -20,13 +21,13 @@ left: -32px;
 position: relative;
 width: 35px;
 
-@media ${Theme.media.sm}{
-position: absolute;
-left: 0;
-top:0;
-button{
-    width: 30px !important;
-}
+@media ${size('sm')}{
+  position: absolute;
+  left: 0;
+  top:0;
+  button{
+      width: 30px !important;
+  }
 }
 .drawer{
   margin-top: 65px;
@@ -38,9 +39,9 @@ button{
 }
 .style-btn{
   box-shadow: none !important;
-
+  margin-top: 3.5px;
   button{
-    height: 64px !important;
+    height: 100% !important;
     border-radius: 0 !important;
   }
 }

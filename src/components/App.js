@@ -1,266 +1,53 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {injectGlobal, ThemeProvider} from 'styled-components'
-import Theme from './themes/default';
+import React from 'react';
+import {Switch, Route} from 'react-router-dom';
+import {injectGlobal, ThemeProvider} from 'styled-components';
+
+import {
+  HomePage,
+  NotFoundPage,
+  LoginSigninPage,
+  LoginSignupPage,
+  LoginRecoverPage,
+  StaticPage,
+  FileSummaryPage,
+  FileDetailPage,
+  FileSearchPage
+} from 'components';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-injectGlobal `
-html {
-  height: 100%;
-  box-sizing: border-box;
-}
-body {
-  position: relative;
-  margin: 0;
-  min-height: calc(100% - 65px);
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-*{
-  font-family: ${Theme.fonts.primary} !important;
-}
-a{
-  text-decoration: none !important;
-}
-.modal-header-style{
-  color:white !important;
-  background:  ${Theme.palette.secondary[0]};
-}
+import theme from './themes/default';
+import style from './themes/style';
 
-/*Titles*/
+injectGlobal `${style}`;
 
-.title-xs{
-  font-size: ${Theme.fonts.xs} !important;
-  text-align: center;
-  margin: 0;
-  font-weight: lighter;
-  padding: 0 0 15px 0;
-  color:${Theme.palette.grayscale[6]} !important;
-  &.bold{
-    font-weight: bold;
-  }
-}
-
-.title-sm{
-  font-size: ${Theme.fonts.xs} !important;
-  text-align: center;
-  margin: 0;
-  font-weight: lighter;
-  padding: 0 0 15px 0;
-  font-size: ${Theme.fonts.sm} !important;
-  &.bold{
-    font-weight: bold;
-  }
-}
-
-.title-md{
-  font-size: ${Theme.fonts.xs} !important;
-  text-align: center;
-  margin: 0;
-  font-weight: lighter;
-  padding: 0 0 15px 0;
-  font-size: ${Theme.fonts.md} !important;
-  &.bold{
-    font-weight: bold;
-  }
-}
-
-.title-lg{
-  font-size: ${Theme.fonts.xs} !important;
-  text-align: center;
-  margin: 0;
-  font-weight: lighter;
-  zpadding: 0 0 15px 0;
-  font-size: ${Theme.fonts.lg} !important;
-  &.bold{
-    font-weight: bold;
-  }
-}
-
-/*Butons*/
-
-.btn-primary, .btn-primary-floating button{
-  background-color: ${Theme.palette.primary[0]} !important;
-  color:white !important;
-
-  svg{
-    color:white !important;
-    vertical-align: text-top;
-  }
-  &.inverse{
-    background-color: ${Theme.palette.grayscale[0]} !important;
-    color:${Theme.palette.primary[0]} !important;
-    svg{
-      color:${Theme.palette.primary[0]} !important;
-    }
-  }
-}
-
-.btn-primary-modal{
-  button{
-    background-color: ${Theme.palette.primary[0]} !important;
-  }
-  span{
-    color:white !important;
-  }
-}
-
-.btn-secondary, .btn-secondary-floating button,.btn-secondary.modal button{
-  background-color: ${Theme.palette.secondary[0]} !important;
-  &.padding{
-    color:white !important;
-  }
-  padding: 0 10px !important;
-  svg{
-    color:white !important;
-    vertical-align: text-top;
-  }
-  &.inverse{
-    background-color: ${Theme.palette.grayscale[0]} !important;
-    color:${Theme.palette.secondary[0]} !important;
-    svg{
-      color:${Theme.palette.secondary[0]} !important;
-    }
-  }
-}
-
-.btn-secondary-modal{
-  button{
-    background-color: ${Theme.palette.secondary[0]} !important;
-  }
-  span{
-    color:white !important;
-  }
-}
-
-.btn-primary:hover:not(.inverse),.btn-secondary:hover:not(.inverse),.btn-primary-modal:hover {
-  opacity: 0.5;
-  color:white !important;
-}
-
-/*Badges */
-
-.badge{
-    &.cr,&.ex,&.en{
-      span{
-        color:white !important;
-        font-weight: bold !important;
-      }
-    }
-    &.cr{
-      span{
-        background: ${Theme.palette.basescale[9]} !important;
-      }
-    }
-    &.ex{
-      span{
-        background: ${Theme.palette.basescale[7]} !important;
-      }
-    }
-    &.en{
-      span{
-        background: ${Theme.palette.basescale[8]} !important;
-      }
-    }
-}
-
-.card-star{
-  position: absolute !important;
-  z-index: 1 !important;
-  padding: 0 5px !important;
-
-  img{
-    background-color: ${Theme.palette.secondary[0]} !important;
-    padding: 5px 5px 7px 5px !important;
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 0 !important;
-    border-bottom-left-radius: 2em !important;
-    border-bottom-right-radius: 2em !important;
-  }
-}
-
-
-span[role=menuitem] {
-    color: ${Theme.palette.text[0]} !important;
-}
-
-/*Colors*/
-
-.color-primary{
-  color: ${Theme.palette.primary[0]} !important;
-}
-.color-secondary{
-  color: ${Theme.palette.secondary[0]} !important;
-}
-.color-text{
-  color: ${Theme.fonts.text[0]} !important;
-}
-
-/*Aligns*/
-
-.align-center{
-  text-align: center !important;
-}
-.align-justify{
-  text-align: justify !important;
-}
-.align-left{
-  text-align: left !important;
-}
-.align-right{
-  text-align: right !important;
-}
-`
-
-const App = ({children}) => {
+const App = () => {
 
   window.scrollTo(0, 0);
 
-  let wallpaper = '';
-
-  switch (children.props.route.path) {
-    case '/login':
-      wallpaper = `23890_orig.jpg`;
-      break;
-    case '/static':
-      wallpaper = `82168_orig.jpg`;
-      break;
-    case '/file':
-      if (children.props.location.pathname.indexOf('file/summary') > -1) {
-        wallpaper = `tucan.jpg`;
-      }
-      break;
-    default:
-  }
-
-  wallpaper = wallpaper
-    ? `
-    background-image: url(/background/${wallpaper});
-    background-size: cover;
-    background-position: center center;
-    background-attachment:fixed;
-    `
-    : `background: ${Theme.palette.grayscale[1]};`;
-
   injectGlobal `
-  body{
-    ${wallpaper}
-  }
-  `
+    body{
+      background: ${theme.palette.grayscale[1]};
+    }
+  `;
 
   return (
-    <MuiThemeProvider theme={Theme}>
-      {children}
+    <MuiThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Switch>
+          <Route path="/" component={HomePage} exact/>
+          <Route path="/login/signin" component={LoginSigninPage}/>
+          <Route path="/login/signup" component={LoginSignupPage}/>
+          <Route path="/login/recover" component={LoginRecoverPage}/>
+          <Route path="/static/about" component={StaticPage}/>
+          <Route path="/file/summary/:id" component={FileSummaryPage}/>
+          <Route path="/file/detail/:id" component={FileDetailPage}/>
+          <Route path="/file/search" component={FileSearchPage}/>
+          <Route component={NotFoundPage}/>
+        </Switch>
+      </ThemeProvider>
     </MuiThemeProvider>
   )
 }
 
-App.propTypes = {
-  children: PropTypes.any
-}
-
-export default App
+export default App;

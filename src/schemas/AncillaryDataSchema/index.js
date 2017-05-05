@@ -1,4 +1,4 @@
-const ancillaryDataSchema = {
+const AncillaryDataSchema = {
   "schema": {
     "type": "object",
     "title": "Comment",
@@ -48,4 +48,4 @@ const ancillaryDataSchema = {
   ]
 }
 
-export default ancillaryDataSchema;
+export default AncillaryDataSchema;

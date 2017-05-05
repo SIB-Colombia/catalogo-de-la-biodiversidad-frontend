@@ -1,14 +1,9 @@
 import React, {PropTypes} from 'react';
 import fetch from 'isomorphic-fetch';
 import RaisedButton from 'material-ui/RaisedButton';
-import {
-  PageTemplate,
-  Header,
-  Footer,
-  Config,
-  FileSearchMenu,
-  FileSearchResult
-} from 'components';
+import {PageTemplate, Header, Footer, FileSearchMenu, FileSearchResult} from 'components';
+
+import * as FileService from '../../../services/FileService';
 
 class FileSearchPage extends React.Component {
 
@@ -22,13 +17,15 @@ class FileSearchPage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
-    this.setState({files: Config.service.files})
+
+    this.setState({files: FileService.getFiles()})
   }
 
   render() {
 
     return (
-      <PageTemplate header={< Header filter={<FileSearchMenu/>} />} footer={< Footer />}>
+      <PageTemplate header={< Header filter = { < FileSearchMenu />
+      } />} footer={< Footer />}>
         {/* <FileSearchMenu/>  */}
         {this.state.files.length > 0 && <FileSearchResult data={this.state.files}/>}
       </PageTemplate>

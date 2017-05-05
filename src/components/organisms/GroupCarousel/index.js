@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, Theme, GroupCard} from 'components';
+import {Link, GroupCard} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -15,10 +15,10 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
-// import theme from '../../themes/default';
+import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
-background: ${Theme.palette.grayscale[3]};
+background: ${palette('grayscale', 3)};
 padding: 35px 0 55px 0;
 .space-card{
   margin: 0px 10px;
@@ -111,7 +111,7 @@ class GroupCarousel extends React.Component {
           <br/>
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
-            <Link to={`#`}>
+            <Link to={`/`}>
               <RaisedButton label="Ver todos los grupos" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
