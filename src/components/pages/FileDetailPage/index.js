@@ -11,7 +11,8 @@ import {
   FileCarousel,
   FileComment,
   FileHeader,
-  FileTab
+  FileTab,
+  FileMostRecent
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -23,7 +24,7 @@ class FileDetailPage extends React.Component {
     this.state = {
       id: null,
       files: [],
-      blocks: {},
+      blocks: null,
       images: []
     }
   }
@@ -50,22 +51,14 @@ class FileDetailPage extends React.Component {
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
         <Grid>
-          <Row>
-            <Col xs={12} lg={12}>
+          <Row className="animated fadeIn">
+            <Col xs={12} lg={12} >
               <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/>
-              <FileTab name='detail' id={this.state.id}  content={<FileDetail data={this.state.files} />} />
-            </Col>
-            <Col xs={12}>
-              <Paper zDepth={1}>
-                <h3 className="title-xs color-secondary bold">Fichas relacionadas</h3>
-                {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}
-              </Paper>
-            </Col>
-            <Col xs={12}>
-              <FileComment/>
+              {this.state.blocks && <FileTab name='detail' id={this.state.id}  content={<FileDetail data={this.state.blocks} />} />}
             </Col>
           </Row>
         </Grid>
+        <FileMostRecent data={this.state.files} />
       </PageTemplate>
     )
   }

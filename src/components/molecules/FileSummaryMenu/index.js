@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'components';
-import Paper from 'material-ui/Paper';
-import Badge from 'material-ui/Badge';
+import IconMenu from 'material-ui/IconMenu';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import MenuItem from 'material-ui/MenuItem';
 
 const Wrapper = styled.div `
-.btnFilters{
   position: fixed;
   right: 15px;
   bottom: 15px;
   z-index: 10;
-}
 `
 class FileSummaryMenu extends React.Component {
 
@@ -20,7 +20,7 @@ class FileSummaryMenu extends React.Component {
 
   render() {
     return (
-      <Wrapper className="btnFilters animated fadeInRight">
+      <Wrapper className="animated fadeInRight">
         <IconMenu iconButtonElement={< FloatingActionButton className = "btn-primary-floating" > <ContentAdd/> < /FloatingActionButton>} anchorOrigin={{
           horizontal: 'right',
           vertical: 'bottom'

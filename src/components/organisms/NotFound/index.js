@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react'
 import styled, { keyframes } from 'styled-components';
-import {Grid, Row, Col} from 'react-flexbox-grid';
 
 const floating = keyframes`
   0% {

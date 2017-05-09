@@ -38,7 +38,7 @@ theme.fonts = {
   md: '22pt',
   sm: '18pt',
   xs: '16pt',
-  text: '14pt'
+  xxs: '14pt'
 }
 
 theme.sizes = {

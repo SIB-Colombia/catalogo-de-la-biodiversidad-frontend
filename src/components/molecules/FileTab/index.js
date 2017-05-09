@@ -61,19 +61,39 @@ class FileTab extends React.Component {
           </Tab>
           <Tab label={< Link to = {
             `/file/detail/${this.props.id}`
-          } > Detalles < /Link>}></Tab>
+          } > Detalles < /Link>}>
+					{this.props.name == 'detail'
+						? this.props.content
+						: ''}
+					</Tab>
           <Tab label={< Link to = {
             `/file/images/${this.props.id}`
-          } > Imágenes < /Link>}></Tab>
+          } > Imágenes < /Link>}>
+					{this.props.name == 'images'
+						? this.props.content
+						: ''}
+					</Tab>
           <Tab label={< Link to = {
             `/file/maps/${this.props.id}`
-          } > Mapas < /Link>}></Tab>
+          } > Mapas < /Link>}>
+					{this.props.name == 'maps'
+						? this.props.content
+						: ''}
+					</Tab>
           <Tab label={< Link to = {
             `/file/community/${this.props.id}`
-          } > Comunidad < /Link>}></Tab>
+          } > Comunidad < /Link>}>
+					{this.props.name == 'community'
+						? this.props.content
+						: ''}
+					</Tab>
           <Tab label={< Link to = {
             `/file/comments/${this.props.id}`
-          } > Comentarios < /Link>}></Tab>
+          } > Comentarios < /Link>}>
+					{this.props.name == 'comments'
+						? this.props.content
+						: ''}
+					</Tab>
         </Tabs>
       </Wrapper>
     )

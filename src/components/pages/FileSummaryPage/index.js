@@ -8,10 +8,10 @@ import {
   Header,
   Footer,
   FileSummary,
-  FileCarousel,
-  FileComment,
   FileHeader,
-  FileTab
+  FileTab,
+  FileSummaryMenu,
+  FileMostRecent
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -39,11 +39,6 @@ class FileSummaryPage extends React.Component {
 
   componentWillMount() {
 
-
-    FileService.getFile(this.props.match.params.id).then(data => {
-      console.log(data);
-    })
-
     this.setState({id: this.props.match.params.id})
     this.setState({files: FileService.getFiles()})
     this.setState({images: FileService.getImages()})
@@ -57,23 +52,16 @@ class FileSummaryPage extends React.Component {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
+        <FileSummaryMenu/>
         <Grid>
-          <Row>
+          <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
               <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/>
               <FileTab name='summary' id={this.state.id} content={<FileSummary data={this.state.files} images={this.state.images}/>}  />
             </Col>
-            <Col xs={12}>
-              <Paper zDepth={1}>
-                <h3 className="title-xs color-secondary bold">Fichas relacionadas</h3>
-                {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}
-              </Paper>
-            </Col>
-            <Col xs={12}>
-              <FileComment/>
-            </Col>
           </Row>
         </Grid>
+        <FileMostRecent data={this.state.files} />
       </PageTemplate>
     )
   }

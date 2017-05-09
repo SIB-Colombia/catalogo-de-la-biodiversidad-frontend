@@ -49,7 +49,9 @@ class HomePage extends React.Component {
         </div>}
         {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}
         <CategoryCarousel/> {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>}
-        {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
+        <br/>
+        <br/>
+       {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
       </PageTemplate>
     )
   }

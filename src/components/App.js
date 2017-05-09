@@ -29,7 +29,7 @@ const App = () => {
       background: ${theme.palette.grayscale[1]};
     }
   `;
-
+  
   return (
     <MuiThemeProvider>
       <ThemeProvider theme={theme}>
