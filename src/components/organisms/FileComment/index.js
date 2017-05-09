@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'components';
+import {Link,TitleSection} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
   Card,
@@ -16,9 +16,7 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 
 const Wrapper = styled.div `
-.paper{
- padding: 20px 10px;
-}
+
 .box-comment{
   padding-top: 0px !important;
   &.textarea{
@@ -42,8 +40,6 @@ class FileComment extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-              <Paper className="paper">
-                <h3 className="title-xs color-secondary bold">Comentarios</h3>
                 <Card>
                   <CardHeader title="Instituto Humboldt" subtitle="01/01/2017" avatar="/avatar4.png"/>
                   <CardText className="box-comment">
@@ -64,7 +60,6 @@ class FileComment extends React.Component {
                     <FlatButton label="Publicar" className="btn-secondary"/>
                   </CardActions>
                 </Card>
-              </Paper>
             </Col>
           </Row>
         </Grid>

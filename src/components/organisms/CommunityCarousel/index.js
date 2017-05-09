@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, CommunityCard} from 'components';
+import {Link, CommunityCard, TitleSection} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import FlatButton from 'material-ui/FlatButton';
@@ -10,7 +10,7 @@ import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 
 const Wrapper = styled.div `
 
-padding-bottom:30px;
+padding-bottom:55px;
 background: #dadada;
 .slick-next:before, .slick-prev:before {
   font-size: 20px;
@@ -18,11 +18,7 @@ background: #dadada;
   opacity: .75;
   color: grey;
 }
-h3{
-  color:#333;
-  text-align: center;
-  font-weight: lighter;
-}
+
 `
 class CommunityCarousel extends React.Component {
 
@@ -86,7 +82,7 @@ class CommunityCarousel extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-              <h3>Comunidad</h3>
+              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3">Comunidad</TitleSection>
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>

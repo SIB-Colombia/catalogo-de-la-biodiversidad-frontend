@@ -13,7 +13,7 @@ import {
 const Wrapper = styled.div `
 .box-community{
   text-align: center;
-  padding: 30px;
+  padding:0 30px;
   .box-circle{
     border-radius: 100%;
     border:3px solid white;

@@ -19,8 +19,7 @@ import Comment from 'material-ui/svg-icons/communication/comment';
 import Badge from 'material-ui/Badge';
 
 const Wrapper = styled.div `
-margin-bottom:20px;
-padding-bottom:30px;
+
 .space-card{
   margin: 0px 10px;
 }
@@ -89,7 +88,7 @@ class FileCarousel extends React.Component {
     };
 
     return (
-      <Wrapper className="grey lighten-4">
+      <Wrapper className="paper-padding-4">
         <Grid>
           <Row>
             <Col xs={12}>

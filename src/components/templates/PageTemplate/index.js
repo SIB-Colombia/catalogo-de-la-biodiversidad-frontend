@@ -14,8 +14,7 @@ const Hero = styled.section `
 
 const Content = styled.section `
   height: 100%;
-  padding-bottom: 80px;
-
+  padding-bottom: 53px;
 `
 const Footer = styled.footer `
   margin-top: 10px;

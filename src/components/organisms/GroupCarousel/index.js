@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, GroupCard} from 'components';
+import {Link, GroupCard,TitleSection} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -19,7 +19,7 @@ import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 background: ${palette('grayscale', 3)};
-padding: 35px 0 55px 0;
+padding: 0 0 55px 0;
 .space-card{
   margin: 0px 10px;
 }
@@ -97,7 +97,7 @@ class GroupCarousel extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-              <h3>Grupos</h3>
+              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3" >Grupos</TitleSection>
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>

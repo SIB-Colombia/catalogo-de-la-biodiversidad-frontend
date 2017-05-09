@@ -1,11 +1,21 @@
 import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
-import {PageTemplate, Header, Footer} from 'components';
+import {injectGlobal} from 'styled-components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import RaisedButton from 'material-ui/RaisedButton';
-import {SchemaForm, utils} from 'react-schema-form';
-import RcSelect from 'react-schema-form-rc-select/lib/RcSelect';
-import ReferenceSchema from '../../../schemas/ReferenceSchema';
+import SchemaForm from 'react-schema-form';
+import {
+  PageTemplate,
+  Header,
+  Footer,
+  FileDetail,
+  FileCarousel,
+  FileComment,
+  FileHeader,
+  FileTab,
+  FileMostRecent
+} from 'components';
+
+import * as FileService from '../../../services/FileService';
 
 class FileDetailPage extends React.Component {
 
@@ -13,12 +23,9 @@ class FileDetailPage extends React.Component {
     super(props);
     this.state = {
       id: null,
-      validationResult: {},
-      schema: {},
-      form: [],
-      model: {},
-      schemaJson: '',
-      formJson: ''
+      files: [],
+      blocks: false,
+      images: []
     }
   }
 
@@ -26,64 +33,32 @@ class FileDetailPage extends React.Component {
 
   componentWillMount() {
 
-    this.setState({id: this.props.match.params.id});
-    this.setState(ReferenceSchema);
+    FileService.getFile(this.props.match.params.id).then(data => {
+      this.setState({blocks: data})
+    })
+
+    this.setState({id: this.props.match.params.id})
+    this.setState({files: FileService.getFiles()})
+
   }
 
-  onModelChange = (key, val) => {
-    console.log('ExamplePage.onModelChange:', key, val);
-    var newModel = this.state.model;
-    utils.selectOrSet(key, newModel, val);
-    this.setState({model: newModel});
-    console.log(this.state.model);
-  }
-
-  onValidate = () => {
-    console.log('ExamplePage.onValidate is called');
-    let result = utils.validateBySchema(this.state.schema, this.state.model);
-    this.setState({validationResult: result});
-  }
-
-  onFormChange = (val) => {
-    try {
-      let f = JSON.parse(val);
-      this.setState({formJson: val, form: f});
-    } catch (e) {}
-  }
-
-  onSchemaChange = () => {
-    try {
-      let s = JSON.parse(val);
-      this.setState({schemaJson: val, schema: s});
-    } catch (e) {}
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props.match.params.id);
   }
 
   render() {
 
-    var mapper = {
-      "rc-select": RcSelect
-    };
-
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
         <Grid>
-          <Row>
-            <Paper>
-              <Col xs={12}>
-                <h3>Schema:</h3>
-                <pre>{JSON.stringify(this.state.schema,undefined,2,2)}</pre>
-                <h3>Form:</h3>
-                <pre>{JSON.stringify(this.state.form,undefined,2,2)}</pre>
-                <SchemaForm schema={this.state.schema} form={this.state.form} model={this.state.model} onModelChange={this.onModelChange} mapper={mapper}/>{/* {this.state.model} */}
-                <h3>Model:</h3>
-                <pre>{JSON.stringify(this.state.model,undefined,2,2)}</pre>
-                <h3>Validation:</h3>
-                <RaisedButton primary={true} label="Validate" onTouchTap={this.onValidate}/>
-                <pre>{JSON.stringify(this.state.validationResult,undefined,2,2)}</pre>
-              </Col>
-            </Paper>
+          <Row className="animated fadeIn">
+            <Col xs={12} lg={12} >
+              <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/>
+              {this.state.blocks && <FileTab name='detail' id={this.state.id}  content={<FileDetail data={this.state.blocks} />} />}
+            </Col>
           </Row>
         </Grid>
+        <FileMostRecent data={this.state.files} />
       </PageTemplate>
     )
   }

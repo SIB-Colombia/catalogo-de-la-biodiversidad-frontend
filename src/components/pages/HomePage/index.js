@@ -27,6 +27,7 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     // console.log(this.props.location.pathname);
+    // console.log(FileService.getList());
     this.setState({files: FileService.getFiles()});
   }
 
@@ -46,9 +47,10 @@ class HomePage extends React.Component {
             <MenuItem value={4} primaryText="Fichas por actualizar"/>
           </DropDownMenu>
         </div>}
-        {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}
+        {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}<br/>
         <CategoryCarousel/> {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>}
-        {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
+
+       {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
       </PageTemplate>
     )
   }

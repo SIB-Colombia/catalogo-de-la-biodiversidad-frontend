@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'components';
+import {Link, TitleSection} from 'components';
+import {size, palette, font} from 'styled-theme';
 import {
   Card,
   CardActions,
@@ -16,12 +17,6 @@ import Badge from 'material-ui/Badge';
 import Comment from 'material-ui/svg-icons/communication/comment';
 
 const Wrapper = styled.div `
-.paper-horizontal{
-  /*padding: 15px 20px;*/
-  h3{
-    font-size: 23px;
-    font-weight: lighter;
-  }
   .img-media{
     text-align: center;
     img{
@@ -32,7 +27,13 @@ const Wrapper = styled.div `
   .options{
     padding: 0px 20px 0px 0px;
   }
+
+.card-title{
+  font-size: ${font('xxs')} !important;
+	color: ${palette('basescale', 2)} !important;
+  font-weight: 500;
 }
+
 `
 
 class FileCardHorizontal extends React.Component {
@@ -45,15 +46,15 @@ class FileCardHorizontal extends React.Component {
     return (
       <Wrapper>
         <Link to={`/file/summary/${this.props.record.id}`}>
-          <Paper className="paper-horizontal">
+          <Paper>
             <Row>
               <Col xs={12} sm={4} md={4} lg={4} className="img-media">
                 <img src={this.props.record.image}/>
               </Col>
-              <Col xs={12} sm={8} md={8} lg={8}>
+              <Col xs={12} sm={8} md={8} lg={8} className="paper-padding-1">
                 <div className="options">
-                  <h3>{this.props.record.name}</h3>
-                  <FlatButton className="btn-secondary inverse align-left padding" fullWidth={true}>
+                  <TitleSection className="padding-bottom-1 card-title">{this.props.record.name}</TitleSection>
+                  <FlatButton className="btn-option align-left" fullWidth={true}>
                     <Comment/> {this.props.record.comment}
                   </FlatButton>
                   <p className="align-justify">
