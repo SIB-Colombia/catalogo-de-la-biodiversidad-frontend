@@ -15,7 +15,7 @@ import {Link} from 'components';
 import {size, palette} from 'styled-theme';
 
 const Wrapper = styled.div `
-display: inline-block;
+
 float: left;
 left: -32px;
 position: relative;
@@ -39,10 +39,14 @@ width: 35px;
 }
 .style-btn{
   box-shadow: none !important;
-  margin-top: 3.5px;
+
+  /*margin-top: 3.5px;*/
   button{
-    height: 100% !important;
+    background-color: ${palette('primary', 0)} !important;
+    height: 64px !important;
     border-radius: 0 !important;
+    svg{
+    }
   }
 }
 
@@ -182,7 +186,7 @@ class FileSearchMenu extends React.Component {
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInLeft">
-          <FloatingActionButton onTouchTap={this.handleToggleMenu} className="btn-primary-floating style-btn">
+          <FloatingActionButton onTouchTap={this.handleToggleMenu} className="style-btn">
             <Menu/>
           </FloatingActionButton>
         </div>
