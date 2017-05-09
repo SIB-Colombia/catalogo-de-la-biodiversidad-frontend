@@ -27,6 +27,7 @@ class HomePage extends React.Component {
 
   componentWillMount() {
     // console.log(this.props.location.pathname);
+    // console.log(FileService.getList());
     this.setState({files: FileService.getFiles()});
   }
 

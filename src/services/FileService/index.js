@@ -1,67 +1,60 @@
 import fetch from 'isomorphic-fetch';
-//import {Config} from 'components';
+import Const from '../../const';
+import {http} from '../../auth';
 
 export function getFiles() {
 
   return [
     {
-      id: '5349b4ddd2781d08c09890f1',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/71728_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f2',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/05869_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f3',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/99013_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f4',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/34567_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f5',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/09127_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f6',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/84940_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f7',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/07303_orig.jpg',
       comment: 'Aguila tirana Black...'
     }, {
-      id: '5349b4ddd2781d08c09890f8',
+      id: '5661b2a2f3b30194336dc7a6',
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/62488_orig.jpg',
       comment: 'Aguila tirana Black...'
     }
   ];
-  
-  //Example with Ajax
-  /*return fetch(`${Config.server}/api/hello/home`, Config.http).then((response) => {
-    return response.json()
-  }).then((data) => {
-    return data
-  })*/
-
 }
 
 export function getImages() {
@@ -77,5 +70,161 @@ export function getImages() {
       caption: 'Photo by Piotr Łaskawski'
     }
   ]
+
+}
+
+//Get list Files
+
+export function getList() {
+
+  return fetch(`${Const.server.amazon}/lista`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get individual File / example: 5661b2a2f3b30194336dc7a6
+
+export function getFile(id) {
+
+  return fetch(`${Const.server.amazon}/record/${id}`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get associated party
+
+export function getAssociatedParty(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/associated_party/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get More information
+
+export function getMoreInformation(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/more_information/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get direct threats
+
+export function getDirectThreats(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/direct_threats/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get taxonrecordname
+
+export function getTaxonRecordName(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/taxon_record_name/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get synonymsAtomized
+
+export function getSynonymsAtomized(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/synonyms_atomized/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get commonNamesAtomized
+
+export function getCommonNamesAtomized(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/common_names_atomized/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get hierarchy
+
+export function getHierarchy(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/hierarchy/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get abstract
+
+export function getAbstract(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/abstract/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get lifeForm
+
+export function getLifeForm(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/life_form/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get reproduction
+
+export function getReproduction(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/reproduction/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get annual_cycles
+
+export function getAnnualCycles(id) {
+
+  return fetch(`${Const.server.amazon}/fichas/${id}/annual_cycles/1`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
 
 }

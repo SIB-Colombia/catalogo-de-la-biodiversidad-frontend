@@ -8,7 +8,7 @@ import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import {IconLink, Link} from 'components'
+import {IconLink, Link, FileHeader} from 'components'
 
 const Wrapper = styled.div `
 padding-top: 150px;
@@ -48,42 +48,17 @@ class FileDetail extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              <Paper zDepth={1} className="detail-content">
-                <h3 className="about-main-title">Coragyps Atratus</h3>
-                <Row>
-                  <Col lg={12}>
-                    <Tabs initialSelectedIndex={1}>
-                      <Tab label="Resumen" data-route={`/file/summary/${this.state.id}`} onActive={this.changeTab}></Tab>
-                      <Tab label="Detalles">
-                        <div>
-                          <h2>Tab Two</h2>
-                          <p>
-                            This is another example tab.
-                          </p>
-                        </div>
-                      </Tab>
-                      <Tab label="Imágenes" data-route={`/file/images/${this.state.id}`} onActive={this.changeTab}></Tab>
-                      <Tab label="Mapas" data-route={`/file/maps/${this.state.id}`} onActive={this.changeTab}></Tab>
-                      <Tab label="Comunidad" data-route={`/file/community/${this.state.id}`} onActive={this.changeTab}></Tab>
-                      <Tab label="Comentarios" data-route={`/file/comments/${this.state.id}`} onActive={this.changeTab}></Tab>
-                    </Tabs>
-                  </Col>
-                </Row>
-              </Paper>
-            </Col>
-          </Row>
-          <br/>
-          <Row>
-            <Col lg={8}>
-              <Paper zDepth={1} className="detail-content">
-                e
-              </Paper>
-            </Col>
-          </Row>
-        </Grid>
+        <Row>
+          <Col xs={12} lg={12}>
+            <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'} />
+            <Row>
+              <Col xs={12} lg={12}>
+
+                jojojoj
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </Wrapper>
     )
   }

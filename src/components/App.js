@@ -1,7 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import {injectGlobal, ThemeProvider} from 'styled-components';
-
 import {
   HomePage,
   NotFoundPage,
@@ -36,7 +35,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Switch>
           <Route path="/" component={HomePage} exact/>
-          <Route path="/login/signin" component={LoginSigninPage}/>
+          <Route path="/login/signin" component={LoginSigninPage} />
           <Route path="/login/signup" component={LoginSignupPage}/>
           <Route path="/login/recover" component={LoginRecoverPage}/>
           <Route path="/static/about" component={StaticPage}/>
