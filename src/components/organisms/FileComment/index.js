@@ -16,7 +16,7 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 
 const Wrapper = styled.div `
-
+padding-bottom: 20px;
 .box-comment{
   padding-top: 0px !important;
   &.textarea{
