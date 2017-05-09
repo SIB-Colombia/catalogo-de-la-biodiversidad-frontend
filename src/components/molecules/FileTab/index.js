@@ -12,6 +12,7 @@ const Wrapper = styled.div `
 }
 .tabs > div:first-child{
 	background-color: ${palette('grayscale', 1)} !important;
+	border: 1px solid #d2d2d2 !important;
 }
 .tabs > div:nth-child(2) div{
 	background-color: ${palette('secondary', 0)} !important;

@@ -8,27 +8,38 @@ import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import {IconLink, Link, FileHeader} from 'components'
+import {IconLink, Link, FileHeader, TitleSection} from 'components'
 
 const Wrapper = styled.div `
-padding-top: 150px;
-
-
+.scrol{
+  overflow:auto;
+}
 `
 
 class FileDetail extends React.Component {
 
   constructor(props) {
     super(props);
-
-    console.log(this.props);
   }
 
 
   render() {
+    console.log('-->', this.props.data);
+
     return (
       <Wrapper>
-      ergerg
+        <br/>
+        {Object.keys(this.props.data).map((record, i) => (
+          <div key={i}>
+            <Paper className="paper-padding-1 scrol">
+              <TitleSection>{record}</TitleSection>
+              <pre>
+              {JSON.stringify(this.props.data[record], null, 4)}
+              </pre>
+            </Paper>
+            <br/>
+          </div>
+        ))}
       </Wrapper>
     )
   }

@@ -202,20 +202,32 @@ a{
 
 /*Butons*/
 
-.btn-primary, .btn-primary-floating button{
+.btn-primary, .btn-primary-floating button,.btn-primary.modal button{
   background-color: ${theme.palette.primary[0]} !important;
   color:white !important;
-
+  padding:0 3px !important;
   svg{
     color:white !important;
     vertical-align: text-top;
   }
-  &.inverse{
-    background-color: ${theme.palette.grayscale[0]} !important;
-    color:${theme.palette.primary[0]} !important;
-    svg{
-      color:${theme.palette.primary[0]} !important;
-    }
+}
+
+.btn-secondary, .btn-secondary-floating button,.btn-secondary.modal button{
+  background-color: ${theme.palette.secondary[0]} !important;
+  color:white !important;
+  padding:0 3px !important;
+  svg{
+    color:white !important;
+    vertical-align: text-top;
+  }
+}
+.btn-option, .btn-secondary-floating button,.btn-secondary.modal button{
+  background-color: ${theme.palette.grayscale[0]} !important;
+  color:${theme.palette.secondary[0]} !important;
+  padding:0 3px !important;
+  svg{
+    color:${theme.palette.secondary[0]} !important;
+    vertical-align: text-top;
   }
 }
 
@@ -225,25 +237,6 @@ a{
   }
   span{
     color:white !important;
-  }
-}
-
-.btn-secondary, .btn-secondary-floating button,.btn-secondary.modal button{
-  background-color: ${theme.palette.secondary[0]} !important;
-  &.padding{
-    color:white !important;
-  }
-  padding: 0 10px !important;
-  svg{
-    color:white !important;
-    vertical-align: text-top;
-  }
-  &.inverse{
-    background-color: ${theme.palette.grayscale[0]} !important;
-    color:${theme.palette.secondary[0]} !important;
-    svg{
-      color:${theme.palette.secondary[0]} !important;
-    }
   }
 }
 
@@ -323,6 +316,11 @@ span[role=menuitem] {
 .align-right{
   text-align: right !important;
 }
+
+.bold{
+  font-weight:bold !important;
+}
+
 `;
 
 export default style;

@@ -24,7 +24,7 @@ class FileDetailPage extends React.Component {
     this.state = {
       id: null,
       files: [],
-      blocks: null,
+      blocks: false,
       images: []
     }
   }

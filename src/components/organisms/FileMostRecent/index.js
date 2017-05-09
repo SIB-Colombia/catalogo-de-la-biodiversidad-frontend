@@ -29,7 +29,7 @@ class FileMostRecent extends React.Component {
           <TitleSection align="center" color="basescale-6" className="padding-top-2" >Fichas relacionadas</TitleSection>
           <FileCarousel data={this.props.data}/>
           <Divider/>
-          <TitleSection align="center" color="basescale-6" className="padding-top-2 padding-bottom-3">Comentarios</TitleSection>
+          <TitleSection align="center" color="basescale-6" className="padding-top-3 padding-bottom-3">Comentarios</TitleSection>
           <FileComment/>
         </Paper>
       </Wrapper>

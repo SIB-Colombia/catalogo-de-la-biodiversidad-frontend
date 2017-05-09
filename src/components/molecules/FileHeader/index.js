@@ -15,12 +15,13 @@ padding-top: 200px;
   overflow:hidden;
 }
 .main-title{
-  color:${palette('grayscale', 6)};
+  color:${palette('basescale', 3)};
   font-style: italic;
   float:left;
+  font-weight: 500;
 }
 .main-subtitle{
-  color:${palette('grayscale', 5)};
+  color:${palette('basescale', 3)};
   line-height: 4;
   margin-left: 30px;
 }
@@ -40,7 +41,7 @@ class FileHeader extends React.Component {
             <Badge badgeContent={'CR'} className="badge ex"/>
             <Badge badgeContent={'EN'} className="badge en"/>
           </div>
-          <h3 className="title-lg align-left main-title bold">{this.props.title}</h3>
+          <h3 className="title-lg align-left main-title">{this.props.title}</h3>
           <span className="main-subtitle">{this.props.subtitle}</span>
         </Paper>
       </Wrapper>

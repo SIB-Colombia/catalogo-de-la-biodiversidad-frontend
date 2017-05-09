@@ -51,7 +51,7 @@ class FileSummary extends React.Component {
           <Col xs={12} lg={12}>
             <br/>
             <Paper zDepth={1} className="paper-padding-1">
-              <TitleSection className="padding-bottom-1">Imágenes</TitleSection>
+              <TitleSection className="padding-bottom-1" bold={true}>Imágenes</TitleSection>
               <div>
                 <Gallery images={this.props.images}/>
               </div>
@@ -64,7 +64,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection>Nombres comunes</TitleSection>
+                  <TitleSection bold={true}>Nombres comunes</TitleSection>
                   <List>
                     <Row>
                       <Col xs={12} lg={6}>
@@ -88,7 +88,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection className="padding-bottom-1">Distribución</TitleSection>
+                  <TitleSection className="padding-bottom-1" bold={true}>Distribución</TitleSection>
                   <div className="align-center">
                     <Paper zDepth={2}>
                       <HumboldtMap/>
@@ -107,7 +107,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection className="padding-bottom-1">Historia natural</TitleSection>
+                  <TitleSection className="padding-bottom-1" bold={true}>Historia natural</TitleSection>
                   <div className="align-justify">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.
                     <div className="align-center">
@@ -123,7 +123,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection>Editores</TitleSection>
+                  <TitleSection bold={true}>Editores</TitleSection>
                   <List>
                     <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../avatar3.png" />}/>
                     <ListItem primaryText="James Anderson" leftAvatar={< Avatar src = "../../avatar4.png" />}/>
@@ -136,7 +136,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection>Actividad reciente</TitleSection>
+                  <TitleSection bold={true}>Actividad reciente</TitleSection>
                   <List>
                     <ListItem leftAvatar={< Avatar src = "../../avatar.png" />} primaryText="Brunch this weekend?" secondaryText={< p > <span className="color-it">Brendan Lim</span> - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch
                       ? </p>} secondaryTextLines={2}/>
@@ -152,7 +152,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection>Grupos</TitleSection>
+                  <TitleSection bold={true}>Grupos</TitleSection>
                   <List>
                     <ListItem leftAvatar={< Avatar icon = { < ActionAssignment />
                     }
@@ -172,7 +172,7 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-1">
-                  <TitleSection>Información básica de la ficha</TitleSection>
+                  <TitleSection bold={true}>Información básica de la ficha</TitleSection>
                   <List>
                     <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>
                     <ListItem primaryText="Fecha de elaboración" secondaryText="Jan 20, 2014"/>

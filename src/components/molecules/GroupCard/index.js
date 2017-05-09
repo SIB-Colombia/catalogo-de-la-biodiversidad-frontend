@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'components';
+import {Link,TitleSection} from 'components';
+import {size, palette,font} from 'styled-theme';
 import {
   Card,
   CardActions,
@@ -11,6 +12,10 @@ import {
 } from 'material-ui/Card';
 
 const Wrapper = styled.div `
+.card-title  > span:first-child{
+  font-size: ${font('xxs')} !important;
+  color: ${palette('basescale', 2)} !important;
+}
 `
 class GroupCard extends React.Component {
 
@@ -27,7 +32,7 @@ class GroupCard extends React.Component {
             <CardMedia>
               <img src="/bird1.jpg"/>
             </CardMedia>
-            <CardTitle title="Título" subtitle="Subtítulo"/> {/* <CardText>
+            <CardTitle title="Título" subtitle="Subtítulo"  className="card-title"/> {/* <CardText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </CardText> */}
           </Card>
