@@ -17,7 +17,7 @@ const Wrapper = styled.div `
 .paper{
 background: ${palette('grayscale',1)} !important;
 }
-box-shadow: 0 -22px 80px 60px ${palette('grayscale',1)};
+box-shadow: 0 -22px 120px 100px ${palette('grayscale',1)};
 `
 
 class FileMostRecent extends React.Component {

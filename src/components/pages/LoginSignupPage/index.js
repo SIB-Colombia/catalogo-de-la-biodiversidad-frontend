@@ -1,5 +1,4 @@
 import React, {PropTypes} from 'react';
-import {injectGlobal} from 'styled-components';
 import {PageTemplate, Header, Footer, LoginSignup} from 'components';
 
 class LoginSignupPage extends React.Component {
@@ -10,20 +9,11 @@ class LoginSignupPage extends React.Component {
 
   componentDidMount() {}
 
-  componentWillMount() {
-    injectGlobal `
-      body{
-        background-image: url(/background/23890_orig.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-attachment:fixed;
-      }
-    `;
-  }
+  componentWillMount() {}
 
   render() {
     return (
-      <PageTemplate header={< Header />} footer={< Footer />}>
+      <PageTemplate header={< Header />} footer={< Footer />} wallpaper='Login'>
         <LoginSignup/>
       </PageTemplate>
     )

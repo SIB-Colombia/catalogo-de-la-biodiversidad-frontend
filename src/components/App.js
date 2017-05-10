@@ -20,6 +20,8 @@ import style from './themes/style';
 
 injectGlobal `${style}`;
 
+
+
 const App = () => {
 
   window.scrollTo(0, 0);
@@ -29,12 +31,12 @@ const App = () => {
       background: ${theme.palette.grayscale[1]};
     }
   `;
-  
+
   return (
     <MuiThemeProvider>
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route path="/" component={HomePage} exact/>
+          <Route path="/" component={HomePage} exact />
           <Route path="/login/signin" component={LoginSigninPage} />
           <Route path="/login/signup" component={LoginSignupPage}/>
           <Route path="/login/recover" component={LoginRecoverPage}/>
