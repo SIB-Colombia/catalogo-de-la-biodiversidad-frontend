@@ -31,6 +31,8 @@ class HomePage extends React.Component {
     this.setState({files: FileService.getFiles()});
   }
 
+
+
   handleChange = (event, index, value) => this.setState({value});
 
   render() {

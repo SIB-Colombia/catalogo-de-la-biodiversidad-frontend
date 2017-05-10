@@ -69,7 +69,7 @@ class HomeCarousel extends React.Component {
       ]
     };
 
-    const background = ['11285_orig.jpg', '89714_orig.jpg', '77419_orig.jpg', '53388_orig.jpg'];
+    const background = ['89714_orig.jpg','11285_orig.jpg', '77419_orig.jpg', '53388_orig.jpg'];
 
     return (
       <Wrapper className="grey lighten-4">

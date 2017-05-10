@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IconLink, Link, HeaderSearchAdvance} from 'components';
+import {IconLink, Link, HeaderSearchAdvance,HeaderUserMenu} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -11,6 +11,7 @@ import Paper from 'material-ui/Paper';
 import Tune from 'material-ui/svg-icons/image/tune';
 import Search from 'material-ui/svg-icons/action/search';
 import {size, palette} from 'styled-theme';
+import {me, isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.nav `
 position:fixed;
@@ -88,14 +89,30 @@ font-size:14px;
 text-transform: uppercase;
 line-height:1;
 `
-class Header extends React.Component {
 
-  state = {
-    open: false
-  };
+//Get user from Redis [Once time], this module remember promise
+
+const getMe = me();
+
+class Header extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      user: null,
+      open: false
+    }
+  }
+
+  componentWillMount() {
+    getMe.then(data => {
+      if (data) {
+        console.log('user logged->', data);
+        this.setState({user: isAuthenticated()});
+      } else {
+        console.log('user not login :(');
+      }
+    })
   }
 
   handleOpen = () => {
@@ -111,7 +128,7 @@ class Header extends React.Component {
   };
 
   render() {
-    //console.log(this.props.filter);
+
     const actions = [ < FlatButton label = "Cancelar" primary = {
         true
       }
@@ -163,14 +180,17 @@ class Header extends React.Component {
                   </Row>
                 </div>
               </Col>
-              <Col xs={12} sm={4} md={3} lg={3} className="box-link">
+              {!this.state.user && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
                 <Link to="/login/signup" activeClassName="active">
                   <FlatButton label="Registrarse"/>
                 </Link>
                 <Link to="/login/signin" activeClassName="active">
                   <FlatButton label="Ingresar"/>
                 </Link>
-              </Col>
+              </Col>}
+              {this.state.user && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
+								<HeaderUserMenu />
+              </Col>}
             </Row>
           </Grid>
           <Dialog titleClassName="modal-header-style" title="Búsqueda avanzada" contentStyle={customContentStyle} actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} autoScrollBodyContent={true}>

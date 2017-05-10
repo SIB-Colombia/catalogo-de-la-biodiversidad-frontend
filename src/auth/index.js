@@ -1,60 +1,101 @@
 import fetch from 'isomorphic-fetch';
 import Const from '../const';
+var rootUser;
 
 //Http
+export function http(type, data) {
 
-export function http(type) {
+  var body = new FormData();
+  if (data)
+    for (var key in data)
+      body.append(key, data[key]);
+
+  data = data
+    ? body
+    : null;
 
   return {
     method: type,
     // mode: 'cors',
-    // headers: new Headers({
-    // 'Authorization': `bearer ${localStorage.getItem('token-catalogo')}`
-    // })
+    headers: {
+      'Authorization': `Bearer ${getToken()}`
+    },
+    body: data
   }
+
 }
 
 //is authenticated
-
 export function isAuthenticated() {
-  // console.log(nextState);
-  // console.log(replaceState);
-  // console.log('herisAuthenticatede');
-  // return false;
-  // return typeof localStorage.getItem('token-catalogo')
-  // !=='undefined'
-  //   ? true
-  //   : false;
+  return getUser() || false;
 }
 
-//Get Me
+//has Role
+export function hasRole() {}
 
+//Me
 export function me() {
-
-  fetch(`${Const.server.local}/api/user/me`, this.http('GET')).then((response) => {
+  return fetch(`${Const.server.local}/api/user/me`, http('GET')).then((response) => {
     return response.json()
   }).then((data) => {
-    return data
+    setUser(data);
+    return data;
+  }).catch(err => {
+    clean();
   })
-
 }
 
 //signin
+export function signin(user) {
+  return fetch(`${Const.server.local}/auth/local`, http('POST', user)).then((response) => {
+    return response.json()
+  }).then((data) => {
+    setToken(data);
+    return data
+  }).catch(err => {
+    return err;
+  })
+}
 
-export function signin() {
-
-  fetch(`${Const.server.local}/auth/local`, this.http('POST')).then((response) => {
+//signup
+export function signup(user) {
+  return fetch(`${Const.server.local}/api/user/register`, http('POST', user)).then((response) => {
     return response.json()
   }).then((data) => {
     return data
+  }).catch(err => {
+    return err;
   })
-
 }
 
 //logout
-
 export function logout() {
+  clean();
+  window.location.reload();
+}
 
-  localStorage.removeItem('token-catalogo');
+//Get Token
+export function getToken() {
+  return localStorage.getItem(Const.TOKEN);
+}
 
+//Set Token
+export function setToken(data) {
+  localStorage.setItem(Const.TOKEN, data.token);
+}
+
+//Get User
+export function getUser() {
+  return rootUser || JSON.parse(localStorage.getItem(Const.USER));
+}
+
+//Set User
+export function setUser(data) {
+  rootUser = data;
+  localStorage.setItem(Const.USER, JSON.stringify(data));
+}
+
+//Clean
+export function clean() {
+  localStorage.clear();
 }
