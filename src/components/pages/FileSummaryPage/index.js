@@ -1,6 +1,5 @@
 import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
-import {injectGlobal} from 'styled-components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import SchemaForm from 'react-schema-form';
 import {
@@ -25,20 +24,11 @@ class FileSummaryPage extends React.Component {
       files: [],
       images: []
     }
-    injectGlobal `
-      body{
-        background-image: url(/background/tucan.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-attachment:fixed;
-      }
-    `
   }
 
   componentDidMount() {}
 
   componentWillMount() {
-
     this.setState({id: this.props.match.params.id})
     this.setState({files: FileService.getFiles()})
     this.setState({images: FileService.getImages()})
@@ -51,17 +41,22 @@ class FileSummaryPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={< Header />} footer={< Footer />}>
+      <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
         <FileSummaryMenu/>
         <Grid>
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
               <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/>
-              <FileTab name='summary' id={this.state.id} content={<FileSummary data={this.state.files} images={this.state.images}/>}  />
+              <FileTab name='summary' id={this.state.id} content={< FileSummary data = {
+                this.state.files
+              }
+              images = {
+                this.state.images
+              } />}/>
             </Col>
           </Row>
         </Grid>
-        <FileMostRecent data={this.state.files} />
+        <FileMostRecent data={this.state.files}/>
       </PageTemplate>
     )
   }

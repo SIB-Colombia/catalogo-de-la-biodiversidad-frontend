@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link,TitleSection} from 'components';
+import {Link,TitleSection,FileStatus} from 'components';
 import {size, palette,font} from 'styled-theme';
 import {
   Card,
@@ -15,13 +15,9 @@ import Badge from 'material-ui/Badge';
 import Comment from 'material-ui/svg-icons/communication/comment';
 
 const Wrapper = styled.div `
-
 .card-title  > span:first-child{
   font-size: ${font('xxs')} !important;
 	color: ${palette('basescale', 2)} !important;
-}
-.box-history{
-  float: right;
 }
 `
 
@@ -40,11 +36,7 @@ class FileCard extends React.Component {
               <img src={this.props.record.image}/>
             </CardMedia>
             <CardTitle title={this.props.record.name} className="card-title" subtitle={this.props.record.description}>
-              <div className="box-history align-right">
-                <Badge badgeContent={'EX'} className="badge cr"/>
-                <Badge badgeContent={'CR'} className="badge ex"/>
-                <Badge badgeContent={'EN'} className="badge en"/>
-              </div>
+              <FileStatus />
             </CardTitle>
             <CardActions className="align-center">
               <FlatButton fullWidth={true} className="btn-secondary align-left padding">

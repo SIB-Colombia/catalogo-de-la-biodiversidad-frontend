@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, TitleSection} from 'components';
+import {Link, TitleSection,FileStatus} from 'components';
 import {size, palette, font} from 'styled-theme';
 import {
   Card,
@@ -60,11 +60,7 @@ class FileCardHorizontal extends React.Component {
                   <p className="align-justify">
                     Lorem ipsum dolor sit amet, consectetur piscing elipiscing elipiscing eliadipiscing elit. Morbi luctus leo non sapien tempus, ac cursus lectus tristique. Donec vitae mattis ante. Donec vitae mattis ante
                   </p>
-                  <div className="box-history align-right">
-                    <Badge badgeContent={'EX'} className="badge cr"/>
-                    <Badge badgeContent={'CR'} className="badge ex"/>
-                    <Badge badgeContent={'EN'} className="badge en"/>
-                  </div>
+                  <FileStatus />
                 </div>
               </Col>
             </Row>

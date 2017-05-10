@@ -17,6 +17,8 @@ import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import {palette} from 'styled-theme';
 
+
+
 const Wrapper = styled.div `
 background: ${palette('grayscale', 3)};
 padding: 0 0 55px 0;

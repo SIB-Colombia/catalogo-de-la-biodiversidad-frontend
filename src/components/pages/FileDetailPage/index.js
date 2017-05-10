@@ -49,7 +49,7 @@ class FileDetailPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={< Header />} footer={< Footer />}>
+      <PageTemplate header={< Header />} footer={< Footer />}  wallpaper='File'>
         <Grid>
           <Row className="animated fadeIn">
             <Col xs={12} lg={12} >
