@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {PageTemplate, Header, Footer, LoginSignin} from 'components';
 import Snackbar from 'material-ui/Snackbar';
-import {signin} from '../../../auth';
+import {signin, me} from '../../../auth';
 
 class LoginSigninPage extends React.Component {
 
@@ -20,10 +20,14 @@ class LoginSigninPage extends React.Component {
 
   login() {
     signin(this.state).then(data => {
-      if (data.token) {
-        window.location.href = '/';
+      if (data.error) {
+        this.setState({error: data.error});
       } else {
-        this.setState({error: data.message});
+        //console.log('login->', data);
+        me().then(user => {
+          //console.log('user-login->', user);
+          window.location.href = '/';
+        })
       }
     });
   }

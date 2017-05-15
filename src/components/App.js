@@ -16,6 +16,7 @@ import {
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import theme from './themes/default';
 import style from './themes/style';
+// import {me} from '../auth';
 
 injectGlobal `${style}`;
 
@@ -47,6 +48,7 @@ const App = () => {
       </ThemeProvider>
     </MuiThemeProvider>
   )
+
 }
 
 export default App;

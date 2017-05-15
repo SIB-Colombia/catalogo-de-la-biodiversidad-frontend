@@ -8,17 +8,23 @@ class UserProfilePage extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.state = {
+      user: null
+    }
   }
   componentDidMount() {}
 
-  componentWillMount() {}
+  componentWillMount() {
+    isAuthenticated().then(user => {
+      this.setState({user: user});
+    })
+  }
 
   render() {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
-        <UserProfile data={isAuthenticated()}/>
+        {this.state.user && <UserProfile data={this.state.user}/>}
       </PageTemplate>
     )
   }

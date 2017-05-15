@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import Const from '../const';
-var rootUser;
+var rootMe = null;
 
 //Http
 export function http(type, data) {
@@ -14,7 +14,7 @@ export function http(type, data) {
     ? body
     : null;
 
-  return {
+  let config = {
     method: type,
     // mode: 'cors',
     headers: {
@@ -23,26 +23,40 @@ export function http(type, data) {
     body: data
   }
 
+  return config;
+
 }
 
 //is authenticated
 export function isAuthenticated() {
-  return getUser() || false;
+  return getUser();
 }
 
 //has Role
 export function hasRole() {}
 
 //Me
+
 export function me() {
+
+  console.log('me');
+
   return fetch(`${Const.server.local}/api/user/me`, http('GET')).then((response) => {
     return response.json()
   }).then((data) => {
-    setUser(data);
-    return data;
+
+    if (data._id) {
+      return setUser(data).then(user => {
+        return user;
+      });
+    } else {
+      throw {error: data.message};
+    }
+
   }).catch(err => {
     clean();
   })
+
 }
 
 //signin
@@ -50,8 +64,13 @@ export function signin(user) {
   return fetch(`${Const.server.local}/auth/local`, http('POST', user)).then((response) => {
     return response.json()
   }).then((data) => {
-    setToken(data);
-    return data
+    if (data.token) {
+      return setToken(data).then(token => {
+        return token;
+      });
+    } else {
+      throw {error: data.message};
+    }
   }).catch(err => {
     return err;
   })
@@ -81,18 +100,34 @@ export function getToken() {
 
 //Set Token
 export function setToken(data) {
-  localStorage.setItem(Const.TOKEN, data.token);
+  try {
+    localStorage.setItem(Const.TOKEN, data.token);
+  } catch (err) {
+    return Promise.reject(err.message);
+  }
+  return Promise.resolve(data.token || null);
 }
 
 //Get User
 export function getUser() {
-  return rootUser || JSON.parse(localStorage.getItem(Const.USER));
+  try {
+    if (!rootMe) {
+      rootMe = JSON.parse(localStorage.getItem(Const.USER));
+    }
+  } catch (err) {
+    return Promise.reject(err.message);
+  }
+  return Promise.resolve(rootMe || null);
 }
 
 //Set User
 export function setUser(data) {
-  rootUser = data;
-  localStorage.setItem(Const.USER, JSON.stringify(data));
+  try {
+    localStorage.setItem(Const.USER, JSON.stringify(data));
+  } catch (err) {
+    return Promise.reject(err.message);
+  }
+  return Promise.resolve(rootMe = data || null);
 }
 
 //Clean

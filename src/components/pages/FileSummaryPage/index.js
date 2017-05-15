@@ -14,6 +14,7 @@ import {
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
+import {isAuthenticated} from '../../../auth';
 
 class FileSummaryPage extends React.Component {
 
@@ -22,7 +23,8 @@ class FileSummaryPage extends React.Component {
     this.state = {
       id: null,
       files: [],
-      images: []
+      images: [],
+      user: null
     }
   }
 
@@ -32,6 +34,10 @@ class FileSummaryPage extends React.Component {
     this.setState({id: this.props.match.params.id})
     this.setState({files: FileService.getFiles()})
     this.setState({images: FileService.getImages()})
+    isAuthenticated().then(user => {
+      console.log('file', user)
+      this.setState({user: user});
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -56,7 +62,7 @@ class FileSummaryPage extends React.Component {
             </Col>
           </Row>
         </Grid>
-        <FileMostRecent data={this.state.files}/>
+        <FileMostRecent data={this.state.files} user={this.state.user} />
       </PageTemplate>
     )
   }

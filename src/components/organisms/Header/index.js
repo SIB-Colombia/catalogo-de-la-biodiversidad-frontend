@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {IconLink, Link, HeaderSearchAdvance,HeaderUserMenu} from 'components';
+import {IconLink, Link, HeaderSearchAdvance, HeaderUserMenu} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -11,7 +11,8 @@ import Paper from 'material-ui/Paper';
 import Tune from 'material-ui/svg-icons/image/tune';
 import Search from 'material-ui/svg-icons/action/search';
 import {size, palette} from 'styled-theme';
-import {me, isAuthenticated} from '../../../auth';
+// import {me, isAuthenticated} from '../../../auth';
+import {isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.nav `
 position:fixed;
@@ -92,7 +93,7 @@ line-height:1;
 
 //Get user from Redis [Once time], this module remember promise
 
-const getMe = me();
+// const getMe = me();
 
 class Header extends React.Component {
 
@@ -105,14 +106,21 @@ class Header extends React.Component {
   }
 
   componentWillMount() {
-    getMe.then(data => {
+    /*getMe.then(data => {
+      //console.log('res me',data);
       if (data) {
         console.log('user logged->', data);
-        this.setState({user: isAuthenticated()});
+        // this.setState({user: isAuthenticated()});
       } else {
         console.log('user not login :(');
       }
+    })*/
+
+    isAuthenticated().then(user => {
+      // console.log('uH', user)
+      this.setState({user: user});
     })
+
   }
 
   handleOpen = () => {
@@ -189,7 +197,7 @@ class Header extends React.Component {
                 </Link>
               </Col>}
               {this.state.user && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
-								<HeaderUserMenu />
+                <HeaderUserMenu user={this.state.user}/>
               </Col>}
             </Row>
           </Grid>

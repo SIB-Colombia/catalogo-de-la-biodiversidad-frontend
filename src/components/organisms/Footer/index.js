@@ -12,8 +12,11 @@ left: 0;
 padding: 15px 0px;
 background-color: ${palette('grayscale', 6)};
 text-align: center;
+color:${palette('option', 0)};
 a{
 	margin:0px 5px;
+	font-size: 13px;
+	font-weight: bold;
 	color:${palette('option', 0)};
 	text-decoration: none;
 }

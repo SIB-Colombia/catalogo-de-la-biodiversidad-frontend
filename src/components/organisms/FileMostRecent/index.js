@@ -15,9 +15,9 @@ import {
 
 const Wrapper = styled.div `
 .paper{
-background: ${palette('grayscale',1)} !important;
+background: ${palette('grayscale', 1)} !important;
 }
-box-shadow: 0 -22px 120px 100px ${palette('grayscale',1)};
+box-shadow: 0 -22px 120px 100px ${palette('grayscale', 1)};
 `
 
 class FileMostRecent extends React.Component {
@@ -30,10 +30,10 @@ class FileMostRecent extends React.Component {
     return (
       <Wrapper>
         <Paper zDepth={0} className="paper-padding-2 paper">
-          <TitleSection align="center" color="basescale-6" className="padding-top-2" >Fichas relacionadas</TitleSection>
+          <TitleSection align="center" color="basescale-6" className="padding-top-2">Fichas relacionadas</TitleSection>
           <FileCarousel data={this.props.data}/>
           <TitleSection align="center" color="basescale-6" className="padding-top-2 padding-bottom-3">Comentarios</TitleSection>
-          <FileComment/>
+          <FileComment user={this.props.user} />
         </Paper>
       </Wrapper>
     )

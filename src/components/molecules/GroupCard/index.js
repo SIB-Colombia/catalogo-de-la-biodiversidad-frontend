@@ -10,7 +10,8 @@ import {
   CardTitle,
   CardText
 } from 'material-ui/Card';
-import {isAuthenticated} from '../../../auth';
+
+// import {isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.div `
 .card-title  > span:first-child{
@@ -24,19 +25,17 @@ class GroupCard extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
       <Wrapper>
         <Link to={`/file/summary/${this.props.record.id}`}>
           <Card className="space-card">
-            {/* {isAuthenticated() && <CardHeader avatar="/star2.png" className="card-star"/>} */}
-            <CardHeader avatar="/star2.png" className="card-star"/>
+            {this.props.user && <CardHeader avatar="/star2.png" className="card-star"/>}
             <CardMedia>
               <img src="/bird1.jpg"/>
             </CardMedia>
-            <CardTitle title="Título" subtitle="Subtítulo" className="card-title"/> {/* <CardText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </CardText> */}
+            <CardTitle title="Título" subtitle="Subtítulo" className="card-title"/>
           </Card>
         </Link>
       </Wrapper>

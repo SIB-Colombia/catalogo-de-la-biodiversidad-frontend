@@ -13,6 +13,7 @@ import {
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
+import {isAuthenticated} from '../../../auth';
 
 class HomePage extends React.Component {
 
@@ -20,18 +21,23 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       files: [],
-      value: 1
+      value: 1,
+      user: null
     }
   }
   componentDidMount() {}
 
   componentWillMount() {
+
+    isAuthenticated().then(user => {
+      // console.log('uHome', user)
+      this.setState({user: user});
+    })
+
     // console.log(this.props.location.pathname);
     // console.log(FileService.getList());
     this.setState({files: FileService.getFiles()});
   }
-
-
 
   handleChange = (event, index, value) => this.setState({value});
 
@@ -50,9 +56,9 @@ class HomePage extends React.Component {
           </DropDownMenu>
         </div>}
         {this.state.files.length > 0 && <FileCarousel data={this.state.files}/>}<br/>
-        <CategoryCarousel/> {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>}
+        <CategoryCarousel/> {this.state.files.length > 0 && <GroupCarousel data={this.state.files} user={this.state.user}/>}
 
-       {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
+        {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
       </PageTemplate>
     )
   }

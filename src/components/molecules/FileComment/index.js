@@ -14,7 +14,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
-import {isAuthenticated} from '../../../auth';
+// import {isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.div `
 padding-bottom: 20px;
@@ -46,12 +46,12 @@ class FileComment extends React.Component {
                 <CardText className="box-comment">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
                 </CardText>
-                <CardActions>
+                {this.props.user && <CardActions>
                   <FlatButton label="Responder"/>
                   <FlatButton label="Denunciar"/>
-                </CardActions>
+                </CardActions>}
               </Card>
-              <Divider/> {isAuthenticated() && <Card>
+              <Divider/> {this.props.user && <Card>
                 <CardHeader title="Usuario registrado" subtitle="01/01/2017" avatar="/avatar3.png"/>
                 <CardText className="box-comment textarea">
                   <TextField hintText="Escriba aquí su comentario" floatingLabelText="Comentario" fullWidth={true} multiLine={true} rows={3}/>
@@ -60,7 +60,7 @@ class FileComment extends React.Component {
                   <FlatButton label="Publicar" className="btn-secondary"/>
                 </CardActions>
               </Card>}
-              {!isAuthenticated() && <TitleSection align='center' className="padding-top-3">Para poder comentar, por favor inicie sesión primero</TitleSection>}
+              {!this.props.user && <TitleSection align='center' className="padding-top-3">Para poder comentar, por favor inicie sesión primero</TitleSection>}
             </Col>
           </Row>
         </Grid>

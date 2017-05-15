@@ -16,7 +16,8 @@ import Settings from 'material-ui/svg-icons/action/settings';
 import Exit from 'material-ui/svg-icons/action/exit-to-app';
 import Account from 'material-ui/svg-icons/action/account-circle';
 import Info from 'material-ui/svg-icons/action/info';
-import {logout, isAuthenticated} from '../../../auth';
+import {logout} from '../../../auth';
+// import {logout, isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.div `
 float: right;
@@ -42,6 +43,7 @@ class HeaderUserMenu extends React.Component {
 
   constructor(props) {
     super(props);
+
   }
 
   exit() {
@@ -51,7 +53,7 @@ class HeaderUserMenu extends React.Component {
   render() {
     return (
       <Wrapper>
-        <IconMenu className='iconUser' iconButtonElement={< IconButton > <img src={isAuthenticated().photo || '/avatar3.png'} className="picture"/> < /IconButton>} anchorOrigin={{
+        <IconMenu className='iconUser' iconButtonElement={< IconButton > <img src={this.props.user.photo || '/avatar3.png'} className="picture"/> < /IconButton>} anchorOrigin={{
           horizontal: 'right',
           vertical: 'top'
         }} targetOrigin={{
@@ -59,7 +61,7 @@ class HeaderUserMenu extends React.Component {
           vertical: 'top'
         }}>
           <MenuItem primaryText="Escritorio" leftIcon={< Home />}/>
-          <Link to={'/user/profile'}><MenuItem primaryText="Perfil" leftIcon={< Account />} /></Link>
+          <Link to={'/user/profile'}><MenuItem primaryText="Perfil" leftIcon={< Account />}/></Link>
           <MenuItem primaryText="Notificaciones" leftIcon={< Info />}/>
           <MenuItem primaryText="Ajustes de cuenta" leftIcon={< Settings />}/>
           <Divider/>
