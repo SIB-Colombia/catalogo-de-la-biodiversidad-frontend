@@ -61,12 +61,12 @@ export function getImages() {
 
   return [
     {
-      src: '/tucanes.jpg',
-      thumbnail: '/tucanes.jpg',
+      src: 'https://farm1.staticflickr.com/521/19535475860_542e59c2c8.jpg',
+      thumbnail: 'https://farm1.staticflickr.com/521/19535475860_542e59c2c8.jpg',
       caption: 'Photo by Jessica Weiller'
     }, {
-      src: '/tucanes2.jpg',
-      thumbnail: '/tucanes2.jpg',
+      src: 'https://farm1.staticflickr.com/521/19535475860_542e59c2c8.jpg',
+      thumbnail: 'https://farm1.staticflickr.com/521/19535475860_542e59c2c8.jpg',
       caption: 'Photo by Piotr Łaskawski'
     }
   ]
