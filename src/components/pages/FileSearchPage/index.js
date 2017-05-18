@@ -17,7 +17,6 @@ class FileSearchPage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
-
     this.setState({files: FileService.getFiles()})
   }
 

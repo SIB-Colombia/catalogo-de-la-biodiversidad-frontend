@@ -11,7 +11,7 @@ import {
   CardText
 } from 'material-ui/Card';
 
-// import {isAuthenticated} from '../../../auth';
+import {isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.div `
 .card-title  > span:first-child{
@@ -25,13 +25,12 @@ class GroupCard extends React.Component {
     super(props);
   }
 
-
   render() {
     return (
       <Wrapper>
         <Link to={`/file/summary/${this.props.record.id}`}>
           <Card className="space-card">
-            {this.props.user && <CardHeader avatar="/star2.png" className="card-star"/>}
+            {isAuthenticated() && <CardHeader avatar="/star2.png" className="card-star"/>}
             <CardMedia>
               <img src="/bird1.jpg"/>
             </CardMedia>

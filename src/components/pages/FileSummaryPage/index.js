@@ -14,7 +14,6 @@ import {
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
-import {isAuthenticated} from '../../../auth';
 
 class FileSummaryPage extends React.Component {
 
@@ -22,6 +21,7 @@ class FileSummaryPage extends React.Component {
     super(props);
     this.state = {
       id: null,
+      fileComplete: null,
       files: [],
       images: [],
       user: null
@@ -31,13 +31,17 @@ class FileSummaryPage extends React.Component {
   componentDidMount() {}
 
   componentWillMount() {
+
     this.setState({id: this.props.match.params.id})
     this.setState({files: FileService.getFiles()})
     this.setState({images: FileService.getImages()})
-    isAuthenticated().then(user => {
-      console.log('file', user)
-      this.setState({user: user});
-    })
+
+    FileService.getFileComplete(this.props.match.params.id).then(complete => {
+      console.log('comocom', complete);
+      console.log('comocom', complete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple);
+      this.setState({fileComplete: complete});
+    });
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -49,20 +53,17 @@ class FileSummaryPage extends React.Component {
     return (
       <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
         <FileSummaryMenu/>
-        <Grid>
+        {this.state.fileComplete && <Grid>
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
-              <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/>
-              <FileTab name='summary' id={this.state.id} content={< FileSummary data = {
-                this.state.files
-              }
-              images = {
-                this.state.images
-              } />}/>
+
+              <FileHeader title={this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple} subtitle={this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple}/>
+              <FileTab name='summary' id={this.state.id} content= { <FileSummary data = { this.state.files } complete = { this.state.fileComplete } images = { this.state.images } /> }/>
+
             </Col>
           </Row>
-        </Grid>
-        <FileMostRecent data={this.state.files} user={this.state.user} />
+        </Grid>}
+        <FileMostRecent id={this.state.id} data={this.state.files}/>
       </PageTemplate>
     )
   }

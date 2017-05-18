@@ -32,6 +32,23 @@ export function isAuthenticated() {
   return getUser();
 }
 
+//middleware
+var mock = null;
+
+export function middleware(component) {
+
+  console.log('mock', mock);
+
+  let current = mock || JSON.parse(localStorage.getItem(Const.USER));
+  if (current) {
+    return component;
+  } else {
+    console.log('no apto');
+    // window.location.href = '';
+  }
+
+}
+
 //has Role
 export function hasRole() {}
 
@@ -110,14 +127,7 @@ export function setToken(data) {
 
 //Get User
 export function getUser() {
-  try {
-    if (!rootMe) {
-      rootMe = JSON.parse(localStorage.getItem(Const.USER));
-    }
-  } catch (err) {
-    return Promise.reject(err.message);
-  }
-  return Promise.resolve(rootMe || null);
+  return JSON.parse(localStorage.getItem(Const.USER));
 }
 
 //Set User

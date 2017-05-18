@@ -11,7 +11,9 @@ import {
   TitleSection,
   FileCarousel,
   FileComment
-} from 'components'
+} from 'components';
+
+import * as FileService from '../../../services/FileService';
 
 const Wrapper = styled.div `
 .paper{
@@ -24,6 +26,19 @@ class FileMostRecent extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      comments: []
+    }
+  }
+
+  componentWillMount() {
+    this.renderCommments();
+  }
+
+  renderCommments = () => {
+    FileService.getComments(this.props.id).then(comments => {
+      this.setState({comments: comments});
+    })
   }
 
   render() {
@@ -33,7 +48,7 @@ class FileMostRecent extends React.Component {
           <TitleSection align="center" color="basescale-6" className="padding-top-2">Fichas relacionadas</TitleSection>
           <FileCarousel data={this.props.data}/>
           <TitleSection align="center" color="basescale-6" className="padding-top-2 padding-bottom-3">Comentarios</TitleSection>
-          <FileComment user={this.props.user} />
+          <FileComment id={this.props.id} comments={this.state.comments} update={this.renderCommments}/>
         </Paper>
       </Wrapper>
     )

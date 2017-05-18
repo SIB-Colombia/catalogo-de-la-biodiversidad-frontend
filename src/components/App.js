@@ -16,7 +16,7 @@ import {
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import theme from './themes/default';
 import style from './themes/style';
-// import {me} from '../auth';
+import {middleware} from '../auth';
 
 injectGlobal `${style}`;
 
@@ -34,15 +34,16 @@ const App = () => {
     <MuiThemeProvider>
       <ThemeProvider theme={theme}>
         <Switch>
-          <Route path="/" component={HomePage} exact/>
-          <Route path="/login/signin" component={LoginSigninPage}/>
-          <Route path="/login/signup" component={LoginSignupPage}/>
-          <Route path="/login/recover" component={LoginRecoverPage}/>
-          <Route path="/static/about" component={StaticPage}/>
-          <Route path="/file/summary/:id" component={FileSummaryPage}/>
-          <Route path="/file/detail/:id" component={FileDetailPage}/>
-          <Route path="/file/search" component={FileSearchPage}/>
-          <Route path="/user/profile" component={UserProfilePage}/>
+          <Route exact path="/" component={HomePage}/>
+          {/* <Route exact path="/" component={middleware(HomePage)}/> */}
+          <Route exact path="/login/signin" component={LoginSigninPage}/>
+          <Route exact path="/login/signup" component={LoginSignupPage}/>
+          <Route exact path="/login/recover" component={LoginRecoverPage}/>
+          <Route exact path="/static/about" component={StaticPage}/>
+          <Route exact path="/file/summary/:id" component={FileSummaryPage}/>
+          <Route exact path="/file/detail/:id" component={FileDetailPage}/>
+          <Route exact path="/file/search" component={FileSearchPage}/>
+          <Route exact path="/user/profile" component={UserProfilePage}/>
           <Route component={NotFoundPage}/>
         </Switch>
       </ThemeProvider>

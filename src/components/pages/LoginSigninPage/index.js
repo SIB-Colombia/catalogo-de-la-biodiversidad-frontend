@@ -23,9 +23,7 @@ class LoginSigninPage extends React.Component {
       if (data.error) {
         this.setState({error: data.error});
       } else {
-        //console.log('login->', data);
         me().then(user => {
-          //console.log('user-login->', user);
           window.location.href = '/';
         })
       }

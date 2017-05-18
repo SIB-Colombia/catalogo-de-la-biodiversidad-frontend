@@ -49,16 +49,17 @@ class FileDetailPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={< Header />} footer={< Footer />}  wallpaper='File'>
+      <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
         <Grid>
           <Row className="animated fadeIn">
-            <Col xs={12} lg={12} >
-              <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/>
-              {this.state.blocks && <FileTab name='detail' id={this.state.id}  content={<FileDetail data={this.state.blocks} />} />}
+            <Col xs={12} lg={12}>
+              <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/> {this.state.blocks && <FileTab name='detail' id={this.state.id} content={< FileDetail data = {
+                this.state.blocks
+              } />}/>}
             </Col>
           </Row>
         </Grid>
-        <FileMostRecent data={this.state.files} />
+        <FileMostRecent data={this.state.files}/>
       </PageTemplate>
     )
   }

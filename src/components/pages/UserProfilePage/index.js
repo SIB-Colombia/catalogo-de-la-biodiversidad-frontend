@@ -1,7 +1,7 @@
 import React from 'react';
 import {PageTemplate, Header, Footer, UserProfile} from 'components';
 
-import {isAuthenticated} from '../../../auth';
+// import {isAuthenticated, getUser} from '../../../auth';
 // import * as FileService from '../../../services/FileService';
 
 class UserProfilePage extends React.Component {
@@ -14,17 +14,13 @@ class UserProfilePage extends React.Component {
   }
   componentDidMount() {}
 
-  componentWillMount() {
-    isAuthenticated().then(user => {
-      this.setState({user: user});
-    })
-  }
+  componentWillMount() {}
 
   render() {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
-        {this.state.user && <UserProfile data={this.state.user}/>}
+        <UserProfile/>
       </PageTemplate>
     )
   }

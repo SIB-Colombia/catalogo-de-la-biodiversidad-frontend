@@ -101,7 +101,7 @@ class GroupCarousel extends React.Component {
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
-                    <GroupCard record={record} user={this.props.user}/>
+                    <GroupCard record={record} />
                   </div>
                 ))}
               </Carousel>

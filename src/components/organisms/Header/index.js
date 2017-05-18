@@ -116,10 +116,6 @@ class Header extends React.Component {
       }
     })*/
 
-    isAuthenticated().then(user => {
-      // console.log('uH', user)
-      this.setState({user: user});
-    })
 
   }
 
@@ -188,7 +184,7 @@ class Header extends React.Component {
                   </Row>
                 </div>
               </Col>
-              {!this.state.user && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
+              {!isAuthenticated() && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
                 <Link to="/login/signup" activeClassName="active">
                   <FlatButton label="Registrarse"/>
                 </Link>
@@ -196,8 +192,8 @@ class Header extends React.Component {
                   <FlatButton label="Ingresar"/>
                 </Link>
               </Col>}
-              {this.state.user && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
-                <HeaderUserMenu user={this.state.user}/>
+              {isAuthenticated() && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
+                <HeaderUserMenu />
               </Col>}
             </Row>
           </Grid>
