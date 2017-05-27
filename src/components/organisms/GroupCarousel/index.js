@@ -112,7 +112,7 @@ class GroupCarousel extends React.Component {
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
             <Link to={`/`}>
-              <RaisedButton label="Ver todos los grupos" default={true}/>
+              <RaisedButton label="Ver más" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
           </div>

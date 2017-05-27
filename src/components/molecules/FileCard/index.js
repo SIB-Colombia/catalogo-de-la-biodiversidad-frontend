@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link,TitleSection,FileStatus} from 'components';
-import {size, palette,font} from 'styled-theme';
+import {Link, TitleSection, FileStatus} from 'components';
+import {size, palette, font} from 'styled-theme';
 import {
   Card,
   CardActions,
@@ -18,6 +18,14 @@ const Wrapper = styled.div `
 .card-title  > span:first-child{
   font-size: ${font('xxs')} !important;
 	color: ${palette('basescale', 2)} !important;
+}
+.card-actions{
+  padding: 0px !important;
+  button{
+    padding: 0 12px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+  }
 }
 `
 
@@ -36,11 +44,11 @@ class FileCard extends React.Component {
               <img src={this.props.record.image}/>
             </CardMedia>
             <CardTitle title={this.props.record.name} className="card-title" subtitle={this.props.record.description}>
-              <FileStatus />
+              <FileStatus/>
             </CardTitle>
-            <CardActions className="align-center">
+            <CardActions className="card-actions align-center">
               <FlatButton fullWidth={true} className="btn-secondary align-left padding">
-                <Comment/> {this.props.record.comment}
+                {this.props.record.comment}
               </FlatButton>
             </CardActions>
           </Card>

@@ -106,7 +106,7 @@ class FileCarousel extends React.Component {
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
             <Link to={`/file/search`}>
-              <RaisedButton label="Ver todas las fichas" default={true}/>
+              <RaisedButton label="Ver más" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
           </div>
