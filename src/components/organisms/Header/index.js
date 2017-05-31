@@ -27,7 +27,10 @@ z-index: 10 !important;
 		display: none;
 	}
 	.box-search-color{
-		background: ${palette('grayscale', 1)};
+		background: ${palette('grayscale', 0)};
+		hr{
+			display: none;
+		}
 
 	}
 	.box-nav-advance{
@@ -45,7 +48,8 @@ z-index: 10 !important;
 
 }
 svg{
-	color: ${palette('grayscale', 3)} !important;
+	font-weight: lighter;
+	color: ${palette('grayscale', 5)} !important;
 }
 .box-logo{
 	@media ${size('xs')}{
@@ -64,10 +68,13 @@ svg{
 }
 .brand-logo {
 	display: inline-block;
-	font-size: 2.1rem;
+	font-size: 43px;
 	padding: 0;
 	white-space: nowrap;
-	margin-top: 7px;
+	margin-top: 1px;
+	svg{
+		color:red !important;
+	}
 }
 `
 
@@ -84,6 +91,7 @@ line-height: 1;
 b{
 	margin-right: 2px;
 }
+
 `
 const TitleSub = styled.div `
 font-size:14px;

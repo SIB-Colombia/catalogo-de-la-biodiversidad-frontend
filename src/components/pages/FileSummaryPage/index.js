@@ -8,7 +8,6 @@ import {
   Footer,
   FileSummary,
   FileHeader,
-  FileTab,
   FileSummaryMenu,
   FileMostRecent
 } from 'components';
@@ -33,14 +32,17 @@ class FileSummaryPage extends React.Component {
   componentWillMount() {
 
     this.setState({id: this.props.match.params.id})
-    this.setState({files: FileService.getFiles()})
     this.setState({images: FileService.getImages()})
 
     FileService.getFileComplete(this.props.match.params.id).then(complete => {
-      console.log('comocom', complete);
-      console.log('comocom', complete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple);
       this.setState({fileComplete: complete});
     });
+
+    FileService.getLastUpdatedRecords().then(data => {
+      this.setState({files: data});
+    }).catch(err => {
+      console.log(err);
+    })
 
   }
 
@@ -48,22 +50,26 @@ class FileSummaryPage extends React.Component {
     console.log(this.props.match.params.id);
   }
 
+  title() {
+    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple;
+  }
+  subtitle() {
+    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple;
+  }
+
   render() {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
-        <FileSummaryMenu/>
-        {this.state.fileComplete && <Grid>
+        <FileSummaryMenu/> {this.state.fileComplete && <Grid>
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
-
-              <FileHeader title={this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple} subtitle={this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple}/>
-              <FileTab name='summary' id={this.state.id} content= { <FileSummary data = { this.state.files } complete = { this.state.fileComplete } images = { this.state.images } /> }/>
-
+              <FileHeader title={this.title()} subtitle={this.subtitle()} id={this.state.id} active="summary"/>
+              <FileSummary complete={this.state.fileComplete} images={this.state.images}/>
             </Col>
           </Row>
         </Grid>}
-        <FileMostRecent id={this.state.id} data={this.state.files}/>
+        {this.state.fileComplete && <FileMostRecent id={this.state.id} data={this.state.files}/>}
       </PageTemplate>
     )
   }

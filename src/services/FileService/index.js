@@ -10,7 +10,7 @@ export function getFiles() {
       name: 'Tagetes Patupa',
       description: 'L. 1758',
       image: '/background/71728_orig.jpg',
-      comment: 'Aguila tirana Black...'
+      comment: 'Yo soy un texto de pruebas con un sentido largo que no cabe en la caja de texto'
     }, {
       id: '56c4fe28f0106c67230e7394',
       name: 'Tagetes Patupa',
@@ -73,8 +73,9 @@ export function getImages() {
 
 }
 
-//Get Comments by file
+//Api Local
 
+//Get Comments by file
 export function getComments(id) {
 
   return fetch(`${Const.server.local}/api/comment/show/${id}`, http('GET')).then((response) => {
@@ -109,8 +110,20 @@ export function getList() {
 
 }
 
-//Get individual Record v1.5 / example: 56c4fe28f0106c67230e7394
+// Api Humboldt
 
+//Get last update record
+export function getLastUpdatedRecords() {
+
+  return fetch(`${Const.server.api_v1_5}/last_updated_records`, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+
+}
+
+//Get individual Record v1.5 / example: 56c4fe28f0106c67230e7394
 export function getFile(id) {
 
   return fetch(`${Const.server.api_v1_5}/record/${id}`, http('GET')).then((response) => {
@@ -121,7 +134,6 @@ export function getFile(id) {
 }
 
 // Get Complete Record v1.5
-
 export function getFileComplete(id) {
 
   return fetch(`${Const.server.api_v1_5}/complete-record/${id}`, http('GET')).then((response) => {
@@ -133,7 +145,6 @@ export function getFileComplete(id) {
 }
 
 //Get taxonRecordName v1.5
-
 export function getTaxonRecordName(id) {
 
   return fetch(`${Const.server.api_v1_5}/record/${id}/taxon_record_name/1`, http('GET')).then((response) => {
@@ -145,7 +156,6 @@ export function getTaxonRecordName(id) {
 }
 
 //Get AssociatedParty v1.5
-
 export function getAssociatedParty(id) {
 
   return fetch(`${Const.server.api_v1_5}/record/${id}/associated_party/1`, http('GET')).then((response) => {
@@ -157,7 +167,6 @@ export function getAssociatedParty(id) {
 }
 
 //Get commonNamesAtomized v1.5
-
 export function getCommonNamesAtomized(id) {
 
   return fetch(`${Const.server.api_v1_5}/record/${id}/common_names_atomized/1`, http('GET')).then((response) => {
@@ -169,7 +178,6 @@ export function getCommonNamesAtomized(id) {
 }
 
 //Get fullDescription v1.5
-
 export function getFullDescription(id) {
 
   return fetch(`${Const.server.api_v1_5}/record/${id}/full_description/1`, http('GET')).then((response) => {

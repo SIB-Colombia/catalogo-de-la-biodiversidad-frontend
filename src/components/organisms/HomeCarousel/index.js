@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, HomeCard} from 'components';
+import {Link, HomeCard, Video} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import Carousel from 'react-slick';
 import RaisedButton from 'material-ui/RaisedButton';
+const CarouselPreview = require('react-responsive-carousel').Carousel;
 
 const Wrapper = styled.div `
-
 `
 class HomeCarousel extends React.Component {
 
@@ -38,48 +37,33 @@ class HomeCarousel extends React.Component {
 
   render() {
 
-    const settings = {
-      dots: true,
-      arrows: false,
-      infinite: true,
-      speed: 500,
-      autoplay: true,
-      lazyLoad: true,
-      slidesToShow: 1,
-      adaptiveHeight: true,
-      slidesToScroll: 1,
-      draggable: true,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {}
-        }, {
-          breakpoint: 1024,
-          settings: {}
-        }, {
-          breakpoint: 1368,
-          settings: {}
-        }, {
-          breakpoint: 2000,
-          settings: {}
-        }, {
-          breakpoint: 100000,
-          settings: 'unslick'
-        }
-      ]
-    };
-
-    const background = ['89714_orig.jpg','11285_orig.jpg', '77419_orig.jpg', '53388_orig.jpg'];
+    const background = [
+      {
+        type: 'video',
+        url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0'
+        // url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1'
+      }, {
+        type: 'image',
+        url: '89714_orig.jpg'
+      }, {
+        type: 'image',
+        url: '11285_orig.jpg'
+      }, {
+        type: 'image',
+        url: '77419_orig.jpg'
+      }
+    ];
 
     return (
-      <Wrapper className="grey lighten-4">
-        <Carousel ref={c => this.slider = c} {...settings}>
+      <Wrapper>
+        <CarouselPreview showThumbs={false}>
           {background.map((record, i) => (
             <div key={i}>
-              <HomeCard record={record} height={this.state.height}/>
+              {record.type === 'video' && <Video record={record} height={this.state.height}/>}
+              {record.type === 'image' && <HomeCard record={record.url} height={this.state.height}/>}
             </div>
           ))}
-        </Carousel>
+        </CarouselPreview>
       </Wrapper>
     )
   }

@@ -18,6 +18,7 @@ import theme from './themes/default';
 import style from './themes/style';
 import {middleware} from '../auth';
 
+
 injectGlobal `${style}`;
 
 const App = () => {
@@ -48,6 +49,7 @@ const App = () => {
         </Switch>
       </ThemeProvider>
     </MuiThemeProvider>
+
   )
 
 }

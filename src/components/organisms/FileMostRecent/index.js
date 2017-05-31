@@ -16,10 +16,14 @@ import {
 import * as FileService from '../../../services/FileService';
 
 const Wrapper = styled.div `
-.paper{
+border-top: 45px solid ${palette('grayscale', 6)} !important;
+.background-1{
+background: ${palette('grayscale', 2)} !important;
+}
+.background-2{
 background: ${palette('grayscale', 1)} !important;
 }
-box-shadow: 0 -22px 120px 100px ${palette('grayscale', 1)};
+box-shadow: 0 -22px 180px 1100px ${palette('grayscale', 7)};
 `
 
 class FileMostRecent extends React.Component {
@@ -44,9 +48,10 @@ class FileMostRecent extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Paper zDepth={0} className="paper-padding-2 paper">
-          <TitleSection align="center" color="basescale-6" className="padding-top-2">Fichas relacionadas</TitleSection>
-          <FileCarousel data={this.props.data}/>
+        <Paper zDepth={0} className="paper-padding-2 background-1">
+          <FileCarousel data={this.props.data} title="Fichas relacionadas"/>
+        </Paper>
+        <Paper zDepth={0} className="paper-padding-2 background-2">
           <TitleSection align="center" color="basescale-6" className="padding-top-2 padding-bottom-3">Comentarios</TitleSection>
           <FileComment id={this.props.id} comments={this.state.comments} update={this.renderCommments}/>
         </Paper>

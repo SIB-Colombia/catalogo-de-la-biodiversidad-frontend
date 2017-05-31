@@ -120,7 +120,7 @@ class FileComment extends React.Component {
                   <Divider/>
                 </Card>
               ))}
-              <Divider/> {isAuthenticated() && <Card>
+              <Divider/> <br/><br/>{isAuthenticated() && <Card>
                 <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/avatar3.png'}/>
                 <CardText className="box-comment textarea">
                   <TextField hintText="Escriba aquí su comentario" onChange={(e) => this.change(e, 'new')} value={this.state.new} floatingLabelText="Comentario" fullWidth={true} multiLine={true} rows={3}/>

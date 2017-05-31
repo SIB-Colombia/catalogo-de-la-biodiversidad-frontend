@@ -18,7 +18,8 @@ class TitleSection extends React.Component {
     const color = this.props.color ?  'color-' + this.props.color : 'color-basescale-3';
     const size = this.props.size ?  'title-' + this.props.size : 'title-xxs';
     const bold = this.props.bold ? 'bold' : '';
-    const style = `${align} ${color} ${size} ${bold} ${this.props.className || ''}`;
+    const lighter = this.props.lighter ? `t${this.props.lighter}` : '';
+    const style = `${align} ${color} ${size} ${bold} ${lighter} ${this.props.className || ''}`;
 
     return (
       <Wrapper className={style}>
