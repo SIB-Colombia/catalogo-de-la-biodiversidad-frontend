@@ -8,12 +8,9 @@ import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import {IconLink, Link, FileHeader, TitleSection} from 'components'
+import {IconLink, Link, FileHeader, TitleSection, Merge} from 'components'
 
 const Wrapper = styled.div `
-.scrol{
-  overflow:auto;
-}
 `
 
 class FileDetail extends React.Component {
@@ -22,24 +19,70 @@ class FileDetail extends React.Component {
     super(props);
   }
 
+  getFeeding() {
+    try {
+      return this.props.complete.feedingApprovedInUse.feeding.feedingUnstructured;
+    } catch (err) {
+      return 'Sin información';
+    }
+  }
 
   render() {
-    console.log('-->', this.props.data);
-
     return (
       <Wrapper>
-        <br/>
-        {Object.keys(this.props.data).map((record, i) => (
-          <div key={i}>
-            <Paper className="paper-padding-1 scrol">
-              <TitleSection>{record}</TitleSection>
-              <pre>
-              {JSON.stringify(this.props.data[record], null, 4)}
-              </pre>
+        <Row>
+          <Col lg={3}>
+            <Paper>
+              efwef
             </Paper>
+          </Col>
+          <Col lg={9}>
+            <Row>
+              <Merge title='Historia Natural' />
+              <Col xs={12} lg={12}>
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify">
+                  <TitleSection lighter={600} className="padding-bottom-3">Alimentación</TitleSection>
+                  {this.getFeeding()}
+                </Paper>
+              </Col>
+              <Merge title='Historia Natural' separator={true} />
+              <Col xs={12} lg={12}>
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify">
+                  <TitleSection lighter={600} className="padding-bottom-3">Comportamiento</TitleSection>
+                  {this.getFeeding()}
+                </Paper>
+              </Col>
+              <Merge title='Historia Natural' separator={true} />
+              <Col xs={12} lg={12}>
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify">
+                  <TitleSection lighter={600} className="padding-bottom-3">Comportamiento</TitleSection>
+                  {this.getFeeding()}
+                </Paper>
+              </Col>
+              <Merge title='Historia Natural' bottom={true} />
+            </Row>
             <br/>
-          </div>
-        ))}
+            <br/>
+            <Row>
+              <Merge title='Dinámica población y Amenazas' />
+              <Col xs={12} lg={12}>
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify">
+                  <TitleSection lighter={600} className="padding-bottom-3">Territorio</TitleSection>
+                  {this.getFeeding()}
+                </Paper>
+              </Col>
+              <Merge title='Dinámica población y Amenazas' separator={true} />
+              <Col xs={12} lg={12}>
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify">
+                  <TitleSection lighter={600} className="padding-bottom-3">Observaciones</TitleSection>
+                  {this.getFeeding()}
+                </Paper>
+              </Col>
+              <Merge title='Dinámica población y Amenazas' bottom={true} />
+            </Row>
+            <br/>
+          </Col>
+        </Row>
       </Wrapper>
     )
   }

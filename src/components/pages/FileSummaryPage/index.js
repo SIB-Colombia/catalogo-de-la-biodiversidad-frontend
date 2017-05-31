@@ -22,8 +22,7 @@ class FileSummaryPage extends React.Component {
       id: null,
       fileComplete: null,
       files: [],
-      images: [],
-      user: null
+      images: []
     }
   }
 

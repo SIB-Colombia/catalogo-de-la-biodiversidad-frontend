@@ -23,9 +23,8 @@ class FileDetailPage extends React.Component {
     super(props);
     this.state = {
       id: null,
-      files: [],
-      blocks: false,
-      images: []
+      fileComplete: null,
+      files: []
     }
   }
 
@@ -33,33 +32,43 @@ class FileDetailPage extends React.Component {
 
   componentWillMount() {
 
-    FileService.getFile(this.props.match.params.id).then(data => {
-      this.setState({blocks: data})
-    })
-
     this.setState({id: this.props.match.params.id})
-    this.setState({files: FileService.getFiles()})
 
+    FileService.getFileComplete(this.props.match.params.id).then(complete => {
+      this.setState({fileComplete: complete});
+    });
+
+    FileService.getLastUpdatedRecords().then(data => {
+      this.setState({files: data});
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   componentWillReceiveProps(nextProps) {
     console.log(this.props.match.params.id);
   }
 
+  title() {
+    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple;
+  }
+  subtitle() {
+    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple;
+  }
+
   render() {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
-        <Grid>
+        {this.state.fileComplete && <Grid>
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
-              <FileHeader title={'Coragyps Atratus'} subtitle={'Bechstein, 1793'}/> {this.state.blocks && <FileTab name='detail' id={this.state.id} content={< FileDetail data = {
-                this.state.blocks
-              } />}/>}
+              <FileHeader title={this.title()} subtitle={this.subtitle()} id={this.state.id} active="detail"/>
+              <FileDetail complete={this.state.fileComplete}/>
             </Col>
           </Row>
-        </Grid>
-        <FileMostRecent data={this.state.files}/>
+        </Grid>}
+        {this.state.fileComplete && <FileMostRecent id={this.state.id} data={this.state.files}/>}
       </PageTemplate>
     )
   }
