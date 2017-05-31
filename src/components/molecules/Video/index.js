@@ -15,6 +15,7 @@ embed {
   width: 100%;
   height: 100%;
 }
+
 `
 class Video extends React.Component {
 

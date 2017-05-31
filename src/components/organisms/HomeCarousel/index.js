@@ -4,8 +4,19 @@ import {Link, HomeCard, Video} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
 const CarouselPreview = require('react-responsive-carousel').Carousel;
+import {Polar} from 'react-chartjs-2';
 
 const Wrapper = styled.div `
+
+
+  .slide-background{
+    background: #fff;
+    padding: 50px;
+    overflow: auto;
+  }
+  .carousel .slide{
+    background: #fff !important;
+  }
 `
 class HomeCarousel extends React.Component {
 
@@ -13,7 +24,8 @@ class HomeCarousel extends React.Component {
     super(props);
     this.state = {
       width: 0,
-      height: 0
+      height: 0,
+      dona: null
     }
 
     this.updateDimensions = this.updateDimensions.bind(this);
@@ -28,12 +40,33 @@ class HomeCarousel extends React.Component {
   }
 
   componentWillMount() {
+
     this.updateDimensions();
+
+    this.setState({
+      dona: {
+        datasets: [
+          {
+            data: [
+              11, 16, 7, 3, 14
+            ],
+            backgroundColor: [
+              '#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'
+            ],
+            label: 'My dataset' // for legend
+          }
+        ],
+        labels: ['Animal', 'Vegetal', 'Protista', 'Fungi', 'Mónera']
+      }
+    });
+
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
   }
+
+
 
   render() {
 
@@ -42,6 +75,8 @@ class HomeCarousel extends React.Component {
         type: 'video',
         url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0'
         // url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1'
+      }, {
+        type: 'chart'
       }, {
         type: 'image',
         url: '89714_orig.jpg'
@@ -58,9 +93,12 @@ class HomeCarousel extends React.Component {
       <Wrapper>
         <CarouselPreview showThumbs={false}>
           {background.map((record, i) => (
-            <div key={i}>
+            <div key={i} className={(record.type === 'chart' ? 'slide-background' : 'default-back')} >
               {record.type === 'video' && <Video record={record} height={this.state.height}/>}
               {record.type === 'image' && <HomeCard record={record.url} height={this.state.height}/>}
+              {record.type === 'chart' && <Polar data={this.state.dona} width={250} height={250} options={{
+                maintainAspectRatio: false
+              }}/>}
             </div>
           ))}
         </CarouselPreview>

@@ -130,7 +130,7 @@ class FileSummary extends React.Component {
             <br/>
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3 t100 align-justify title-xxs">
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify title-xxs color-text">
                   {this.getAbstract()}...
                 </Paper>
                 <div className="align-center">
@@ -158,7 +158,7 @@ class FileSummary extends React.Component {
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-3">
                   <TitleSection lighter={600} className="padding-bottom-3">Distribución (Descripción general de la distribución)</TitleSection>
-                  <div className="align-justify t100">
+                  <div className="align-justify t100 color-text">
                     <span className="color-basescale-3 t400">Habitat:</span> {this.getHabitat()}
                   </div>
                 </Paper>

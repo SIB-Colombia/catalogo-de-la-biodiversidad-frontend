@@ -68,7 +68,7 @@ class FileSummaryPage extends React.Component {
             </Col>
           </Row>
         </Grid>}
-        {this.state.fileComplete && <FileMostRecent id={this.state.id} data={this.state.files}/>}
+        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/>}
       </PageTemplate>
     )
   }

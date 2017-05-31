@@ -357,6 +357,11 @@ span[role=menuitem] {
   font-weight:bold !important;
 }
 
+.carousel .slide iframe{
+  margin: 0 !important;
+  width: 100% !important;
+}
+
 `;
 
 export default style;
