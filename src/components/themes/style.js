@@ -6,6 +6,7 @@ html {
   box-sizing: border-box;
 }
 body {
+  overflow-x:hidden;
   position: relative;
   margin: 0;
   min-height: calc(100% - 65px);
@@ -24,6 +25,26 @@ a{
 .modal-header-style{
   /*color:white !important;*/
   /*background:  ${theme.palette.secondary[0]};*/
+}
+
+/*Fixed Grid*/
+.container{
+  @media ${theme.sizes.xs}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media ${theme.sizes.sm}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media ${theme.sizes.md}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media ${theme.sizes.lg}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
 }
 
 /*Titles*/
