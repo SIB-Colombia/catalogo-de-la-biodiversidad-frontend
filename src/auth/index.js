@@ -18,7 +18,7 @@ export function http(type, data) {
     method: type,
     // mode: 'cors',
     headers: {
-      'Authorization': `Bearer ${getToken()}`
+      'Authorization': getToken()
     },
     body: data
   }
@@ -81,12 +81,13 @@ export function signin(user) {
   return fetch(`${Const.server.local}/auth/local`, http('POST', user)).then((response) => {
     return response.json()
   }).then((data) => {
+
     if (data.token) {
       return setToken(data).then(token => {
         return token;
       });
     } else {
-      throw {error: data.message};
+      throw {error: data.error};
     }
   }).catch(err => {
     return err;

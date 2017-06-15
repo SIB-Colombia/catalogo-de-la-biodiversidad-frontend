@@ -20,6 +20,7 @@ class LoginSigninPage extends React.Component {
 
   login() {
     signin(this.state).then(data => {
+
       if (data.error) {
         this.setState({error: data.error});
       } else {

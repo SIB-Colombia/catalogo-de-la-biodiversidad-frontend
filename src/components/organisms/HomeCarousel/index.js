@@ -66,8 +66,6 @@ class HomeCarousel extends React.Component {
     window.removeEventListener("resize", this.updateDimensions);
   }
 
-
-
   render() {
 
     const background = [
@@ -75,8 +73,6 @@ class HomeCarousel extends React.Component {
         type: 'video',
         url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0'
         // url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1'
-      }, {
-        type: 'chart'
       }, {
         type: 'image',
         url: '89714_orig.jpg'
@@ -93,12 +89,14 @@ class HomeCarousel extends React.Component {
       <Wrapper>
         <CarouselPreview showThumbs={false}>
           {background.map((record, i) => (
-            <div key={i} className={(record.type === 'chart' ? 'slide-background' : 'default-back')} >
+            <div key={i} className={(record.type === 'chart'
+              ? 'slide-background'
+              : 'default-back')}>
               {record.type === 'video' && <Video record={record} height={this.state.height}/>}
               {record.type === 'image' && <HomeCard record={record.url} height={this.state.height}/>}
-              {record.type === 'chart' && <Polar data={this.state.dona} width={250} height={250} options={{
+              {/* {record.type === 'chart' && <Polar data={this.state.dona} width={250} height={250} options={{
                 maintainAspectRatio: false
-              }}/>}
+              }}/>} */}
             </div>
           ))}
         </CarouselPreview>
