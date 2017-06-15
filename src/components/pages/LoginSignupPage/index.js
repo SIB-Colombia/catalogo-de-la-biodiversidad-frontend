@@ -20,8 +20,8 @@ class LoginSignupPage extends React.Component {
       lastname: '',
       username: '',
       email: '',
-      pass: '',
-      passverify: '',
+      password: '',
+      verify: '',
       error: '',
       register: false
     }
@@ -33,19 +33,21 @@ class LoginSignupPage extends React.Component {
 
   register() {
     signup(this.state).then(data => {
-      if (data.status) {
+
+      console.log('ddddfff',data);
+      if (data.created) {
         this.setState({
           name: '',
           lastname: '',
           username: '',
           email: '',
-          pass: '',
-          passverify: '',
+          password: '',
+          verify: '',
           error: '',
           register: true
         });
       } else {
-        this.setState({error: data.message});
+        this.setState({error: data.error});
       }
     });
   }

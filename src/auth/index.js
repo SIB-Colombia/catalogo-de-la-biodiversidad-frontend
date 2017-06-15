@@ -96,7 +96,7 @@ export function signin(user) {
 
 //signup
 export function signup(user) {
-  return fetch(`${Const.server.local}/api/user/register`, http('POST', user)).then((response) => {
+  return fetch(`${Const.server.local}/api/user`, http('POST', user)).then((response) => {
     return response.json()
   }).then((data) => {
     return data
