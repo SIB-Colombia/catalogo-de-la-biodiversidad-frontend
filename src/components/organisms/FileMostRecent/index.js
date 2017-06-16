@@ -4,6 +4,7 @@ import {palette} from 'styled-theme';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import {Grid, Row, Col} from 'react-flexbox-grid';
+import Copyright from 'material-ui/svg-icons/action/copyright';
 import {
   IconLink,
   Link,
@@ -17,7 +18,28 @@ import {
 import * as FileService from '../../../services/FileService';
 
 const Wrapper = styled.div `
-border-top: 45px solid ${palette('grayscale', 6)} !important;
+margin-top: 40px;
+.bar-middle{
+  background: #316971 !important;
+  padding: 10px;
+  text-align: center;
+  line-height: 0;
+  svg{
+    color: white !important;
+  }
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #316971 transparent;
+    position: relative;
+    top: -48px;
+    left: 22px;
+  }
+}
+
 .background-1{
 background: #E2E7E7 !important;
 }
@@ -42,8 +64,6 @@ class FileMostRecent extends React.Component {
 
   renderCommments = () => {
     FileService.getComments(this.props.id).then(comments => {
-
-      console.log('comments',comments);
       this.setState({comments: comments});
     })
   }
@@ -51,6 +71,7 @@ class FileMostRecent extends React.Component {
   render() {
     return (
       <Wrapper>
+        <div className="bar-middle"><Copyright /></div>
         <Paper zDepth={0} className="paper-padding-2 background-1">
           <FileCarousel data={this.props.data} title="Fichas relacionadas"/>
         </Paper>

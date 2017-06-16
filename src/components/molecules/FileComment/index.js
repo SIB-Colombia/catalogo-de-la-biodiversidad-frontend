@@ -91,10 +91,9 @@ class FileComment extends React.Component {
 
               {this.props.comments.map((record, i) => (
                 <Card key={i} className="animated fadeInLeft spacing">
-                  <CardHeader title={record.postedBy.username} subtitle={`@${record.postedBy.username} - ${record.date}`} avatar={record.postedBy.photo || '/avatar3.png'}/>
+                  <CardHeader title={record.postedBy.username} subtitle={`@${record.postedBy.username} - ${record.date}`} avatar={record.postedBy.photo || '/human.png'}/>
                   <CardText className="box-comment">
                     {record.text}
-
                     {record.replies.map((subrecord, j) => (
                       <Card key={j} className="animated fadeInLeft">
                         <CardHeader title={`${subrecord.postedBy.name} ${subrecord.postedBy.lastname}`} subtitle={`@${subrecord.postedBy.username} - ${subrecord.date}`} avatar={subrecord.postedBy.photo || '/avatar3.png'}/>
@@ -103,7 +102,8 @@ class FileComment extends React.Component {
                         </CardText>
                         {isAuthenticated() && <CardActions>
                           <FlatButton label="Responder" onTouchTap={(e) => this.reply(e, i)}/>
-                          <FlatButton label="Denunciar"/>
+                          {(isAuthenticated().username == subrecord.postedBy.username)  && <FlatButton label="Eliminar"/>}
+                          {(isAuthenticated().username != subrecord.postedBy.username)  && <FlatButton label="Denunciar"/>}
                         </CardActions>}
                       </Card>
                     ))}
@@ -111,8 +111,10 @@ class FileComment extends React.Component {
                   </CardText>
                   {isAuthenticated() && <CardActions>
                     <FlatButton label="Responder" onTouchTap={(e) => this.reply(e, i)}/>
-                    <FlatButton label="Denunciar"/> {this.state.expanded[i] && <Card className="animated fadeIn">
-                      <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/human.png'}/>
+                    {(isAuthenticated().username == record.postedBy.username)  && <FlatButton label="Eliminar"/>}
+                    {(isAuthenticated().username != record.postedBy.username)  && <FlatButton label="Denunciar"/>}
+                    {this.state.expanded[i] && <Card className="animated fadeIn">
+                      <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/human.png'} subtitle={`@${isAuthenticated().username}`}/>
                       <CardText className="box-comment textarea">
                         <TextField hintText="Escriba aquí su comentario" onChange={(e) => this.change(e, 'reply')} value={this.state.reply} floatingLabelText="Comentario" fullWidth={true} multiLine={true} rows={2}/>
                       </CardText>
@@ -125,7 +127,7 @@ class FileComment extends React.Component {
                 </Card>
               ))}
               {isAuthenticated() && <Card>
-                <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/human.png'}/>
+                <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/human.png'} subtitle={`@${isAuthenticated().username}`} />
                 <CardText className="box-comment textarea">
                   <TextField hintText="Escriba aquí su comentario" onChange={(e) => this.change(e, 'new')} value={this.state.new} floatingLabelText="Comentario" fullWidth={true} multiLine={true} rows={3}/>
                 </CardText>
