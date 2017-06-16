@@ -22,7 +22,7 @@ import {isAuthenticated} from '../../../auth';
 import * as FileService from '../../../services/FileService';
 
 const Wrapper = styled.div `
-padding-bottom: 20px;
+padding:30px 0;
 .box-comment{
   padding-top: 0px !important;
   &.textarea{

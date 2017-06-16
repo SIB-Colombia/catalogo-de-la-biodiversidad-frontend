@@ -19,6 +19,7 @@ import * as FileService from '../../../services/FileService';
 
 const Wrapper = styled.div `
 margin-top: 40px;
+box-shadow: 0 -22px 180px 1100px #E2E7E7;
 .bar-middle{
   background: #316971 !important;
   padding: 10px;
@@ -39,14 +40,12 @@ margin-top: 40px;
     left: 22px;
   }
 }
-
 .background-1{
-background: #E2E7E7 !important;
+  background: #E2E7E7 !important;
 }
 .background-2{
-background: rgba(248, 248, 248, 0.9) !important;
+  background: rgba(248, 248, 248, 0.9) !important;
 }
-box-shadow: 0 -22px 180px 1100px #E2E7E7;
 `
 
 class FileMostRecent extends React.Component {
@@ -72,7 +71,7 @@ class FileMostRecent extends React.Component {
     return (
       <Wrapper>
         <div className="bar-middle"><Copyright /></div>
-        <Paper zDepth={0} className="paper-padding-2 background-1">
+        <Paper zDepth={0} className="background-1">
           <FileCarousel data={this.props.data} title="Fichas relacionadas"/>
         </Paper>
         <Paper zDepth={0} className="paper-padding-2 background-2">

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Link} from 'components';
 
 const Wrapper = styled.div `
+background: rgba(0, 0, 0, 0.4);
 user-select: none;
 padding: 15px 20px;
 color: white;
