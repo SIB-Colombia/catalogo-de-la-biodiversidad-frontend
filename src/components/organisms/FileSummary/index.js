@@ -21,6 +21,9 @@ import Avatar from 'material-ui/Avatar';
 import Subheader from 'material-ui/Subheader';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import Copyright from 'material-ui/svg-icons/action/copyright';
+import Info from 'material-ui/svg-icons/action/info';
+
 import {
   Table,
   TableBody,
@@ -37,7 +40,19 @@ const CarouselPreview = require('react-responsive-carousel').Carousel;
 import ReactTooltip from 'react-tooltip'
 
 const Wrapper = styled.div `
-
+.cc{
+  svg{
+    line-height: 0;
+    vertical-align: middle;
+    margin-right: 3px;
+    margin-top: -3px;
+  }
+  .i-social{
+    svg{
+      color: #316971 !important;
+    }
+  }
+}
 `
 
 class FileSummary extends React.Component {
@@ -93,7 +108,7 @@ class FileSummary extends React.Component {
 
   render() {
 
-    const background = ['i3.jpg', 'i2.jpg', 'i1.jpg', 'i4.jpg','i5.jpg'];
+    const background = ['i3.jpg', 'i2.jpg', 'i1.jpg', 'i4.jpg', 'i5.jpg'];
 
     return (
       <Wrapper>
@@ -159,7 +174,8 @@ class FileSummary extends React.Component {
                 <Paper zDepth={1} className="paper-padding-3">
                   <TitleSection lighter={600} className="padding-bottom-3">Distribución (Descripción general de la distribución)</TitleSection>
                   <div className="align-justify t100 color-text">
-                    <span className="color-basescale-3 t400">Habitat:</span> {this.getHabitat()}
+                    <span className="color-basescale-3 t400">Habitat:</span>
+                    {this.getHabitat()}
                   </div>
                 </Paper>
               </Col>
@@ -168,6 +184,29 @@ class FileSummary extends React.Component {
           </Col>
 
           <Col xs={12} lg={4}>
+
+            <Row>
+              <Col xs={12} lg={12}>
+                <Paper zDepth={1} className="paper-padding-2 cc">
+                  <Row>
+                    <Col xs={6} sm={6} md={6} lg={6} className="align-left">
+                      <Copyright/>
+                      <span className="i-cc">CC - BY - 0</span>
+                    </Col>
+                    <Col xs={6} sm={6} md={6} lg={6} className="align-right">
+                      <span className="i-social">
+                        <Info />
+                      </span>
+                      <span className="i-social">
+                        <Info />
+                      </span>
+                    </Col>
+                  </Row>
+                </Paper>
+              </Col>
+            </Row>
+            <br/>
+
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-3">

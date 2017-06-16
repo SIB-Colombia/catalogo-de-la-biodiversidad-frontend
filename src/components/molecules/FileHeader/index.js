@@ -4,6 +4,7 @@ import {Link, FileStatus, MenuHorizontal} from 'components';
 import Paper from 'material-ui/Paper';
 import Badge from 'material-ui/Badge';
 import {palette} from 'styled-theme';
+import Copyright from 'material-ui/svg-icons/action/copyright';
 
 const Wrapper = styled.div `
 padding-top: 55vh;
@@ -22,6 +23,30 @@ padding-top: 55vh;
   margin-left: 20px;
   font-weight: lighter;
 }
+.author{
+  text-align: left;
+  margin-bottom: 50px;
+  .legend{
+    color:white;
+    background: rgba(0,0,0,0.6);
+    position: relative;
+    width: auto;
+    padding: 8px 10px;
+    font-style: italic;
+    font-size: 12px;
+    min-width: 250px;
+    max-width: 250px;
+    float: right;
+    svg{
+      width: 17px !important;
+      height: 17px !important;
+      color: white !important;
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 3px;
+    }
+  }
+}
 `
 class FileHeader extends React.Component {
 
@@ -32,6 +57,12 @@ class FileHeader extends React.Component {
   render() {
     return (
       <Wrapper>
+        <div className="author">
+          <div className="legend">
+            <Copyright/>
+            Ivo Antusek
+          </div>
+        </div>
         <Paper>
           <FileStatus title="EN" description="AMENAZADO"/>
           <div className="title-content">
