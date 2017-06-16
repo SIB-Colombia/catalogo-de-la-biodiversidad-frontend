@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, FileCard, TitleSection} from 'components';
+import {Link, FileCard, HomeTitle} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -20,6 +20,7 @@ import Badge from 'material-ui/Badge';
 
 const Wrapper = styled.div `
 
+padding: 40px 0;
 .space-card{
   margin: 0px 10px;
 }
@@ -80,11 +81,11 @@ class FileCarousel extends React.Component {
     };
 
     return (
-      <Wrapper className="padding-bottom-3">
+      <Wrapper>
         <Grid className="container">
           <Row>
             <Col xs={12}>
-              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3">{this.props.title}</TitleSection>
+              <HomeTitle text={this.props.title} />
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>

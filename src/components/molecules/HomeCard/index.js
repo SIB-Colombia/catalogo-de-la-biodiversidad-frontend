@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'components';
+import {Link, HomeButton} from 'components';
 
 const Wrapper = styled.div `
 .box-home{
@@ -15,17 +15,20 @@ class HomeCard extends React.Component {
   }
 
   render() {
-console.log('contraction');
+
+    console.log(this.props);
 
     return (
       <Wrapper>
         <div className="box-home" style={{
           color: "white",
           height: this.props.height / 1.8,
-          backgroundImage: `url(/background/${this.props.record})`,
+          backgroundImage: `url(/background/${this.props.record.url})`,
           backgroundPosition: 'center center',
           backgroundSize: 'cover'
-        }}></div>
+        }}>
+          <HomeButton footer={this.props.record.copyright} />
+        </div>
       </Wrapper>
     )
   }

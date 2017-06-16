@@ -2,24 +2,35 @@ import React from 'react'
 import styled from 'styled-components'
 import {Grid, Row, Col} from 'react-flexbox-grid'
 import Paper from 'material-ui/Paper';
-import {Link} from 'components';
+import {Link, HomeTitle} from 'components';
 import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 
 background: ${palette('grayscale', 2)};
-padding: 50px 5px;
-.paper{
-  text-align: center;
-  height: 100px;
-  width: 100px;
-  margin: 10px;
+background-image: -webkit-radial-gradient(#0098A6, #008E9B);
+background-image: radial-gradient(#0098A6, #008E9B);
+padding: 80px 0px 80px 0px;
+.box{
   display: inline-block;
-  img{
-    width: 100%;
+  span{
+    color:white;
+    font-weight: lighter;
+  }
+  .paper{
+    text-align: center;
+    height: 130px;
+    width: 130px;
+    margin: 10px 15px;
+    img{
+      width: 100%;
+    }
+    &:hover{
+      cursor: pointer;
+      opacity: 0.7;
+    }
   }
 }
-
 `
 class CategoryCarousel extends React.Component {
 
@@ -30,24 +41,49 @@ class CategoryCarousel extends React.Component {
   render() {
 
     const categories = [
-      'IconosTaxones_anfibios.svg',
-      'IconosTaxones_artrópodos.svg',
-      'IconosTaxones_aves.svg',
-      'IconosTaxones_mamíferos.svg',
-      'IconosTaxones_moluscos.svg',
-      'IconosTaxones_plantas.svg',
-      'IconosTaxones_reptiles.svg'
+      {
+        image: 'IconosTaxones_anfibios.svg',
+        title: 'ANFIBIOS'
+      },
+      {
+        image: 'IconosTaxones_artrópodos.svg',
+        title: 'ARTRÓPODOS'
+      },
+      {
+        image: 'IconosTaxones_aves.svg',
+        title: 'AVES'
+      },
+      {
+        image: 'IconosTaxones_mamíferos.svg',
+        title: 'MAMÍFEROS'
+      },
+      {
+        image: 'IconosTaxones_moluscos.svg',
+        title: 'MOLÚSCOS'
+      },
+      {
+        image: 'IconosTaxones_plantas.svg',
+        title: 'PLANTAS'
+      },
+      {
+        image: 'IconosTaxones_reptiles.svg',
+        title: 'REPTÍLES'
+      }
     ];
 
     return (
-      <Wrapper className="grey lighten-4">
+      <Wrapper>
         <Grid>
-          <Row>
-            <Col xs={12} className="align-center">
+          <Row className="container">
+            <HomeTitle text='Explora a través de grupos biológicos' className='white'/>
+            <Col xs={12} sm={12} ms={12} lg={12} className="align-center">
               {categories.map((record, i) => (
-                <Paper key={i} zDepth={1} circle={true} className="paper">
-                  <img src={'/categories/' + record}/>
-                </Paper>
+                <div key={i} className="box">
+                  <Paper zDepth={1} circle={true} className="paper">
+                    <img src={`/categories/${record.image}`}/>
+                  </Paper>
+                  <span>{record.title}</span>
+                </div>
               ))}
             </Col>
           </Row>

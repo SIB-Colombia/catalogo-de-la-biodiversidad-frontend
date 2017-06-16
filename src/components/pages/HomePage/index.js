@@ -42,9 +42,10 @@ class HomePage extends React.Component {
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
         {this.state.files.length > 0 && <HomeCarousel/>}
+        <CategoryCarousel/>
         {this.state.files.length > 0 && <FileCarousel data={this.state.files} title="Fichas recientes"/>}<br/>
-        <CategoryCarousel/> {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>}
-        {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>}
+        {/* {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>} */}
+        {/* {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>} */}
       </PageTemplate>
     )
   }
