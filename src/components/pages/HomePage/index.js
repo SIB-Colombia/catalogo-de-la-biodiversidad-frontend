@@ -8,7 +8,8 @@ import {
   CategoryCarousel,
   GroupCarousel,
   CommunityCarousel,
-  HomePrinciples
+  HomePrinciples,
+  HomeCommunity
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -46,6 +47,7 @@ class HomePage extends React.Component {
         <CategoryCarousel/>
         {this.state.files.length > 0 && <FileCarousel data={this.state.files} title="Fichas recientes"/>}<br/>
         <HomePrinciples/>
+        <HomeCommunity />
         {/* {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>} */}
         {/* {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>} */}
       </PageTemplate>
