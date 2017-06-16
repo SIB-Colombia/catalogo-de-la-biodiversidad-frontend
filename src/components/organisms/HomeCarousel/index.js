@@ -78,7 +78,7 @@ class HomeCarousel extends React.Component {
     const background = [
       {
         type: 'image',
-        url: '89714_orig.jpg',
+        url: 'main.jpg',
         copyright : 'Ejemplo de pie de página número 1'
       }, {
         type: 'video',
@@ -86,12 +86,8 @@ class HomeCarousel extends React.Component {
         // url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1'
       }, {
         type: 'image',
-        url: '11285_orig.jpg',
+        url: '89714_orig.jpg',
         copyright : 'Ejemplo de pie de página número 3'
-      }, {
-        type: 'image',
-        url: '77419_orig.jpg',
-        copyright : 'Ejemplo de pie de página número 4'
       }
     ];
 
