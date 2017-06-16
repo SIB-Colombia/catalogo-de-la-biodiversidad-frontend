@@ -10,7 +10,7 @@ const Wrapper = styled.div `
   background: white;
   padding: 40px 0;
   .box{
-    padding: 50px;
+    padding: 50px 0;
     .box-img{
       text-align: center;
       img{

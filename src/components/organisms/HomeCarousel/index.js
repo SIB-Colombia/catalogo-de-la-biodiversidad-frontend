@@ -17,10 +17,9 @@ const Wrapper = styled.div `
     background: #fff !important;
   }
   .control-dots{
-        margin: 30px 0 !important;
+    margin: 30px 0 !important;
   }
   .carousel .control-dots .dot{
-
     width: 12px;
     height: 12px;
   }
