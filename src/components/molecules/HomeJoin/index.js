@@ -45,7 +45,7 @@ class HomeJoin extends React.Component {
               ¿Qué esperas?
             </Col>
             <Col xs={12} sm={12} ms={6} lg={6} className="align-center t2">
-              <div className="hj-button">ÚNETE AL CATÁLOGO</div>
+              <Link to='/login/signup'><div className="hj-button">ÚNETE AL CATÁLOGO</div></Link>
             </Col>
           </Row>
         </Grid>

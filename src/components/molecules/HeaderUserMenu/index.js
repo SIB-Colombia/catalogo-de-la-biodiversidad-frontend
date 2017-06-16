@@ -52,7 +52,7 @@ class HeaderUserMenu extends React.Component {
   render() {
     return (
       <Wrapper>
-        <IconMenu className='iconUser' iconButtonElement={< IconButton > <img src={isAuthenticated().photo || '/avatar3.png'} className="picture"/> < /IconButton>} anchorOrigin={{
+        <IconMenu className='iconUser' iconButtonElement={< IconButton > <img src={isAuthenticated().photo || '/human.png'} className="picture"/> < /IconButton>} anchorOrigin={{
           horizontal: 'right',
           vertical: 'top'
         }} targetOrigin={{

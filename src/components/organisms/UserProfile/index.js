@@ -57,7 +57,7 @@ class UserProfile extends React.Component {
                 <TitleSection color='basescale-1' size='sm'>{isAuthenticated().name} {isAuthenticated().lastname}</TitleSection>
                 <Row>
                   <Col xs={12} lg={12} className="align-center">
-                    <img src={isAuthenticated().photo || '/avatar3.png'} className="img-profile"/>
+                    <img src={isAuthenticated().photo || '/human.png'} className="img-profile"/>
                     <br/>
                     <FlatButton label="Cambiar imagen" labelPosition="before" className='cover-file' containerElement="label">
                       <input type="file" className='file'/>
