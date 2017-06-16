@@ -89,7 +89,7 @@ class HomeCommunity extends React.Component {
 
                   <Row key={i} className="box">
                     <Col className="box-img" xs={12} sm={4} ms={3} lg={3}>
-                      <img src={`/community.png`}/>
+                      <img src={`/human.png`}/>
                     </Col>
                     <Col className="box-text" xs={12} sm={8} ms={9} lg={9}>
                       <div className="hp-description">
