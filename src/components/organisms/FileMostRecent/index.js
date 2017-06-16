@@ -10,7 +10,8 @@ import {
   FileHeader,
   TitleSection,
   FileCarousel,
-  FileComment
+  FileComment,
+  HomeTitle
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -18,12 +19,12 @@ import * as FileService from '../../../services/FileService';
 const Wrapper = styled.div `
 border-top: 45px solid ${palette('grayscale', 6)} !important;
 .background-1{
-background: ${palette('grayscale', 2)} !important;
+background: #E2E7E7 !important;
 }
 .background-2{
-background: ${palette('grayscale', 1)} !important;
+background: rgba(248, 248, 248, 0.9) !important;
 }
-box-shadow: 0 -22px 180px 1100px ${palette('grayscale', 7)};
+box-shadow: 0 -22px 180px 1100px #E2E7E7;
 `
 
 class FileMostRecent extends React.Component {
@@ -41,6 +42,8 @@ class FileMostRecent extends React.Component {
 
   renderCommments = () => {
     FileService.getComments(this.props.id).then(comments => {
+
+      console.log('comments',comments);
       this.setState({comments: comments});
     })
   }
@@ -52,7 +55,6 @@ class FileMostRecent extends React.Component {
           <FileCarousel data={this.props.data} title="Fichas relacionadas"/>
         </Paper>
         <Paper zDepth={0} className="paper-padding-2 background-2">
-          <TitleSection align="center" color="basescale-6" className="padding-top-2 padding-bottom-3">Comentarios</TitleSection>
           <FileComment id={this.props.id} comments={this.state.comments} update={this.renderCommments}/>
         </Paper>
       </Wrapper>

@@ -6,7 +6,7 @@ import Badge from 'material-ui/Badge';
 import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
-padding-top: 45vh;
+padding-top: 55vh;
 .title-content{
   padding: 20px 20px 0px 40px;
 }

@@ -78,7 +78,7 @@ export function getImages() {
 //Get Comments by file
 export function getComments(id) {
 
-  return fetch(`${Const.server.local}/api/comment/show/${id}`, http('GET')).then((response) => {
+  return fetch(`${Const.server.local}/api/comment/${id}`, http('GET')).then((response) => {
     return response.json()
   }).then((data) => {
     return data
@@ -90,7 +90,7 @@ export function getComments(id) {
 
 export function newComment(data) {
 
-  return fetch(`${Const.server.local}/api/comment/create`, http('POST', data)).then((response) => {
+  return fetch(`${Const.server.local}/api/comment`, http('POST', data)).then((response) => {
     return response.json()
   }).then((data) => {
     return data

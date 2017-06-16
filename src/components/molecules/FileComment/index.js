@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, TitleSection} from 'components';
+import {Link, TitleSection, HomeTitle} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
   Card,
@@ -28,6 +28,9 @@ padding-bottom: 20px;
   &.textarea{
     margin-top: -25px;
   }
+}
+.spacing{
+  margin-bottom: 20px;
 }
 `
 class FileComment extends React.Component {
@@ -81,12 +84,13 @@ class FileComment extends React.Component {
 
     return (
       <Wrapper>
-        <Grid>
+        <Grid className="container">
           <Row>
             <Col xs={12}>
+              <HomeTitle text="Comentarios" />
 
               {this.props.comments.map((record, i) => (
-                <Card key={i} className="animated fadeInLeft">
+                <Card key={i} className="animated fadeInLeft spacing">
                   <CardHeader title={record.postedBy.username} subtitle={`@${record.postedBy.username} - ${record.date}`} avatar={record.postedBy.photo || '/avatar3.png'}/>
                   <CardText className="box-comment">
                     {record.text}
@@ -108,7 +112,7 @@ class FileComment extends React.Component {
                   {isAuthenticated() && <CardActions>
                     <FlatButton label="Responder" onTouchTap={(e) => this.reply(e, i)}/>
                     <FlatButton label="Denunciar"/> {this.state.expanded[i] && <Card className="animated fadeIn">
-                      <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/avatar3.png'}/>
+                      <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/human.png'}/>
                       <CardText className="box-comment textarea">
                         <TextField hintText="Escriba aquí su comentario" onChange={(e) => this.change(e, 'reply')} value={this.state.reply} floatingLabelText="Comentario" fullWidth={true} multiLine={true} rows={2}/>
                       </CardText>
@@ -120,8 +124,8 @@ class FileComment extends React.Component {
                   <Divider/>
                 </Card>
               ))}
-              <Divider/> <br/><br/>{isAuthenticated() && <Card>
-                <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/avatar3.png'}/>
+              {isAuthenticated() && <Card>
+                <CardHeader title={isAuthenticated().username} avatar={isAuthenticated().photo || '/human.png'}/>
                 <CardText className="box-comment textarea">
                   <TextField hintText="Escriba aquí su comentario" onChange={(e) => this.change(e, 'new')} value={this.state.new} floatingLabelText="Comentario" fullWidth={true} multiLine={true} rows={3}/>
                 </CardText>

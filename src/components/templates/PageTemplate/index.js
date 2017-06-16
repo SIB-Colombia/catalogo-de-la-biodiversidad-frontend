@@ -43,12 +43,13 @@ const PageTemplate = ({
         case 'File':
           injectGlobal `
       body{
-        background-image: url(/demo/i2.jpg);
+        background-image: url(/paper.png);
         background-size: cover;
-        background-position: center center;
+        /*background-position: center center;*/
+        background-position: top center;
         background-attachment:fixed;
         background-repeat: no-repeat;
-        background-color: #222;
+        background-color: white;
       }
     `
           break;
