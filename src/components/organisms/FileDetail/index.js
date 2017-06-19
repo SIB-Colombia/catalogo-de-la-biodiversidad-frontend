@@ -8,9 +8,17 @@ import FlatButton from 'material-ui/FlatButton';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import {IconLink, Link, FileHeader, TitleSection, FileDetailTitle, FileDetailTitleBlock} from 'components'
+import {
+  IconLink,
+  Link,
+  FileHeader,
+  TitleSection,
+  FileDetailTitle,
+  FileDetailTitleBlock
+} from 'components'
 import Scrollspy from 'react-scrollspy';
 import {palette} from 'styled-theme';
+import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 
 const Wrapper = styled.div `
   .fx{
@@ -34,6 +42,27 @@ const Wrapper = styled.div `
         color: ${palette('primary', 0)} !important;
       }
     }
+  }
+  .viewMore{
+    text-align: right;
+    margin-top: 10px;
+    button{
+      padding: 5px 25px;
+      border:none;
+      font-weight: bold;
+      color: ${palette('grayscale', 5)};
+      background: ${palette('grayscale', 1)};
+      cursor: pointer;
+      svg{
+        vertical-align: middle;
+      }
+    }
+  }
+  .spacing{
+    margin-bottom: 20px;
+  }
+  .paragraph{
+    line-height: 1.8;
   }
 `
 
@@ -69,23 +98,23 @@ class FileDetail extends React.Component {
             <br/>
           </Col>
 
-
           <Col lg={9} xs={12}>
             <Row>
-              <div id="section-1"></div>
               <Col xs={12} lg={12}>
-                <FileDetailTitleBlock text='Historia Natural'/>
+                <FileDetailTitleBlock text='Historia Natural' id="section-1"/>
                 <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text">
-                  <FileDetailTitle text="Alimentación" />
-                  {this.getFeeding()}
-                </Paper>
-                <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text">
-                  <FileDetailTitle text="Alimentación" />
-                  {this.getFeeding()}
+                  <FileDetailTitle text="Alimentación"/>
+                  <div className="paragraph">
+                    {this.getFeeding()}
+                  </div>
+                  <div className="viewMore">
+                    <button>VER MÁS
+                      <ArrowDropDown/>
+                    </button>
+                  </div>
                 </Paper>
               </Col>
             </Row>
-            <br/>
 
           </Col>
         </Row>
