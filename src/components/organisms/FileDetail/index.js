@@ -50,12 +50,17 @@ const Wrapper = styled.div `
     text-align: right;
     margin-top: 10px;
     button{
+      text-decoration: none;
+      transition: .5s ease;
       padding: 5px 25px;
       border:none;
       font-weight: bold;
       color: ${palette('grayscale', 5)};
       background: ${palette('grayscale', 1)};
       cursor: pointer;
+      &:hover{
+        opacity: 0.8;
+      }
       svg{
         vertical-align: middle;
       }

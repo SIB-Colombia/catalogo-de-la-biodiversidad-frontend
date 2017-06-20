@@ -19,6 +19,7 @@ const Wrapper = styled.div `
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background: rgba(0,0,0,0.2);
+  transition: .5s ease;
   &:hover{
     cursor: pointer;
     background: rgba(255,255,255,0.2);

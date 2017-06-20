@@ -23,6 +23,7 @@ padding: 70px 0px 70px 0px;
   font-weight: 500;
   border: 2px solid white;
   padding: 15px 30px;
+  transition: .5s ease;
   &:hover{
     cursor: pointer;
     background: rgba(255,255,255,0.2);
