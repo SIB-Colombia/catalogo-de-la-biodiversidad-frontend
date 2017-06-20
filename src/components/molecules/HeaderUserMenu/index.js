@@ -59,10 +59,9 @@ class HeaderUserMenu extends React.Component {
           horizontal: 'right',
           vertical: 'top'
         }}>
-          <MenuItem primaryText="Escritorio" leftIcon={< Home />}/>
+          <Link to={'/'}><MenuItem primaryText="Escritorio" leftIcon={< Home />}/></Link>
           <Link to={'/user/profile'}><MenuItem primaryText="Perfil" leftIcon={< Account />}/></Link>
           <MenuItem primaryText="Notificaciones" leftIcon={< Info />}/>
-          <MenuItem primaryText="Ajustes de cuenta" leftIcon={< Settings />}/>
           <Divider/>
           <MenuItem primaryText="Cerrar sesión" onTouchTap={() => {
             this.exit()
