@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {Link, HomeCard, Video,HomeStadistics} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import RaisedButton from 'material-ui/RaisedButton';
+import {size, palette} from 'styled-theme';
 const CarouselPreview = require('react-responsive-carousel').Carousel;
 // import {Polar} from 'react-chartjs-2';
 
@@ -17,7 +18,10 @@ const Wrapper = styled.div `
     background: #fff !important;
   }
   .control-dots{
-    margin: 30px 0 !important;
+    margin: 50px 0 !important;
+    @media ${size('sm')}{
+      margin: 60px 0 !important;
+    }
   }
   .carousel .control-dots .dot{
     width: 12px;

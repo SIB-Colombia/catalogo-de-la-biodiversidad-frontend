@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'components';
+import {size, palette} from 'styled-theme';
 import Copyright from 'material-ui/svg-icons/action/copyright';
 
 const Wrapper = styled.div `
@@ -22,16 +23,27 @@ const Wrapper = styled.div `
     cursor: pointer;
     background: rgba(255,255,255,0.2);
   }
+
 }
 .carousel-footer{
   font-style: italic !important;
   position: absolute;
-  bottom: 15px;
+  bottom: 31px;
   right: 0px;
   padding: 10px 20px;
   background: rgba(0,0,0,0.5);
   color: white;
   font-size: 11px;
+
+  @media ${size('xs')}{
+    bottom: 0px;
+  }
+
+  @media ${size('sm')}{
+    bottom: 50px;
+	}
+
+
   svg{
     margin-left: 5px !important;
     vertical-align: middle !important;

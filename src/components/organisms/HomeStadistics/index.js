@@ -3,15 +3,27 @@ import styled from 'styled-components'
 import Paper from 'material-ui/Paper';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {IconLink, Link} from 'components';
+import {size, palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -20%);
-  -webkit-transform: translate(-50%, -20%);
-  -moz-transform: translate(-50%, -20%);
-  -ms-transform: translate(-50%, -20%);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+
+  @media ${size('xs')}{
+    left: 0%;
+    position: relative;
+    transform: none;
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+  }
+
+
 
 .hs-Box{
   padding: 10px;
