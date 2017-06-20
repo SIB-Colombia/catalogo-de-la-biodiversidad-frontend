@@ -53,6 +53,9 @@ const Wrapper = styled.div `
     }
   }
 }
+.cursive{
+  font-style: italic;
+}
 `
 
 class FileSummary extends React.Component {
@@ -269,7 +272,7 @@ class FileSummary extends React.Component {
                         <TableRowColumn>
                           <b>Especie</b>
                         </TableRowColumn>
-                        <TableRowColumn>{this.getTaxo().parentTaxon}</TableRowColumn>
+                        <TableRowColumn className="cursive">{this.getTaxo().parentTaxon}</TableRowColumn>
                       </TableRow>
                     </TableBody>
                   </Table>
