@@ -51,7 +51,7 @@ class HomePage extends React.Component {
         <HomePrinciples/>
         <HomeCommunity />
         <HomeJoin />
-        <HomeFooter />
+        {/* <HomeFooter /> */}
         {/* {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>} */}
         {/* {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>} */}
       </PageTemplate>
