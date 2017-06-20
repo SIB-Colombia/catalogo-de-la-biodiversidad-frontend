@@ -29,7 +29,7 @@ const Wrapper = styled.div `
 .carousel-footer{
   font-style: italic !important;
   position: absolute;
-  bottom: 31px;
+  bottom: 35px;
   right: 0px;
   padding: 10px 20px;
   background: rgba(0,0,0,0.5);
@@ -41,7 +41,7 @@ const Wrapper = styled.div `
   }
 
   @media ${size('sm')}{
-    bottom: 50px;
+    bottom: 55px;
 	}
 
 

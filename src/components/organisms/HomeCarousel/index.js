@@ -20,7 +20,7 @@ const Wrapper = styled.div `
   .control-dots{
     margin: 50px 0 !important;
     @media ${size('sm')}{
-      margin: 60px 0 !important;
+      margin: 70px 0 !important;
     }
   }
   .carousel .control-dots .dot{

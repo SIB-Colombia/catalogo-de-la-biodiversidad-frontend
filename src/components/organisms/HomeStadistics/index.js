@@ -21,6 +21,7 @@ const Wrapper = styled.div `
     -webkit-transform: none;
     -moz-transform: none;
     -ms-transform: none;
+    margin: 30px 0 !important;
   }
 
 
