@@ -33,24 +33,52 @@ export function isAuthenticated() {
 }
 
 //middleware
+
 var mock = null;
 
-export function middleware(component) {
+export function middleware(component, redirect, rolesRequired) {
 
   console.log('mock', mock);
 
   let current = mock || JSON.parse(localStorage.getItem(Const.USER));
+
   if (current) {
-    return component;
+    if (rolesRequired) {
+      let ok = hasRole(rolesRequired, current.roles);
+      if(!ok){
+        return redirect;
+      }else{
+        return component;
+      }
+    }else{
+      return component;
+    }
+
   } else {
-    console.log('no apto');
+    console.log('No hay store de usuario, relogin');
+    return redirect;
     // window.location.href = '';
   }
 
 }
 
 //has Role
-export function hasRole() {}
+export function hasRole(rolesRequired, rolesUser) {
+  try {
+    let isAuthorized = false;
+    rolesRequired.forEach(rolReq => {
+      rolesUser.forEach(RolUser => {
+        if (rolReq === RolUser)
+          isAuthorized = true;
+        }
+      );
+    });
+    return isAuthorized;
+  } catch (err) {
+    return false;
+  }
+}
+
 
 //Me
 
