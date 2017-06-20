@@ -51,12 +51,12 @@ const FooterPage = (props) => {
 			<Grid className="footer-a">
 				<Row>
 					<Col xs={12} sm={6} ms={6} lg={6}>
-						<div className="align-left t1">
+						<div className="align-center t1">
 							<img src="/SiB-Footer-02.svg"/>
 						</div>
 					</Col>
 					<Col xs={12} sm={6} ms={6} lg={6}>
-						<div className="align-right t2">
+						<div className="align-center t2">
 							<Link to='/static/about'>Sobre el Catálogo</Link>
 							|
 							<Link to='/static/about'>Términos de uso</Link>
