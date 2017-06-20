@@ -21,14 +21,16 @@ const Wrapper = styled.div `
 
 &::before{
   content: "";
-  background: ${palette('grayscale',0)};
+  background: rgba(242,242,242,0.93);
+  /*background: ${palette('grayscale',0)};*/
   height: 100vh;
   width: 100%;
   display: block;
   position: absolute;
   margin-top: -100vh;
   z-index: -1;
-  box-shadow: 0 -22px 180px 80px ${palette('grayscale',0)};
+  box-shadow: 0 -22px 180px 80px rgba(242,242,242,0.93);
+  /*box-shadow: 0 -22px 180px 80px ${palette('grayscale',0)};*/
 }
 
  margin-top: 80px;
