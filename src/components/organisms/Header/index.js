@@ -27,7 +27,7 @@ z-index: 10 !important;
 		display: none;
 	}
 	.box-search-color{
-		background: ${palette('grayscale', 0)};
+		/*background: ${palette('grayscale', 0)};*/
 		hr{
 			display: none;
 		}
