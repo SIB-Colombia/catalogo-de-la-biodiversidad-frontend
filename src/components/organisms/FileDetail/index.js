@@ -73,6 +73,34 @@ class FileDetail extends React.Component {
 
   constructor(props) {
     super(props);
+
+    // console.log(this.props.complete);
+
+    for (var key in this.props.complete) {
+
+      if (key.indexOf('InUse') >= -1) {
+
+        console.log('key',key);
+
+        var obj = this.props.complete[key];
+        if (typeof this.props.complete[key] === 'object') {
+          console.log('obj->', obj);
+        }
+
+      }
+
+      // your code
+      //console.log(key);
+      //console.log(prop + " = " + obj[prop]);
+      //}
+    }
+
+    /*this.props.complete.forEach(elem => {
+
+      console.log('->>',elem);
+
+    });*/
+
   }
 
   getFeeding() {
@@ -118,8 +146,6 @@ class FileDetail extends React.Component {
                 </Paper>
               </Col>
             </Row>
-
-
 
           </Col>
         </Row>

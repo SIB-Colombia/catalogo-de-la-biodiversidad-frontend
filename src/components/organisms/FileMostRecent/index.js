@@ -59,7 +59,7 @@ const Wrapper = styled.div `
   }
 }
 .background-1{
-  background: rgba(248, 248, 248, 0.97) !important;
+  background: rgba(248, 248, 248, 0.99) !important;
 }
 .background-2{
   background: rgba(248, 248, 248, 0.93) !important;
