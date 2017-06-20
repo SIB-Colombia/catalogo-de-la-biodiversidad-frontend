@@ -18,9 +18,25 @@ import {
 import * as FileService from '../../../services/FileService';
 
 const Wrapper = styled.div `
-margin-top: 40px;
-box-shadow: 0 -22px 180px 1100px #E2E7E7;
+
+&::before{
+  content: "";
+  background: ${palette('grayscale',0)};
+  height: 100vh;
+  width: 100%;
+  display: block;
+  position: absolute;
+  margin-top: -100vh;
+  z-index: -1;
+  box-shadow: 0 -22px 180px 80px ${palette('grayscale',0)};
+}
+
+ margin-top: 80px;
+/*box-shadow: 0 -22px 180px 50vh rgba(266,231,231,0.99);*/
+
 .bar-middle{
+  position: relative;
+  margin-top: -20px;
   background: #316971 !important;
   padding: 10px;
   text-align: center;
@@ -41,10 +57,10 @@ box-shadow: 0 -22px 180px 1100px #E2E7E7;
   }
 }
 .background-1{
-  background: #E2E7E7 !important;
+  background: rgba(248, 248, 248, 0.97) !important;
 }
 .background-2{
-  background: rgba(248, 248, 248, 0.9) !important;
+  background: rgba(248, 248, 248, 0.93) !important;
 }
 `
 

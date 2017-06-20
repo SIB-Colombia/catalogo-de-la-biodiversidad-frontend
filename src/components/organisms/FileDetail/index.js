@@ -21,6 +21,9 @@ import {palette} from 'styled-theme';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 
 const Wrapper = styled.div `
+
+
+
   .fx{
     /*position: fixed;*/
   }
@@ -116,8 +119,11 @@ class FileDetail extends React.Component {
               </Col>
             </Row>
 
+
+
           </Col>
         </Row>
+
       </Wrapper>
     )
   }
