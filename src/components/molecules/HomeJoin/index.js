@@ -41,10 +41,10 @@ class HomeJoin extends React.Component {
       <Wrapper>
         <Grid className="container">
           <Row>
-            <Col xs={12} sm={12} ms={6} lg={6} className="align-center t1">
+            <Col xs={12} sm={12} md={6} lg={6} className="align-center t1">
               ¿Qué esperas?
             </Col>
-            <Col xs={12} sm={12} ms={6} lg={6} className="align-center t2">
+            <Col xs={12} sm={12} md={6} lg={6} className="align-center t2">
               <Link to='/login/signup'><div className="hj-button">ÚNETE AL CATÁLOGO</div></Link>
             </Col>
           </Row>

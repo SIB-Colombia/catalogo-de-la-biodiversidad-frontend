@@ -34,12 +34,12 @@ class HomeFooter extends React.Component {
       <Wrapper>
         <Grid>
           <Row>
-            <Col xs={12} sm={6} ms={6} lg={6}>
+            <Col xs={12} sm={6} md={6} lg={6}>
               <div className="align-left t1">
                 <img src="/SiB-Footer-02.svg"/>
               </div>
             </Col>
-            <Col xs={12} sm={6} ms={6} lg={6}>
+            <Col xs={12} sm={6} md={6} lg={6}>
               <div className="align-right t2">
                 <Link to='/static/about'>Sobre el Catálogo</Link>
                 |

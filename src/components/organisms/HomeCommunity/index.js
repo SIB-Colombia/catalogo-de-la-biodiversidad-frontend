@@ -83,15 +83,15 @@ class HomeCommunity extends React.Component {
         <Grid className="container">
           <HomeTitle text='Comunidad'/>
           <Row>
-            <Col xs={12} sm={12} ms={12} lg={12}>
+            <Col xs={12} sm={12} md={12} lg={12}>
               <CarouselPreview showThumbs={false}>
                 {communities.map((record, i) => (
 
                   <Row key={i} className="box">
-                    <Col className="box-img" xs={12} sm={4} ms={3} lg={3}>
+                    <Col className="box-img" xs={12} sm={4} md={3} lg={3}>
                       <img src={`/human.png`}/>
                     </Col>
-                    <Col className="box-text" xs={12} sm={8} ms={9} lg={9}>
+                    <Col className="box-text" xs={12} sm={8} md={9} lg={9}>
                       <div className="hp-description">
                         {record.description}
                       </div>

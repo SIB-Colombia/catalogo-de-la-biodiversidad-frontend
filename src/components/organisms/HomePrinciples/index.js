@@ -70,12 +70,12 @@ class HomePrinciples extends React.Component {
           <HomeTitle text='Principios del Catálogo'/>
           <Row>
             {categories.map((record, i) => (
-              <Col key={i} xs={12} sm={6} ms={6} lg={6}>
+              <Col key={i} xs={12} sm={6} md={6} lg={6}>
                 <Row className="box">
-                  <Col className="box-img" xs={12} sm={4} ms={3} lg={3}>
+                  <Col className="box-img" xs={12} sm={4} md={3} lg={3}>
                     <img src={`/file.jpg`}/>
                   </Col>
-                  <Col className="box-text" xs={12} sm={8} ms={9} lg={9}>
+                  <Col className="box-text" xs={12} sm={8} md={9} lg={9}>
                     <div className="hp-title">{record.title}</div>
                     <div className="hp-description">{record.description}</div>
                   </Col>

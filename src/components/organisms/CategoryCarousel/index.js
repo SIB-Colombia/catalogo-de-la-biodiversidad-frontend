@@ -76,7 +76,7 @@ class CategoryCarousel extends React.Component {
         <Grid>
           <Row className="container">
             <HomeTitle text='Explora a través de grupos biológicos' className='white'/>
-            <Col xs={12} sm={12} ms={12} lg={12} className="align-center">
+            <Col xs={12} sm={12} md={12} lg={12} className="align-center">
               {categories.map((record, i) => (
                 <div key={i} className="box">
                   <Paper zDepth={1} circle={true} className="paper">

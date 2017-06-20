@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Grid, Row, Col} from 'react-flexbox-grid';
 import {Link} from 'components';
+import {Grid, Row, Col} from 'react-flexbox-grid';
 import {palette} from 'styled-theme';
 
 const Wrapper = styled.footer `
@@ -46,16 +46,18 @@ a{
 
 `
 const FooterPage = (props) => {
+
+	//console.log(props);
   return (
     <Wrapper>
 			<Grid className="footer-a">
 				<Row>
-					<Col xs={12} sm={6} ms={6} lg={6}>
+					<Col xs={12} sm={6} md={6} lg={6}>
 						<div className="align-center t1">
 							<img src="/SiB-Footer-02.svg"/>
 						</div>
 					</Col>
-					<Col xs={12} sm={6} ms={6} lg={6}>
+					<Col xs={12} sm={6} md={6} lg={6}>
 						<div className="align-center t2">
 							<Link to='/static/about'>Sobre el Catálogo</Link>
 							|

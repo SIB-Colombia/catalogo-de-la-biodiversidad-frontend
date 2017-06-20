@@ -16,8 +16,6 @@ class HomeCard extends React.Component {
 
   render() {
 
-    console.log(this.props);
-
     return (
       <Wrapper>
         <div className="box-home" style={{
