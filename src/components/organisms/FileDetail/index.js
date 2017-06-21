@@ -71,6 +71,7 @@ const Wrapper = styled.div `
   }
   .paragraph{
     line-height: 1.8;
+    margin: 10px 0;
   }
 `
 
@@ -78,104 +79,62 @@ class FileDetail extends React.Component {
 
   constructor(props) {
     super(props);
-
-    /*for (var key in this.props.complete) {
-      if (key.indexOf('InUse') >= -1) {
-        var obj = this.props.complete[key];
-        if (typeof this.props.complete[key] === 'object') {
-          console.log(`key: ${key}`, obj);
-
-          for (var key2 in obj) {
-            if (typeof obj[key2] === 'object') {
-
-            }
-          }
-        }
-      }
-    }*/
-    console.log(this.props.complete.migratoryApprovedInUse);
-    this.scan(this.props.complete.migratoryApprovedInUse,'');
-    //console.log('b->',b);
-
+    this.state ={
+      sections: []
+    }
+    //console.log(this.props.complete.migratoryApprovedInUse);
   }
 
+  componentWillMount() {
+    let sections = [];
+    //this.scan(this.props.complete.migratoryApprovedInUse,array,'');
+    //console.log(this.props.complete['migratoryApprovedInUse']);
+    for (var property in this.props.complete) {
 
-  scan(obj, stack) {
+      if(property.indexOf('InUse') > -1){
+        let array = [];
+        this.scan(this.props.complete[property], array, '');
+        sections[property] = array;
+      }
+    }
+    this.setState({sections :sections});
+  }
+
+  scan(obj, array, stack) {
+
     for (var property in obj) {
       if (obj.hasOwnProperty(property)) {
         if (typeof obj[property] == "object") {
-          this.scan(obj[property], stack + '.' + property);
+
+          let keyName =  stack + '.' + property;
+          if(keyName.split('.').length == 2){
+              // console.log(`${keyName}->`);
+              array.push(<FileDetailTitle key={Math.random()} text={keyName.replace('.','')}/>);
+          }
+
+          this.scan(obj[property], array, keyName);
         } else {
-          if(obj[property] && property != "_id"){
-            console.log(`${property}: ${obj[property]}`);
+          if(obj[property] && !property.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)){
+            //console.log('>',stack);
+            if(Number.isInteger(parseInt(property))){
+              let nameParent = stack.split('.')[1];
+              let transform = stack.replace(/\d/g,' ').replace(/\./g,' ');
+              // let transform = stack.replace(/\d/g,'/').replace(/\./g,' ').replace(nameParent,'');
+              array.push(<div className="paragraph" key={Math.random()} ><b>{transform}:</b> {obj[property]}</div>);
+              // console.log(`<b>${transform}:</b> ${obj[property]}`);
+            }else{
+              array.push(<div className="paragraph" key={Math.random()} ><b>{property}:</b> {obj[property]}</div>);
+              // let temp = this.state.detail;
+            }
           }
         }
       }
-    }
-  }
-
-  format(obj) {
-
-    let i = 0;
-    let elements = [];
-    console.log(obj);
-
-    for (var key in obj) {
-
-      console.log(typeof obj[key]);
-
-      switch (typeof obj[key]) {
-        case 'string':
-          elements[i] = (
-            <div key={i} className="paragraph">
-              <b>{key}:
-              </b>
-              {obj[key]}</div>
-          );
-          break;
-        case 'object':
-
-          for (var key2 in obj[key]) {
-            for (var key3 in obj[key][key2]) {
-              console.log(key3);
-              //elements[i] = (<div key={i} className="paragraph"><b>{key3}: </b> {obj[key][key2]}</div>);
-            }
-          }
-
-          break;
-        case 'array':
-          console.log('array');
-          break;
-        default:
-
-      }
-
-      i++;
-    }
-
-    return elements;
-
-    //return (<div className="paragraph"> </div>);
-    //console.log('123',obj);
-  }
-
-  getFeeding() {
-    try {
-      return this.props.complete.feedingApprovedInUse.feeding.feedingUnstructured;
-    } catch (err) {
-      return false;
-    }
-  }
-
-  migratoryApprovedInUse() {
-    try {
-      return this.props.complete.migratoryApprovedInUse;
-    } catch (err) {
-      return false;
     }
   }
 
   render() {
+
+    console.log('r',this.state.sections);
     return (
       <Wrapper>
         <Row>
@@ -191,12 +150,12 @@ class FileDetail extends React.Component {
           </Col>
 
           <Col lg={9} xs={12}>
-            <Row>
-              <Col xs={12} lg={12}>
-                <FileDetailTitleBlock text='migratoryApprovedInUse' id="section-1"/>
-                <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text">
-                  <FileDetailTitle text={'migratory'}/> {/* {this.format(this.props.complete.migratoryApprovedInUse.migratory)} */}
 
+            {Object.keys(this.state.sections).map((section,i) => (<Row>
+              <Col xs={12} sm={12} md={12} lg={12}>
+                <FileDetailTitleBlock text={section} id={section} />
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text">
+                  {this.state.sections[section]}
                   <div className="viewMore">
                     <button>VER MÁS
                       <ArrowDropDown/>
@@ -205,6 +164,7 @@ class FileDetail extends React.Component {
                 </Paper>
               </Col>
             </Row>
+          ))}
 
           </Col>
         </Row>
