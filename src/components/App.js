@@ -12,7 +12,8 @@ import {
   FileDetailPage,
   FileSearchPage,
   UserProfilePage,
-  AdminPage
+  AdminPage,
+  AdminUserPage,
 } from 'components';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import theme from './themes/default';
@@ -47,6 +48,7 @@ const App = () => {
           <Route exact path="/file/search" component={FileSearchPage}/>
           <Route exact path="/user/profile" component={UserProfilePage}/>
           <Route exact path="/admin" component={middleware(AdminPage, NotFoundPage, ['admin'])}/>
+          <Route exact path="/admin/users" component={AdminUserPage}/>
           <Route component={NotFoundPage}/>
         </Switch>
       </ThemeProvider>

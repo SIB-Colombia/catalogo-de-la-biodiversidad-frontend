@@ -79,40 +79,99 @@ class FileDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    // console.log(this.props.complete);
-
-    for (var key in this.props.complete) {
-
+    /*for (var key in this.props.complete) {
       if (key.indexOf('InUse') >= -1) {
-
-        console.log('key',key);
-
         var obj = this.props.complete[key];
         if (typeof this.props.complete[key] === 'object') {
-          console.log('obj->', obj);
+          console.log(`key: ${key}`, obj);
+
+          for (var key2 in obj) {
+            if (typeof obj[key2] === 'object') {
+
+            }
+          }
         }
+      }
+    }*/
+    console.log(this.props.complete.migratoryApprovedInUse);
+    this.scan(this.props.complete.migratoryApprovedInUse,'');
+    //console.log('b->',b);
+
+  }
+
+
+  scan(obj, stack) {
+    for (var property in obj) {
+      if (obj.hasOwnProperty(property)) {
+        if (typeof obj[property] == "object") {
+          this.scan(obj[property], stack + '.' + property);
+        } else {
+          if(obj[property] && property != "_id"){
+            console.log(`${property}: ${obj[property]}`);
+          }
+        }
+      }
+    }
+  }
+
+  format(obj) {
+
+    let i = 0;
+    let elements = [];
+    console.log(obj);
+
+    for (var key in obj) {
+
+      console.log(typeof obj[key]);
+
+      switch (typeof obj[key]) {
+        case 'string':
+          elements[i] = (
+            <div key={i} className="paragraph">
+              <b>{key}:
+              </b>
+              {obj[key]}</div>
+          );
+          break;
+        case 'object':
+
+          for (var key2 in obj[key]) {
+            for (var key3 in obj[key][key2]) {
+              console.log(key3);
+              //elements[i] = (<div key={i} className="paragraph"><b>{key3}: </b> {obj[key][key2]}</div>);
+            }
+          }
+
+          break;
+        case 'array':
+          console.log('array');
+          break;
+        default:
 
       }
 
-      // your code
-      //console.log(key);
-      //console.log(prop + " = " + obj[prop]);
-      //}
+      i++;
     }
 
-    /*this.props.complete.forEach(elem => {
+    return elements;
 
-      console.log('->>',elem);
-
-    });*/
-
+    //return (<div className="paragraph"> </div>);
+    //console.log('123',obj);
   }
 
   getFeeding() {
     try {
       return this.props.complete.feedingApprovedInUse.feeding.feedingUnstructured;
     } catch (err) {
-      return 'Sin información';
+      return false;
+    }
+  }
+
+  migratoryApprovedInUse() {
+    try {
+      return this.props.complete.migratoryApprovedInUse;
+    } catch (err) {
+      return false;
     }
   }
 
@@ -124,10 +183,7 @@ class FileDetail extends React.Component {
             <Paper className="menu-scrollspy">
               <Scrollspy items={['section-1', 'section-2', 'section-3']} currentClassName="is-current">
                 <li>
-                  <a href="#section-1">Historia natural</a>
-                </li>
-                <li>
-                  <a href="#section-2">Dinámica población y Amenazas</a>
+                  <a href="#section-1">migratoryApprovedInUse</a>
                 </li>
               </Scrollspy>
             </Paper>
@@ -137,12 +193,10 @@ class FileDetail extends React.Component {
           <Col lg={9} xs={12}>
             <Row>
               <Col xs={12} lg={12}>
-                <FileDetailTitleBlock text='Historia Natural' id="section-1"/>
+                <FileDetailTitleBlock text='migratoryApprovedInUse' id="section-1"/>
                 <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text">
-                  <FileDetailTitle text="Alimentación"/>
-                  <div className="paragraph">
-                    {this.getFeeding()}
-                  </div>
+                  <FileDetailTitle text={'migratory'}/> {/* {this.format(this.props.complete.migratoryApprovedInUse.migratory)} */}
+
                   <div className="viewMore">
                     <button>VER MÁS
                       <ArrowDropDown/>
