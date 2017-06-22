@@ -26,6 +26,14 @@ const Wrapper = styled.div `
 
 .card-title{
   padding: 0px 10px 10px 10px !important;
+ span{
+   display: inline-block;
+   line-height: 36px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   max-width: 88%;
+   white-space: nowrap;
+ }
 }
 
 .card-title  > span:first-child{
