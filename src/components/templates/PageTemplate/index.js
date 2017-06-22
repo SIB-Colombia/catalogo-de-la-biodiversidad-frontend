@@ -73,6 +73,16 @@ const PageTemplate = ({
       }
     `
           break;
+        case 'profile':
+          injectGlobal `
+      body{
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-ave.png');
+        background-size: cover;
+        background-position: center center;
+        background-attachment:fixed;
+      }
+    `
+          break;
         default:
 
       }
