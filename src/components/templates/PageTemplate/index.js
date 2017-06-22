@@ -56,7 +56,7 @@ const PageTemplate = ({
         case 'Login':
           injectGlobal `
       body{
-        background-image: url(/background/23890_orig.jpg);
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-mamifero.png');
         background-size: cover;
         background-position: center center;
         background-attachment:fixed;
@@ -66,7 +66,7 @@ const PageTemplate = ({
         case 'Static':
           injectGlobal `
       body{
-        background-image: url(/background/82168_orig.jpg);
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-reptil.png');
         background-size: cover;
         background-position: center center;
         background-attachment:fixed;
