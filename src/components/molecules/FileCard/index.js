@@ -36,6 +36,7 @@ const Wrapper = styled.div `
  }
 }
 
+
 .card-title  > span:first-child{
   font-size: ${font('xxs')} !important;
   font-weight: lighter;
@@ -50,7 +51,8 @@ const Wrapper = styled.div `
 .card-actions{
   padding: 0px !important;
 
-  button{
+  .card-footer{
+    margin: 0 !important;
     font-size: 13px !important;
     background:  ${palette('basescale', 10)} !important;;
     padding: 0 12px !important;
@@ -58,13 +60,10 @@ const Wrapper = styled.div `
     line-height: 30px !important;
     color:white !important;
     border-radius: 0px !important;
-    div{
-       white-space: nowrap;
-       overflow: hidden;
-       text-overflow: ellipsis;
-       max-width: 200px;
-    }
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
   }
 }
 `
@@ -94,9 +93,12 @@ class FileCard extends React.Component {
             <FileStatus title="EN"/>
             <CardTitle title={this.title(this.props.record.scientificNameSimple)} className="card-title" subtitle={this.subtitle(this.props.record.scientificNameSimple)}/>
             <CardActions className="card-actions align-center">
-              <FlatButton fullWidth={true} className="align-left padding">
+              <div className="align-left padding card-footer">
                 {this.props.record.creation_date}
-              </FlatButton>
+              </div>
+              {/* <FlatButton fullWidth={true} className="align-left padding footer-card">
+                {this.props.record.creation_date}
+              </FlatButton> */}
             </CardActions>
           </Card>
         </Link>
