@@ -35,7 +35,7 @@ const Wrapper = styled.div `
   .fx{
     /*position: fixed;*/
   }
-  .menu-scrollspy{
+  /*.menu-scrollspy{
     .index{
       color: #444;
       font-weight: 600;
@@ -62,7 +62,7 @@ const Wrapper = styled.div `
         color: ${palette('primary', 0)} !important;
       }
     }
-  }
+  }*/
   .viewMore{
     text-align: right;
     margin-top: 10px;
