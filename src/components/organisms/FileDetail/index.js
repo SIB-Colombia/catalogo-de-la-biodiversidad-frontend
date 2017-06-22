@@ -16,24 +16,41 @@ import {
   FileDetailTitle,
   FileDetailTitleBlock
 } from 'components'
-import Scrollspy from 'react-scrollspy';
+
 import {palette} from 'styled-theme';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
+import Scrollchor from 'react-scrollchor';
+
 
 const Wrapper = styled.div `
 
 
+.box{
+  margin-bottom: 20px;
+  overflow: auto !important;
+  .main-box{
 
+  }
+}
   .fx{
     /*position: fixed;*/
   }
   .menu-scrollspy{
+    .index{
+      color:333;
+      font-weight: 600;
+      font-size: 20px;
+      text-align: center;
+      padding: 15px 5px 15px 5px;
+      border-bottom: 1px solid #e8e8e8;
+    }
     padding: 5px;
+    overflow: auto;
       li{
-        padding: 8px 0px;
+        padding: 8px 5px;
       }
       a{
-          font-size: 14px;
+          font-size: 13px;
           color: ${palette('grayscale', 6)} !important;
           &:hover{
               color: ${palette('primary', 0)} !important;
@@ -73,6 +90,7 @@ const Wrapper = styled.div `
     line-height: 1.8;
     margin: 10px 0;
   }
+
 `
 
 class FileDetail extends React.Component {
@@ -133,28 +151,28 @@ class FileDetail extends React.Component {
   }
 
   render() {
-
-    console.log('r',this.state.sections);
+    //console.log('r',this.state.sections);
     return (
       <Wrapper>
         <Row>
           <Col lg={3} xs={12}>
             <Paper className="menu-scrollspy">
-              <Scrollspy items={['section-1', 'section-2', 'section-3']} currentClassName="is-current">
-                <li>
-                  <a href="#section-1">migratoryApprovedInUse</a>
-                </li>
-              </Scrollspy>
+              <div className="index">Índice de Ficha</div>
+              <ul>
+                {Object.keys(this.state.sections).map((section,i) => (
+                  <li><Scrollchor to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link">{section}</Scrollchor></li>
+                ))}
+              </ul>
             </Paper>
             <br/>
           </Col>
 
           <Col lg={9} xs={12}>
 
-            {Object.keys(this.state.sections).map((section,i) => (<Row>
-              <Col xs={12} sm={12} md={12} lg={12}>
+            {Object.keys(this.state.sections).map((section,i) => (<Row key={Math.random()} >
+              <Col xs={12} sm={12} md={12} lg={12} className="main-box">
                 <FileDetailTitleBlock text={section} id={section} />
-                <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text">
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text box">
                   {this.state.sections[section]}
                   <div className="viewMore">
                     <button>VER MÁS

@@ -60,7 +60,7 @@ class FileDetailPage extends React.Component {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
-        {this.state.fileComplete && <Grid>
+        {this.state.fileComplete && <Grid className="container" >
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
               <FileHeader title={this.title()} subtitle={this.subtitle()} id={this.state.id} active="detail"/>
