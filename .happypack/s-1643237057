@@ -1,0 +1,118 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.paper{\n  margin-top: 5vh;\n  .img-profile{\n    border-radius: 100%;\n    width: 100%;\n    max-width: 250px;\n    padding: 20px;\n  }\n}\n.file{\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  width: 100%;\n  opacity: 0;\n}\n.cover-file{\n   vertical-align: middle;\n}\n'], ['\n.paper{\n  margin-top: 5vh;\n  .img-profile{\n    border-radius: 100%;\n    width: 100%;\n    max-width: 250px;\n    padding: 20px;\n  }\n}\n.file{\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  width: 100%;\n  opacity: 0;\n}\n.cover-file{\n   vertical-align: middle;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { IconLink, Link, FileHeader, TitleSection } from 'components';
+import DatePicker from 'material-ui/DatePicker';
+import MenuItem from 'material-ui/MenuItem';
+import SelectField from 'material-ui/SelectField';
+
+var Wrapper = styled.div(_templateObject);
+
+var UserProfile = function (_React$Component) {
+  _inherits(UserProfile, _React$Component);
+
+  function UserProfile(props) {
+    _classCallCheck(this, UserProfile);
+
+    return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
+  }
+
+  _createClass(UserProfile, [{
+    key: 'render',
+    value: function render() {
+
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { xs: 12, sm: 12, lg: 6, lgOffset: 3 },
+              React.createElement(
+                Paper,
+                { className: 'paper paper-padding-1' },
+                React.createElement(
+                  TitleSection,
+                  { color: 'basescale-1', size: 'sm' },
+                  this.props.data.name,
+                  ' ',
+                  this.props.data.lastname
+                ),
+                React.createElement(
+                  Row,
+                  null,
+                  React.createElement(
+                    Col,
+                    { xs: 12, lg: 12, className: 'align-center' },
+                    React.createElement('img', { src: this.props.data.photo || '/avatar3.png', className: 'img-profile' }),
+                    React.createElement('br', null),
+                    React.createElement(
+                      FlatButton,
+                      { label: 'Cambiar imagen', labelPosition: 'before', className: 'cover-file', containerElement: 'label' },
+                      React.createElement('input', { type: 'file', className: 'file' })
+                    )
+                  ),
+                  React.createElement(
+                    Col,
+                    { xs: 12, lg: 6 },
+                    React.createElement(TextField, { name: 'name', value: this.props.data.name, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Nombre', fullWidth: true }),
+                    React.createElement(TextField, { name: 'username', value: this.props.data.username, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Nombre de usuario', fullWidth: true }),
+                    React.createElement(TextField, { name: 'phone', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Fecha nacimiento', fullWidth: true }),
+                    React.createElement(TextField, { name: 'phone', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Tel\xE9fono de contacto', fullWidth: true })
+                  ),
+                  React.createElement(
+                    Col,
+                    { xs: 12, lg: 6 },
+                    React.createElement(TextField, { name: 'lastname', value: this.props.data.lastname, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Apellidos', fullWidth: true }),
+                    React.createElement(TextField, { name: 'email', value: this.props.data.email, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Correo electr\xF3nico', fullWidth: true }),
+                    React.createElement(
+                      SelectField,
+                      { floatingLabelText: 'G\xE9nero', value: '1' },
+                      React.createElement(MenuItem, { value: 1, primaryText: 'Hombre' }),
+                      React.createElement(MenuItem, { value: 2, primaryText: 'Mujer' }),
+                      React.createElement(MenuItem, { value: 3, primaryText: 'Otro' })
+                    ),
+                    React.createElement(TextField, { name: 'mobile', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Tel\xE9fono m\xF3vil', fullWidth: true })
+                  ),
+                  React.createElement(
+                    Col,
+                    { xs: 12, lg: 12, className: 'align-center padding-top-3 padding-bottom-3' },
+                    React.createElement(RaisedButton, { label: 'Guardar', className: 'btn-secondary-modal' })
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return UserProfile;
+}(React.Component);
+
+export default UserProfile;

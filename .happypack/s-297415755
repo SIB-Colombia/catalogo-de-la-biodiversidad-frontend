@@ -1,0 +1,112 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\nbackground:#f5f5f5 !important;\n\nh4{\n  padding:40px;\n}\n.tabs{\n  background:#00838f;\n}\nh5{\n  padding: 10px 0px;\n}\n.tabs .tab a{\n  color :white;\n}\n.imagesPreview{\n  margin:0px 3px;\n}\n.material-placeholder{\n  display:inline-block;\n}\n'], ['\nbackground:#f5f5f5 !important;\n\nh4{\n  padding:40px;\n}\n.tabs{\n  background:#00838f;\n}\nh5{\n  padding: 10px 0px;\n}\n.tabs .tab a{\n  color :white;\n}\n.imagesPreview{\n  margin:0px 3px;\n}\n.material-placeholder{\n  display:inline-block;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _googleMapReact = require('google-map-react');
+
+var _googleMapReact2 = _interopRequireDefault(_googleMapReact);
+
+var _reactMaterialize = require('react-materialize');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var FileContent = function FileContent(_ref) {
+  var props = _objectWithoutProperties(_ref, []);
+
+  return _react2.default.createElement(
+    Wrapper,
+    props,
+    _react2.default.createElement(
+      'div',
+      { className: 'row' },
+      _react2.default.createElement(
+        'div',
+        { className: 'col l2 offset-l2' },
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'input-field col s12' },
+            _react2.default.createElement('input', { id: 'first_name', type: 'text', className: 'validate' }),
+            _react2.default.createElement(
+              'label',
+              { 'for': 'first_name' },
+              'Nombre de usuario'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { 'class': 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'input-field col s12' },
+            _react2.default.createElement('input', { id: 'first_name', type: 'password', className: 'validate' }),
+            _react2.default.createElement(
+              'label',
+              { 'for': 'first_name' },
+              'Contrase\xF1a'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { 'class': 'row' },
+          _react2.default.createElement(
+            'div',
+            { className: 'input-field col s12 center-align' },
+            _react2.default.createElement(
+              'button',
+              { className: 'btn waves-effect waves-light', type: 'submit', name: 'action' },
+              'Submit',
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons right' },
+                'send'
+              )
+            )
+          )
+        )
+      )
+    )
+  );
+};
+
+var _default = FileContent;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Login/index.js');
+
+  __REACT_HOT_LOADER__.register(FileContent, 'FileContent', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Login/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Login/index.js');
+}();
+
+;

@@ -1,0 +1,135 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nol {\n  display: table;\n  width: 100%;\n  border-collapse: collapse;\n  table-layout: fixed;\n  text-align: center;\n  white-space: nowrap;\n}\nli {\n  overflow: hidden;\n  display: table-cell;\n  padding: 20px;\n  text-overflow: ellipsis;\n  color:', ';\n  font-weight: bold;\n  cursor: pointer;\n  &.active{\n    color:', ';\n    cursor: default;\n  }\n  &:hover{\n    color:', ';\n  }\n}\n'], ['\nol {\n  display: table;\n  width: 100%;\n  border-collapse: collapse;\n  table-layout: fixed;\n  text-align: center;\n  white-space: nowrap;\n}\nli {\n  overflow: hidden;\n  display: table-cell;\n  padding: 20px;\n  text-overflow: ellipsis;\n  color:', ';\n  font-weight: bold;\n  cursor: pointer;\n  &.active{\n    color:', ';\n    cursor: default;\n  }\n  &:hover{\n    color:', ';\n  }\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.nav(_templateObject, (0, _styledTheme.palette)('basescale', 3), (0, _styledTheme.palette)('basescale', 5), (0, _styledTheme.palette)('basescale', 5));
+
+var MenuHorizontal = function (_React$Component) {
+  _inherits(MenuHorizontal, _React$Component);
+
+  function MenuHorizontal(props) {
+    _classCallCheck(this, MenuHorizontal);
+
+    var _this = _possibleConstructorReturn(this, (MenuHorizontal.__proto__ || Object.getPrototypeOf(MenuHorizontal)).call(this, props));
+
+    _this.redirect = function () {
+      return _this.__redirect__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    return _this;
+  }
+
+  _createClass(MenuHorizontal, [{
+    key: '__redirect__REACT_HOT_LOADER__',
+    value: function __redirect__REACT_HOT_LOADER__(path) {
+      if (this.props.active != path) {
+        window.location.href = '/file/' + path + '/' + this.props.id;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          'ol',
+          null,
+          _react2.default.createElement(
+            'li',
+            { onClick: function onClick(e) {
+                return _this2.redirect('summary');
+              }, className: this.props.active === 'summary' ? 'active' : '' },
+            'Resumen'
+          ),
+          _react2.default.createElement(
+            'li',
+            { onClick: function onClick(e) {
+                return _this2.redirect('detail');
+              }, className: this.props.active === 'detail' ? 'active' : '' },
+            'Detalles'
+          ),
+          _react2.default.createElement(
+            'li',
+            { onClick: function onClick(e) {
+                return _this2.redirect('multimedia');
+              }, className: this.props.active === 'multimedia' ? 'active' : '' },
+            'Multimedia'
+          ),
+          _react2.default.createElement(
+            'li',
+            { onClick: function onClick(e) {
+                return _this2.redirect('eeee');
+              }, className: this.props.active === 'maps' ? 'active' : '' },
+            'Mapas'
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: this.props.active === 'community' ? 'active' : '' },
+            'Comunidad'
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: this.props.active === 'literature' ? 'active' : '' },
+            'Literatura'
+          ),
+          _react2.default.createElement(
+            'li',
+            { className: this.props.active === 'data' ? 'active' : '' },
+            'Datos'
+          )
+        )
+      );
+    }
+  }]);
+
+  return MenuHorizontal;
+}(_react2.default.Component);
+
+var _default = MenuHorizontal;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/MenuHorizontal/index.js');
+
+  __REACT_HOT_LOADER__.register(MenuHorizontal, 'MenuHorizontal', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/MenuHorizontal/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/MenuHorizontal/index.js');
+}();
+
+;

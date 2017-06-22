@@ -1,0 +1,13 @@
+import React from 'react';
+
+import { PageTemplate, Header, Footer, NotFound } from 'components';
+
+var NotFoundPage = function NotFoundPage() {
+  return React.createElement(
+    PageTemplate,
+    { header: React.createElement(Header, null), footer: React.createElement(Footer, null) },
+    React.createElement(NotFound, null)
+  );
+};
+
+export default NotFoundPage;

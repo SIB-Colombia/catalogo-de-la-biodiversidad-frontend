@@ -1,0 +1,188 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n  margin-bottom: 30px;\n\n@media ', '{\n  margin-bottom: 80px;\n}\n\n.paper{\n  margin-top: 5vh;\n  padding: 20px;\n  .img-profile{\n    border-radius: 100%;\n    width: 100%;\n    max-width: 250px;\n    padding: 20px;\n  }\n}\n.btn-padding{\n  padding: 20px 0;\n}\n.file{\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  width: 100%;\n  opacity: 0;\n}\n.cover-file{\n   vertical-align: middle;\n}\n'], ['\n  margin-bottom: 30px;\n\n@media ', '{\n  margin-bottom: 80px;\n}\n\n.paper{\n  margin-top: 5vh;\n  padding: 20px;\n  .img-profile{\n    border-radius: 100%;\n    width: 100%;\n    max-width: 250px;\n    padding: 20px;\n  }\n}\n.btn-padding{\n  padding: 20px 0;\n}\n.file{\n  cursor: pointer;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  width: 100%;\n  opacity: 0;\n}\n.cover-file{\n   vertical-align: middle;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _Tabs = require('material-ui/Tabs');
+
+var _Slider = require('material-ui/Slider');
+
+var _Slider2 = _interopRequireDefault(_Slider);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _components = require('components');
+
+var _DatePicker = require('material-ui/DatePicker');
+
+var _DatePicker2 = _interopRequireDefault(_DatePicker);
+
+var _MenuItem = require('material-ui/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _styledTheme = require('styled-theme');
+
+var _SelectField = require('material-ui/SelectField');
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _auth = require('../../../auth');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.size)('xs'));
+
+var UserProfile = function (_React$Component) {
+  _inherits(UserProfile, _React$Component);
+
+  function UserProfile(props) {
+    _classCallCheck(this, UserProfile);
+
+    return _possibleConstructorReturn(this, (UserProfile.__proto__ || Object.getPrototypeOf(UserProfile)).call(this, props));
+  }
+
+  _createClass(UserProfile, [{
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          { className: 'container' },
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12, sm: 12, md: 6, lg: 6, xsOffset: 0, smOffset: 0, mdOffset: 3, lgOffset: 3 },
+              _react2.default.createElement(
+                _Paper2.default,
+                { className: 'paper' },
+                _react2.default.createElement(
+                  _reactFlexboxGrid.Row,
+                  null,
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Col,
+                    { xs: 12, sm: 12, md: 12, lg: 12, className: 'align-center' },
+                    _react2.default.createElement(
+                      _components.TitleSection,
+                      { color: 'basescale-1', size: 'sm' },
+                      (0, _auth.isAuthenticated)().name,
+                      ' ',
+                      (0, _auth.isAuthenticated)().lastname
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Col,
+                    { xs: 12, sm: 12, md: 12, lg: 12, className: 'align-center' },
+                    _react2.default.createElement('img', { src: (0, _auth.isAuthenticated)().photo || '/human.png', className: 'img-profile' }),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      _FlatButton2.default,
+                      { label: 'Cambiar imagen', labelPosition: 'before', className: 'cover-file', containerElement: 'label' },
+                      _react2.default.createElement('input', { type: 'file', className: 'file' })
+                    )
+                  ),
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Col,
+                    { xs: 12, sm: 12, md: 6, lg: 6 },
+                    _react2.default.createElement(_TextField2.default, { name: 'name', value: (0, _auth.isAuthenticated)().name, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Nombre', fullWidth: true }),
+                    _react2.default.createElement(_TextField2.default, { name: 'username', value: (0, _auth.isAuthenticated)().username, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Nombre de usuario', fullWidth: true }),
+                    ' ',
+                    _react2.default.createElement(_TextField2.default, { name: 'phone', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Fecha nacimiento', fullWidth: true }),
+                    _react2.default.createElement(_TextField2.default, { name: 'phone', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Tel\xE9fono de contacto', fullWidth: true }),
+                    _react2.default.createElement(_TextField2.default, { name: 'Intitucion', value: '', onChange: this.props.update, hintText: 'Instituci\xF3n a la que pertenece', floatingLabelText: 'Instituci\xF3n', fullWidth: true })
+                  ),
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Col,
+                    { xs: 12, sm: 12, md: 6, lg: 6 },
+                    _react2.default.createElement(_TextField2.default, { name: 'lastname', value: (0, _auth.isAuthenticated)().lastname, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Apellidos', fullWidth: true }),
+                    _react2.default.createElement(_TextField2.default, { name: 'email', value: (0, _auth.isAuthenticated)().email, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Correo electr\xF3nico', fullWidth: true }),
+                    _react2.default.createElement(
+                      _SelectField2.default,
+                      { floatingLabelText: 'G\xE9nero', value: '1' },
+                      _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: 'Masculino' }),
+                      _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: 'Femenino' }),
+                      _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: 'Otro' })
+                    ),
+                    _react2.default.createElement(_TextField2.default, { name: 'mobile', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Tel\xE9fono m\xF3vil', fullWidth: true }),
+                    _react2.default.createElement(_TextField2.default, { name: 'cargo', value: '', onChange: this.props.update, hintText: 'Escriba aqu\xED su cargo actual', floatingLabelText: 'Cargo', fullWidth: true })
+                  ),
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Col,
+                    { xs: 12, sm: 12, md: 12, lg: 12, className: 'align-center btn-padding' },
+                    _react2.default.createElement(_RaisedButton2.default, { label: 'Guardar', className: 'btn-secondary-modal' })
+                  )
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return UserProfile;
+}(_react2.default.Component);
+
+var _default = UserProfile;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/UserProfile/index.js');
+
+  __REACT_HOT_LOADER__.register(UserProfile, 'UserProfile', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/UserProfile/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/UserProfile/index.js');
+}();
+
+;

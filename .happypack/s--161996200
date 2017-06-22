@@ -1,0 +1,26 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n  padding: 1rem;\n\n  & > :not(:first-child) {\n    margin-left: 1rem;\n  }\n'], ['\n  display: flex;\n  align-items: center;\n  padding: 1rem;\n\n  & > :not(:first-child) {\n    margin-left: 1rem;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: inline-block;\n  transform-origin: center;\n'], ['\n  display: inline-block;\n  transform-origin: center;\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+
+import { IconLink, PrimaryNavigation, Block } from 'components';
+
+var Wrapper = styled(Block)(_templateObject);
+
+var StyledIconLink = styled(IconLink)(_templateObject2);
+
+var Header = function Header(props) {
+  return React.createElement(
+    Wrapper,
+    _extends({ opaque: true, reverse: true }, props),
+    React.createElement(StyledIconLink, { to: '/', icon: 'arc', height: 100 }),
+    React.createElement(PrimaryNavigation, { reverse: true })
+  );
+};
+
+export default Header;

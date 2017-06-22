@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/components/config.js"],"names":["server"],"mappings":";;;;;eAAe;AACbA,UAAS;AADI,C","file":"config.js","sourceRoot":"/home/leo/htdocs/biodiversity_catalogue_v2_frontend","sourcesContent":["export default {\n  server : 'http://localhost:8000'\n}\n"]}

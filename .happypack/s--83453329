@@ -1,0 +1,39 @@
+var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  list-style: none;\n  > :not(:first-child) {\n    margin-left: 1rem;\n  }\n  a {\n    font-weight: 300;\n    color: ', ';\n    font-size: 1.25rem;\n    &.active {\n      color: ', ';\n    }\n  }\n'], ['\n  display: flex;\n  list-style: none;\n  > :not(:first-child) {\n    margin-left: 1rem;\n  }\n  a {\n    font-weight: 300;\n    color: ', ';\n    font-size: 1.25rem;\n    &.active {\n      color: ', ';\n    }\n  }\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { palette } from 'styled-theme';
+
+import { Link } from 'components';
+
+var Nav = styled.nav(_templateObject, palette('grayscale', 2), palette('grayscale', 0));
+
+var PrimaryNavigation = function PrimaryNavigation(props) {
+  return React.createElement(
+    Nav,
+    props,
+    React.createElement(
+      'li',
+      null,
+      React.createElement(
+        Link,
+        { to: '/', exact: true, activeClassName: 'active' },
+        'Home'
+      )
+    ),
+    React.createElement(
+      'li',
+      null,
+      React.createElement(
+        Link,
+        { to: '/sample-page', activeClassName: 'active' },
+        'Sample page'
+      )
+    )
+  );
+};
+
+export default PrimaryNavigation;

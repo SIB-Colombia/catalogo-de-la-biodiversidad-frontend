@@ -1,0 +1,154 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\n  .slide-background{\n    background: #fff;\n    padding: 50px;\n    overflow: auto;\n  }\n  .carousel .slide{\n    background: #fff !important;\n  }\n  .control-dots{\n    margin: 50px 0 !important;\n    @media ', '{\n      margin: 70px 0 !important;\n    }\n  }\n  .carousel .control-dots .dot{\n    width: 12px;\n    height: 12px;\n  }\n'], ['\n\n  .slide-background{\n    background: #fff;\n    padding: 50px;\n    overflow: auto;\n  }\n  .carousel .slide{\n    background: #fff !important;\n  }\n  .control-dots{\n    margin: 50px 0 !important;\n    @media ', '{\n      margin: 70px 0 !important;\n    }\n  }\n  .carousel .control-dots .dot{\n    width: 12px;\n    height: 12px;\n  }\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CarouselPreview = require('react-responsive-carousel').Carousel;
+// import {Polar} from 'react-chartjs-2';
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.size)('sm'));
+
+var HomeCarousel = function (_React$Component) {
+  _inherits(HomeCarousel, _React$Component);
+
+  function HomeCarousel(props) {
+    _classCallCheck(this, HomeCarousel);
+
+    var _this = _possibleConstructorReturn(this, (HomeCarousel.__proto__ || Object.getPrototypeOf(HomeCarousel)).call(this, props));
+
+    _this.state = {
+      width: 0,
+      height: 0,
+      dona: null
+    };
+
+    _this.updateDimensions = _this.updateDimensions.bind(_this);
+    return _this;
+  }
+
+  _createClass(HomeCarousel, [{
+    key: 'updateDimensions',
+    value: function updateDimensions() {
+      this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.addEventListener("resize", this.updateDimensions);
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+
+      this.updateDimensions();
+
+      this.setState({
+        dona: {
+          datasets: [{
+            data: [11, 16, 7, 3, 14],
+            backgroundColor: ['#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'],
+            label: 'My dataset' // for legend
+          }],
+          labels: ['Animal', 'Vegetal', 'Protista', 'Fungi', 'Mónera']
+        }
+      });
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      window.removeEventListener("resize", this.updateDimensions);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var background = [{
+        type: 'image',
+        url: 'main.jpg',
+        copyright: 'Ejemplo de pie de página número 1'
+      }, {
+        type: 'video',
+        url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0'
+        // url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1'
+      }, {
+        type: 'image',
+        url: '89714_orig.jpg',
+        copyright: 'Ejemplo de pie de página número 3'
+      }];
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          CarouselPreview,
+          { showThumbs: false },
+          background.map(function (record, i) {
+            return _react2.default.createElement(
+              'div',
+              { key: i, className: record.type === 'chart' ? 'slide-background' : 'default-back' },
+              record.type === 'video' && _react2.default.createElement(_components.Video, { record: record, height: _this2.state.height }),
+              record.type === 'image' && _react2.default.createElement(_components.HomeCard, { record: record, height: _this2.state.height })
+            );
+          })
+        ),
+        _react2.default.createElement(_components.HomeStadistics, null)
+      );
+    }
+  }]);
+
+  return HomeCarousel;
+}(_react2.default.Component);
+
+var _default = HomeCarousel;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(CarouselPreview, 'CarouselPreview', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCarousel/index.js');
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCarousel/index.js');
+
+  __REACT_HOT_LOADER__.register(HomeCarousel, 'HomeCarousel', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCarousel/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCarousel/index.js');
+}();
+
+;

@@ -1,0 +1,184 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\n'], ['\n\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// import {Modal} from 'react-materialize';
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var ReactSchemaEasyForm = function (_React$Component) {
+  _inherits(ReactSchemaEasyForm, _React$Component);
+
+  function ReactSchemaEasyForm(props) {
+    _classCallCheck(this, ReactSchemaEasyForm);
+
+    return _possibleConstructorReturn(this, (ReactSchemaEasyForm.__proto__ || Object.getPrototypeOf(ReactSchemaEasyForm)).call(this, props));
+    // this.state = {
+    //   schema: {}
+    // }
+  }
+
+  _createClass(ReactSchemaEasyForm, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {}
+
+    // for (let control in this.props.schema) {
+    //   this.props.schema[control].value = '';
+    // }
+    // this.setState({schema: this.props.schema});
+
+
+    // change(propertyName, event) {
+    //   let model = this.state.schema;
+    //   model[propertyName].value = event.target.value;
+    //   this.setState({schema: model});
+    // }
+
+    //value={this.state.schema[control]}
+
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      // console.log('render');
+      // console.log('easy->', this.props);
+      // console.log('---x', this.state);
+
+      var indents = [];
+
+      // this.setState({'reference': 'jeje'});
+
+      var _loop = function _loop(control) {
+
+        // console.log('');
+        // console.log(control, '->', this.props.schema[control].instance);
+
+        var temp = '';
+
+        switch (_this2.props.schema[control].instance) {
+          case 'String':
+            temp = _react2.default.createElement(
+              'div',
+              { className: 'input-field col s6', key: control },
+              _react2.default.createElement('input', { type: 'text', className: 'validate', value: _this2.props.schema[control].value, onChange: function onChange(e) {
+                  return _this2.props.update(control, e);
+                } }),
+              _react2.default.createElement(
+                'label',
+                null,
+                control
+              )
+            );
+            break;
+          case 'Number':
+            temp = _react2.default.createElement(
+              'div',
+              { className: 'input-field col s6', key: control },
+              _react2.default.createElement('input', { type: 'number', className: 'validate', value: _this2.props.schema[control].value, onChange: function onChange(e) {
+                  return _this2.props.change(control, e);
+                } }),
+              _react2.default.createElement(
+                'label',
+                null,
+                control
+              )
+            );
+            break;
+          case 'Date':
+            temp = _react2.default.createElement(
+              'div',
+              { className: 'input-field col s6', key: control },
+              control,
+              ':',
+              _react2.default.createElement('input', { type: 'date', className: '', value: _this2.props.schema[control].value, onChange: function onChange(e) {
+                  return _this2.props.change(control, e);
+                } })
+            );
+            break;
+          case 'ObjectID':
+
+            break;
+          default:
+
+        }
+        indents.push(temp);
+      };
+
+      for (var control in this.props.schema) {
+        _loop(control);
+      }
+
+      // console.log('---As:', this.props.schema);
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'row' },
+          _react2.default.createElement(
+            'form',
+            { className: 'col s12' },
+            indents
+          )
+        )
+      );
+    }
+  }]);
+
+  return ReactSchemaEasyForm;
+}(_react2.default.Component);
+
+// ReactSchemaEasyForm.propTypes = {
+// children: PropTypes.node,
+// title: PropTypes.string,
+// id: PropTypes.string,
+// reverse: PropTypes.bool,
+// onClose: PropTypes.func.isRequired,
+// }
+
+var _default = ReactSchemaEasyForm;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/ReactSchemaEasyForm/index.js');
+
+  __REACT_HOT_LOADER__.register(ReactSchemaEasyForm, 'ReactSchemaEasyForm', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/ReactSchemaEasyForm/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/ReactSchemaEasyForm/index.js');
+}();
+
+;

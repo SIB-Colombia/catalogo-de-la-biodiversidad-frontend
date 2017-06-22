@@ -1,0 +1,176 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.paper{\n  padding: 10px 0 0px 0;\n}\n.col-grid{\n  margin: 10px 0px;\n}\n.col-list{\n  margin-top: 10px;\n}\n.color-select{\n  color: ', ' !important;\n}\n.color-unselect{\n  color: ', ' !important;\n}\n'], ['\n.paper{\n  padding: 10px 0 0px 0;\n}\n.col-grid{\n  margin: 10px 0px;\n}\n.col-list{\n  margin-top: 10px;\n}\n.color-select{\n  color: ', ' !important;\n}\n.color-unselect{\n  color: ', ' !important;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Link, FileCard, FileCardHorizontal } from 'components';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import Carousel from 'react-slick';
+import Masonry from 'react-masonry-component';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import Drawer from 'material-ui/Drawer';
+import { List, ListItem } from 'material-ui/List';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import ViewModule from 'material-ui/svg-icons/action/view-module';
+import ViewHeadline from 'material-ui/svg-icons/action/view-headline';
+import Dashboard from 'material-ui/svg-icons/action/dashboard';
+import Apps from 'material-ui/svg-icons/navigation/apps';
+import ViewList from 'material-ui/svg-icons/action/view-list';
+import { palette } from 'styled-theme';
+
+var Wrapper = styled.div(_templateObject, palette('primary', 0), palette('grayscale', 5));
+
+var FileSearchResult = function (_React$Component) {
+  _inherits(FileSearchResult, _React$Component);
+
+  function FileSearchResult(props) {
+    _classCallCheck(this, FileSearchResult);
+
+    var _this = _possibleConstructorReturn(this, (FileSearchResult.__proto__ || Object.getPrototypeOf(FileSearchResult)).call(this, props));
+
+    _this.handleChange = function (event, index, value) {
+      return _this.setState({ value: value });
+    };
+
+    _this.handleChange2 = function (event, index, value2) {
+      return _this.setState({ value2: value2 });
+    };
+
+    _this.handleView = function (value) {
+      return _this.setState({ mode: value });
+    };
+
+    _this.state = {
+      mode: 'grid',
+      value: 1,
+      value2: 1
+    };
+    return _this;
+  }
+
+  _createClass(FileSearchResult, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            { className: 'animated fadeInDown' },
+            React.createElement(
+              Col,
+              { xs: 12 },
+              React.createElement('br', null),
+              React.createElement(
+                Paper,
+                { className: 'paper' },
+                React.createElement(
+                  Row,
+                  null,
+                  React.createElement(Col, { xs: 12, sm: 6, md: 6, lg: 6 }),
+                  React.createElement(
+                    Col,
+                    { xs: 12, sm: 6, md: 6, lg: 6 },
+                    React.createElement(
+                      Row,
+                      null,
+                      React.createElement(
+                        Col,
+                        { xs: 12, sm: 4, md: 4, lg: 4, className: 'align-right' },
+                        React.createElement(
+                          IconButton,
+                          { tooltip: 'modo grilla', touch: true, tooltipPosition: 'bottom-center', onTouchTap: function onTouchTap() {
+                              return _this2.handleView('grid');
+                            } },
+                          React.createElement(Apps, { className: this.state.mode == 'grid' ? 'color-select' : 'color-unselect' })
+                        ),
+                        React.createElement(
+                          IconButton,
+                          { tooltip: 'modo lista', touch: true, tooltipPosition: 'bottom-center', onTouchTap: function onTouchTap() {
+                              return _this2.handleView('list');
+                            } },
+                          React.createElement(ViewList, { className: this.state.mode == 'list' ? 'color-select' : 'color-unselect' })
+                        )
+                      ),
+                      React.createElement(
+                        Col,
+                        { xs: 12, sm: 4, md: 4, lg: 4, className: 'align-center' },
+                        React.createElement(
+                          SelectField,
+                          { value: this.state.value, onChange: this.handleChange, fullWidth: true },
+                          React.createElement(MenuItem, { value: 1, primaryText: 'A/Z' }),
+                          React.createElement(MenuItem, { value: 2, primaryText: 'Visitas' }),
+                          React.createElement(MenuItem, { value: 3, primaryText: 'El peligro' })
+                        )
+                      ),
+                      React.createElement(
+                        Col,
+                        { xs: 12, sm: 4, md: 4, lg: 4, className: 'align-center' },
+                        React.createElement(
+                          SelectField,
+                          { value: this.state.value2, onChange: this.handleChange2, fullWidth: true },
+                          React.createElement(MenuItem, { value: 1, primaryText: 'Mejor coincidencia' }),
+                          React.createElement(MenuItem, { value: 2, primaryText: 'M\xE1s visitados' }),
+                          React.createElement(MenuItem, { value: 3, primaryText: 'Mejores valorados' })
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          React.createElement('br', null),
+          React.createElement(
+            Masonry,
+            null,
+            this.state.mode == 'grid' && this.props.data.map(function (record, i) {
+              return React.createElement(
+                Col,
+                { key: i, xs: 12, sm: 6, md: 3, lg: 3, className: 'col-grid' },
+                React.createElement(FileCard, { record: record })
+              );
+            })
+          ),
+          React.createElement(
+            Masonry,
+            null,
+            this.state.mode == 'list' && this.props.data.map(function (record, i) {
+              return React.createElement(
+                Col,
+                { key: i, xs: 12, sm: 12, md: 10, lg: 8, lgOffset: 2, mdOffset: 1, className: 'col-list' },
+                React.createElement(FileCardHorizontal, { record: record })
+              );
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileSearchResult;
+}(React.Component);
+
+export default FileSearchResult;

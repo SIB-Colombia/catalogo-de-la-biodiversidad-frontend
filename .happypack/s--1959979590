@@ -1,0 +1,186 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nbackground:#ffffff !important;\nz-index:1 !important;\n.tabs{\n\tbackground:#00838f;\n}\n.tabs .tab a{\n\tcolor :white;\n}\n.main-title{\n\tmargin: 10px 0px 30px 0px;\n}\n.background-section{\n}\n'], ['\nbackground:#ffffff !important;\nz-index:1 !important;\n.tabs{\n\tbackground:#00838f;\n}\n.tabs .tab a{\n\tcolor :white;\n}\n.main-title{\n\tmargin: 10px 0px 30px 0px;\n}\n.background-section{\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _config = require('../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _components = require('components');
+
+var _reactMaterialize = require('react-materialize');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var FilePage = function (_React$Component) {
+  _inherits(FilePage, _React$Component);
+
+  function FilePage(props) {
+    _classCallCheck(this, FilePage);
+
+    var _this = _possibleConstructorReturn(this, (FilePage.__proto__ || Object.getPrototypeOf(FilePage)).call(this, props));
+
+    _this.state = {
+      id: _this.props.params.fileId,
+      summary: false,
+      files: [],
+      // detail
+      info: false,
+      schema: false,
+      // associatedParty: false,
+      reference: false,
+      ancillaryData: false
+    };
+    return _this;
+  }
+
+  _createClass(FilePage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      window.scrollTo(0, 0);
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      var options = {
+        method: 'GET'
+      };
+
+      // fetch(`${config.server}/api/hello/home`, options).then((response) => {
+      //   return response.json()
+      // }).then((data) => {
+      //   this.setState({files: data})
+      // })
+
+      fetch(_config2.default.server + '/api/file/summary/' + this.state.id, options).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ summary: data });
+      });
+
+      fetch(_config2.default.server + '/api/file/detail/' + this.state.id, options).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ 'detail': data });
+      });
+
+      /*get Schemas and Data */
+
+      fetch(_config2.default.server + '/api/reference/show/' + this.state.id).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ 'reference': data });
+      });
+
+      fetch(_config2.default.server + '/api/ancillaryData/show/' + this.state.id).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ 'ancillaryData': data });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        _components.PageTemplate,
+        { header: _react2.default.createElement(_components.Header, null), footer: _react2.default.createElement(_components.Footer, null) },
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          Wrapper,
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'card-panel' },
+            _react2.default.createElement(
+              'h3',
+              { className: 'cyan-text text-darken-4 main-title' },
+              'Coragyps atratus'
+            ),
+            _react2.default.createElement(
+              _reactMaterialize.Tabs,
+              { className: 'tab-demo z-depth-1' },
+              _react2.default.createElement(
+                _reactMaterialize.Tab,
+                { title: 'Resumen', active: true },
+                this.state.summary ? _react2.default.createElement(_components.FileSummary, { data: this.state.summary }) : _react2.default.createElement(
+                  'div',
+                  { className: 'center-align' },
+                  'Cargando resumen....',
+                  _react2.default.createElement(_reactMaterialize.ProgressBar, null)
+                )
+              ),
+              _react2.default.createElement(
+                _reactMaterialize.Tab,
+                { title: 'Detalles' },
+                this.state.detail && this.state.reference && this.state.ancillaryData ? _react2.default.createElement(_components.FileDetail, { data: this.state.detail, reference: this.state.reference, ancillaryData: this.state.ancillaryData }) : _react2.default.createElement(
+                  'div',
+                  { className: 'center-align' },
+                  'Cargando detalle....',
+                  _react2.default.createElement(_reactMaterialize.ProgressBar, null)
+                )
+              ),
+              _react2.default.createElement(
+                _reactMaterialize.Tab,
+                { title: 'Im\xE1genes' },
+                _react2.default.createElement(_components.FileImage, null)
+              ),
+              _react2.default.createElement(_reactMaterialize.Tab, { title: 'Mapas' }),
+              _react2.default.createElement(_reactMaterialize.Tab, { title: 'Comunidad' }),
+              _react2.default.createElement(_reactMaterialize.Tab, { title: 'Comentarios' })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FilePage;
+}(_react2.default.Component);
+
+var _default = FilePage;
+exports.default = _default;
+//{ this.state.files.length > 0 ? <FileList data={this.state.files} /> : <div>ergergergergerg</div> }
+//{this.state.viewDetail ? (this.state.files ? <FileList data={this.state.files} /> : null) : null}
+
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FilePage/index.js');
+
+  __REACT_HOT_LOADER__.register(FilePage, 'FilePage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FilePage/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FilePage/index.js');
+}();
+
+;

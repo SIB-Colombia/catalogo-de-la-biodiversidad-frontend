@@ -1,0 +1,57 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n  padding: 1rem;\n\n  & > :not(:first-child) {\n    margin-left: 1rem;\n  }\n'], ['\n  display: flex;\n  align-items: center;\n  padding: 1rem;\n\n  & > :not(:first-child) {\n    margin-left: 1rem;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: inline-block;\n  transform-origin: center;\n'], ['\n  display: inline-block;\n  transform-origin: center;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var StyledIconLink = (0, _styledComponents2.default)(_components.IconLink)(_templateObject2);
+
+var Header = function Header(props) {
+  return _react2.default.createElement(
+    Wrapper,
+    _extends({ opaque: true, reverse: true }, props),
+    _react2.default.createElement(StyledIconLink, { to: '/', icon: 'arc', height: 100 }),
+    _react2.default.createElement(_components.PrimaryNavigation, { reverse: true })
+  );
+};
+
+var _default = Header;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/arc/src-example/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(StyledIconLink, 'StyledIconLink', '/home/leo/htdocs/arc/src-example/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/leo/htdocs/arc/src-example/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/arc/src-example/components/organisms/Header/index.js');
+}();
+
+;

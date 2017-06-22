@@ -1,0 +1,135 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _styledComponents = require('styled-components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _reactSchemaForm = require('react-schema-form');
+
+var _reactSchemaForm2 = _interopRequireDefault(_reactSchemaForm);
+
+var _components = require('components');
+
+var _FileService = require('../../../services/FileService');
+
+var FileService = _interopRequireWildcard(_FileService);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FileDetailPage = function (_React$Component) {
+  _inherits(FileDetailPage, _React$Component);
+
+  function FileDetailPage(props) {
+    _classCallCheck(this, FileDetailPage);
+
+    var _this = _possibleConstructorReturn(this, (FileDetailPage.__proto__ || Object.getPrototypeOf(FileDetailPage)).call(this, props));
+
+    _this.state = {
+      id: null,
+      fileComplete: null,
+      files: []
+    };
+    return _this;
+  }
+
+  _createClass(FileDetailPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      this.setState({ id: this.props.match.params.id });
+
+      FileService.getFileComplete(this.props.match.params.id).then(function (complete) {
+        _this2.setState({ fileComplete: complete });
+      });
+
+      FileService.getLastUpdatedRecords().then(function (data) {
+        _this2.setState({ files: data });
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log(this.props.match.params.id);
+    }
+  }, {
+    key: 'title',
+    value: function title() {
+      return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple;
+    }
+  }, {
+    key: 'subtitle',
+    value: function subtitle() {
+      return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        _components.PageTemplate,
+        { header: _react2.default.createElement(_components.Header, null), footer: _react2.default.createElement(_components.Footer, null), wallpaper: 'File' },
+        this.state.fileComplete && _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          { className: 'container' },
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            { className: 'animated fadeIn' },
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12, lg: 12 },
+              _react2.default.createElement(_components.FileHeader, { title: this.title(), subtitle: this.subtitle(), id: this.state.id, active: 'detail' }),
+              _react2.default.createElement(_components.FileDetail, { complete: this.state.fileComplete })
+            )
+          )
+        ),
+        this.state.files.length > 0 && _react2.default.createElement(_components.FileMostRecent, { id: this.state.id, data: this.state.files })
+      );
+    }
+  }]);
+
+  return FileDetailPage;
+}(_react2.default.Component);
+
+var _default = FileDetailPage;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(FileDetailPage, 'FileDetailPage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FileDetailPage/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FileDetailPage/index.js');
+}();
+
+;

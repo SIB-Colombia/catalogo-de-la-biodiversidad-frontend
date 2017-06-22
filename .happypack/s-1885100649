@@ -1,0 +1,125 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.scrol{\n  overflow:auto;\n}\n'], ['\n.scrol{\n  overflow:auto;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _Tabs = require('material-ui/Tabs');
+
+var _Slider = require('material-ui/Slider');
+
+var _Slider2 = _interopRequireDefault(_Slider);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var FileDetail = function (_React$Component) {
+  _inherits(FileDetail, _React$Component);
+
+  function FileDetail(props) {
+    _classCallCheck(this, FileDetail);
+
+    return _possibleConstructorReturn(this, (FileDetail.__proto__ || Object.getPrototypeOf(FileDetail)).call(this, props));
+  }
+
+  _createClass(FileDetail, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      console.log('-->', this.props.data);
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement('br', null),
+        Object.keys(this.props.data).map(function (record, i) {
+          return _react2.default.createElement(
+            'div',
+            { key: i },
+            _react2.default.createElement(
+              _Paper2.default,
+              { className: 'paper-padding-1 scrol' },
+              _react2.default.createElement(
+                _components.TitleSection,
+                null,
+                record
+              ),
+              _react2.default.createElement(
+                'pre',
+                null,
+                JSON.stringify(_this2.props.data[record], null, 4)
+              )
+            ),
+            _react2.default.createElement('br', null)
+          );
+        })
+      );
+    }
+  }]);
+
+  return FileDetail;
+}(_react2.default.Component);
+
+var _default = FileDetail;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail/index.js');
+
+  __REACT_HOT_LOADER__.register(FileDetail, 'FileDetail', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail/index.js');
+}();
+
+;

@@ -1,0 +1,22 @@
+import React from 'react';
+
+import { PageTemplate, Header, Footer, Paragraph, Heading } from 'components';
+
+var SamplePage = function SamplePage() {
+  return React.createElement(
+    PageTemplate,
+    { header: React.createElement(Header, null), footer: React.createElement(Footer, null) },
+    React.createElement(
+      Heading,
+      null,
+      'Irure mollit aute tempor incididunt eiusmod fugiat tempor aute ex sit aute est proident est.'
+    ),
+    React.createElement(
+      Paragraph,
+      null,
+      'Do cillum nulla consectetur excepteur aliquip adipisicing ipsum. Consectetur voluptate cillum cillum fugiat adipisicing eiusmod incididunt ut voluptate do aliquip ad irure occaecat cupidatat quis. Laborum laborum id quis officia anim quis in anim eu et aliquip sunt do excepteur. Consectetur ullamco sint do do nostrud tempor labore laboris sit fugiat veniam reprehenderit.'
+    )
+  );
+};
+
+export default SamplePage;

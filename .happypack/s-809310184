@@ -1,0 +1,724 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\nh5{\n  padding: 10px 0px;\n  font-weight: bold;\n}\n.material-placeholder{\n  display:inline-block !important;\n  margin:2px 5px;\n}\n.lateral-menu{\n    position:fixed;\n    left:0px;\n    top:100px;\n    z-index:1;\n    width:200px;\n    .table-of-contents a.active{\n            border-left: 2px solid #00838f;\n    }\n    .material-icons{\n            vertical-align: middle;\n    }\n}\n\n'], ['\n\nh5{\n  padding: 10px 0px;\n  font-weight: bold;\n}\n.material-placeholder{\n  display:inline-block !important;\n  margin:2px 5px;\n}\n.lateral-menu{\n    position:fixed;\n    left:0px;\n    top:100px;\n    z-index:1;\n    width:200px;\n    .table-of-contents a.active{\n            border-left: 2px solid #00838f;\n    }\n    .material-icons{\n            vertical-align: middle;\n    }\n}\n\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _components = require('components');
+
+var _reactMaterialize = require('react-materialize');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var FileDetailOld = function (_React$Component) {
+  _inherits(FileDetailOld, _React$Component);
+
+  function FileDetailOld(props) {
+    _classCallCheck(this, FileDetailOld);
+
+    var _this = _possibleConstructorReturn(this, (FileDetailOld.__proto__ || Object.getPrototypeOf(FileDetailOld)).call(this, props));
+
+    _this.openModalForm = function () {
+      return _this.__openModalForm__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.state = {
+      schema: {},
+      form: {},
+      contact: {
+        name: '',
+        email: '',
+        tel: ''
+      },
+      associatedParty: {}
+
+    };
+
+    // // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    return _this;
+  }
+
+  _createClass(FileDetailOld, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $('.parallax').parallax();
+      $('.scrollspy').scrollSpy();
+
+      $(document).ready(function () {
+
+        $('.modal').modal();
+      });
+    }
+  }, {
+    key: '__openModalForm__REACT_HOT_LOADER__',
+    value: function __openModalForm__REACT_HOT_LOADER__(record) {
+      this.setState({ associatedParty: record });
+      $('#modalForm').modal('open');
+    }
+  }, {
+    key: 'change',
+    value: function change(propertyName, event) {
+      var contact = this.state.contact;
+      contact[propertyName] = event.target.value;
+      this.setState({ contact: contact });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      console.log(this.props);
+
+      return _react2.default.createElement(
+        Wrapper,
+        { className: 'animated fadeIn' },
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'h5',
+            { className: 'cyan-text text-darken-4' },
+            'associatedPartys'
+          ),
+          _react2.default.createElement(
+            'ul',
+            { className: 'collection' },
+            this.props.associatedParty.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 6, key: i },
+                _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item avatar' },
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons circle green' },
+                    'insert_chart'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'title' },
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'associatedParty'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'address'
+                    ),
+                    ':',
+                    record.address,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'city:'
+                    ),
+                    record.city,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'country:'
+                    ),
+                    record.country,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'email:'
+                    ),
+                    record.email,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'firstName:'
+                    ),
+                    record.firstName,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'homepage:'
+                    ),
+                    record.homepage,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'lastName:'
+                    ),
+                    record.lastName,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'organisation:'
+                    ),
+                    record.organisation,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'personnelDirectory:'
+                    ),
+                    record.personnelDirectory,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'personnelIdentifier:'
+                    ),
+                    record.personnelIdentifier,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'phone:'
+                    ),
+                    record.phone,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'position:'
+                    ),
+                    record.position,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'postalCode:'
+                    ),
+                    record.postalCode,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'role:'
+                    ),
+                    record.role,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'state:'
+                    ),
+                    record.state,
+                    _react2.default.createElement('br', null)
+                  ),
+                  _react2.default.createElement(
+                    'a',
+                    { onClick: function onClick() {
+                        return _this2.openModalForm(record);
+                      }, className: 'secondary-content dropdown-button' },
+                    _react2.default.createElement(
+                      'i',
+                      { className: 'material-icons' },
+                      'more_horiz'
+                    )
+                  )
+                )
+              );
+            })
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'h5',
+            { className: 'cyan-text text-darken-4' },
+            'reference'
+          ),
+          _react2.default.createElement(
+            'ul',
+            { className: 'collection' },
+            this.props.reference.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 6, key: i },
+                _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item avatar' },
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons circle blue' },
+                    'insert_chart'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'title' },
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'reference'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'abstract'
+                    ),
+                    ':',
+                    record.abstract,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'accessed:'
+                    ),
+                    record.accessed,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'address:'
+                    ),
+                    record.address,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'chapter:'
+                    ),
+                    record.chapter,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'created:'
+                    ),
+                    record.created,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'doi:'
+                    ),
+                    record.doi,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'edition:'
+                    ),
+                    record.edition,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'group_id:'
+                    ),
+                    record.group_id,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'id:'
+                    ),
+                    record.id,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'institution:'
+                    ),
+                    record.institution,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'isbn:'
+                    ),
+                    record.isbn,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'issn:'
+                    ),
+                    record.issn,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'issue:'
+                    ),
+                    record.issue,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'last_modified:'
+                    ),
+                    record.last_modified,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'link:'
+                    ),
+                    record.link,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'pages:'
+                    ),
+                    record.pages,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'profile_id:'
+                    ),
+                    record.profile_id,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'publisher:'
+                    ),
+                    record.publisher,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'series:'
+                    ),
+                    record.series,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'source:'
+                    ),
+                    record.source,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'tags:'
+                    ),
+                    record.tags,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'title:'
+                    ),
+                    record.title,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'type:'
+                    ),
+                    record.type,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'volume:'
+                    ),
+                    record.volume,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'websites:'
+                    ),
+                    record.websites,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'year:'
+                    ),
+                    record.year,
+                    _react2.default.createElement('br', null)
+                  ),
+                  _react2.default.createElement(
+                    'a',
+                    { className: 'secondary-content dropdown-button' },
+                    _react2.default.createElement(
+                      'i',
+                      { className: 'material-icons' },
+                      'more_horiz'
+                    )
+                  )
+                )
+              );
+            })
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'lateral-menu card-panel animated bounceInDown' },
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { className: 'hide-on-small-only' },
+              _react2.default.createElement(
+                _reactMaterialize.Icon,
+                null,
+                'list'
+              ),
+              '\xCDndice de ficha',
+              _react2.default.createElement(
+                'ul',
+                { className: 'section table-of-contents' },
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#taxo' },
+                    'Taxonom\xEDa'
+                  )
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#stateCons' },
+                    'Estado Conservaci\xF3n'
+                  )
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#usetrafic' },
+                    'Uso y tr\xE1fico'
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { l: 8, m: 12, s: 12 },
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Nombres Comunes'
+            ),
+            this.props.data.names.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 6, key: i },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  record.title
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  record.description
+                ),
+                _react2.default.createElement('br', null)
+              );
+            }),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Distribuci\xF3n'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Mapa de registro publicados'
+            ),
+            _react2.default.createElement('img', { src: 'https://assets.metrolatam.com/co/2015/03/20/captura-de-pantalla-2015-03-20-a-las-12-42-23-1200x600.jpg', className: 'responsive-img' }),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Taxonom\xEDa'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'taxo', className: 'scrollspy' },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus. Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit. Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.'
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Estado Conservaci\xF3n'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'stateCons', className: 'scrollspy' },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus. Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit. Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.'
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Uso y tr\xE1fico'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'usetrafic', className: 'scrollspy' },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus. Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit. Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { l: 4 },
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Jerarqu\xEDa Taxon\xF3mica'
+            ),
+            _react2.default.createElement(
+              'ul',
+              { className: 'collection' },
+              this.props.data.taxo.map(function (record, i) {
+                return _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item', key: i },
+                  record.name,
+                  _react2.default.createElement(
+                    'b',
+                    null,
+                    record.value
+                  )
+                );
+              })
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Autores'
+            ),
+            this.props.data.authors.map(function (record, i) {
+              return _react2.default.createElement(
+                'div',
+                { className: 'center-align', key: i },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'chip' },
+                  _react2.default.createElement('img', { src: record.url, alt: 'Contact Person' }),
+                  ' ',
+                  record.name
+                )
+              );
+            }),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Informaci\xF3n b\xE1sica de la ficha'
+            ),
+            _react2.default.createElement(
+              'ul',
+              { className: 'collection' },
+              this.props.data.basic.map(function (record, i) {
+                return _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item', key: i },
+                  record.name,
+                  _react2.default.createElement('br', null),
+                  ' ',
+                  record.value
+                );
+              })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _components.ModalUI,
+          { title: 'Formulario', refe: 'modalForm' },
+          _react2.default.createElement(
+            _reactMaterialize.Row,
+            null,
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 12, s: 12 },
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'address', value: this.state.associatedParty.address }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'country', value: this.state.associatedParty.country }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'email', value: this.state.associatedParty.email }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'firstName', value: this.state.associatedParty.firstName }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'homepage', value: this.state.associatedParty.homepage }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'lastName', value: this.state.associatedParty.lastName }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'organisation', value: this.state.associatedParty.organisation }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'personnelDirectory', value: this.state.associatedParty.personnelDirectory }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'personnelIdentifier', value: this.state.associatedParty.personnelIdentifier }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'phone', value: this.state.associatedParty.phone }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'position', value: this.state.associatedParty.position }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'postalCode', value: this.state.associatedParty.postalCode }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'role', value: this.state.associatedParty.role }),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'state', value: this.state.associatedParty.state })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileDetailOld;
+}(_react2.default.Component);
+
+var _default = FileDetailOld;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail2/index.js');
+
+  __REACT_HOT_LOADER__.register(FileDetailOld, 'FileDetailOld', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail2/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail2/index.js');
+}();
+
+;

@@ -1,0 +1,78 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n\na{\n\tmargin:0px 5px;\n}\n'], ['\n\na{\n\tmargin:0px 5px;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// import { Footer } from 'react-materialize';
+
+var Wrapper = (0, _styledComponents2.default)(_components.Footer)(_templateObject);
+var FooterPage = function FooterPage(props) {
+  return _react2.default.createElement(
+    Wrapper,
+    { className: 'page-footer grey darken-4' },
+    _react2.default.createElement(
+      'div',
+      { className: 'footer-copyright' },
+      _react2.default.createElement(
+        'div',
+        { className: 'container' },
+        _react2.default.createElement(
+          'a',
+          { className: 'grey-text text-lighten-4 left', href: '' },
+          'Sobre el Cat\xE1logo |'
+        ),
+        _react2.default.createElement(
+          'a',
+          { className: 'grey-text text-lighten-4 left', href: '' },
+          'SIB Colombia |'
+        ),
+        _react2.default.createElement(
+          'a',
+          { className: 'grey-text text-lighten-4 left', href: '' },
+          'T\xE9rminos'
+        ),
+        _react2.default.createElement(
+          'a',
+          { className: 'grey-text text-lighten-4 right', href: '' },
+          'SIB Colombia'
+        )
+      )
+    )
+  );
+};
+var _default = FooterPage;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
+
+  __REACT_HOT_LOADER__.register(FooterPage, 'FooterPage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
+}();
+
+;

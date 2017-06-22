@@ -1,0 +1,132 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  body.ReactModal__Body--open {\n    overflow: hidden;\n  }\n'], ['\n  body.ReactModal__Body--open {\n    overflow: hidden;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: fixed;\n  background-color: rgba(0, 0, 0, 0.5);\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 9999;\n  transition: opacity 250ms ease-in-out;\n  opacity: 0;\n  &[class*="after-open"] {\n    opacity: 1;\n  }\n  &[class*="before-close"] {\n    opacity: 0;\n  }\n'], ['\n  position: fixed;\n  background-color: rgba(0, 0, 0, 0.5);\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 9999;\n  transition: opacity 250ms ease-in-out;\n  opacity: 0;\n  &[class*="after-open"] {\n    opacity: 1;\n  }\n  &[class*="before-close"] {\n    opacity: 0;\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  font-family: ', ';\n  font-size: 1rem;\n  background-color: ', ';\n  border-radius: 0.125em;\n  color: ', ';\n  top: calc(50% - 1rem);\n  left: calc(50% - 1rem);\n  right: auto;\n  bottom: auto;\n  margin: 1rem calc(-50% + 1rem) 1rem 1rem;\n  transform: translate(-50%, 100%);\n  transition: transform 250ms ease-in-out;\n  outline: none;\n  box-sizing: border-box;\n  min-width: 320px;\n  max-width: calc(640px - 1rem);\n  max-height: calc(100% - 1rem);\n  padding-top: ', ';\n  @media screen and (max-width: 640px) {\n    width: calc(100% - 1rem);\n    min-width: 0;\n  }\n  &[class*="after-open"] {\n    transform: translate(-50%, -50%);\n  }\n  &[class*="before-close"] {\n    transform: translate(-50%, 100%);\n  }\n'], ['\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  font-family: ', ';\n  font-size: 1rem;\n  background-color: ', ';\n  border-radius: 0.125em;\n  color: ', ';\n  top: calc(50% - 1rem);\n  left: calc(50% - 1rem);\n  right: auto;\n  bottom: auto;\n  margin: 1rem calc(-50% + 1rem) 1rem 1rem;\n  transform: translate(-50%, 100%);\n  transition: transform 250ms ease-in-out;\n  outline: none;\n  box-sizing: border-box;\n  min-width: 320px;\n  max-width: calc(640px - 1rem);\n  max-height: calc(100% - 1rem);\n  padding-top: ', ';\n  @media screen and (max-width: 640px) {\n    width: calc(100% - 1rem);\n    min-width: 0;\n  }\n  &[class*="after-open"] {\n    transform: translate(-50%, -50%);\n  }\n  &[class*="before-close"] {\n    transform: translate(-50%, 100%);\n  }\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  display: flex;\n  align-items: center;\n  padding: 1rem;\n  > *:first-child {\n    flex: 1;\n  }\n'], ['\n  display: flex;\n  align-items: center;\n  padding: 1rem;\n  > *:first-child {\n    flex: 1;\n  }\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n  margin: 0 1rem 0 0;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n'], ['\n  margin: 0 1rem 0 0;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n']),
+    _templateObject6 = _taggedTemplateLiteral(['\n  overflow: auto;\n  padding: 0 1rem;\n  margin-bottom: 1rem;\n'], ['\n  overflow: auto;\n  padding: 0 1rem;\n  margin-bottom: 1rem;\n']),
+    _templateObject7 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactModal = require('react-modal');
+
+var _reactModal2 = _interopRequireDefault(_reactModal);
+
+var _styledTheme = require('styled-theme');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+(0, _styledComponents.injectGlobal)(_templateObject);
+
+var overlayStyles = (0, _styledComponents.css)(_templateObject2);
+
+var ModalBox = (0, _styledComponents2.default)(_reactModal2.default)(_templateObject3, (0, _styledTheme.font)('primary'), (0, _styledTheme.palette)('grayscale', 0, true), (0, _styledTheme.palette)('grayscale', 0), function (_ref) {
+  var hasHeader = _ref.hasHeader;
+  return hasHeader ? 0 : '1rem';
+});
+
+var Header = _styledComponents2.default.header(_templateObject4);
+
+var StyledHeading = (0, _styledComponents2.default)(_components.Heading)(_templateObject5);
+
+var Content = _styledComponents2.default.div(_templateObject6);
+
+var StyledReactModal = (0, _styledComponents2.default)(function (_ref2) {
+  var className = _ref2.className,
+      props = _objectWithoutProperties(_ref2, ['className']);
+
+  return _react2.default.createElement(ModalBox, _extends({ overlayClassName: className, closeTimeoutMS: 250 }, props));
+})(_templateObject7, overlayStyles);
+
+var Modal = function Modal(_ref3) {
+  var children = _ref3.children,
+      title = _ref3.title,
+      closeable = _ref3.closeable,
+      onClose = _ref3.onClose,
+      props = _objectWithoutProperties(_ref3, ['children', 'title', 'closeable', 'onClose']);
+
+  var hasHeader = title || closeable;
+  return _react2.default.createElement(
+    StyledReactModal,
+    _extends({
+      contentLabel: title || 'Modal',
+      onRequestClose: onClose,
+      hasHeader: hasHeader
+    }, props),
+    hasHeader && _react2.default.createElement(
+      Header,
+      null,
+      _react2.default.createElement(
+        StyledHeading,
+        { level: 2, reverse: props.reverse },
+        title
+      ),
+      closeable && _react2.default.createElement(_components.IconButton, { icon: 'close', onClick: onClose, palette: 'white', reverse: true })
+    ),
+    _react2.default.createElement(
+      Content,
+      null,
+      children
+    )
+  );
+};
+
+Modal.propTypes = {
+  children: _propTypes2.default.node,
+  title: _propTypes2.default.string,
+  closeable: _propTypes2.default.bool,
+  reverse: _propTypes2.default.bool,
+  onClose: _propTypes2.default.func.isRequired
+};
+
+var _default = Modal;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(overlayStyles, 'overlayStyles', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(ModalBox, 'ModalBox', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(StyledHeading, 'StyledHeading', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(Content, 'Content', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(StyledReactModal, 'StyledReactModal', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(Modal, 'Modal', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/arc/src-example/components/molecules/Modal/index.js');
+}();
+
+;

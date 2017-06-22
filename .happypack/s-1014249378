@@ -1,0 +1,80 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.box-history{\n  float: right;\n}\n'], ['\n.box-history{\n  float: right;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'components';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import Badge from 'material-ui/Badge';
+import Comment from 'material-ui/svg-icons/communication/comment';
+
+var Wrapper = styled.div(_templateObject);
+
+var FileCard = function (_React$Component) {
+  _inherits(FileCard, _React$Component);
+
+  function FileCard(props) {
+    _classCallCheck(this, FileCard);
+
+    return _possibleConstructorReturn(this, (FileCard.__proto__ || Object.getPrototypeOf(FileCard)).call(this, props));
+  }
+
+  _createClass(FileCard, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Link,
+          { to: '/file/summary/' + this.props.record.id },
+          React.createElement(
+            Card,
+            { className: 'space-card' },
+            React.createElement(
+              CardMedia,
+              null,
+              React.createElement('img', { src: this.props.record.image })
+            ),
+            React.createElement(
+              CardTitle,
+              { title: this.props.record.name, subtitle: this.props.record.description },
+              React.createElement(
+                'div',
+                { className: 'box-history align-right' },
+                React.createElement(Badge, { badgeContent: 'EX', className: 'badge cr' }),
+                React.createElement(Badge, { badgeContent: 'CR', className: 'badge ex' }),
+                React.createElement(Badge, { badgeContent: 'EN', className: 'badge en' })
+              )
+            ),
+            React.createElement(
+              CardActions,
+              { className: 'align-center' },
+              React.createElement(
+                FlatButton,
+                { fullWidth: true, className: 'btn-secondary align-left padding' },
+                React.createElement(Comment, null),
+                ' ',
+                this.props.record.comment
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileCard;
+}(React.Component);
+
+export default FileCard;

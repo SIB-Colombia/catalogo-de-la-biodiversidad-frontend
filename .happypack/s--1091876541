@@ -1,0 +1,51 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  background-color: ', ';\n'], ['\n  background-color: ', ';\n']);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var backgroundColor = function backgroundColor(_ref) {
+  var filled = _ref.filled;
+  return (0, _styledTheme.palette)('grayscale', filled ? 1 : 0, true);
+};
+
+var TableRow = _styledComponents2.default.tr(_templateObject, backgroundColor);
+
+TableRow.propTypes = {
+  filled: _propTypes2.default.bool,
+  reverse: _propTypes2.default.bool
+};
+
+var _default = TableRow;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(backgroundColor, 'backgroundColor', '/home/leo/htdocs/arc/src-example/components/atoms/TableRow/index.js');
+
+  __REACT_HOT_LOADER__.register(TableRow, 'TableRow', '/home/leo/htdocs/arc/src-example/components/atoms/TableRow/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/arc/src-example/components/atoms/TableRow/index.js');
+}();
+
+;

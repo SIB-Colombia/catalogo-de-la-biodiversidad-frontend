@@ -1,0 +1,83 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\ntext-align: center;\npadding: 40px 0px;\n\n.brand-logo{\n  font-size: 10em;\n}\n.login-content{\n  padding: 20px;\n  height: 100%;\n}\n.po{\n  height: 100% !important;\n}\n'], ['\n\ntext-align: center;\npadding: 40px 0px;\n\n.brand-logo{\n  font-size: 10em;\n}\n.login-content{\n  padding: 20px;\n  height: 100%;\n}\n.po{\n  height: 100% !important;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { IconLink, Link, TitleSection } from 'components';
+
+var Wrapper = styled.div(_templateObject);
+
+var LoginSignup = function (_React$Component) {
+  _inherits(LoginSignup, _React$Component);
+
+  function LoginSignup() {
+    _classCallCheck(this, LoginSignup);
+
+    return _possibleConstructorReturn(this, (LoginSignup.__proto__ || Object.getPrototypeOf(LoginSignup)).apply(this, arguments));
+  }
+
+  _createClass(LoginSignup, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { xs: 10, sm: 6, md: 4, lg: 4, lgOffset: 4, mdOffset: 4, smOffset: 3, xsOffset: 1 },
+              React.createElement(
+                Paper,
+                { zDepth: 1, className: 'login-content animated fadeIn' },
+                React.createElement(IconLink, { to: '/', icon: 'catalogo', className: 'brand-logo' }),
+                React.createElement(
+                  TitleSection,
+                  { align: 'center', color: 'grayscale-6' },
+                  'Formulario de registro'
+                ),
+                React.createElement(TextField, { name: 'name', value: this.props.form.name, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre', floatingLabelText: 'Nombre', fullWidth: true }),
+                React.createElement(TextField, { name: 'lastname', value: this.props.form.lastname, onChange: this.props.update, hintText: 'Escriba aqu\xED su apellido', floatingLabelText: 'Apellido', fullWidth: true }),
+                React.createElement(TextField, { name: 'username', value: this.props.form.username, onChange: this.props.update, hintText: 'Escriba aqu\xED su nombre usuario', floatingLabelText: 'Nombre de usuario', fullWidth: true }),
+                React.createElement(TextField, { name: 'email', value: this.props.form.email, onChange: this.props.update, hintText: 'Escriba aqu\xED su correo', floatingLabelText: 'Correo electr\xF3nico', fullWidth: true }),
+                React.createElement(TextField, { name: 'pass', value: this.props.form.pass, onChange: this.props.update, hintText: 'Escriba aqu\xED su contrase\xF1a', floatingLabelText: 'Contrase\xF1a', type: 'password', fullWidth: true }),
+                React.createElement(TextField, { name: 'passverify', value: this.props.form.passverify, onChange: this.props.update, hintText: 'Escriba aqu\xED nuevamente su contrase\xF1a', floatingLabelText: 'Verificar contrase\xF1a', type: 'password', fullWidth: true }),
+                React.createElement('br', null),
+                React.createElement(
+                  TitleSection,
+                  { align: 'center', color: 'basescale-7', size: 'xxs' },
+                  this.props.form.error
+                ),
+                React.createElement('br', null),
+                React.createElement(RaisedButton, { label: 'Crear Cuenta', primary: true, fullWidth: true, className: 'btn-secondary-modal', onClick: this.props.trigger })
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return LoginSignup;
+}(React.Component);
+
+export default LoginSignup;

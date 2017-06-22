@@ -1,0 +1,53 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\nbody {\n\tmargin: 0;\n}\n'], ['\nbody {\n\tmargin: 0;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _default2 = require('./themes/default');
+
+var _default3 = _interopRequireDefault(_default2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+(0, _styledComponents.injectGlobal)(_templateObject);
+
+var App = function App(_ref) {
+  var children = _ref.children;
+
+  return _react2.default.createElement(
+    _styledComponents.ThemeProvider,
+    { theme: _default3.default },
+    children
+  );
+};
+
+App.propTypes = {
+  children: _react.PropTypes.any
+};
+
+var _default = App;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(App, 'App', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/App.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/App.js');
+}();
+
+;

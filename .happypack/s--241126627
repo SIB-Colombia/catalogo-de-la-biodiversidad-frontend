@@ -1,0 +1,86 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  font-size: ', ';\n  color: ', ';\n  background-color: transparent;\n'], ['\n  font-family: ', ';\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  font-size: ', ';\n  color: ', ';\n  background-color: transparent;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  -webkit-appearance: none;\n  margin: 0 0.4375em;\n  width: 100%;\n  height: 1rem;\n  background: transparent;\n\n  &:focus {\n    outline: none;\n  }\n\n  ', '\n\n  &::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    background: ', ';\n    border: ', ';\n    height: ', ';\n    width: ', ';\n    border-radius: ', ';\n    cursor: pointer;\n    margin-top: -0.53em;\n    transition: background .15s ease-in-out;\n    &:hover {\n      background: ', ';\n    }\n  }\n\n  &::-moz-range-thumb {\n    background: ', ';\n    height: ', ';\n    width: ', ';\n    border: ', ';\n    border-radius: ', ';\n    cursor: pointer;\n    transition: background .15s ease-in-out;\n    &:hover {\n      background: ', ';\n    }\n  }\n\n  &::-ms-thumb {\n    height: ', ';\n    width: ', ';\n    cursor: pointer;\n    border: ', ';\n    border-radius: ', ';\n  }\n\n  ', '\n\n  &::-webkit-slider-runnable-track {\n    width: 100%;\n    height: ', ';\n    background: ', ';\n    border-radius: ', ';\n    border: ', ';\n  }\n\n  &::-ms-track {\n    width: 100%;\n    height: ', ';\n    border: ', ';\n    border-radius: ', ';\n    color: transparent;\n  }\n\n  &::-moz-range-track {\n    width: 100%;\n    height: ', ';\n    background: ', ';\n    border-radius: ', ';\n    border: ', ';\n  }\n\n  &::-ms-fill-lower {\n    background: ', ';\n    border: ', ';\n    border-radius: ', ';\n  }\n\n  &::-ms-fill-upper {\n    background: ', ';\n    border: ', ';\n    border-radius: ', '\n  }\n'], ['\n  -webkit-appearance: none;\n  margin: 0 0.4375em;\n  width: 100%;\n  height: 1rem;\n  background: transparent;\n\n  &:focus {\n    outline: none;\n  }\n\n  ', '\n\n  &::-webkit-slider-thumb {\n    -webkit-appearance: none;\n    background: ', ';\n    border: ', ';\n    height: ', ';\n    width: ', ';\n    border-radius: ', ';\n    cursor: pointer;\n    margin-top: -0.53em;\n    transition: background .15s ease-in-out;\n    &:hover {\n      background: ', ';\n    }\n  }\n\n  &::-moz-range-thumb {\n    background: ', ';\n    height: ', ';\n    width: ', ';\n    border: ', ';\n    border-radius: ', ';\n    cursor: pointer;\n    transition: background .15s ease-in-out;\n    &:hover {\n      background: ', ';\n    }\n  }\n\n  &::-ms-thumb {\n    height: ', ';\n    width: ', ';\n    cursor: pointer;\n    border: ', ';\n    border-radius: ', ';\n  }\n\n  ', '\n\n  &::-webkit-slider-runnable-track {\n    width: 100%;\n    height: ', ';\n    background: ', ';\n    border-radius: ', ';\n    border: ', ';\n  }\n\n  &::-ms-track {\n    width: 100%;\n    height: ', ';\n    border: ', ';\n    border-radius: ', ';\n    color: transparent;\n  }\n\n  &::-moz-range-track {\n    width: 100%;\n    height: ', ';\n    background: ', ';\n    border-radius: ', ';\n    border: ', ';\n  }\n\n  &::-ms-fill-lower {\n    background: ', ';\n    border: ', ';\n    border-radius: ', ';\n  }\n\n  &::-ms-fill-upper {\n    background: ', ';\n    border: ', ';\n    border-radius: ', '\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  padding: 0.4375em;\n  @media screen and (max-width: ', 'px) {\n    display: ', ';\n  }\n'], ['\n  padding: 0.4375em;\n  @media screen and (max-width: ', 'px) {\n    display: ', ';\n  }\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+import { ifProp, prop } from 'styled-tools';
+
+var fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height / 35.5555555556 + 'rem';
+};
+
+var thumbColor = function thumbColor(_ref2) {
+  var disabled = _ref2.disabled;
+  return palette(disabled ? 2 : 1);
+};
+
+var barColor = palette('grayscale', 2, true);
+
+var hoverThumbColor = function hoverThumbColor(_ref3) {
+  var disabled = _ref3.disabled;
+  return !disabled && palette(0);
+};
+
+var thumbHeight = '1.5em';
+var thumbWidth = '1.5em';
+var barHeight = '0.6em';
+
+var border = '0.0625em solid transparent';
+var borderRadius = '0.125em';
+
+var Wrapper = styled.div(_templateObject, font('primary'), fontSize, palette('grayscale', 0));
+
+var Range = styled.input(_templateObject2, '' /* Thumb */, thumbColor, border, thumbHeight, thumbWidth, borderRadius, hoverThumbColor, thumbColor, thumbHeight, thumbWidth, border, borderRadius, hoverThumbColor, thumbHeight, thumbWidth, border, borderRadius, '' /* Track */, barHeight, barColor, borderRadius, border, barHeight, border, borderRadius, barHeight, barColor, borderRadius, border, barColor, border, borderRadius, barColor, border, borderRadius);
+
+var Text = styled.span(_templateObject3, prop('breakpoint'), ifProp('responsive', 'none !important'));
+
+var Slider = function Slider(_ref4) {
+  var id = _ref4.id,
+      min = _ref4.min,
+      max = _ref4.max,
+      defaultValue = _ref4.defaultValue,
+      step = _ref4.step,
+      props = _objectWithoutProperties(_ref4, ['id', 'min', 'max', 'defaultValue', 'step']);
+
+  var breakpoint = props.breakpoint,
+      responsive = props.responsive;
+
+  return React.createElement(
+    Wrapper,
+    props,
+    React.createElement(
+      Text,
+      { responsive: responsive, breakpoint: breakpoint },
+      min
+    ),
+    React.createElement(Range, _extends({ id: id, min: min, max: max, defaultValue: defaultValue, step: step }, props)),
+    React.createElement(
+      Text,
+      { responsive: responsive, breakpoint: breakpoint },
+      max
+    )
+  );
+};
+
+Slider.defaultProps = {
+  min: 0,
+  max: 2,
+  defaultValue: 1,
+  step: 1,
+  palette: 'primary',
+  type: 'range',
+  breakpoint: 420,
+  responsive: false
+};
+
+export default Slider;

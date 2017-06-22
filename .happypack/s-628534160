@@ -1,0 +1,35 @@
+var _templateObject = _taggedTemplateLiteral(['\n  background-color: ', ';\n  padding: 2rem;\n'], ['\n  background-color: ', ';\n  padding: 2rem;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  vertical-align: center;\n  text-align: center;\n  margin: 0;\n'], ['\n  vertical-align: center;\n  text-align: center;\n  margin: 0;\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { palette } from 'styled-theme';
+
+import { Paragraph, Link, Icon } from 'components';
+
+var Wrapper = styled.div(_templateObject, palette('grayscale', 1, true));
+
+var Credits = styled(Paragraph)(_templateObject2);
+
+var Footer = function Footer(props) {
+  return React.createElement(
+    Wrapper,
+    props,
+    React.createElement(
+      Credits,
+      null,
+      'Made with ',
+      React.createElement(Icon, { icon: 'heart' }),
+      ' by ',
+      React.createElement(
+        Link,
+        { href: 'https://github.com/diegohaz' },
+        'Haz'
+      )
+    )
+  );
+};
+
+export default Footer;

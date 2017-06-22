@@ -1,0 +1,11 @@
+import React from 'react';
+
+var GenericPage = function GenericPage() {
+  return React.createElement(
+    'div',
+    null,
+    'Generic Page'
+  );
+};
+
+export default GenericPage;

@@ -1,0 +1,63 @@
+var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n  display: flex;\n  padding: 1rem;\n  box-sizing: border-box;\n  opacity: ', ';\n'], ['\n  position: relative;\n  display: flex;\n  padding: 1rem;\n  box-sizing: border-box;\n  opacity: ', ';\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  flex: none;\n'], ['\n  flex: none;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  margin-left: 1rem;\n  & > :first-child {\n    margin: 0;\n  }\n'], ['\n  margin-left: 1rem;\n  & > :first-child {\n    margin: 0;\n  }\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  position: absolute;\n  top: 1rem;\n  right: 1rem;\n'], ['\n  position: absolute;\n  top: 1rem;\n  right: 1rem;\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+import { Icon, Link, Paragraph, Heading, Badge } from 'components';
+
+var Wrapper = styled.div(_templateObject, function (props) {
+  return props.soon ? 0.4 : 1;
+});
+
+var StyledIcon = styled(Icon)(_templateObject2);
+
+var Text = styled.div(_templateObject3);
+
+var StyledBadge = styled(Badge)(_templateObject4);
+
+var Feature = function Feature(_ref) {
+  var icon = _ref.icon,
+      title = _ref.title,
+      link = _ref.link,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['icon', 'title', 'link', 'children']);
+
+  return React.createElement(
+    Wrapper,
+    props,
+    icon && React.createElement(StyledIcon, { icon: icon, height: 64 }),
+    React.createElement(
+      Text,
+      null,
+      React.createElement(
+        Heading,
+        { level: 2 },
+        link ? React.createElement(
+          Link,
+          { href: link },
+          title
+        ) : title
+      ),
+      React.createElement(
+        Paragraph,
+        null,
+        children
+      )
+    ),
+    props.soon && React.createElement(
+      StyledBadge,
+      { palette: 'grayscale' },
+      'soon'
+    )
+  );
+};
+
+export default Feature;

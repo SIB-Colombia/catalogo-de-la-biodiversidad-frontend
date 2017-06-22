@@ -1,0 +1,85 @@
+var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n\n  &:before,\n  &:after {\n    position: absolute;\n    pointer-events: none;\n    display: block;\n    opacity: 0;\n    transition: opacity 100ms ease-in-out, ', ' 100ms ease-in-out;\n    will-change: ', ';\n  }\n\n  &:hover:before,\n  &:focus:before {\n    opacity: 1;\n    ', ': calc(100% + 1rem);\n  }\n\n  &:hover:after,\n  &:focus:after {\n    opacity: 1;\n    ', ': 100%;\n  }\n\n  &:before {\n    content: attr(data-title);\n    font-family: ', ';\n    white-space: nowrap;\n    text-transform: none;\n    font-size: 0.8125rem;\n    line-height: 1.5;\n    text-align: center;\n    color: ', ';\n    background-color: ', ';\n    border-radius: 0.15384em;\n    padding: 0.75em 1em;\n    ', ': calc(100% + 2rem);\n    ', '\n  }\n\n  &:after {\n    ', ': calc(100% + 1rem);\n    ', ': 50%;\n    border: solid transparent;\n    content: \'\';\n    height: 0;\n    width: 0;\n    border-', '-color: ', ';\n    border-width: 0.5rem;\n    margin-', ': -0.5rem;\n  }\n'], ['\n  position: relative;\n\n  &:before,\n  &:after {\n    position: absolute;\n    pointer-events: none;\n    display: block;\n    opacity: 0;\n    transition: opacity 100ms ease-in-out, ', ' 100ms ease-in-out;\n    will-change: ', ';\n  }\n\n  &:hover:before,\n  &:focus:before {\n    opacity: 1;\n    ', ': calc(100% + 1rem);\n  }\n\n  &:hover:after,\n  &:focus:after {\n    opacity: 1;\n    ', ': 100%;\n  }\n\n  &:before {\n    content: attr(data-title);\n    font-family: ', ';\n    white-space: nowrap;\n    text-transform: none;\n    font-size: 0.8125rem;\n    line-height: 1.5;\n    text-align: center;\n    color: ', ';\n    background-color: ', ';\n    border-radius: 0.15384em;\n    padding: 0.75em 1em;\n    ', ': calc(100% + 2rem);\n    ', '\n  }\n\n  &:after {\n    ', ': calc(100% + 1rem);\n    ', ': 50%;\n    border: solid transparent;\n    content: \'\';\n    height: 0;\n    width: 0;\n    border-', '-color: ', ';\n    border-width: 0.5rem;\n    margin-', ': -0.5rem;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n          ', ': 0;\n        '], ['\n          ', ': 0;\n        ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n          ', ': 50%;\n          transform: translate', '(-50%);\n        '], ['\n          ', ': 50%;\n          transform: translate', '(-50%);\n        ']),
+    _templateObject4 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font } from 'styled-theme';
+import { ifProp } from 'styled-tools';
+
+var opposites = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right'
+};
+
+export var opposite = function opposite(_ref) {
+  var position = _ref.position;
+  return opposites[position];
+};
+
+export var perpendicular = function perpendicular(_ref2) {
+  var position = _ref2.position;
+  return position === 'left' || position === 'right' ? 'top' : 'left';
+};
+
+export var perpendicularOpposite = function perpendicularOpposite(props) {
+  return opposites[perpendicular(props)];
+};
+
+export var perpendicularAxis = function perpendicularAxis(_ref3) {
+  var position = _ref3.position;
+  return position === 'left' || position === 'right' ? 'Y' : 'X';
+};
+
+var backgroundColor = ifProp('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 0, 0, 0.85)');
+
+var styles = css(_templateObject, opposite, opposite, opposite, opposite, font('primary'), ifProp('reverse', 'black', 'white'), backgroundColor, opposite, function (_ref4) {
+  var align = _ref4.align;
+
+  switch (align) {
+    case 'start':
+      return css(_templateObject2, perpendicular);
+    case 'center':
+      return css(_templateObject3, perpendicular, perpendicularAxis);
+    default:
+      return css(_templateObject2, perpendicularOpposite);
+  }
+}, opposite, perpendicular, function (_ref5) {
+  var position = _ref5.position;
+  return position;
+}, backgroundColor, perpendicular);
+
+var Tooltip = styled(function (_ref6) {
+  var position = _ref6.position,
+      align = _ref6.align,
+      reverse = _ref6.reverse,
+      children = _ref6.children,
+      theme = _ref6.theme,
+      props = _objectWithoutProperties(_ref6, ['position', 'align', 'reverse', 'children', 'theme']);
+
+  return React.cloneElement(children, props);
+})(_templateObject4, styles);
+
+Tooltip.propTypes = {
+  position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
+  align: PropTypes.oneOf(['start', 'center', 'end']),
+  reverse: PropTypes.bool,
+  'data-title': PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
+};
+
+Tooltip.defaultProps = {
+  position: 'top',
+  align: 'center',
+  tabIndex: 0
+};
+
+export default Tooltip;

@@ -1,0 +1,43 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-weight: 500;\n  font-size: ', ';\n  margin: 0;\n  margin-top: 0.85714em;\n  margin-bottom: 0.57142em;\n  color: ', ';\n'], ['\n  font-family: ', ';\n  font-weight: 500;\n  font-size: ', ';\n  margin: 0;\n  margin-top: 0.85714em;\n  margin-bottom: 0.57142em;\n  color: ', ';\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var fontSize = function fontSize(_ref) {
+  var level = _ref.level;
+  return 0.75 + 1 * (1 / level) + 'rem';
+};
+
+var styles = css(_templateObject, font('primary'), fontSize, palette({ grayscale: 0 }, 1));
+
+var Heading = styled(function (_ref2) {
+  var level = _ref2.level,
+      children = _ref2.children,
+      reverse = _ref2.reverse,
+      palette = _ref2.palette,
+      theme = _ref2.theme,
+      props = _objectWithoutProperties(_ref2, ['level', 'children', 'reverse', 'palette', 'theme']);
+
+  return React.createElement('h' + level, props, children);
+})(_templateObject2, styles);
+
+Heading.propTypes = {
+  level: PropTypes.number,
+  children: PropTypes.node,
+  palette: PropTypes.string,
+  reverse: PropTypes.bool
+};
+
+Heading.defaultProps = {
+  level: 1,
+  palette: 'grayscale'
+};
+
+export default Heading;

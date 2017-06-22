@@ -1,0 +1,60 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.box-community{\n  text-align: center;\n  padding:0 30px;\n  .box-circle{\n    border-radius: 100%;\n    border:3px solid white;\n    img{\n      width: 100%;\n    }\n  }\n  .name-user{\n    color:#333;\n    padding-top: 10px;\n  }\n}\n'], ['\n.box-community{\n  text-align: center;\n  padding:0 30px;\n  .box-circle{\n    border-radius: 100%;\n    border:3px solid white;\n    img{\n      width: 100%;\n    }\n  }\n  .name-user{\n    color:#333;\n    padding-top: 10px;\n  }\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'components';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+
+var Wrapper = styled.div(_templateObject);
+
+var CommunityCard = function (_React$Component) {
+  _inherits(CommunityCard, _React$Component);
+
+  function CommunityCard(props) {
+    _classCallCheck(this, CommunityCard);
+
+    return _possibleConstructorReturn(this, (CommunityCard.__proto__ || Object.getPrototypeOf(CommunityCard)).call(this, props));
+  }
+
+  _createClass(CommunityCard, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          'div',
+          { className: 'box-community' },
+          React.createElement(
+            'div',
+            { className: 'box-circle' },
+            React.createElement(
+              'center',
+              null,
+              React.createElement('img', { src: '/avatar.png' })
+            )
+          ),
+          React.createElement(
+            'div',
+            { className: 'name-user' },
+            'Usuario'
+          )
+        )
+      );
+    }
+  }]);
+
+  return CommunityCard;
+}(React.Component);
+
+export default CommunityCard;

@@ -1,0 +1,115 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-top: 55vh;\n.title-content{\n  padding: 20px 20px 0px 40px;\n}\n.main-title{\n  color:', ';\n  font-style: italic;\n  display: inline-block;\n  font-weight: 500;\n}\n.main-subtitle{\n  color:', ';\n  display: inline-block;\n  margin-left: 20px;\n  font-weight: lighter;\n}\n.author{\n  text-align: left;\n  margin-bottom: 50px;\n  .legend{\n    color:white;\n    background: rgba(0,0,0,0.6);\n    position: relative;\n    width: auto;\n    padding: 8px 10px;\n    font-style: italic;\n    font-size: 12px;\n    min-width: 250px;\n    max-width: 250px;\n    float: right;\n    svg{\n      width: 17px !important;\n      height: 17px !important;\n      color: white !important;\n      vertical-align: middle;\n      margin-top: -3px;\n      margin-right: 3px;\n    }\n  }\n}\n'], ['\npadding-top: 55vh;\n.title-content{\n  padding: 20px 20px 0px 40px;\n}\n.main-title{\n  color:', ';\n  font-style: italic;\n  display: inline-block;\n  font-weight: 500;\n}\n.main-subtitle{\n  color:', ';\n  display: inline-block;\n  margin-left: 20px;\n  font-weight: lighter;\n}\n.author{\n  text-align: left;\n  margin-bottom: 50px;\n  .legend{\n    color:white;\n    background: rgba(0,0,0,0.6);\n    position: relative;\n    width: auto;\n    padding: 8px 10px;\n    font-style: italic;\n    font-size: 12px;\n    min-width: 250px;\n    max-width: 250px;\n    float: right;\n    svg{\n      width: 17px !important;\n      height: 17px !important;\n      color: white !important;\n      vertical-align: middle;\n      margin-top: -3px;\n      margin-right: 3px;\n    }\n  }\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _Badge = require('material-ui/Badge');
+
+var _Badge2 = _interopRequireDefault(_Badge);
+
+var _styledTheme = require('styled-theme');
+
+var _copyright = require('material-ui/svg-icons/action/copyright');
+
+var _copyright2 = _interopRequireDefault(_copyright);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.palette)('basescale', 3), (0, _styledTheme.palette)('basescale', 3));
+
+var FileHeader = function (_React$Component) {
+  _inherits(FileHeader, _React$Component);
+
+  function FileHeader(props) {
+    _classCallCheck(this, FileHeader);
+
+    return _possibleConstructorReturn(this, (FileHeader.__proto__ || Object.getPrototypeOf(FileHeader)).call(this, props));
+  }
+
+  _createClass(FileHeader, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'author' },
+          _react2.default.createElement(
+            'div',
+            { className: 'legend' },
+            _react2.default.createElement(_copyright2.default, null),
+            'Ivo Antusek'
+          )
+        ),
+        _react2.default.createElement(
+          _Paper2.default,
+          null,
+          _react2.default.createElement(_components.FileStatus, { title: 'EN', description: 'AMENAZADO' }),
+          _react2.default.createElement(
+            'div',
+            { className: 'title-content' },
+            _react2.default.createElement(
+              'div',
+              { className: 'title-lg align-left main-title' },
+              this.props.title
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'main-subtitle' },
+              this.props.subtitle
+            )
+          ),
+          _react2.default.createElement(_components.MenuHorizontal, { id: this.props.id, active: this.props.active })
+        )
+      );
+    }
+  }]);
+
+  return FileHeader;
+}(_react2.default.Component);
+
+var _default = FileHeader;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileHeader/index.js');
+
+  __REACT_HOT_LOADER__.register(FileHeader, 'FileHeader', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileHeader/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileHeader/index.js');
+}();
+
+;

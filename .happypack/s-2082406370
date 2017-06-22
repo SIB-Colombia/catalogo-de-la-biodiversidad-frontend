@@ -1,0 +1,15 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  color: ', ';\n  font-weight: 500;\n  line-height: 2rem;\n  font-size: 0.875rem;\n  text-transform: uppercase;\n'], ['\n  font-family: ', ';\n  color: ', ';\n  font-weight: 500;\n  line-height: 2rem;\n  font-size: 0.875rem;\n  text-transform: uppercase;\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var Caption = styled.caption(_templateObject, font('primary'), palette('grayscale', 1));
+
+Caption.propTypes = {
+  reverse: PropTypes.bool
+};
+
+export default Caption;

@@ -1,0 +1,126 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n  position: fixed;\n  right: 15px;\n  bottom: 15px;\n  z-index: 10;\n'], ['\n  position: fixed;\n  right: 15px;\n  bottom: 15px;\n  z-index: 10;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _IconMenu = require('material-ui/IconMenu');
+
+var _IconMenu2 = _interopRequireDefault(_IconMenu);
+
+var _FloatingActionButton = require('material-ui/FloatingActionButton');
+
+var _FloatingActionButton2 = _interopRequireDefault(_FloatingActionButton);
+
+var _add = require('material-ui/svg-icons/content/add');
+
+var _add2 = _interopRequireDefault(_add);
+
+var _MenuItem = require('material-ui/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _navigationArrowDropRight = require('material-ui/svg-icons/navigation-arrow-drop-right');
+
+var _navigationArrowDropRight2 = _interopRequireDefault(_navigationArrowDropRight);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+// import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
+
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var FileSummaryMenu = function (_React$Component) {
+  _inherits(FileSummaryMenu, _React$Component);
+
+  function FileSummaryMenu(props) {
+    _classCallCheck(this, FileSummaryMenu);
+
+    return _possibleConstructorReturn(this, (FileSummaryMenu.__proto__ || Object.getPrototypeOf(FileSummaryMenu)).call(this, props));
+  }
+
+  _createClass(FileSummaryMenu, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        { className: 'animated fadeInRight' },
+        _react2.default.createElement(
+          _IconMenu2.default,
+          { iconButtonElement: _react2.default.createElement(
+              _FloatingActionButton2.default,
+              { className: 'btn-primary-floating' },
+              ' ',
+              _react2.default.createElement(_add2.default, null),
+              ' '
+            ), anchorOrigin: {
+              horizontal: 'right',
+              vertical: 'bottom'
+            }, targetOrigin: {
+              horizontal: 'right',
+              vertical: 'bottom'
+            } },
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Nomenclatura y Clasificaci\xF3n', rightIcon: _react2.default.createElement(_navigationArrowDropRight2.default, null),
+            menuItems: [_react2.default.createElement(_MenuItem2.default, { primaryText: 'Ejemplo 1' }), _react2.default.createElement(_MenuItem2.default, { primaryText: 'Ejemplo 2' }), _react2.default.createElement(_Divider2.default, null), _react2.default.createElement(_MenuItem2.default, { primaryText: 'Ejemplo 3' })] }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Descripci\xF3n taxon\xF3mica' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Historia Natural I' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Historia Natural II' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Invasividad' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'H\xE1bitat y Distribuci\xF3n', rightIcon: _react2.default.createElement(_navigationArrowDropRight2.default, null),
+            menuItems: [_react2.default.createElement(_MenuItem2.default, { primaryText: 'Ejemplo 1' }), _react2.default.createElement(_MenuItem2.default, { primaryText: 'Ejemplo 2' }), _react2.default.createElement(_Divider2.default, null), _react2.default.createElement(_MenuItem2.default, { primaryText: 'Ejemplo 3' })] }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Din\xE1mica poblacional y Amenazas' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Usos, Manejo y Conservaci\xF3n' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Partes asociadas' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Referencias' }),
+          _react2.default.createElement(_MenuItem2.default, { primaryText: 'Informaci\xF3n Adicional' })
+        )
+      );
+    }
+  }]);
+
+  return FileSummaryMenu;
+}(_react2.default.Component);
+
+var _default = FileSummaryMenu;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileSummaryMenu/index.js');
+
+  __REACT_HOT_LOADER__.register(FileSummaryMenu, 'FileSummaryMenu', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileSummaryMenu/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileSummaryMenu/index.js');
+}();
+
+;

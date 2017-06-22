@@ -1,0 +1,263 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-bottom: 20px;\n.box-comment{\n  padding-top: 0px !important;\n  &.textarea{\n    margin-top: -25px;\n  }\n}\n'], ['\npadding-bottom: 20px;\n.box-comment{\n  padding-top: 0px !important;\n  &.textarea{\n    margin-top: -25px;\n  }\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _Card = require('material-ui/Card');
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _Avatar = require('material-ui/Avatar');
+
+var _Avatar2 = _interopRequireDefault(_Avatar);
+
+var _List = require('material-ui/List/List');
+
+var _List2 = _interopRequireDefault(_List);
+
+var _ListItem = require('material-ui/List/ListItem');
+
+var _ListItem2 = _interopRequireDefault(_ListItem);
+
+var _auth = require('../../../auth');
+
+var _FileService = require('../../../services/FileService');
+
+var FileService = _interopRequireWildcard(_FileService);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var FileComment = function (_React$Component) {
+  _inherits(FileComment, _React$Component);
+
+  function FileComment(props) {
+    _classCallCheck(this, FileComment);
+
+    var _this = _possibleConstructorReturn(this, (FileComment.__proto__ || Object.getPrototypeOf(FileComment)).call(this, props));
+
+    _this.state = {
+      new: '',
+      reply: '',
+      expanded: []
+    };
+
+    return _this;
+  }
+
+  _createClass(FileComment, [{
+    key: 'create',
+    value: function create() {
+      var _this2 = this;
+
+      FileService.newComment({ text: this.state.new, fileId: this.props.id }).then(function (response) {
+        console.log('ok', response);
+        _this2.props.update();
+        _this2.setState({ new: '' });
+      });
+    }
+  }, {
+    key: 'createReply',
+    value: function createReply(record) {
+
+      console.log(record);
+      console.log(this.state.reply);
+    }
+  }, {
+    key: 'change',
+    value: function change(e, model) {
+      var obj = {};
+      var value = e.target.value;
+      obj[model] = value;
+      this.setState(obj);
+    }
+  }, {
+    key: 'reply',
+    value: function reply(e, idx) {
+      var obj = this.state.expanded;
+      obj[idx] = !obj[idx];
+      obj.forEach(function (e, i) {
+        if (i != idx) {
+          obj[i] = false;
+        }
+      });
+      this.setState({ expanded: obj, reply: '' });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          null,
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12 },
+              this.props.comments.map(function (record, i) {
+                return _react2.default.createElement(
+                  _Card.Card,
+                  { key: i, className: 'animated fadeInLeft' },
+                  _react2.default.createElement(_Card.CardHeader, { title: record.postedBy.username, subtitle: '@' + record.postedBy.username + ' - ' + record.date, avatar: record.postedBy.photo || '/avatar3.png' }),
+                  _react2.default.createElement(
+                    _Card.CardText,
+                    { className: 'box-comment' },
+                    record.text,
+                    record.replies.map(function (subrecord, j) {
+                      return _react2.default.createElement(
+                        _Card.Card,
+                        { key: j, className: 'animated fadeInLeft' },
+                        _react2.default.createElement(_Card.CardHeader, { title: subrecord.postedBy.name + ' ' + subrecord.postedBy.lastname, subtitle: '@' + subrecord.postedBy.username + ' - ' + subrecord.date, avatar: subrecord.postedBy.photo || '/avatar3.png' }),
+                        _react2.default.createElement(
+                          _Card.CardText,
+                          { className: 'box-comment' },
+                          subrecord.text
+                        ),
+                        (0, _auth.isAuthenticated)() && _react2.default.createElement(
+                          _Card.CardActions,
+                          null,
+                          _react2.default.createElement(_FlatButton2.default, { label: 'Responder', onTouchTap: function onTouchTap(e) {
+                              return _this3.reply(e, i);
+                            } }),
+                          _react2.default.createElement(_FlatButton2.default, { label: 'Denunciar' })
+                        )
+                      );
+                    })
+                  ),
+                  (0, _auth.isAuthenticated)() && _react2.default.createElement(
+                    _Card.CardActions,
+                    null,
+                    _react2.default.createElement(_FlatButton2.default, { label: 'Responder', onTouchTap: function onTouchTap(e) {
+                        return _this3.reply(e, i);
+                      } }),
+                    _react2.default.createElement(_FlatButton2.default, { label: 'Denunciar' }),
+                    ' ',
+                    _this3.state.expanded[i] && _react2.default.createElement(
+                      _Card.Card,
+                      { className: 'animated fadeIn' },
+                      _react2.default.createElement(_Card.CardHeader, { title: (0, _auth.isAuthenticated)().username, avatar: (0, _auth.isAuthenticated)().photo || '/avatar3.png' }),
+                      _react2.default.createElement(
+                        _Card.CardText,
+                        { className: 'box-comment textarea' },
+                        _react2.default.createElement(_TextField2.default, { hintText: 'Escriba aqu\xED su comentario', onChange: function onChange(e) {
+                            return _this3.change(e, 'reply');
+                          }, value: _this3.state.reply, floatingLabelText: 'Comentario', fullWidth: true, multiLine: true, rows: 2 })
+                      ),
+                      _react2.default.createElement(
+                        _Card.CardActions,
+                        null,
+                        _react2.default.createElement(_FlatButton2.default, { label: 'Publicar respuesta', className: 'btn-secondary', onClick: function onClick() {
+                            return _this3.createReply(record);
+                          } })
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(_Divider2.default, null)
+                );
+              }),
+              _react2.default.createElement(_Divider2.default, null),
+              ' ',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              (0, _auth.isAuthenticated)() && _react2.default.createElement(
+                _Card.Card,
+                null,
+                _react2.default.createElement(_Card.CardHeader, { title: (0, _auth.isAuthenticated)().username, avatar: (0, _auth.isAuthenticated)().photo || '/avatar3.png' }),
+                _react2.default.createElement(
+                  _Card.CardText,
+                  { className: 'box-comment textarea' },
+                  _react2.default.createElement(_TextField2.default, { hintText: 'Escriba aqu\xED su comentario', onChange: function onChange(e) {
+                      return _this3.change(e, 'new');
+                    }, value: this.state.new, floatingLabelText: 'Comentario', fullWidth: true, multiLine: true, rows: 3 })
+                ),
+                _react2.default.createElement(
+                  _Card.CardActions,
+                  null,
+                  _react2.default.createElement(_FlatButton2.default, { label: 'Publicar', className: 'btn-secondary', onClick: function onClick() {
+                      return _this3.create();
+                    } })
+                )
+              ),
+              !(0, _auth.isAuthenticated)() && _react2.default.createElement(
+                _components.TitleSection,
+                { align: 'center', className: 'padding-top-3' },
+                'Para poder comentar, por favor inicie sesi\xF3n primero'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileComment;
+}(_react2.default.Component);
+
+var _default = FileComment;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileComment/index.js');
+
+  __REACT_HOT_LOADER__.register(FileComment, 'FileComment', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileComment/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileComment/index.js');
+}();
+
+;

@@ -1,0 +1,46 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  border: 1px solid ', ';\n  border-width: 0 0 1px;\n  width: 100%;\n'], ['\n  border: 1px solid ', ';\n  border-width: 0 0 1px;\n  width: 100%;\n']);
+
+var _react = require('react');
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var HorizontalRule = _styledComponents2.default.hr(_templateObject, (0, _styledTheme.palette)(1, true));
+
+HorizontalRule.propTypes = {
+  palette: _react.PropTypes.string,
+  reverse: _react.PropTypes.bool
+};
+
+HorizontalRule.defaultProps = {
+  palette: 'grayscale'
+};
+
+var _default = HorizontalRule;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(HorizontalRule, 'HorizontalRule', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/HorizontalRule/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/HorizontalRule/index.js');
+}();
+
+;

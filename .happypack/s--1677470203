@@ -1,0 +1,62 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  text-align: left;\n  padding: 0.75em;\n'], ['\n  text-align: left;\n  padding: 0.75em;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var styles = (0, _styledComponents.css)(_templateObject);
+
+var Th = _styledComponents2.default.th(_templateObject2, styles);
+var Td = _styledComponents2.default.td(_templateObject2, styles);
+
+var TableCell = function TableCell(_ref) {
+  var heading = _ref.heading,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['heading', 'children']);
+
+  return _react2.default.createElement(heading ? Th : Td, props, children);
+};
+
+TableCell.propTypes = {
+  heading: _react.PropTypes.bool,
+  children: _react.PropTypes.any
+};
+
+var _default = TableCell;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/TableCell/index.js');
+
+  __REACT_HOT_LOADER__.register(Th, 'Th', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/TableCell/index.js');
+
+  __REACT_HOT_LOADER__.register(Td, 'Td', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/TableCell/index.js');
+
+  __REACT_HOT_LOADER__.register(TableCell, 'TableCell', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/TableCell/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/TableCell/index.js');
+}();
+
+;

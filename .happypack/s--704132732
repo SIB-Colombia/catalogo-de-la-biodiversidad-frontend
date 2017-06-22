@@ -1,0 +1,59 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-top: 45vh;\n.box-content{\n  padding: 20px;\n  overflow:hidden;\n}\n.main-title{\n  color:', ';\n  font-style: italic;\n  float:left;\n  font-weight: 500;\n}\n.main-subtitle{\n  color:', ';\n  line-height: 4;\n  margin-left: 30px;\n}\n'], ['\npadding-top: 45vh;\n.box-content{\n  padding: 20px;\n  overflow:hidden;\n}\n.main-title{\n  color:', ';\n  font-style: italic;\n  float:left;\n  font-weight: 500;\n}\n.main-subtitle{\n  color:', ';\n  line-height: 4;\n  margin-left: 30px;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Link, FileStatus } from 'components';
+import Paper from 'material-ui/Paper';
+import Badge from 'material-ui/Badge';
+import { palette } from 'styled-theme';
+
+var Wrapper = styled.div(_templateObject, palette('basescale', 3), palette('basescale', 3));
+
+var FileHeader = function (_React$Component) {
+  _inherits(FileHeader, _React$Component);
+
+  function FileHeader(props) {
+    _classCallCheck(this, FileHeader);
+
+    return _possibleConstructorReturn(this, (FileHeader.__proto__ || Object.getPrototypeOf(FileHeader)).call(this, props));
+  }
+
+  _createClass(FileHeader, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Paper,
+          { zDepth: 1, className: 'box-content' },
+          React.createElement(FileStatus, null),
+          React.createElement(
+            'h3',
+            { className: 'title-lg align-left main-title' },
+            this.props.title
+          ),
+          React.createElement(
+            'span',
+            { className: 'main-subtitle' },
+            this.props.subtitle
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileHeader;
+}(React.Component);
+
+export default FileHeader;

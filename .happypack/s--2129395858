@@ -1,0 +1,22 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  background-color: ', ';\n  color: ', ';\n'], ['\n  font-family: ', ';\n  background-color: ', ';\n  color: ', ';\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+import { ifProp } from 'styled-tools';
+
+var Block = styled.div(_templateObject, font('primary'), ifProp('opaque', palette(0, true), 'transparent'), palette({ grayscale: 0 }, 1));
+
+Block.propTypes = {
+  palette: PropTypes.string,
+  reverse: PropTypes.bool,
+  opaque: PropTypes.bool
+};
+
+Block.defaultProps = {
+  palette: 'grayscale'
+};
+
+export default Block;

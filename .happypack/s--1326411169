@@ -1,0 +1,79 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: inline-flex;\n  font-family: ', ';\n  align-items: center;\n  white-space: nowrap;\n  font-size: ', ';\n  border: 0.0625em solid ', ';\n  height: 2.5em;\n  justify-content: center;\n  text-decoration: none;\n  cursor: ', ';\n  appearance: none;\n  padding: 0 1em;\n  border-radius: 0.125em;\n  box-sizing: border-box;\n  pointer-events: ', ';\n  transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;\n  background-color: ', ';\n  color: ', ';\n\n  &:hover, &:focus, &:active {\n    background-color: ', ';\n    color: ', ';\n  }\n\n  &:focus {\n    outline: none\n  }\n'], ['\n  display: inline-flex;\n  font-family: ', ';\n  align-items: center;\n  white-space: nowrap;\n  font-size: ', ';\n  border: 0.0625em solid ', ';\n  height: 2.5em;\n  justify-content: center;\n  text-decoration: none;\n  cursor: ', ';\n  appearance: none;\n  padding: 0 1em;\n  border-radius: 0.125em;\n  box-sizing: border-box;\n  pointer-events: ', ';\n  transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;\n  background-color: ', ';\n  color: ', ';\n\n  &:hover, &:focus, &:active {\n    background-color: ', ';\n    color: ', ';\n  }\n\n  &:focus {\n    outline: none\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import Link from 'react-router-dom/Link';
+import { font, palette } from 'styled-theme';
+import { ifProp } from 'styled-tools';
+
+var fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height / 40 + 'rem';
+};
+
+var backgroundColor = function backgroundColor(_ref2) {
+  var transparent = _ref2.transparent,
+      disabled = _ref2.disabled;
+  return transparent ? 'transparent' : palette(disabled ? 2 : 1);
+};
+
+var foregroundColor = function foregroundColor(_ref3) {
+  var transparent = _ref3.transparent,
+      disabled = _ref3.disabled;
+  return transparent ? palette(disabled ? 2 : 1) : palette('grayscale', 0, true);
+};
+
+var hoverBackgroundColor = function hoverBackgroundColor(_ref4) {
+  var disabled = _ref4.disabled,
+      transparent = _ref4.transparent;
+  return !disabled && !transparent && palette(0);
+};
+var hoverForegroundColor = function hoverForegroundColor(_ref5) {
+  var disabled = _ref5.disabled,
+      transparent = _ref5.transparent;
+  return !disabled && transparent && palette(0);
+};
+
+var styles = css(_templateObject, font('primary'), fontSize, ifProp('transparent', 'currentcolor', 'transparent'), ifProp('disabled', 'default', 'pointer'), ifProp('disabled', 'none', 'auto'), backgroundColor, foregroundColor, hoverBackgroundColor, hoverForegroundColor);
+
+var StyledLink = styled(function (_ref6) {
+  var disabled = _ref6.disabled,
+      transparent = _ref6.transparent,
+      reverse = _ref6.reverse,
+      palette = _ref6.palette,
+      height = _ref6.height,
+      theme = _ref6.theme,
+      props = _objectWithoutProperties(_ref6, ['disabled', 'transparent', 'reverse', 'palette', 'height', 'theme']);
+
+  return React.createElement(Link, props);
+})(_templateObject2, styles);
+var Anchor = styled.a(_templateObject2, styles);
+var StyledButton = styled.button(_templateObject2, styles);
+
+var Button = function Button(_ref7) {
+  var type = _ref7.type,
+      props = _objectWithoutProperties(_ref7, ['type']);
+
+  if (props.to) {
+    return React.createElement(StyledLink, props);
+  } else if (props.href) {
+    return React.createElement(Anchor, props);
+  }
+  return React.createElement(StyledButton, _extends({}, props, { type: type }));
+};
+
+Button.defaultProps = {
+  palette: 'primary',
+  type: 'button',
+  height: 40
+};
+
+export default Button;

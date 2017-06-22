@@ -1,0 +1,51 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n'], ['\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: relative;\n  border: 0.2em solid ', ';\n  border-bottom-color: ', ';\n  border-radius: 50%;\n  margin: 0 auto;\n  width: 1em;\n  height: 1em;\n  animation: ', ' 1s linear infinite;\n'], ['\n  position: relative;\n  border: 0.2em solid ', ';\n  border-bottom-color: ', ';\n  border-radius: 50%;\n  margin: 0 auto;\n  width: 1em;\n  height: 1em;\n  animation: ', ' 1s linear infinite;\n']);
+
+var _react = require('react');
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var spin = (0, _styledComponents.keyframes)(_templateObject);
+
+var Spinner = _styledComponents2.default.div(_templateObject2, (0, _styledTheme.palette)('grayscale', 1, true), (0, _styledTheme.palette)(1), spin);
+
+Spinner.propTypes = {
+  palette: _react.PropTypes.string,
+  reverse: _react.PropTypes.bool
+};
+
+Spinner.defaultProps = {
+  palette: 'primary'
+};
+
+var _default = Spinner;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(spin, 'spin', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Spinner/index.js');
+
+  __REACT_HOT_LOADER__.register(Spinner, 'Spinner', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Spinner/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Spinner/index.js');
+}();
+
+;

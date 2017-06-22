@@ -1,0 +1,92 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nfloat: right;\nheight: 100%;\n.picture{\n  width: 40px;\n  border-radius: 100%;\n}\n.iconUser{\n  height: 100%;\n  button{\n  width: auto !important;\n  }\n  svg{\n    color: ', ' !important;\n    height: 42px !important;\n    width: 42px !important;\n  }\n}\n\n'], ['\nfloat: right;\nheight: 100%;\n.picture{\n  width: 40px;\n  border-radius: 100%;\n}\n.iconUser{\n  height: 100%;\n  button{\n  width: auto !important;\n  }\n  svg{\n    color: ', ' !important;\n    height: 42px !important;\n    width: 42px !important;\n  }\n}\n\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'components';
+import { font, size, palette } from 'styled-theme';
+
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import Divider from 'material-ui/Divider';
+import Download from 'material-ui/svg-icons/file/file-download';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
+import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
+import Home from 'material-ui/svg-icons/action/home';
+import Settings from 'material-ui/svg-icons/action/settings';
+import Exit from 'material-ui/svg-icons/action/exit-to-app';
+import Account from 'material-ui/svg-icons/action/account-circle';
+import Info from 'material-ui/svg-icons/action/info';
+import { logout, isAuthenticated } from '../../../auth';
+
+var Wrapper = styled.div(_templateObject, palette('grayscale', 6));
+
+var HeaderUserMenu = function (_React$Component) {
+  _inherits(HeaderUserMenu, _React$Component);
+
+  function HeaderUserMenu(props) {
+    _classCallCheck(this, HeaderUserMenu);
+
+    return _possibleConstructorReturn(this, (HeaderUserMenu.__proto__ || Object.getPrototypeOf(HeaderUserMenu)).call(this, props));
+  }
+
+  _createClass(HeaderUserMenu, [{
+    key: 'exit',
+    value: function exit() {
+      logout();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          IconMenu,
+          { className: 'iconUser', iconButtonElement: React.createElement(
+              IconButton,
+              null,
+              ' ',
+              React.createElement('img', { src: isAuthenticated().photo || '/avatar3.png', className: 'picture' }),
+              ' '
+            ), anchorOrigin: {
+              horizontal: 'right',
+              vertical: 'top'
+            }, targetOrigin: {
+              horizontal: 'right',
+              vertical: 'top'
+            } },
+          React.createElement(MenuItem, { primaryText: 'Escritorio', leftIcon: React.createElement(Home, null) }),
+          React.createElement(
+            Link,
+            { to: '/user/profile' },
+            React.createElement(MenuItem, { primaryText: 'Perfil', leftIcon: React.createElement(Account, null) })
+          ),
+          React.createElement(MenuItem, { primaryText: 'Notificaciones', leftIcon: React.createElement(Info, null) }),
+          React.createElement(MenuItem, { primaryText: 'Ajustes de cuenta', leftIcon: React.createElement(Settings, null) }),
+          React.createElement(Divider, null),
+          React.createElement(MenuItem, { primaryText: 'Cerrar sesi\xF3n', onTouchTap: function onTouchTap() {
+              _this2.exit();
+            }, leftIcon: React.createElement(Exit, null) })
+        )
+      );
+    }
+  }]);
+
+  return HeaderUserMenu;
+}(React.Component);
+
+export default HeaderUserMenu;

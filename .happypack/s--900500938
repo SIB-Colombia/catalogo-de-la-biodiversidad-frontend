@@ -1,0 +1,46 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  color: ', ';\n'], ['\n  font-family: ', ';\n  color: ', ';\n']);
+
+var _react = require('react');
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Atom = _styledComponents2.default.span(_templateObject, (0, _styledTheme.font)('primary'), (0, _styledTheme.palette)({
+  grayscale: 0 }, 1));
+Atom.propTypes = {
+  palette: _react.PropTypes.string,
+  reverse: _react.PropTypes.bool
+};
+
+Atom.defaultProps = {
+  palette: 'grayscale'
+};
+
+var _default = Atom;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Atom, 'Atom', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Atom/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Atom/index.js');
+}();
+
+;

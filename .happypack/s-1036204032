@@ -1,0 +1,38 @@
+var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n  font-family: ', ';\n  font-style: italic;\n  font-size: 1.2rem;\n  line-height: 2rem;\n  box-sizing: border-box;\n  color: ', ';\n  border-left: 5px solid ', ';\n  margin: 1rem 0;\n  padding: 0.5rem 0 0.5rem 1.5rem;\n'], ['\n  position: relative;\n  font-family: ', ';\n  font-style: italic;\n  font-size: 1.2rem;\n  line-height: 2rem;\n  box-sizing: border-box;\n  color: ', ';\n  border-left: 5px solid ', ';\n  margin: 1rem 0;\n  padding: 0.5rem 0 0.5rem 1.5rem;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  display: block;\n  font-family: ', ';\n  font-weight: 300;\n  font-style: normal;\n  margin-top: 0.4rem;\n'], ['\n  display: block;\n  font-family: ', ';\n  font-weight: 300;\n  font-style: normal;\n  margin-top: 0.4rem;\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var StyledBlockquote = styled.blockquote(_templateObject, font('quote'), palette('grayscale', 1), palette('grayscale', 2, true));
+
+var Cite = styled.cite(_templateObject2, font('primary'));
+
+var Blockquote = function Blockquote(_ref) {
+  var cite = _ref.cite,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['cite', 'children']);
+
+  return React.createElement(
+    StyledBlockquote,
+    props,
+    React.createElement(
+      'div',
+      null,
+      children
+    ),
+    cite && React.createElement(
+      Cite,
+      null,
+      cite
+    )
+  );
+};
+
+export default Blockquote;

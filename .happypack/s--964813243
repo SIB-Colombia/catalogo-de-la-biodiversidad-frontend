@@ -1,0 +1,77 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n  position: fixed;\n  right: 15px;\n  bottom: 15px;\n  z-index: 10;\n'], ['\n  position: fixed;\n  right: 15px;\n  bottom: 15px;\n  z-index: 10;\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'components';
+import IconMenu from 'material-ui/IconMenu';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
+// import ChevronLeft from 'material-ui/svg-icons/navigation/chevron-left';
+import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+
+var Wrapper = styled.div(_templateObject);
+
+var FileSummaryMenu = function (_React$Component) {
+  _inherits(FileSummaryMenu, _React$Component);
+
+  function FileSummaryMenu(props) {
+    _classCallCheck(this, FileSummaryMenu);
+
+    return _possibleConstructorReturn(this, (FileSummaryMenu.__proto__ || Object.getPrototypeOf(FileSummaryMenu)).call(this, props));
+  }
+
+  _createClass(FileSummaryMenu, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        { className: 'animated fadeInRight' },
+        React.createElement(
+          IconMenu,
+          { iconButtonElement: React.createElement(
+              FloatingActionButton,
+              { className: 'btn-primary-floating' },
+              ' ',
+              React.createElement(ContentAdd, null),
+              ' '
+            ), anchorOrigin: {
+              horizontal: 'right',
+              vertical: 'bottom'
+            }, targetOrigin: {
+              horizontal: 'right',
+              vertical: 'bottom'
+            } },
+          React.createElement(MenuItem, { primaryText: 'Nomenclatura y Clasificaci\xF3n', rightIcon: React.createElement(ArrowDropRight, null),
+            menuItems: [React.createElement(MenuItem, { primaryText: 'Ejemplo 1' }), React.createElement(MenuItem, { primaryText: 'Ejemplo 2' }), React.createElement(Divider, null), React.createElement(MenuItem, { primaryText: 'Ejemplo 3' })] }),
+          React.createElement(MenuItem, { primaryText: 'Descripci\xF3n taxon\xF3mica' }),
+          React.createElement(MenuItem, { primaryText: 'Historia Natural I' }),
+          React.createElement(MenuItem, { primaryText: 'Historia Natural II' }),
+          React.createElement(MenuItem, { primaryText: 'Invasividad' }),
+          React.createElement(MenuItem, { primaryText: 'H\xE1bitat y Distribuci\xF3n', rightIcon: React.createElement(ArrowDropRight, null),
+            menuItems: [React.createElement(MenuItem, { primaryText: 'Ejemplo 1' }), React.createElement(MenuItem, { primaryText: 'Ejemplo 2' }), React.createElement(Divider, null), React.createElement(MenuItem, { primaryText: 'Ejemplo 3' })] }),
+          React.createElement(MenuItem, { primaryText: 'Din\xE1mica poblacional y Amenazas' }),
+          React.createElement(MenuItem, { primaryText: 'Usos, Manejo y Conservaci\xF3n' }),
+          React.createElement(MenuItem, { primaryText: 'Partes asociadas' }),
+          React.createElement(MenuItem, { primaryText: 'Referencias' }),
+          React.createElement(MenuItem, { primaryText: 'Informaci\xF3n Adicional' })
+        )
+      );
+    }
+  }]);
+
+  return FileSummaryMenu;
+}(React.Component);
+
+export default FileSummaryMenu;

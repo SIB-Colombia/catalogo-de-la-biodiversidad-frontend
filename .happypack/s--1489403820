@@ -1,0 +1,23 @@
+var _templateObject = _taggedTemplateLiteral(['\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n'], ['\n  0% { transform: rotate(0deg); }\n  100% { transform: rotate(360deg); }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: relative;\n  border: 0.2em solid ', ';\n  border-bottom-color: ', ';\n  border-radius: 50%;\n  margin: 0 auto;\n  width: 1em;\n  height: 1em;\n  animation: ', ' 1s linear infinite;\n'], ['\n  position: relative;\n  border: 0.2em solid ', ';\n  border-bottom-color: ', ';\n  border-radius: 50%;\n  margin: 0 auto;\n  width: 1em;\n  height: 1em;\n  animation: ', ' 1s linear infinite;\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled, { keyframes } from 'styled-components';
+import { palette } from 'styled-theme';
+
+var spin = keyframes(_templateObject);
+
+var Spinner = styled.div(_templateObject2, palette('grayscale', 1, true), palette(1), spin);
+
+Spinner.propTypes = {
+  palette: PropTypes.string,
+  reverse: PropTypes.bool
+};
+
+Spinner.defaultProps = {
+  palette: 'primary'
+};
+
+export default Spinner;

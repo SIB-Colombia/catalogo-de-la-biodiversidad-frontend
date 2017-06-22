@@ -1,0 +1,142 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _config = require('../../config');
+
+var _config2 = _interopRequireDefault(_config);
+
+var _isomorphicFetch = require('isomorphic-fetch');
+
+var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+var _reactMaterialize = require('react-materialize');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HomePage = function (_React$Component) {
+  _inherits(HomePage, _React$Component);
+
+  function HomePage(props) {
+    _classCallCheck(this, HomePage);
+
+    var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
+
+    _this.state = {
+      files: [],
+      categories: [],
+      groups: [],
+      communities: []
+    };
+    return _this;
+  }
+
+  _createClass(HomePage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $('.carousel.carousel-slider').carousel({ fullWidth: true });
+      document.title = 'Inicio';
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var _this2 = this;
+
+      var options = {
+        method: 'GET'
+      };
+
+      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ files: data });
+      });
+
+      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ categories: data });
+      });
+
+      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ groups: data });
+      });
+
+      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        _this2.setState({ communities: data });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _components.PageTemplate,
+        { header: _react2.default.createElement(_components.Header, null), footer: _react2.default.createElement(_components.Footer, null) },
+        _react2.default.createElement(_components.Hero, null),
+        ' ',
+        this.state.files.length > 0 ? _react2.default.createElement(_components.FileList, { data: this.state.files }) : _react2.default.createElement(
+          'div',
+          null,
+          'Cargando Fichas....',
+          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
+        ),
+        this.state.categories.length > 0 ? _react2.default.createElement(_components.CategoryList, { data: this.state.categories }) : _react2.default.createElement(
+          'div',
+          null,
+          'Cargando Categor\xEDas....',
+          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
+        ),
+        this.state.groups.length > 0 ? _react2.default.createElement(_components.GroupList, { data: this.state.groups }) : _react2.default.createElement(
+          'div',
+          null,
+          'Cargando Grupos....',
+          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
+        ),
+        this.state.communities.length > 0 ? _react2.default.createElement(_components.CommunityList, { data: this.state.communities }) : _react2.default.createElement(
+          'div',
+          null,
+          'Cargando Comunidad....',
+          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
+        )
+      );
+    }
+  }]);
+
+  return HomePage;
+}(_react2.default.Component);
+
+var _default = HomePage;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(HomePage, 'HomePage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/HomePage/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/HomePage/index.js');
+}();
+
+;

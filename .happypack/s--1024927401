@@ -1,0 +1,49 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  border-collapse: collapse;\n  width: 100%;\n  border: 1px solid ', ';\n  color: ', ';\n'], ['\n  font-family: ', ';\n  border-collapse: collapse;\n  width: 100%;\n  border: 1px solid ', ';\n  color: ', ';\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+import { Caption } from 'components';
+
+var StyledTable = styled.table(_templateObject, font('primary'), palette('grayscale', 1, true), palette('grayscale', 0));
+
+var Table = function Table(_ref) {
+  var caption = _ref.caption,
+      head = _ref.head,
+      foot = _ref.foot,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['caption', 'head', 'foot', 'children']);
+
+  return React.createElement(
+    StyledTable,
+    props,
+    caption && React.createElement(
+      Caption,
+      { reverse: props.reverse },
+      caption
+    ),
+    head && React.createElement(
+      'thead',
+      null,
+      head
+    ),
+    foot && React.createElement(
+      'tfoot',
+      null,
+      foot
+    ),
+    React.createElement(
+      'tbody',
+      null,
+      children
+    )
+  );
+};
+
+export default Table;

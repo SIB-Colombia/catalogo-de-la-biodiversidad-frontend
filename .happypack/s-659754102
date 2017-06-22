@@ -1,0 +1,30 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  margin: 1rem 0;\n  padding-left: 1.6rem;\n  line-height: 1.7rem;\n  color: ', ';\n'], ['\n  font-family: ', ';\n  margin: 1rem 0;\n  padding-left: 1.6rem;\n  line-height: 1.7rem;\n  color: ', ';\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var styles = css(_templateObject, font('primary'), palette({ grayscale: 0 }, 1));
+
+var Ol = styled.ol(_templateObject2, styles);
+var Ul = styled.ul(_templateObject2, styles);
+
+var List = function List(_ref) {
+  var ordered = _ref.ordered,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['ordered', 'children']);
+
+  return React.createElement(ordered ? Ol : Ul, props, children);
+};
+
+List.defaultProps = {
+  palette: 'grayscale'
+};
+
+export default List;

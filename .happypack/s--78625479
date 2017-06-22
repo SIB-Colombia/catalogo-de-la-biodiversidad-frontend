@@ -1,0 +1,92 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\nbackground: #e8e8e8;\n'], ['\nbackground: #e8e8e8;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n'], ['\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\nmargin-top:65px;\n'], ['\nmargin-top:65px;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var Header = _styledComponents2.default.header(_templateObject2);
+
+var Hero = _styledComponents2.default.section(_templateObject2);
+
+var Content = _styledComponents2.default.section(_templateObject3);
+
+var Footer = _styledComponents2.default.footer(_templateObject2);
+
+var PageTemplate = function PageTemplate(_ref) {
+  var header = _ref.header,
+      children = _ref.children,
+      footer = _ref.footer,
+      props = _objectWithoutProperties(_ref, ['header', 'children', 'footer']);
+
+  return _react2.default.createElement(
+    Wrapper,
+    props,
+    _react2.default.createElement(
+      Header,
+      null,
+      header
+    ),
+    _react2.default.createElement(
+      Content,
+      null,
+      children
+    ),
+    _react2.default.createElement(
+      Footer,
+      null,
+      footer
+    )
+  );
+};
+
+PageTemplate.propTypes = {
+  header: _react.PropTypes.node.isRequired,
+  footer: _react.PropTypes.node.isRequired,
+  children: _react.PropTypes.any.isRequired
+};
+
+var _default = PageTemplate;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Hero, 'Hero', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Content, 'Content', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Footer, 'Footer', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(PageTemplate, 'PageTemplate', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/templates/PageTemplate/index.js');
+}();
+
+;

@@ -1,0 +1,458 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\nh5{\n  padding: 10px 0px;\n  font-weight: bold;\n}\n.material-placeholder{\n  display:inline-block !important;\n  margin:2px 5px;\n}\n.lateral-menu{\n    position:fixed;\n    left:0px;\n    top:100px;\n    z-index:1;\n    width:200px;\n    .table-of-contents a.active{\n            border-left: 2px solid #00838f;\n    }\n    .material-icons{\n            vertical-align: middle;\n    }\n}\n\n'], ['\n\nh5{\n  padding: 10px 0px;\n  font-weight: bold;\n}\n.material-placeholder{\n  display:inline-block !important;\n  margin:2px 5px;\n}\n.lateral-menu{\n    position:fixed;\n    left:0px;\n    top:100px;\n    z-index:1;\n    width:200px;\n    .table-of-contents a.active{\n            border-left: 2px solid #00838f;\n    }\n    .material-icons{\n            vertical-align: middle;\n    }\n}\n\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _components = require('components');
+
+var _reactMaterialize = require('react-materialize');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var FileDetail = function (_React$Component) {
+  _inherits(FileDetail, _React$Component);
+
+  function FileDetail(props) {
+    _classCallCheck(this, FileDetail);
+
+    var _this = _possibleConstructorReturn(this, (FileDetail.__proto__ || Object.getPrototypeOf(FileDetail)).call(this, props));
+
+    _this.state = {
+      referenceSchema: {},
+      ancillaryDataSchema: {},
+      form: {},
+      contact: {
+        name: '',
+        email: '',
+        tel: ''
+      }
+    };
+
+    _this.updateReference = _this.updateReference.bind(_this);
+    //this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    return _this;
+  }
+
+  _createClass(FileDetail, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      $('.parallax').parallax();
+      $('.scrollspy').scrollSpy();
+
+      $(document).ready(function () {
+        $('.modal').modal();
+      });
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.setState({
+        referenceSchema: this.empty(this.props.reference.schema)
+      });
+      this.setState({
+        ancillaryDataSchema: this.empty(this.props.ancillaryData.schema)
+      });
+    }
+  }, {
+    key: 'updateReference',
+    value: function updateReference(propertyName, event) {
+      var model = this.state.referenceSchema;
+      model[propertyName].value = event.target.value;
+      this.setState({ referenceSchema: model });
+    }
+  }, {
+    key: 'empty',
+    value: function empty(schema) {
+      for (var control in schema) {
+        schema[control].value = '';
+      }
+      return schema;
+    }
+  }, {
+    key: 'load',
+    value: function load(record, event) {
+      for (var control in this.props.reference.schema) {
+        this.props.reference.schema[control].value = record[control] || '';
+      }
+      this.setState({ referenceSchema: this.props.reference.schema });
+      setTimeout(function () {
+        Materialize.updateTextFields();
+        $('#modalForm').modal('open');
+      }, 100);
+    }
+  }, {
+    key: 'save',
+    value: function save(event) {
+
+      console.log('save ->', this.state.referenceSchema);
+    }
+  }, {
+    key: 'create',
+    value: function create(type) {
+      switch (type) {
+        case 'referenceSchema':
+          this.setState({
+            referenceSchema: this.empty(this.props.reference.schema)
+          });
+          $('#modalForm').modal('open');
+          break;
+        case 'ancillaryDataSchema':
+          this.setState({
+            ancillaryDataSchema: this.empty(this.props.ancillaryData.schema)
+          });
+          $('#modalAD').modal('open');
+          break;
+        default:
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'h5',
+            { className: 'cyan-text text-darken-4' },
+            'reference',
+            _react2.default.createElement(
+              'a',
+              { className: 'btn-floating waves-effect waves-light grey', onClick: function onClick(e) {
+                  return _this2.create('referenceSchema', e);
+                } },
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons' },
+                'add'
+              )
+            )
+          ),
+          _react2.default.createElement(
+            'ul',
+            { className: 'collection' },
+            this.props.reference.data.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 6, key: i },
+                _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item avatar' },
+                  _react2.default.createElement(
+                    'i',
+                    { className: 'material-icons circle blue' },
+                    'insert_chart'
+                  ),
+                  _react2.default.createElement(
+                    'span',
+                    { className: 'title' },
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      record.title
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'p',
+                    null,
+                    _react2.default.createElement(
+                      'b',
+                      null,
+                      'Tags:'
+                    ),
+                    record.tags,
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      'em',
+                      null,
+                      'Last modified: ',
+                      record.last_modified,
+                      _react2.default.createElement('br', null)
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'a',
+                    { className: 'secondary-content dropdown-button', onClick: function onClick(e) {
+                        return _this2.load(record, e);
+                      } },
+                    _react2.default.createElement(
+                      'i',
+                      { className: 'material-icons' },
+                      'more_horiz'
+                    )
+                  )
+                )
+              );
+            })
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'lateral-menu card-panel animated bounceInDown' },
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { className: 'hide-on-small-only' },
+              _react2.default.createElement(
+                _reactMaterialize.Icon,
+                null,
+                'list'
+              ),
+              '\xCDndice de ficha',
+              _react2.default.createElement(
+                'ul',
+                { className: 'section table-of-contents' },
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#taxo' },
+                    'Taxonom\xEDa'
+                  )
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#stateCons' },
+                    'Estado Conservaci\xF3n'
+                  )
+                ),
+                _react2.default.createElement(
+                  'li',
+                  null,
+                  _react2.default.createElement(
+                    'a',
+                    { href: '#usetrafic' },
+                    'Uso y tr\xE1fico'
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { l: 8, m: 12, s: 12 },
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Nombres Comunes'
+            ),
+            this.props.data.names.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 6, key: i },
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  record.title
+                ),
+                _react2.default.createElement(
+                  'div',
+                  null,
+                  record.description
+                ),
+                _react2.default.createElement('br', null)
+              );
+            }),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Distribuci\xF3n'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Mapa de registro publicados'
+            ),
+            _react2.default.createElement('img', { src: 'https://assets.metrolatam.com/co/2015/03/20/captura-de-pantalla-2015-03-20-a-las-12-42-23-1200x600.jpg', className: 'responsive-img' }),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Taxonom\xEDa'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'taxo', className: 'scrollspy' },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus. Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit. Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.'
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Estado Conservaci\xF3n'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'stateCons', className: 'scrollspy' },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus. Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit. Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.'
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Uso y tr\xE1fico'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'usetrafic', className: 'scrollspy' },
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis nunc finibus, semper eros et, vehicula elit. Etiam vitae ligula sapien. Vivamus tincidunt nisi urna, eget porttitor purus vestibulum sit amet. Sed vitae suscipit neque. Sed rhoncus a massa et suscipit. Nam a turpis lorem. Nam sed dui lacus. Nulla ultricies placerat turpis, sed commodo eros scelerisque quis. Donec molestie mi mi, at ultricies elit vehicula ac. Fusce sagittis posuere venenatis. Vestibulum erat purus, auctor vel volutpat cursus, dignissim id quam. Nullam et ligula vel urna dictum aliquet sit amet ac erat. Nulla viverra lorem commodo erat pulvinar tincidunt. Quisque elementum lacus non magna tempor, sit amet vulputate ligula lobortis. Phasellus egestas dictum diam vel sollicitudin. Integer ultricies erat ac venenatis malesuada. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut auctor, risus vel luctus iaculis, eros lacus gravida lectus, non placerat arcu ligula quis magna. Nam lacus elit, pharetra et nibh non, pretium consectetur mauris. Suspendisse ultricies, eros eu maximus vulputate, massa arcu interdum odio, ac consequat metus ante ac dolor. Maecenas et nisl lacinia, lobortis orci ut, mollis risus. Proin interdum odio at risus hendrerit, eget fringilla purus faucibus. Duis massa nibh, vehicula quis dolor nec, tempor feugiat tellus. Sed aliquam, arcu et maximus varius, purus odio vehicula sapien, et aliquam nisl risus eu ante. Praesent sagittis at mi sit amet pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin cursus nisi at gravida aliquet. Nam pretium leo erat, quis pellentesque ex imperdiet vitae. Vivamus rutrum accumsan rutrum. Ut vel elementum erat, sit amet pretium ex. Integer dictum tristique libero, eget rhoncus eros. Suspendisse eu erat purus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer blandit pellentesque interdum. Vestibulum eget scelerisque mi, nec eleifend nibh. Nulla semper arcu erat, et rhoncus tortor mattis id. Proin id molestie diam. Morbi elementum quis enim consectetur tempus. Cras id libero erat. Vestibulum ut cursus ligula. Curabitur vel enim sit amet ante egestas blandit. Proin lorem lectus, commodo at mauris quis, gravida venenatis erat. Maecenas sodales et erat vel luctus. Duis tincidunt risus ac metus cursus blandit. Sed non orci volutpat, tristique erat cursus, rhoncus sem. Aliquam vitae mattis eros. Praesent in purus commodo, rhoncus augue sed, mollis justo. Donec tincidunt risus nec est euismod varius. Curabitur libero ligula, placerat quis laoreet non, dignissim ac magna.',
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { l: 4 },
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Jerarqu\xEDa Taxon\xF3mica'
+            ),
+            _react2.default.createElement(
+              'ul',
+              { className: 'collection' },
+              this.props.data.taxo.map(function (record, i) {
+                return _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item', key: i },
+                  record.name,
+                  _react2.default.createElement(
+                    'b',
+                    null,
+                    record.value
+                  )
+                );
+              })
+            ),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Autores'
+            ),
+            this.props.data.authors.map(function (record, i) {
+              return _react2.default.createElement(
+                'div',
+                { className: 'center-align', key: i },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'chip' },
+                  _react2.default.createElement('img', { src: record.url, alt: 'Contact Person' }),
+                  ' ',
+                  record.name
+                )
+              );
+            }),
+            _react2.default.createElement(
+              'h5',
+              { className: 'cyan-text text-darken-4' },
+              'Informaci\xF3n b\xE1sica de la ficha'
+            ),
+            _react2.default.createElement(
+              'ul',
+              { className: 'collection' },
+              this.props.data.basic.map(function (record, i) {
+                return _react2.default.createElement(
+                  'li',
+                  { className: 'collection-item', key: i },
+                  record.name,
+                  _react2.default.createElement('br', null),
+                  ' ',
+                  record.value
+                );
+              })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _components.ModalUI,
+          { title: 'Formulario', refe: 'modalForm' },
+          _react2.default.createElement(_components.ReactSchemaEasyForm, { schema: this.state.referenceSchema, update: this.updateReference }),
+          _react2.default.createElement(
+            'div',
+            { className: 'center-align' },
+            _react2.default.createElement(
+              'a',
+              { className: 'waves-effect waves-light btn', onClick: function onClick(e) {
+                  return _this2.save(e);
+                } },
+              'Guardar'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _components.ModalUI,
+          { title: 'Formulario', refe: 'modalAD' },
+          _react2.default.createElement(_components.ReactSchemaEasyForm, { schema: this.state.ancillaryDataSchema, update: this.updateReference }),
+          _react2.default.createElement(
+            'div',
+            { className: 'center-align' },
+            _react2.default.createElement(
+              'a',
+              { className: 'waves-effect waves-light btn', onClick: function onClick(e) {
+                  return _this2.save(e);
+                } },
+              'Guardar'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileDetail;
+}(_react2.default.Component);
+
+var _default = FileDetail;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail/index.js');
+
+  __REACT_HOT_LOADER__.register(FileDetail, 'FileDetail', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileDetail/index.js');
+}();
+
+;

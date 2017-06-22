@@ -1,0 +1,25 @@
+'use strict';
+
+console.log('wiiii');
+var req = require.context('.', true, /\.\/[^/]+\/[^/]+\/index\.js$/);
+
+// console.log(req);
+// req.keys().forEach((key) => {
+// console.log('----------->',key);
+//const componentName = key.replace(/^.+\/([^/]+)\/index\.js/, '$1');
+// module.exports[componentName] = req(key).default;
+// })
+
+
+module.exports['pepino'] = require('./ReferenceSchema');
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(req, 'req', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/schemas/index.js');
+}();
+
+;

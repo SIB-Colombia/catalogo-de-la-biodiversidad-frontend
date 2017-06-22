@@ -1,0 +1,20 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  color: ', ';\n'], ['\n  font-family: ', ';\n  color: ', ';\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var Atom = styled.span(_templateObject, font('primary'), palette({ grayscale: 0 }, 1));
+
+Atom.propTypes = {
+  palette: PropTypes.string,
+  reverse: PropTypes.bool
+};
+
+Atom.defaultProps = {
+  palette: 'grayscale'
+};
+
+export default Atom;

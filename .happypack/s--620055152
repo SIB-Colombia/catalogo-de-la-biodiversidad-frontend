@@ -1,0 +1,158 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nmargin-bottom:20px;\npadding-bottom:30px;\nh4{\n  padding:40px;\n}\nimg{\n  border: 7px solid white;\n}\n.slick-next:before, .slick-prev:before {\n  font-size: 20px;\n  line-height: 1;\n  opacity: .75;\n  color: #00838f;\n}\n'], ['\nmargin-bottom:20px;\npadding-bottom:30px;\nh4{\n  padding:40px;\n}\nimg{\n  border: 7px solid white;\n}\n.slick-next:before, .slick-prev:before {\n  font-size: 20px;\n  line-height: 1;\n  opacity: .75;\n  color: #00838f;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _reactSlick = require('react-slick');
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var CommunityList = function (_React$Component) {
+  _inherits(CommunityList, _React$Component);
+
+  function CommunityList() {
+    _classCallCheck(this, CommunityList);
+
+    return _possibleConstructorReturn(this, (CommunityList.__proto__ || Object.getPrototypeOf(CommunityList)).apply(this, arguments));
+  }
+
+  _createClass(CommunityList, [{
+    key: 'render',
+    value: function render() {
+
+      var settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        draggable: false,
+        responsive: [{
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2
+          }
+        }, {
+          breakpoint: 2000,
+          settings: {
+            slidesToShow: 4
+          }
+        }, {
+          breakpoint: 100000,
+          settings: 'unslick'
+        }]
+      };
+
+      return _react2.default.createElement(
+        Wrapper,
+        { className: 'grey lighten-4' },
+        _react2.default.createElement(
+          'h4',
+          { className: 'center-align' },
+          'Comunidad'
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'row' },
+            _react2.default.createElement(
+              _reactSlick2.default,
+              settings,
+              this.props.data.map(function (record, i) {
+                return _react2.default.createElement(
+                  'div',
+                  { key: i },
+                  _react2.default.createElement(
+                    'div',
+                    { className: 'center-align' },
+                    _react2.default.createElement(
+                      'center',
+                      null,
+                      _react2.default.createElement('img', { width: '200', src: 'http://www.iconsfind.com/wp-content/uploads/2015/08/20150831_55e46b12d72da.png', alt: '', className: 'circle' }),
+                      _react2.default.createElement(
+                        'h6',
+                        null,
+                        record.title,
+                        ' ',
+                        i
+                      )
+                    )
+                  )
+                );
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: ' col s12 center-align' },
+            _react2.default.createElement('br', null),
+            _react2.default.createElement(
+              'button',
+              { className: 'btn waves-effect waves-light cyan darken-3' },
+              'Explorar toda la comunidad',
+              _react2.default.createElement(
+                'i',
+                { className: 'material-icons right' },
+                'more_horiz'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return CommunityList;
+}(_react2.default.Component);
+
+var _default = CommunityList;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/CommunityList/index.js');
+
+  __REACT_HOT_LOADER__.register(CommunityList, 'CommunityList', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/CommunityList/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/CommunityList/index.js');
+}();
+
+;

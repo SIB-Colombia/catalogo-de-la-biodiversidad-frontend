@@ -1,0 +1,44 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _composer = require('styled-theme/composer');
+
+var theme = {}; // https://github.com/diegohaz/arc/wiki/Styling
+
+
+theme.palette = {
+  primary: ['blue', 'red', '#555', '#888'],
+  secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0'],
+  danger: ['#d32f2f', '#f44336', '#f8877f', '#ffcdd2'],
+  alert: ['#ffa000', '#ffc107', '#ffd761', '#ffecb3'],
+  success: ['#388e3c', '#4caf50', '#7cc47f', '#c8e6c9'],
+  grayscale: ['#212121', '#616161', '#9e9e9e', '#bdbdbd', '#e0e0e0', '#eeeeee', '#ffffff'],
+  white: ['#fff', '#fff', '#eee']
+};
+
+theme.reversePalette = (0, _composer.reversePalette)(theme.palette);
+
+theme.fonts = {
+  primary: 'Helvetica Neue, Helvetica, Roboto, sans-serif',
+  pre: 'Consolas, Liberation Mono, Menlo, Courier, monospace',
+  quote: 'Georgia, serif'
+};
+
+var _default = theme;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(theme, 'theme', '/home/leo/htdocs/arc/src/components/themes/default.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/arc/src/components/themes/default.js');
+}();
+
+;

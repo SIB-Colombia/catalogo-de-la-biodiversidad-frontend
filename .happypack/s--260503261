@@ -1,0 +1,70 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  margin: 1rem 0;\n  padding-left: 1.6rem;\n  line-height: 1.7rem;\n  color: ', ';\n'], ['\n  font-family: ', ';\n  margin: 1rem 0;\n  padding-left: 1.6rem;\n  line-height: 1.7rem;\n  color: ', ';\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var styles = (0, _styledComponents.css)(_templateObject, (0, _styledTheme.font)('primary'), (0, _styledTheme.palette)({
+  grayscale: 0 }, 1));
+
+var Ol = _styledComponents2.default.ol(_templateObject2, styles);
+var Ul = _styledComponents2.default.ul(_templateObject2, styles);
+var List = function List(_ref) {
+  var ordered = _ref.ordered,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['ordered', 'children']);
+
+  return _react2.default.createElement(ordered ? Ol : Ul, props, children);
+};
+
+List.propTypes = {
+  ordered: _react.PropTypes.bool,
+  palette: _react.PropTypes.string,
+  reverse: _react.PropTypes.bool,
+  children: _react.PropTypes.any
+};
+
+List.defaultProps = {
+  palette: 'grayscale'
+};
+
+var _default = List;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/List/index.js');
+
+  __REACT_HOT_LOADER__.register(Ol, 'Ol', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/List/index.js');
+
+  __REACT_HOT_LOADER__.register(Ul, 'Ul', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/List/index.js');
+
+  __REACT_HOT_LOADER__.register(List, 'List', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/List/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/List/index.js');
+}();
+
+;

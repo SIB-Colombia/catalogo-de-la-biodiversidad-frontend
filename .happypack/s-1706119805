@@ -1,0 +1,269 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.paper{\n  padding: 10px 0 0px 0;\n}\n.col-grid{\n  margin: 10px 0px;\n}\n.col-list{\n  margin-top: 10px;\n}\n.color-select{\n  color: ', ' !important;\n}\n.color-unselect{\n  color: ', ' !important;\n}\n'], ['\n.paper{\n  padding: 10px 0 0px 0;\n}\n.col-grid{\n  margin: 10px 0px;\n}\n.col-list{\n  margin-top: 10px;\n}\n.color-select{\n  color: ', ' !important;\n}\n.color-unselect{\n  color: ', ' !important;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _reactSlick = require('react-slick');
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
+
+var _reactMasonryComponent = require('react-masonry-component');
+
+var _reactMasonryComponent2 = _interopRequireDefault(_reactMasonryComponent);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _Drawer = require('material-ui/Drawer');
+
+var _Drawer2 = _interopRequireDefault(_Drawer);
+
+var _List = require('material-ui/List');
+
+var _SelectField = require('material-ui/SelectField');
+
+var _SelectField2 = _interopRequireDefault(_SelectField);
+
+var _MenuItem = require('material-ui/MenuItem');
+
+var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _IconButton = require('material-ui/IconButton');
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
+var _viewModule = require('material-ui/svg-icons/action/view-module');
+
+var _viewModule2 = _interopRequireDefault(_viewModule);
+
+var _viewHeadline = require('material-ui/svg-icons/action/view-headline');
+
+var _viewHeadline2 = _interopRequireDefault(_viewHeadline);
+
+var _dashboard = require('material-ui/svg-icons/action/dashboard');
+
+var _dashboard2 = _interopRequireDefault(_dashboard);
+
+var _apps = require('material-ui/svg-icons/navigation/apps');
+
+var _apps2 = _interopRequireDefault(_apps);
+
+var _viewList = require('material-ui/svg-icons/action/view-list');
+
+var _viewList2 = _interopRequireDefault(_viewList);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.palette)('primary', 0), (0, _styledTheme.palette)('grayscale', 5));
+
+var FileSearchResult = function (_React$Component) {
+  _inherits(FileSearchResult, _React$Component);
+
+  function FileSearchResult(props) {
+    _classCallCheck(this, FileSearchResult);
+
+    var _this = _possibleConstructorReturn(this, (FileSearchResult.__proto__ || Object.getPrototypeOf(FileSearchResult)).call(this, props));
+
+    _this.handleChange = function () {
+      return _this.__handleChange__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.handleChange2 = function () {
+      return _this.__handleChange2__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.handleView = function () {
+      return _this.__handleView__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.state = {
+      mode: 'grid',
+      value: 1,
+      value2: 1
+    };
+    return _this;
+  }
+
+  _createClass(FileSearchResult, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: '__handleChange__REACT_HOT_LOADER__',
+    value: function __handleChange__REACT_HOT_LOADER__(event, index, value) {
+      return this.setState({ value: value });
+    }
+  }, {
+    key: '__handleChange2__REACT_HOT_LOADER__',
+    value: function __handleChange2__REACT_HOT_LOADER__(event, index, value2) {
+      return this.setState({ value2: value2 });
+    }
+  }, {
+    key: '__handleView__REACT_HOT_LOADER__',
+    value: function __handleView__REACT_HOT_LOADER__(value) {
+      return this.setState({ mode: value });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          null,
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            { className: 'animated fadeInDown' },
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12 },
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                _Paper2.default,
+                { className: 'paper' },
+                _react2.default.createElement(
+                  _reactFlexboxGrid.Row,
+                  null,
+                  _react2.default.createElement(_reactFlexboxGrid.Col, { xs: 12, sm: 6, md: 6, lg: 6 }),
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Col,
+                    { xs: 12, sm: 6, md: 6, lg: 6 },
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Row,
+                      null,
+                      _react2.default.createElement(
+                        _reactFlexboxGrid.Col,
+                        { xs: 12, sm: 4, md: 4, lg: 4, className: 'align-right' },
+                        _react2.default.createElement(
+                          _IconButton2.default,
+                          { tooltip: 'modo grilla', touch: true, tooltipPosition: 'bottom-center', onTouchTap: function onTouchTap() {
+                              return _this2.handleView('grid');
+                            } },
+                          _react2.default.createElement(_apps2.default, { className: this.state.mode == 'grid' ? 'color-select' : 'color-unselect' })
+                        ),
+                        _react2.default.createElement(
+                          _IconButton2.default,
+                          { tooltip: 'modo lista', touch: true, tooltipPosition: 'bottom-center', onTouchTap: function onTouchTap() {
+                              return _this2.handleView('list');
+                            } },
+                          _react2.default.createElement(_viewList2.default, { className: this.state.mode == 'list' ? 'color-select' : 'color-unselect' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _reactFlexboxGrid.Col,
+                        { xs: 12, sm: 4, md: 4, lg: 4, className: 'align-center' },
+                        _react2.default.createElement(
+                          _SelectField2.default,
+                          { value: this.state.value, onChange: this.handleChange, fullWidth: true },
+                          _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: 'A/Z' }),
+                          _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: 'Visitas' }),
+                          _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: 'El peligro' })
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _reactFlexboxGrid.Col,
+                        { xs: 12, sm: 4, md: 4, lg: 4, className: 'align-center' },
+                        _react2.default.createElement(
+                          _SelectField2.default,
+                          { value: this.state.value2, onChange: this.handleChange2, fullWidth: true },
+                          _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: 'Mejor coincidencia' }),
+                          _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: 'M\xE1s visitados' }),
+                          _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: 'Mejores valorados' })
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _reactMasonryComponent2.default,
+            null,
+            this.state.mode == 'grid' && this.props.data.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { key: i, xs: 12, sm: 6, md: 3, lg: 3, className: 'col-grid' },
+                _react2.default.createElement(_components.FileCard, { record: record })
+              );
+            })
+          ),
+          _react2.default.createElement(
+            _reactMasonryComponent2.default,
+            null,
+            this.state.mode == 'list' && this.props.data.map(function (record, i) {
+              return _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { key: i, xs: 12, sm: 12, md: 10, lg: 8, lgOffset: 2, mdOffset: 1, className: 'col-list' },
+                _react2.default.createElement(_components.FileCardHorizontal, { record: record })
+              );
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileSearchResult;
+}(_react2.default.Component);
+
+var _default = FileSearchResult;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSearchResult/index.js');
+
+  __REACT_HOT_LOADER__.register(FileSearchResult, 'FileSearchResult', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSearchResult/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSearchResult/index.js');
+}();
+
+;

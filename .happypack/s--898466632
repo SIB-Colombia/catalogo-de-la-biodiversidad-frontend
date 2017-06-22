@@ -1,0 +1,14 @@
+// https://github.com/diegohaz/arc/wiki/Atomic-Design
+import React from 'react';
+
+import { PageTemplate, Header, Hero, Footer, FeatureList } from 'components';
+
+var HomePage = function HomePage() {
+  return React.createElement(
+    PageTemplate,
+    { header: React.createElement(Header, null), hero: React.createElement(Hero, null), footer: React.createElement(Footer, null) },
+    React.createElement(FeatureList, null)
+  );
+};
+
+export default HomePage;

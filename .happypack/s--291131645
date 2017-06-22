@@ -1,0 +1,106 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  flex-direction: column;\n  padding-top: 3.75rem;\n  min-height: 100vh;\n  box-sizing: border-box;\n'], ['\n  display: flex;\n  flex-direction: column;\n  padding-top: 3.75rem;\n  min-height: 100vh;\n  box-sizing: border-box;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 999;\n'], ['\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 999;\n']),
+    _templateObject3 = _taggedTemplateLiteral([''], ['']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n'], ['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n  margin-top: auto;\n'], ['\n  margin-top: auto;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); } // https://github.com/diegohaz/arc/wiki/Atomic-Design#templates
+
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var Header = _styledComponents2.default.header(_templateObject2);
+
+var Hero = _styledComponents2.default.section(_templateObject3);
+
+var Content = _styledComponents2.default.section(_templateObject4);
+
+var Footer = _styledComponents2.default.footer(_templateObject5);
+
+var PageTemplate = function PageTemplate(_ref) {
+  var header = _ref.header,
+      hero = _ref.hero,
+      children = _ref.children,
+      footer = _ref.footer,
+      props = _objectWithoutProperties(_ref, ['header', 'hero', 'children', 'footer']);
+
+  return _react2.default.createElement(
+    Wrapper,
+    props,
+    _react2.default.createElement(
+      Header,
+      null,
+      header
+    ),
+    hero && _react2.default.createElement(
+      Hero,
+      null,
+      hero
+    ),
+    _react2.default.createElement(
+      Content,
+      null,
+      children
+    ),
+    _react2.default.createElement(
+      Footer,
+      null,
+      footer
+    )
+  );
+};
+
+PageTemplate.propTypes = {
+  header: _propTypes2.default.node.isRequired,
+  hero: _propTypes2.default.node,
+  footer: _propTypes2.default.node.isRequired,
+  children: _propTypes2.default.any.isRequired
+};
+
+var _default = PageTemplate;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Hero, 'Hero', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Content, 'Content', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(Footer, 'Footer', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(PageTemplate, 'PageTemplate', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/arc/src-example/components/templates/PageTemplate/index.js');
+}();
+
+;

@@ -1,0 +1,90 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.http = http;
+exports.isAuthenticated = isAuthenticated;
+exports.me = me;
+exports.signin = signin;
+exports.logout = logout;
+
+var _isomorphicFetch = require('isomorphic-fetch');
+
+var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+var _const = require('../const');
+
+var _const2 = _interopRequireDefault(_const);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//Http
+
+function http(type) {
+
+  return {
+    method: type
+  };
+}
+
+//is authenticated
+
+function isAuthenticated() {}
+// console.log(nextState);
+// console.log(replaceState);
+// console.log('herisAuthenticatede');
+// return false;
+// return typeof localStorage.getItem('token-catalogo')
+// !=='undefined'
+//   ? true
+//   : false;
+
+
+//Get Me
+
+function me() {
+
+  (0, _isomorphicFetch2.default)(_const2.default.server.local + '/api/user/me', this.http('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//signin
+
+function signin() {
+
+  (0, _isomorphicFetch2.default)(_const2.default.server.local + '/auth/local', this.http('POST')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//logout
+
+function logout() {
+
+  localStorage.removeItem('token-catalogo');
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(http, 'http', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(isAuthenticated, 'isAuthenticated', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(me, 'me', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(signin, 'signin', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(logout, 'logout', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+}();
+
+;

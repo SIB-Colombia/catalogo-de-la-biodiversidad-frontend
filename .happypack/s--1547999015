@@ -1,0 +1,59 @@
+var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  flex-direction: column;\n  padding-top: 3.75rem;\n  min-height: 100vh;\n  box-sizing: border-box;\n'], ['\n  display: flex;\n  flex-direction: column;\n  padding-top: 3.75rem;\n  min-height: 100vh;\n  box-sizing: border-box;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 999;\n'], ['\n  position: fixed;\n  top: 0;\n  width: 100%;\n  z-index: 999;\n']),
+    _templateObject3 = _taggedTemplateLiteral([''], ['']),
+    _templateObject4 = _taggedTemplateLiteral(['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n'], ['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n']),
+    _templateObject5 = _taggedTemplateLiteral(['\n  margin-top: auto;\n'], ['\n  margin-top: auto;\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// https://github.com/diegohaz/arc/wiki/Atomic-Design#templates
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+var Wrapper = styled.div(_templateObject);
+
+var Header = styled.header(_templateObject2);
+
+var Hero = styled.section(_templateObject3);
+
+var Content = styled.section(_templateObject4);
+
+var Footer = styled.footer(_templateObject5);
+
+var PageTemplate = function PageTemplate(_ref) {
+  var header = _ref.header,
+      hero = _ref.hero,
+      children = _ref.children,
+      footer = _ref.footer,
+      props = _objectWithoutProperties(_ref, ['header', 'hero', 'children', 'footer']);
+
+  return React.createElement(
+    Wrapper,
+    props,
+    React.createElement(
+      Header,
+      null,
+      header
+    ),
+    hero && React.createElement(
+      Hero,
+      null,
+      hero
+    ),
+    React.createElement(
+      Content,
+      null,
+      children
+    ),
+    React.createElement(
+      Footer,
+      null,
+      footer
+    )
+  );
+};
+
+export default PageTemplate;

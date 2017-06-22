@@ -1,0 +1,157 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.http = http;
+exports.isAuthenticated = isAuthenticated;
+exports.hasRole = hasRole;
+exports.me = me;
+exports.signin = signin;
+exports.signup = signup;
+exports.logout = logout;
+exports.getToken = getToken;
+exports.setToken = setToken;
+exports.getUser = getUser;
+exports.setUser = setUser;
+exports.clean = clean;
+
+var _isomorphicFetch = require('isomorphic-fetch');
+
+var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+var _const = require('../const');
+
+var _const2 = _interopRequireDefault(_const);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var rootUser;
+
+//Http
+function http(type, data) {
+
+  var body = new FormData();
+  if (data) for (var key in data) {
+    body.append(key, data[key]);
+  }data = data ? body : null;
+
+  return {
+    method: type,
+    // mode: 'cors',
+    headers: {
+      'Authorization': 'Bearer ' + getToken()
+    },
+    body: data
+  };
+}
+
+//is authenticated
+function isAuthenticated() {
+  return getUser() || false;
+}
+
+//has Role
+function hasRole() {}
+
+//Me
+function me() {
+  return (0, _isomorphicFetch2.default)(_const2.default.server.local + '/api/user/me', http('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    setUser(data);
+    return data;
+  }).catch(function (err) {
+    clean();
+  });
+}
+
+//signin
+function signin(user) {
+  return (0, _isomorphicFetch2.default)(_const2.default.server.local + '/auth/local', http('POST', user)).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    setToken(data);
+    return data;
+  }).catch(function (err) {
+    return err;
+  });
+}
+
+//signup
+function signup(user) {
+  return (0, _isomorphicFetch2.default)(_const2.default.server.local + '/api/user/register', http('POST', user)).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  }).catch(function (err) {
+    return err;
+  });
+}
+
+//logout
+function logout() {
+  clean();
+  window.location.reload();
+}
+
+//Get Token
+function getToken() {
+  return localStorage.getItem(_const2.default.TOKEN);
+}
+
+//Set Token
+function setToken(data) {
+  localStorage.setItem(_const2.default.TOKEN, data.token);
+}
+
+//Get User
+function getUser() {
+  return rootUser || JSON.parse(localStorage.getItem(_const2.default.USER));
+}
+
+//Set User
+function setUser(data) {
+  rootUser = data;
+  localStorage.setItem(_const2.default.USER, JSON.stringify(data));
+}
+
+//Clean
+function clean() {
+  localStorage.clear();
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(rootUser, 'rootUser', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(http, 'http', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(isAuthenticated, 'isAuthenticated', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(hasRole, 'hasRole', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(me, 'me', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(signin, 'signin', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(signup, 'signup', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(logout, 'logout', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(getToken, 'getToken', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(setToken, 'setToken', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(getUser, 'getUser', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(setUser, 'setUser', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+
+  __REACT_HOT_LOADER__.register(clean, 'clean', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/auth/index.js');
+}();
+
+;

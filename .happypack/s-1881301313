@@ -1,0 +1,145 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n  background: white;\n  padding: 40px 0;\n  .box{\n    padding: 50px 0;\n    .box-img{\n      text-align: center;\n      img{\n        max-width: 200px;\n        border-radius: 100%;\n      }\n    }\n    .box-text{\n      .hp-name{\n        text-align: left;\n        color:', ';;\n        font-weight: bold;\n        font-size: 20px;\n        padding: 4px 0;\n      }\n      .hp-description{\n        color:#333;\n        font-weight: lighter;\n        font-size: 18px;\n        line-height: 2;\n        text-align: justify;\n        padding-bottom: 5px;\n      }\n      .hp-rol{\n        text-align: left;\n        color:#333;\n        font-weight: bold;\n        font-size: 16px;\n        line-height: 2;\n        text-align: justify;\n        font-style: italic;\n      }\n    }\n  }\n  .carousel .control-dots .dot{\n    width: 12px;\n    height: 12px;\n    background: ', ';\n  }\n  .carousel .slide{\n    background: transparent;\n  }\n'], ['\n  background: white;\n  padding: 40px 0;\n  .box{\n    padding: 50px 0;\n    .box-img{\n      text-align: center;\n      img{\n        max-width: 200px;\n        border-radius: 100%;\n      }\n    }\n    .box-text{\n      .hp-name{\n        text-align: left;\n        color:', ';;\n        font-weight: bold;\n        font-size: 20px;\n        padding: 4px 0;\n      }\n      .hp-description{\n        color:#333;\n        font-weight: lighter;\n        font-size: 18px;\n        line-height: 2;\n        text-align: justify;\n        padding-bottom: 5px;\n      }\n      .hp-rol{\n        text-align: left;\n        color:#333;\n        font-weight: bold;\n        font-size: 16px;\n        line-height: 2;\n        text-align: justify;\n        font-style: italic;\n      }\n    }\n  }\n  .carousel .control-dots .dot{\n    width: 12px;\n    height: 12px;\n    background: ', ';\n  }\n  .carousel .slide{\n    background: transparent;\n  }\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _components = require('components');
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var CarouselPreview = require('react-responsive-carousel').Carousel;
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.palette)('secondary', 0), (0, _styledTheme.palette)('secondary', 0));
+
+var HomeCommunity = function (_React$Component) {
+  _inherits(HomeCommunity, _React$Component);
+
+  function HomeCommunity(props) {
+    _classCallCheck(this, HomeCommunity);
+
+    return _possibleConstructorReturn(this, (HomeCommunity.__proto__ || Object.getPrototypeOf(HomeCommunity)).call(this, props));
+  }
+
+  _createClass(HomeCommunity, [{
+    key: 'render',
+    value: function render() {
+
+      var communities = [{
+        name: 'Brigitte Baptiste',
+        rol: 'Directora, Instituo Humboldt',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu'
+      }, {
+        name: 'Brigitte Baptiste',
+        rol: 'Directora, Instituo Humboldt',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu'
+      }, {
+        name: 'Brigitte Baptiste',
+        rol: 'Directora, Instituo Humboldt',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu'
+      }];
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          { className: 'container' },
+          _react2.default.createElement(_components.HomeTitle, { text: 'Comunidad' }),
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12, sm: 12, md: 12, lg: 12 },
+              _react2.default.createElement(
+                CarouselPreview,
+                { showThumbs: false },
+                communities.map(function (record, i) {
+                  return _react2.default.createElement(
+                    _reactFlexboxGrid.Row,
+                    { key: i, className: 'box' },
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { className: 'box-img', xs: 12, sm: 4, md: 3, lg: 3 },
+                      _react2.default.createElement('img', { src: '/human.png' })
+                    ),
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { className: 'box-text', xs: 12, sm: 8, md: 9, lg: 9 },
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'hp-description' },
+                        record.description
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'hp-name' },
+                        record.name
+                      ),
+                      _react2.default.createElement(
+                        'div',
+                        { className: 'hp-rol' },
+                        record.rol
+                      )
+                    )
+                  );
+                })
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return HomeCommunity;
+}(_react2.default.Component);
+
+var _default = HomeCommunity;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(CarouselPreview, 'CarouselPreview', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCommunity/index.js');
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCommunity/index.js');
+
+  __REACT_HOT_LOADER__.register(HomeCommunity, 'HomeCommunity', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCommunity/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/HomeCommunity/index.js');
+}();
+
+;

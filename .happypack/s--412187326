@@ -1,0 +1,52 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _composer = require('styled-theme/composer');
+
+var theme = {};
+
+theme.palette = {
+  primary: ['#EF7748'],
+  secondary: ['#009CB0'],
+  option: ['white'],
+  grayscale: ['#f2f2f2', '#e6e6e6', '#cccccc', '#b3b3b3', '#999999', '#666666', '#333333'],
+  basescale: ['#e2e7e7', '#59a8b7', '#498893', '#316971', '#00282b', '#e8774b', '#465252', '#f44336', '#ff9800', '#795548'],
+  text: ['#465252']
+};
+
+theme.reversePalette = (0, _composer.reversePalette)(theme.palette);
+
+theme.fonts = {
+  primary: 'Open Sans, sans-serif',
+  lg: '28pt',
+  md: '22pt',
+  sm: '18pt',
+  xs: '16pt',
+  text: '14pt'
+};
+
+theme.sizes = {
+  xs: '(max-width:48em)',
+  sm: '(min-width:48em) and (max-width:64em)',
+  md: '(min-width:64em) and (max-width:75em)',
+  lg: '(min-width:75em)'
+};
+
+var _default = theme;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(theme, 'theme', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/themes/default.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/themes/default.js');
+}();
+
+;

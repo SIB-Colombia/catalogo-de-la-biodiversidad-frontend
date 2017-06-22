@@ -1,0 +1,115 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.tabs{\n\t/*margin-top:20px;*/\n}\n.tabs > div:first-child{\n\tbackground-color: ', ' !important;\n\tborder: 1px solid #d2d2d2 !important;\n}\n.tabs > div:nth-child(2) div{\n\tbackground-color: ', ' !important;\n}\n.tabs > div > button{\n  color: ', ' !important;\n  font-weight: 700 !important;\n\ta{\n\t\tcolor: ', ' !important;\n\t\tfont-weight: 700 !important;\n\t\ttext-decoration: none;\n    width: 100%;\n    height: 100%;\n    vertical-align: middle;\n    line-height: 3.3;\n\t}\n  &:not(:last-child){\n    border-right: 1px solid ', ' !important;\n  }\n}\n'], ['\n.tabs{\n\t/*margin-top:20px;*/\n}\n.tabs > div:first-child{\n\tbackground-color: ', ' !important;\n\tborder: 1px solid #d2d2d2 !important;\n}\n.tabs > div:nth-child(2) div{\n\tbackground-color: ', ' !important;\n}\n.tabs > div > button{\n  color: ', ' !important;\n  font-weight: 700 !important;\n\ta{\n\t\tcolor: ', ' !important;\n\t\tfont-weight: 700 !important;\n\t\ttext-decoration: none;\n    width: 100%;\n    height: 100%;\n    vertical-align: middle;\n    line-height: 3.3;\n\t}\n  &:not(:last-child){\n    border-right: 1px solid ', ' !important;\n  }\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { size, palette } from 'styled-theme';
+import { Link } from 'components';
+import { Tabs, Tab } from 'material-ui/Tabs';
+import Paper from 'material-ui/Paper';
+import Badge from 'material-ui/Badge';
+
+var Wrapper = styled.div(_templateObject, palette('grayscale', 1), palette('secondary', 0), palette('grayscale', 6), palette('grayscale', 6), palette('grayscale', 2));
+
+var FileTab = function (_React$Component) {
+  _inherits(FileTab, _React$Component);
+
+  function FileTab(props) {
+    _classCallCheck(this, FileTab);
+
+    var _this = _possibleConstructorReturn(this, (FileTab.__proto__ || Object.getPrototypeOf(FileTab)).call(this, props));
+
+    _this.state = {
+      location: 0
+    };
+    return _this;
+  }
+
+  _createClass(FileTab, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var index = ['summary', 'detail', 'maps', 'community', 'comments'];
+      var geo = index.indexOf(this.props.name);
+      this.setState({ location: geo });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Tabs,
+          { initialSelectedIndex: this.state.location, className: 'tabs' },
+          React.createElement(
+            Tab,
+            { label: React.createElement(
+                Link,
+                { to: '/file/summary/' + this.props.id },
+                ' Resumen '
+              ) },
+            this.props.name == 'summary' ? this.props.content : ''
+          ),
+          React.createElement(
+            Tab,
+            { label: React.createElement(
+                Link,
+                { to: '/file/detail/' + this.props.id },
+                ' Detalles '
+              ) },
+            this.props.name == 'detail' ? this.props.content : ''
+          ),
+          React.createElement(
+            Tab,
+            { label: React.createElement(
+                Link,
+                { to: '/file/images/' + this.props.id },
+                ' Im\xE1genes '
+              ) },
+            this.props.name == 'images' ? this.props.content : ''
+          ),
+          React.createElement(
+            Tab,
+            { label: React.createElement(
+                Link,
+                { to: '/file/maps/' + this.props.id },
+                ' Mapas '
+              ) },
+            this.props.name == 'maps' ? this.props.content : ''
+          ),
+          React.createElement(
+            Tab,
+            { label: React.createElement(
+                Link,
+                { to: '/file/community/' + this.props.id },
+                ' Comunidad '
+              ) },
+            this.props.name == 'community' ? this.props.content : ''
+          ),
+          React.createElement(
+            Tab,
+            { label: React.createElement(
+                Link,
+                { to: '/file/comments/' + this.props.id },
+                ' Comentarios '
+              ) },
+            this.props.name == 'comments' ? this.props.content : ''
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileTab;
+}(React.Component);
+
+export default FileTab;

@@ -1,0 +1,76 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\ndisplay:inline-block;\nvertical-align: middle;\n'], ['\ndisplay:inline-block;\nvertical-align: middle;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\n'], ['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+var Main = _styledComponents2.default.div(_templateObject2);
+var Sub = _styledComponents2.default.div(_templateObject2);
+
+var Title = function Title(_ref) {
+  var props = _objectWithoutProperties(_ref, []);
+
+  return _react2.default.createElement(
+    Wrapper,
+    { className: 'grey-text text-darken-2' },
+    _react2.default.createElement(
+      Main,
+      null,
+      _react2.default.createElement(
+        'b',
+        null,
+        'Cat\xE1logo'
+      ),
+      'de'
+    ),
+    _react2.default.createElement(
+      Sub,
+      null,
+      'la Biodiversidad'
+    )
+  );
+};
+
+Title.propTypes = {
+  // nombre: PropTypes.string.isRequired
+};
+
+var _default = Title;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Title/index.js');
+
+  __REACT_HOT_LOADER__.register(Main, 'Main', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Title/index.js');
+
+  __REACT_HOT_LOADER__.register(Sub, 'Sub', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Title/index.js');
+
+  __REACT_HOT_LOADER__.register(Title, 'Title', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Title/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Title/index.js');
+}();
+
+;

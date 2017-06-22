@@ -1,0 +1,102 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-top: 200px;\n.box-history{\n  float: right;\n}\n.box-content{\n  padding: 20px;\n  overflow:hidden;\n}\n.main-title{\n  color:', ';\n  font-style: italic;\n  float:left;\n  font-weight: 500;\n}\n.main-subtitle{\n  color:', ';\n  line-height: 4;\n  margin-left: 30px;\n}\n'], ['\npadding-top: 200px;\n.box-history{\n  float: right;\n}\n.box-content{\n  padding: 20px;\n  overflow:hidden;\n}\n.main-title{\n  color:', ';\n  font-style: italic;\n  float:left;\n  font-weight: 500;\n}\n.main-subtitle{\n  color:', ';\n  line-height: 4;\n  margin-left: 30px;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _Badge = require('material-ui/Badge');
+
+var _Badge2 = _interopRequireDefault(_Badge);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.palette)('basescale', 3), (0, _styledTheme.palette)('basescale', 3));
+
+var FileHeader = function (_React$Component) {
+  _inherits(FileHeader, _React$Component);
+
+  function FileHeader(props) {
+    _classCallCheck(this, FileHeader);
+
+    return _possibleConstructorReturn(this, (FileHeader.__proto__ || Object.getPrototypeOf(FileHeader)).call(this, props));
+  }
+
+  _createClass(FileHeader, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _Paper2.default,
+          { zDepth: 1, className: 'box-content' },
+          _react2.default.createElement(
+            'div',
+            { className: 'box-history align-right' },
+            _react2.default.createElement(_Badge2.default, { badgeContent: 'EX', className: 'badge cr' }),
+            _react2.default.createElement(_Badge2.default, { badgeContent: 'CR', className: 'badge ex' }),
+            _react2.default.createElement(_Badge2.default, { badgeContent: 'EN', className: 'badge en' })
+          ),
+          _react2.default.createElement(
+            'h3',
+            { className: 'title-lg align-left main-title' },
+            this.props.title
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'main-subtitle' },
+            this.props.subtitle
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileHeader;
+}(_react2.default.Component);
+
+var _default = FileHeader;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Wallpapers/index.js');
+
+  __REACT_HOT_LOADER__.register(FileHeader, 'FileHeader', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Wallpapers/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Wallpapers/index.js');
+}();
+
+;

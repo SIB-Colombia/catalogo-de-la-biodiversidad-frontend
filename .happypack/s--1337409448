@@ -1,0 +1,293 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\nfloat: left;\nleft: -32px;\nposition: relative;\nwidth: 35px;\n\n@media ', '{\n  position: absolute;\n  left: 0;\n  top:0;\n  button{\n      width: 30px !important;\n  }\n}\n.drawer{\n  margin-top: 65px;\n}\n.btnFilters{\n    /*position: fixed;\n    left: 0px;\n    top: 0px;*/\n}\n.style-btn{\n  box-shadow: none !important;\n\n  /*margin-top: 3.5px;*/\n  button{\n    background-color: ', ' !important;\n    height: 64px !important;\n    border-radius: 0 !important;\n    svg{\n    }\n  }\n}\n\n'], ['\n\nfloat: left;\nleft: -32px;\nposition: relative;\nwidth: 35px;\n\n@media ', '{\n  position: absolute;\n  left: 0;\n  top:0;\n  button{\n      width: 30px !important;\n  }\n}\n.drawer{\n  margin-top: 65px;\n}\n.btnFilters{\n    /*position: fixed;\n    left: 0px;\n    top: 0px;*/\n}\n.style-btn{\n  box-shadow: none !important;\n\n  /*margin-top: 3.5px;*/\n  button{\n    background-color: ', ' !important;\n    height: 64px !important;\n    border-radius: 0 !important;\n    svg{\n    }\n  }\n}\n\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactSlick = require('react-slick');
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FloatingActionButton = require('material-ui/FloatingActionButton');
+
+var _FloatingActionButton2 = _interopRequireDefault(_FloatingActionButton);
+
+var _menu = require('material-ui/svg-icons/navigation/menu');
+
+var _menu2 = _interopRequireDefault(_menu);
+
+var _keyboardArrowLeft = require('material-ui/svg-icons/hardware/keyboard-arrow-left');
+
+var _keyboardArrowLeft2 = _interopRequireDefault(_keyboardArrowLeft);
+
+var _Drawer = require('material-ui/Drawer');
+
+var _Drawer2 = _interopRequireDefault(_Drawer);
+
+var _Chip = require('material-ui/Chip');
+
+var _Chip2 = _interopRequireDefault(_Chip);
+
+var _List = require('material-ui/List');
+
+var _grade = require('material-ui/svg-icons/action/grade');
+
+var _grade2 = _interopRequireDefault(_grade);
+
+var _Subheader = require('material-ui/Subheader');
+
+var _Subheader2 = _interopRequireDefault(_Subheader);
+
+var _components = require('components');
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.size)('sm'), (0, _styledTheme.palette)('primary', 0));
+
+var FileSearchMenu = function (_React$Component) {
+  _inherits(FileSearchMenu, _React$Component);
+
+  function FileSearchMenu(props) {
+    _classCallCheck(this, FileSearchMenu);
+
+    var _this = _possibleConstructorReturn(this, (FileSearchMenu.__proto__ || Object.getPrototypeOf(FileSearchMenu)).call(this, props));
+
+    _this.handleRequestDelete = function () {
+      return _this.__handleRequestDelete__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.handleAddChip = function () {
+      return _this.__handleAddChip__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.handleToggleMenu = function () {
+      return _this.__handleToggleMenu__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
+    _this.state = {
+      open: false,
+      schema: [{
+        'category': 'Grupos Biológicos',
+        'items': [{
+          name: 'Anfibios',
+          value: 1634
+        }, {
+          name: 'Aves',
+          value: 2755
+        }, {
+          name: 'Hongos',
+          value: 3345
+        }, {
+          name: 'Insectos',
+          value: 4355
+        }, {
+          name: 'Mamíferos',
+          value: 5674
+        }, {
+          name: 'Peces',
+          value: 6325
+        }, {
+          name: 'Plantas',
+          value: 73577
+        }, {
+          name: 'Reptiles',
+          value: 8455
+        }]
+      }, {
+        'category': 'Departamentos',
+        'items': [{
+          name: 'Cundinamarca',
+          value: 1832
+        }, {
+          name: 'Boyacá',
+          value: 2124
+        }]
+      }, {
+        'category': 'Ecosistemas',
+        'items': [{
+          name: 'Bosque tropical',
+          value: 135565
+        }, {
+          name: 'Desierto',
+          value: 2456
+        }, {
+          name: 'Bosque seco',
+          value: 33466
+        }, {
+          name: 'Páramo',
+          value: 46225
+        }, {
+          name: 'Bosque de niebla',
+          value: 51123
+        }, {
+          name: 'Humedales',
+          value: 665433
+        }]
+      }],
+      chipData: []
+    };
+
+    _this.styles = {
+      chip: {
+        margin: 4
+      },
+      wrapper: {
+        display: 'flex',
+        flexWrap: 'wrap'
+      }
+    };
+    return _this;
+  }
+
+  _createClass(FileSearchMenu, [{
+    key: '__handleRequestDelete__REACT_HOT_LOADER__',
+    value: function __handleRequestDelete__REACT_HOT_LOADER__(data) {
+      // console.log(data);
+      //Chip
+      this.chipData = this.state.chipData;
+      var chipToDelete = this.chipData.map(function (chip) {
+        return chip.value;
+      }).indexOf(data.value);
+      this.chipData.splice(chipToDelete, 1);
+      this.setState({ chipData: this.chipData });
+      //schema update
+      this.schema = this.state.schema;
+      this.schema[data.i].items.unshift(data);
+      this.setState({ schema: this.schema });
+    }
+  }, {
+    key: '__handleAddChip__REACT_HOT_LOADER__',
+    value: function __handleAddChip__REACT_HOT_LOADER__(record, i, j) {
+      //Chip
+      this.chipData = this.state.chipData;
+      record.i = i;
+      record.j = j;
+      this.chipData.push(record);
+      this.setState({ chipData: this.chipData });
+      //schema update
+      this.schema = this.state.schema;
+      this.schema[i].items.splice(j, 1);
+      this.setState({ schema: this.schema });
+    }
+  }, {
+    key: '__handleToggleMenu__REACT_HOT_LOADER__',
+    value: function __handleToggleMenu__REACT_HOT_LOADER__() {
+      return this.setState({
+        open: !this.state.open
+      });
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'renderChip',
+    value: function renderChip(data) {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        _Chip2.default,
+        { className: 'animated fadeInUp', key: data.value, onRequestDelete: function onRequestDelete() {
+            return _this2.handleRequestDelete(data);
+          }, style: this.styles.chip },
+        data.name
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      var subcat = this.state.schema.map(function (record, i) {
+        return record.items.map(function (subrecord, j) {
+          return _react2.default.createElement(_List.ListItem, { key: j, primaryText: subrecord.name, onTouchTap: function onTouchTap() {
+              return _this3.handleAddChip(subrecord, i, j);
+            }, leftIcon: _react2.default.createElement(_grade2.default, null) });
+        });
+      });
+      var listItems = this.state.schema.map(function (record, i) {
+        return _react2.default.createElement(_List.ListItem, { key: i, nestedItems: subcat[i], primaryText: record.category, initiallyOpen: true, primaryTogglesNestedList: true });
+      });
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          'div',
+          { className: 'btnFilters animated fadeInLeft' },
+          _react2.default.createElement(
+            _FloatingActionButton2.default,
+            { onTouchTap: this.handleToggleMenu, className: 'style-btn' },
+            _react2.default.createElement(_menu2.default, null)
+          )
+        ),
+        _react2.default.createElement(
+          _Drawer2.default,
+          { open: this.state.open, containerClassName: 'drawer' },
+          _react2.default.createElement(
+            _List.List,
+            null,
+            _react2.default.createElement(
+              _Subheader2.default,
+              null,
+              'Filtros activos'
+            ),
+            _react2.default.createElement(
+              'div',
+              { style: this.styles.wrapper },
+              this.state.chipData.map(this.renderChip, this)
+            ),
+            listItems
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileSearchMenu;
+}(_react2.default.Component);
+
+var _default = FileSearchMenu;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSearchMenu/index.js');
+
+  __REACT_HOT_LOADER__.register(FileSearchMenu, 'FileSearchMenu', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSearchMenu/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSearchMenu/index.js');
+}();
+
+;

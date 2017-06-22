@@ -1,0 +1,20 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  font-size: 0.75rem;\n  line-height: 1.5em;\n  padding: 0.1em 0.3em;\n  color: ', ';\n  background-color: ', ';\n  border-radius: 0.16667em;\n'], ['\n  font-family: ', ';\n  font-size: 0.75rem;\n  line-height: 1.5em;\n  padding: 0.1em 0.3em;\n  color: ', ';\n  background-color: ', ';\n  border-radius: 0.16667em;\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var Badge = styled.span(_templateObject, font('primary'), palette('grayscale', 0, true), palette(1));
+
+Badge.propTypes = {
+  palette: PropTypes.string,
+  reverse: PropTypes.bool
+};
+
+Badge.defaultProps = {
+  palette: 'primary'
+};
+
+export default Badge;

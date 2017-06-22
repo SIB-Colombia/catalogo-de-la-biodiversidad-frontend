@@ -1,0 +1,25 @@
+var _templateObject = _taggedTemplateLiteral(['\n  text-align: left;\n  padding: 0.75em;\n'], ['\n  text-align: left;\n  padding: 0.75em;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+
+var styles = css(_templateObject);
+
+var Th = styled.th(_templateObject2, styles);
+var Td = styled.td(_templateObject2, styles);
+
+var TableCell = function TableCell(_ref) {
+  var heading = _ref.heading,
+      children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['heading', 'children']);
+
+  return React.createElement(heading ? Th : Td, props, children);
+};
+
+export default TableCell;

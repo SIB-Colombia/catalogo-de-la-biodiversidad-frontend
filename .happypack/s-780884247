@@ -1,0 +1,41 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  display: block;\n  width: 100%;\n  margin: 0;\n  box-sizing: border-box;\n  font-size: ', ';\n  padding: ', ';\n  height: ', ';\n  color: ', ';\n  background-color: ', ';\n  border: 1px solid ', ';\n  border-radius: 2px;\n\n  &[type=checkbox], &[type=radio] {\n    display: inline-block;\n    border: 0;\n    border-radius: 0;\n    width: auto;\n    height: auto;\n    margin: 0 0.2rem 0 0;\n  }\n'], ['\n  font-family: ', ';\n  display: block;\n  width: 100%;\n  margin: 0;\n  box-sizing: border-box;\n  font-size: ', ';\n  padding: ', ';\n  height: ', ';\n  color: ', ';\n  background-color: ', ';\n  border: 1px solid ', ';\n  border-radius: 2px;\n\n  &[type=checkbox], &[type=radio] {\n    display: inline-block;\n    border: 0;\n    border-radius: 0;\n    width: auto;\n    height: auto;\n    margin: 0 0.2rem 0 0;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font, palette } from 'styled-theme';
+import { ifProp } from 'styled-tools';
+
+var fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height / 35.5555555556 + 'rem';
+};
+
+var styles = css(_templateObject, font('primary'), fontSize, ifProp({ type: 'textarea' }, '0.4444444444em', '0 0.4444444444em'), ifProp({ type: 'textarea' }, 'auto', '2.2222222222em'), palette('grayscale', 0), palette('grayscale', 0, true), ifProp('invalid', palette('danger', 2), palette('grayscale', 3)));
+
+var StyledTextarea = styled.textarea(_templateObject2, styles);
+var StyledSelect = styled.select(_templateObject2, styles);
+var StyledInput = styled.input(_templateObject2, styles);
+
+var Input = function Input(_ref2) {
+  var props = _objectWithoutProperties(_ref2, []);
+
+  if (props.type === 'textarea') {
+    return React.createElement(StyledTextarea, props);
+  } else if (props.type === 'select') {
+    return React.createElement(StyledSelect, props);
+  }
+  return React.createElement(StyledInput, props);
+};
+
+Input.defaultProps = {
+  type: 'text',
+  height: 40
+};
+
+export default Input;

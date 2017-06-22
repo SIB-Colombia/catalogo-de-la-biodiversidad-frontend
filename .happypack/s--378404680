@@ -1,0 +1,69 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-size: ', ';\n  margin: ', ';\n  @media screen and (max-width: 420px) {\n    margin: ', ';\n  }\n'], ['\n  font-size: ', ';\n  margin: ', ';\n  @media screen and (max-width: 420px) {\n    margin: ', ';\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  @media screen and (max-width: 420px) {\n    display: ', ';\n  }\n'], ['\n  @media screen and (max-width: 420px) {\n    display: ', ';\n  }\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+import { Icon, Link } from 'components';
+
+var fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height ? height / 3 / 16 + 'rem' : '0.75em';
+};
+
+var margin = function margin(_ref2) {
+  var hasText = _ref2.hasText,
+      right = _ref2.right;
+
+  if (hasText) {
+    return right ? '0 0 0 0.25em' : '0 0.25em 0 0';
+  }
+  return 0;
+};
+
+var StyledIcon = styled(Icon)(_templateObject, fontSize, margin, function (_ref3) {
+  var responsive = _ref3.responsive;
+  return responsive && 0;
+});
+
+var Text = styled.span(_templateObject2, function (_ref4) {
+  var responsive = _ref4.responsive;
+  return responsive && 'none';
+});
+
+var IconLink = function IconLink(_ref5) {
+  var height = _ref5.height,
+      icon = _ref5.icon,
+      right = _ref5.right,
+      responsive = _ref5.responsive,
+      children = _ref5.children,
+      props = _objectWithoutProperties(_ref5, ['height', 'icon', 'right', 'responsive', 'children']);
+
+  var iconElement = React.createElement(StyledIcon, {
+    height: height,
+    icon: icon,
+    hasText: !!children,
+    right: right,
+    responsive: responsive,
+    palette: props.palette,
+    reverse: props.reverse
+  });
+  return React.createElement(
+    Link,
+    props,
+    right || iconElement,
+    React.createElement(
+      Text,
+      { responsive: responsive },
+      children
+    ),
+    right && iconElement
+  );
+};
+
+export default IconLink;

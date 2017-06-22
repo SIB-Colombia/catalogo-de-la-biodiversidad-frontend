@@ -1,0 +1,27 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var Const = {
+  server: {
+    local: 'http://localhost:8000',
+    amazon: 'http://ec2-52-200-3-121.compute-1.amazonaws.com'
+  }
+};
+
+var _default = Const;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Const, 'Const', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/const.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/const.js');
+}();
+
+;

@@ -1,0 +1,100 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nbackground-image: -webkit-radial-gradient(#0098A6, #008E9B);\nbackground-image: radial-gradient(#0098A6, #008E9B);\npadding: 70px 0px 70px 0px;\n.t1{\n  color: white;\n  font-size: 40px;\n  font-weight: 600;\n  padding: 20px;\n}\n.t2{\n  padding: 20px;\n\n}\n.hj-button{\n  color: white;\n  font-size: 22px;\n  font-weight: 500;\n  border: 2px solid white;\n  padding: 15px 30px;\n  transition: .5s ease;\n  &:hover{\n    cursor: pointer;\n    background: rgba(255,255,255,0.2);\n  }\n}\n'], ['\nbackground-image: -webkit-radial-gradient(#0098A6, #008E9B);\nbackground-image: radial-gradient(#0098A6, #008E9B);\npadding: 70px 0px 70px 0px;\n.t1{\n  color: white;\n  font-size: 40px;\n  font-weight: 600;\n  padding: 20px;\n}\n.t2{\n  padding: 20px;\n\n}\n.hj-button{\n  color: white;\n  font-size: 22px;\n  font-weight: 500;\n  border: 2px solid white;\n  padding: 15px 30px;\n  transition: .5s ease;\n  &:hover{\n    cursor: pointer;\n    background: rgba(255,255,255,0.2);\n  }\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var HomeJoin = function (_React$Component) {
+  _inherits(HomeJoin, _React$Component);
+
+  function HomeJoin(props) {
+    _classCallCheck(this, HomeJoin);
+
+    return _possibleConstructorReturn(this, (HomeJoin.__proto__ || Object.getPrototypeOf(HomeJoin)).call(this, props));
+  }
+
+  _createClass(HomeJoin, [{
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          { className: 'container' },
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12, sm: 12, md: 6, lg: 6, className: 'align-center t1' },
+              '\xBFQu\xE9 esperas?'
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12, sm: 12, md: 6, lg: 6, className: 'align-center t2' },
+              _react2.default.createElement(
+                _components.Link,
+                { to: '/login/signup' },
+                _react2.default.createElement(
+                  'div',
+                  { className: 'hj-button' },
+                  '\xDANETE AL CAT\xC1LOGO'
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return HomeJoin;
+}(_react2.default.Component);
+
+var _default = HomeJoin;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HomeJoin/index.js');
+
+  __REACT_HOT_LOADER__.register(HomeJoin, 'HomeJoin', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HomeJoin/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HomeJoin/index.js');
+}();
+
+;

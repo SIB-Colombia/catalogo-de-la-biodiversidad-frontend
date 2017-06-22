@@ -1,0 +1,190 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\nposition:fixed;\ntop:0%;\nwidth:100%;\nz-index: 99999;\n.box-search {\n\t.row{\n\t\tmargin-bottom:0px !important;\n\t}\n\t.material-icons{\n\t\tmargin-top: 4px;\n\t}\n}\n.input-field input{\n\tpadding-left:0px !important;\n}\n.modal{\n\tcolor:initial;\n}\n.input-advance{\n\t.input-field{\n\t\tborder: 1px solid #e0e0e0;\n\t\theight: 45px;\n\t\tpadding: 5px;\n\t\tline-height: 2;\n\t}\n}\n.hover-cursor{\n  cursor: pointer;\n  &:hover .material-icons{\n    opacity: 0.5;\n  }\n}\n'], ['\nposition:fixed;\ntop:0%;\nwidth:100%;\nz-index: 99999;\n.box-search {\n\t.row{\n\t\tmargin-bottom:0px !important;\n\t}\n\t.material-icons{\n\t\tmargin-top: 4px;\n\t}\n}\n.input-field input{\n\tpadding-left:0px !important;\n}\n.modal{\n\tcolor:initial;\n}\n.input-advance{\n\t.input-field{\n\t\tborder: 1px solid #e0e0e0;\n\t\theight: 45px;\n\t\tpadding: 5px;\n\t\tline-height: 2;\n\t}\n}\n.hover-cursor{\n  cursor: pointer;\n  &:hover .material-icons{\n    opacity: 0.5;\n  }\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactMaterialize = require('react-materialize');
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.nav(_templateObject);
+
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Header);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Header.__proto__ || Object.getPrototypeOf(Header)).call.apply(_ref, [this].concat(args))), _this), _this.openAdvance = function () {
+      var _this2;
+
+      return (_this2 = _this).__openAdvance__REACT_HOT_LOADER__.apply(_this2, arguments);
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Header, [{
+    key: '__openAdvance__REACT_HOT_LOADER__',
+    value: function __openAdvance__REACT_HOT_LOADER__() {
+      $('#modalAdvance').modal('open');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        { className: 'nav-wrapper grey lighten-5' },
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { s: 3 },
+            _react2.default.createElement(
+              _components.IconLink,
+              { to: '/', icon: 'catalogo', className: 'brand-logo' },
+              _react2.default.createElement(_components.Title, null)
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { s: 6, className: 'box-search grey lighten-3 hide-on-med-and-down' },
+            _react2.default.createElement(
+              _reactMaterialize.Row,
+              null,
+              _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 1, className: 'grey-text text-darken-2 center-align' },
+                _react2.default.createElement(
+                  _reactMaterialize.Icon,
+                  null,
+                  'search'
+                )
+              ),
+              _react2.default.createElement(_reactMaterialize.Input, { s: 10, label: 'Buscar...', className: 'grey-text text-darken-2' }),
+              _react2.default.createElement(
+                _reactMaterialize.Col,
+                { s: 1, className: 'grey-text text-darken-2 center-align' },
+                _react2.default.createElement(
+                  'span',
+                  { onClick: this.openAdvance, className: 'hover-cursor' },
+                  _react2.default.createElement(
+                    _reactMaterialize.Icon,
+                    null,
+                    'tune'
+                  )
+                )
+              )
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Col,
+            { s: 3 },
+            _react2.default.createElement(_components.PrimaryNavigation, { reverse: true })
+          )
+        ),
+        _react2.default.createElement(
+          _components.ModalUI,
+          { title: 'B\xFAsqueda Avanzada', refe: 'modalAdvance' },
+          _react2.default.createElement(
+            _reactMaterialize.Row,
+            null,
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 12, s: 12 },
+              _react2.default.createElement(
+                _reactMaterialize.Col,
+                { l: 2, s: 12 },
+                _react2.default.createElement(_components.SelectUI, { title: '', hover: 'Fichas' })
+              ),
+              _react2.default.createElement(
+                _reactMaterialize.Col,
+                { l: 10, s: 12, className: 'input-advance' },
+                _react2.default.createElement(_reactMaterialize.Input, { l: 12, s: 12, placeholder: 'Buscar...', className: 'grey-text text-darken-2' })
+              )
+            ),
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 3, s: 12 },
+              _react2.default.createElement(_components.SelectUI, { title: 'Grupo Biol\xF3gico', hover: 'Seleccionar' })
+            ),
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 3, s: 12 },
+              _react2.default.createElement(_components.SelectUI, { title: 'Departamentos', hover: 'Seleccionar' })
+            ),
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 3, s: 12 },
+              _react2.default.createElement(_components.SelectUI, { title: 'Ecosistema', hover: 'Seleccionar' })
+            ),
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 3, s: 12 },
+              _react2.default.createElement(_components.SelectUI, { title: 'Estado Amenaza', hover: 'Seleccionar' })
+            ),
+            _react2.default.createElement(
+              _reactMaterialize.Col,
+              { l: 12, s: 12, className: 'center-align' },
+              _react2.default.createElement(
+                'a',
+                { className: 'btn waves-effect waves-light cyan darken-3' },
+                'Buscar'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(_react2.default.Component);
+
+var _default = Header;
+exports.default = _default;
+;
+
+var _temp2 = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(Header, 'Header', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Header/index.js');
+}();
+
+;

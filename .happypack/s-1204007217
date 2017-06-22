@@ -1,0 +1,15 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  color: ', ';\n  font-size: 1rem;\n  line-height: 2em;\n'], ['\n  font-family: ', ';\n  color: ', ';\n  font-size: 1rem;\n  line-height: 2em;\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { font, palette } from 'styled-theme';
+
+var Label = styled.label(_templateObject, font('primary'), palette('grayscale', 1));
+
+Label.propTypes = {
+  reverse: PropTypes.bool
+};
+
+export default Label;

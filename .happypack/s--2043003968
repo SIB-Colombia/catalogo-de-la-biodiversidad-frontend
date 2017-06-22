@@ -1,0 +1,48 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+// import {size, font, palette} from 'styled-theme';
+
+// const = Wallpaper = (section) => {
+//
+//   console.log('->', section);
+// }
+
+
+var Wallpaper = function Wallpaper(_ref) {
+  var icon = _ref.icon,
+      props = _objectWithoutProperties(_ref, ['icon']);
+
+  console.log('hi');
+  // const svg = require(`!raw-loader!./icons/${icon}.svg`)
+  // return <Wrapper {...props} dangerouslySetInnerHTML={{ __html: svg }} />
+};
+
+var _default = Wallpaper;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wallpaper, 'Wallpaper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Wallpaper/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/Wallpaper/index.js');
+}();
+
+;

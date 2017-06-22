@@ -1,0 +1,21 @@
+var _templateObject = _taggedTemplateLiteral(['\n  background-color: ', ';\n'], ['\n  background-color: ', ';\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { palette } from 'styled-theme';
+
+var backgroundColor = function backgroundColor(_ref) {
+  var filled = _ref.filled;
+  return palette('grayscale', filled ? 1 : 0, true);
+};
+
+var TableRow = styled.tr(_templateObject, backgroundColor);
+
+TableRow.propTypes = {
+  filled: PropTypes.bool,
+  reverse: PropTypes.bool
+};
+
+export default TableRow;

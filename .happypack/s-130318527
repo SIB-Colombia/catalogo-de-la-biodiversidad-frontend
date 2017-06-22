@@ -1,0 +1,49 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n\tmargin-top: 40px;\n\tpadding-top: 0px !important;\n'], ['\n\tmargin-top: 40px;\n\tpadding-top: 0px !important;\n']);
+
+var _react = require('react');
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _styledTools = require('styled-tools');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Footer = _styledComponents2.default.footer(_templateObject);
+
+// Footer.propTypes = {
+// 	palette: PropTypes.string,
+// 	reverse: PropTypes.bool,
+// 	opaque: PropTypes.bool,
+// }
+
+// Footer.defaultProps = {
+// 	palette: 'grayscale',
+// }
+
+var _default = Footer;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(Footer, 'Footer', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Footer/index.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Footer/index.js');
+}();
+
+;

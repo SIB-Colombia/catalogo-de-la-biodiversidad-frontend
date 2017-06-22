@@ -1,0 +1,122 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\n.card-title  > span:first-child{\n  font-size: ', ' !important;\n\tcolor: ', ' !important;\n}\n.box-history{\n  float: right;\n}\n'], ['\n\n.card-title  > span:first-child{\n  font-size: ', ' !important;\n\tcolor: ', ' !important;\n}\n.box-history{\n  float: right;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _components = require('components');
+
+var _styledTheme = require('styled-theme');
+
+var _Card = require('material-ui/Card');
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _Badge = require('material-ui/Badge');
+
+var _Badge2 = _interopRequireDefault(_Badge);
+
+var _comment = require('material-ui/svg-icons/communication/comment');
+
+var _comment2 = _interopRequireDefault(_comment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject, (0, _styledTheme.font)('xxs'), (0, _styledTheme.palette)('basescale', 2));
+
+var FileCard = function (_React$Component) {
+  _inherits(FileCard, _React$Component);
+
+  function FileCard(props) {
+    _classCallCheck(this, FileCard);
+
+    return _possibleConstructorReturn(this, (FileCard.__proto__ || Object.getPrototypeOf(FileCard)).call(this, props));
+  }
+
+  _createClass(FileCard, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _components.Link,
+          { to: '/file/summary/' + this.props.record.id },
+          _react2.default.createElement(
+            _Card.Card,
+            { className: 'space-card' },
+            _react2.default.createElement(
+              _Card.CardMedia,
+              null,
+              _react2.default.createElement('img', { src: this.props.record.image })
+            ),
+            _react2.default.createElement(
+              _Card.CardTitle,
+              { title: this.props.record.name, className: 'card-title', subtitle: this.props.record.description },
+              _react2.default.createElement(
+                'div',
+                { className: 'box-history align-right' },
+                _react2.default.createElement(_Badge2.default, { badgeContent: 'EX', className: 'badge cr' }),
+                _react2.default.createElement(_Badge2.default, { badgeContent: 'CR', className: 'badge ex' }),
+                _react2.default.createElement(_Badge2.default, { badgeContent: 'EN', className: 'badge en' })
+              )
+            ),
+            _react2.default.createElement(
+              _Card.CardActions,
+              { className: 'align-center' },
+              _react2.default.createElement(
+                _FlatButton2.default,
+                { fullWidth: true, className: 'btn-secondary align-left padding' },
+                _react2.default.createElement(_comment2.default, null),
+                ' ',
+                this.props.record.comment
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileCard;
+}(_react2.default.Component);
+
+var _default = FileCard;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileCard/index.js');
+
+  __REACT_HOT_LOADER__.register(FileCard, 'FileCard', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileCard/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/FileCard/index.js');
+}();
+
+;

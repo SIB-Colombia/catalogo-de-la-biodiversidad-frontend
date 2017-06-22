@@ -1,0 +1,280 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getFiles = getFiles;
+exports.getImages = getImages;
+exports.getList = getList;
+exports.getFile = getFile;
+exports.getAssociatedParty = getAssociatedParty;
+exports.getMoreInformation = getMoreInformation;
+exports.getDirectThreats = getDirectThreats;
+exports.getTaxonRecordName = getTaxonRecordName;
+exports.getSynonymsAtomized = getSynonymsAtomized;
+exports.getCommonNamesAtomized = getCommonNamesAtomized;
+exports.getHierarchy = getHierarchy;
+exports.getAbstract = getAbstract;
+exports.getLifeForm = getLifeForm;
+exports.getReproduction = getReproduction;
+exports.getAnnualCycles = getAnnualCycles;
+
+var _isomorphicFetch = require('isomorphic-fetch');
+
+var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+var _const = require('../../const');
+
+var _const2 = _interopRequireDefault(_const);
+
+var _auth = require('../../auth');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getFiles() {
+
+  return [{
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/71728_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/05869_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/99013_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/34567_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/09127_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/84940_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/07303_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }, {
+    id: '5661b2a2f3b30194336dc7a6',
+    name: 'Tagetes Patupa',
+    description: 'L. 1758',
+    image: '/background/62488_orig.jpg',
+    comment: 'Aguila tirana Black...'
+  }];
+}
+
+function getImages() {
+
+  return [{
+    src: '/tucanes.jpg',
+    thumbnail: '/tucanes.jpg',
+    caption: 'Photo by Jessica Weiller'
+  }, {
+    src: '/tucanes2.jpg',
+    thumbnail: '/tucanes2.jpg',
+    caption: 'Photo by Piotr Łaskawski'
+  }];
+}
+
+//Get list Files
+
+function getList() {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/lista', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get individual File / example: 5661b2a2f3b30194336dc7a6
+
+function getFile(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/record/' + id, (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get associated party
+
+function getAssociatedParty(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/associated_party/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get More information
+
+function getMoreInformation(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/more_information/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get direct threats
+
+function getDirectThreats(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/direct_threats/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get taxonrecordname
+
+function getTaxonRecordName(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/taxon_record_name/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get synonymsAtomized
+
+function getSynonymsAtomized(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/synonyms_atomized/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get commonNamesAtomized
+
+function getCommonNamesAtomized(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/common_names_atomized/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get hierarchy
+
+function getHierarchy(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/hierarchy/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get abstract
+
+function getAbstract(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/abstract/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get lifeForm
+
+function getLifeForm(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/life_form/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get reproduction
+
+function getReproduction(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/reproduction/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+
+//Get annual_cycles
+
+function getAnnualCycles(id) {
+
+  return (0, _isomorphicFetch2.default)(_const2.default.server.amazon + '/fichas/' + id + '/annual_cycles/1', (0, _auth.http)('GET')).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(getFiles, 'getFiles', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getImages, 'getImages', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getList, 'getList', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getFile, 'getFile', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getAssociatedParty, 'getAssociatedParty', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getMoreInformation, 'getMoreInformation', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getDirectThreats, 'getDirectThreats', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getTaxonRecordName, 'getTaxonRecordName', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getSynonymsAtomized, 'getSynonymsAtomized', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getCommonNamesAtomized, 'getCommonNamesAtomized', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getHierarchy, 'getHierarchy', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getAbstract, 'getAbstract', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getLifeForm, 'getLifeForm', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getReproduction, 'getReproduction', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+
+  __REACT_HOT_LOADER__.register(getAnnualCycles, 'getAnnualCycles', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/services/FileService/index.js');
+}();
+
+;

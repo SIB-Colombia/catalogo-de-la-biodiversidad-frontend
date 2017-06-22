@@ -1,0 +1,17 @@
+import React from 'react';
+
+import { PageTemplate, Header, Footer, Heading } from 'components';
+
+var NotFoundPage = function NotFoundPage() {
+  return React.createElement(
+    PageTemplate,
+    { header: React.createElement(Header, null), footer: React.createElement(Footer, null) },
+    React.createElement(
+      Heading,
+      null,
+      '404 Not Found'
+    )
+  );
+};
+
+export default NotFoundPage;

@@ -1,0 +1,41 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  color: ', ';\n  font-size: 1rem;\n  line-height: 2em;\n'], ['\n  font-family: ', ';\n  color: ', ';\n  font-size: 1rem;\n  line-height: 2em;\n']);
+
+var _react = require('react');
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Label = _styledComponents2.default.label(_templateObject, (0, _styledTheme.font)('primary'), (0, _styledTheme.palette)('grayscale', 1));
+
+Label.propTypes = {
+  reverse: _react.PropTypes.bool
+};
+
+var _default = Label;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Label, 'Label', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Label/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/atoms/Label/index.js');
+}();
+
+;

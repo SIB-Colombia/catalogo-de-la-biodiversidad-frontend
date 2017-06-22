@@ -1,0 +1,106 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactMaterialize = require('react-materialize');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SelectUI = function (_React$Component) {
+  _inherits(SelectUI, _React$Component);
+
+  function SelectUI() {
+    _classCallCheck(this, SelectUI);
+
+    return _possibleConstructorReturn(this, (SelectUI.__proto__ || Object.getPrototypeOf(SelectUI)).call(this));
+  }
+
+  _createClass(SelectUI, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'label',
+          null,
+          this.props.title
+        ),
+        _react2.default.createElement(
+          'select',
+          { className: 'browser-default', defaultValue: '' },
+          _react2.default.createElement(
+            'option',
+            { value: '', disabled: true },
+            this.props.hover
+          ),
+          _react2.default.createElement(
+            'option',
+            { value: '1' },
+            'Option 1'
+          ),
+          _react2.default.createElement(
+            'option',
+            { value: '2' },
+            'Option 2'
+          ),
+          _react2.default.createElement(
+            'option',
+            { value: '3' },
+            'Option 3'
+          )
+        )
+      );
+    }
+  }]);
+
+  return SelectUI;
+}(_react2.default.Component);
+
+SelectUI.propTypes = {
+  // children: PropTypes.node,
+  // title: PropTypes.string,
+  // id: PropTypes.string,
+  // reverse: PropTypes.bool,
+  // onClose: PropTypes.func.isRequired,
+};
+
+var _default = SelectUI;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(SelectUI, 'SelectUI', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/SelectUI/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/SelectUI/index.js');
+}();
+
+;

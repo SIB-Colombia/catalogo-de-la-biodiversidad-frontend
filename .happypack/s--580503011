@@ -1,0 +1,273 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n'], ['\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _components = require('components');
+
+var _reactMaterialize = require('react-materialize');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+
+var FileImage = function (_React$Component) {
+  _inherits(FileImage, _React$Component);
+
+  function FileImage() {
+    _classCallCheck(this, FileImage);
+
+    return _possibleConstructorReturn(this, (FileImage.__proto__ || Object.getPrototypeOf(FileImage)).apply(this, arguments));
+  }
+
+  _createClass(FileImage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      setTimeout(function () {
+
+        $('.autocomplete').autocomplete({
+          data: {
+            "Apple": null,
+            "Microsoft": null,
+            "Google": 'http://placehold.it/250x250'
+          },
+          limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
+          onAutocomplete: function onAutocomplete(val) {
+            // Callback function when value is autcompleted.
+          },
+          minLength: 1 });
+
+        $('.datepicker').pickadate({
+          selectMonths: true, // Creates a dropdown to control month
+          selectYears: 15, // Creates a dropdown of 15 years to control year
+          // The title label to use for the month nav buttons
+          labelMonthNext: 'Mes siguiente',
+          labelMonthPrev: 'Mes anterior',
+
+          // The title label to use for the dropdown selectors
+          labelMonthSelect: 'Selecciona un mes',
+          labelYearSelect: 'Selecciona un año',
+
+          // Months and weekdays
+          monthsFull: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+          monthsShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+          weekdaysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+          weekdaysShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+
+          // Materialize modified
+          weekdaysLetter: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+
+          // Today and clear
+          today: 'Hoy',
+          clear: 'Limpiar',
+          close: 'Cerrar'
+        });
+      }, 100);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        Wrapper,
+        { className: 'animated fadeIn' },
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'h5',
+          null,
+          'Elementos para formulario'
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(_reactMaterialize.Input, { placeholder: 'Placeholder', s: 6, label: 'Nombre' }),
+          _react2.default.createElement(_reactMaterialize.Input, { s: 6, label: 'Apellido' }),
+          _react2.default.createElement(_reactMaterialize.Input, { s: 12, label: 'Deshabilitado', defaultValue: 'Campo no editable', disabled: true }),
+          _react2.default.createElement(_reactMaterialize.Input, { type: 'password', label: 'password', s: 12 }),
+          _react2.default.createElement(_reactMaterialize.Input, { type: 'email', label: 'Email', s: 12, validate: true })
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            _reactMaterialize.Input,
+            { s: 6, label: 'Nombre', validate: true },
+            _react2.default.createElement(
+              _reactMaterialize.Icon,
+              null,
+              'account_circle'
+            )
+          ),
+          _react2.default.createElement(
+            _reactMaterialize.Input,
+            { s: 6, label: 'Tel\xE9fono', validate: true, type: 'tel' },
+            _react2.default.createElement(
+              _reactMaterialize.Icon,
+              null,
+              'phone'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'input-field col s12' },
+            _react2.default.createElement('textarea', { id: 'textarea1', className: 'materialize-textarea' }),
+            _react2.default.createElement(
+              'label',
+              null,
+              'Caja de texto'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            _reactMaterialize.Input,
+            { s: 12, type: 'select', label: 'Seleccione una opci\xF3n', defaultValue: '2' },
+            _react2.default.createElement(
+              'option',
+              { value: '1' },
+              'Opci\xF3n 1'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '2' },
+              'Opci\xF3n 2'
+            ),
+            _react2.default.createElement(
+              'option',
+              { value: '3' },
+              'Opci\xF3n 3'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'radio', value: 'rojo', label: 'rojo' }),
+            _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'radio', value: 'amarillo', label: 'amarillo' }),
+            _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'radio', value: 'verde', label: 'verde', className: 'with-gap' }),
+            _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'radio', value: 'azul', label: 'azul', disabled: 'disabled' })
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'rojo', label: 'rojo' }),
+          _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'amarillo', label: 'amarillo', defaultValue: 'checked' }),
+          _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'verde', label: 'verde', className: 'filled-in', defaultChecked: 'checked' }),
+          _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'azul', label: 'azul', disabled: 'disabled' })
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(_reactMaterialize.Input, { name: 'on', type: 'switch', value: '1' })
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          'Autocompletado:',
+          _react2.default.createElement(
+            'div',
+            { className: 'input-field col s12' },
+            _react2.default.createElement(
+              'i',
+              { className: 'material-icons prefix' },
+              'textsms'
+            ),
+            _react2.default.createElement('input', { type: 'text', id: 'autocomplete-input', className: 'autocomplete' }),
+            ' '
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          'Fecha:',
+          _react2.default.createElement('input', { type: 'date', className: 'datepicker' })
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          _react2.default.createElement(
+            'div',
+            { className: 'file-field input-field' },
+            _react2.default.createElement(
+              'div',
+              { className: 'btn' },
+              _react2.default.createElement(
+                'span',
+                null,
+                'Archivo'
+              ),
+              _react2.default.createElement('input', { type: 'file' })
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'file-path-wrapper' },
+              _react2.default.createElement('input', { className: 'file-path validate', type: 'text' })
+            )
+          )
+        ),
+        _react2.default.createElement(
+          _reactMaterialize.Row,
+          null,
+          'Rango:',
+          _react2.default.createElement(
+            'p',
+            { className: 'range-field' },
+            _react2.default.createElement('input', { type: 'range', id: 'test5', min: '0', max: '100' })
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileImage;
+}(_react2.default.Component);
+
+var _default = FileImage;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileImage/index.js');
+
+  __REACT_HOT_LOADER__.register(FileImage, 'FileImage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileImage/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileImage/index.js');
+}();
+
+;
