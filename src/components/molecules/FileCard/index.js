@@ -89,7 +89,7 @@ class FileCard extends React.Component {
         <Link to={`/file/summary/${this.props.record._id}`}>
           <Card className="space-card card">
             <CardMedia>
-              <img src="/default/file.png"/>
+              <img src={`https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png`}/>
             </CardMedia>
             <FileStatus title="EN"/>
             <CardTitle title={this.title(this.props.record.scientificNameSimple)} className="card-title" subtitle={this.subtitle(this.props.record.scientificNameSimple)}/>
