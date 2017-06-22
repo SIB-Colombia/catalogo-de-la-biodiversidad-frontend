@@ -13,7 +13,7 @@ padding: 40px 20px;
   font-size: 12px;
   padding-top: 10px;
   font-weight: lighter;
-  color:#EF7748;
+  
 
 }
 `
@@ -26,7 +26,7 @@ class Loading extends React.Component {
   render() {
 
     return (
-      <Wrapper>
+      <Wrapper className="animated fadeInUp">
         <CircularProgress size={30} thickness={3} color={'#EF7748'}/>
         {this.props.text && <div className="text">{this.props.text}</div>}
       </Wrapper>
