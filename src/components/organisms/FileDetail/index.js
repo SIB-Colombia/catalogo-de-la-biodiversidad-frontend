@@ -155,7 +155,7 @@ class FileDetail extends React.Component {
     return (
       <Wrapper>
         <Row>
-          <Col lg={3} xs={12}>
+          {/* <Col lg={3} xs={12}>
             <Paper className="menu-scrollspy">
               <div className="index">Índice de ficha</div>
               <ul>
@@ -165,9 +165,9 @@ class FileDetail extends React.Component {
               </ul>
             </Paper>
             <br/>
-          </Col>
+          </Col> */}
 
-          <Col lg={9} xs={12}>
+          <Col lg={12} xs={12}>
 
             {Object.keys(this.state.sections).map((section,i) => (<Row key={Math.random()} >
               <Col xs={12} sm={12} md={12} lg={12} className="main-box">
