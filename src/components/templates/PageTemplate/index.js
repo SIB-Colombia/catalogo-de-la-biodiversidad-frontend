@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {injectGlobal} from 'styled-components';
+import {size, palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 `
@@ -10,6 +11,9 @@ const Header = styled.header `
 const Content = styled.section `
   height: 100%;
   padding-bottom: 152px;
+  @media ${size('xs')}{
+    padding-bottom: 202px;
+  }
 `
 const Footer = styled.footer `
   margin-top: 10px;
