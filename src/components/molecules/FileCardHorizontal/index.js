@@ -25,7 +25,7 @@ const Wrapper = styled.div `
     }
   }
   .options{
-    padding: 15px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
 
   }
 
