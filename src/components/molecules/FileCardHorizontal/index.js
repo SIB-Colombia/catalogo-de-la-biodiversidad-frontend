@@ -20,8 +20,8 @@ const Wrapper = styled.div `
   .img-media{
     text-align: center;
     img{
-      height: 100%;
-      width: 100%;
+      height: auto;
+      max-width: 100%;
     }
   }
   .options{
@@ -49,7 +49,7 @@ class FileCardHorizontal extends React.Component {
           <Paper>
             <Row>
               <Col xs={12} sm={4} md={4} lg={4} className="img-media">
-                <img src={this.props.record.image}/>
+                <img src={`https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png`}/>
               </Col>
               <Col xs={12} sm={8} md={8} lg={8} className="paper-padding-1">
                 <div className="options">
