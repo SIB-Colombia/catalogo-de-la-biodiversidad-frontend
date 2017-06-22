@@ -42,32 +42,28 @@ class CategoryCarousel extends React.Component {
 
     const categories = [
       {
-        image: 'IconosTaxones_anfibios.svg',
-        title: 'ANFIBIOS'
+        image: 'https://s3.amazonaws.com/sib-resources/images/catalogo/inicio/png/h-invertebrados.png',
+        title: 'INVERTEBRADOS'
       },
       {
-        image: 'IconosTaxones_artrópodos.svg',
-        title: 'ARTRÓPODOS'
+        image: 'https://s3.amazonaws.com/sib-resources/images/catalogo/inicio/png/h-vertebrados.png',
+        title: 'VERTEBRADOS'
       },
       {
-        image: 'IconosTaxones_aves.svg',
-        title: 'AVES'
-      },
-      {
-        image: 'IconosTaxones_mamíferos.svg',
-        title: 'MAMÍFEROS'
-      },
-      {
-        image: 'IconosTaxones_moluscos.svg',
-        title: 'MOLÚSCOS'
-      },
-      {
-        image: 'IconosTaxones_plantas.svg',
+        image: 'https://s3.amazonaws.com/sib-resources/images/catalogo/inicio/png/h-plantas.png',
         title: 'PLANTAS'
       },
       {
-        image: 'IconosTaxones_reptiles.svg',
-        title: 'REPTÍLES'
+        image: 'https://s3.amazonaws.com/sib-resources/images/catalogo/inicio/png/h-hongos.png',
+        title: 'HONGOS'
+      },
+      {
+        image: 'https://s3.amazonaws.com/sib-resources/images/catalogo/inicio/png/h-chromista.png',
+        title: 'CHROMISTA'
+      },
+      {
+        image: 'https://s3.amazonaws.com/sib-resources/images/catalogo/inicio/png/h-otros.png',
+        title: 'OTROS'
       }
     ];
 
@@ -80,7 +76,7 @@ class CategoryCarousel extends React.Component {
               {categories.map((record, i) => (
                 <div key={i} className="box">
                   <Paper zDepth={1} circle={true} className="paper">
-                    <img src={`/categories/${record.image}`}/>
+                    <img src={`${record.image}`}/>
                   </Paper>
                   <span>{record.title}</span>
                 </div>
