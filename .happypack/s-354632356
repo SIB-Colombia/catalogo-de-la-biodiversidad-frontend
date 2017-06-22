@@ -1,0 +1,117 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _isomorphicFetch = require('isomorphic-fetch');
+
+var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _reactSchemaForm = require('react-schema-form');
+
+var _reactSchemaForm2 = _interopRequireDefault(_reactSchemaForm);
+
+var _components = require('components');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FileSummaryPage = function (_React$Component) {
+  _inherits(FileSummaryPage, _React$Component);
+
+  function FileSummaryPage(props) {
+    _classCallCheck(this, FileSummaryPage);
+
+    var _this = _possibleConstructorReturn(this, (FileSummaryPage.__proto__ || Object.getPrototypeOf(FileSummaryPage)).call(this, props));
+
+    _this.state = {
+      id: null,
+      files: [],
+      images: []
+    };
+    return _this;
+  }
+
+  _createClass(FileSummaryPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+
+      this.setState({ id: this.props.params.id });
+      this.setState({ files: _components.Config.service.files });
+      this.setState({ images: _components.Config.service.images });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        _components.PageTemplate,
+        { header: _react2.default.createElement(_components.Header, null), footer: _react2.default.createElement(_components.Footer, null) },
+        _react2.default.createElement(
+          _reactFlexboxGrid.Grid,
+          null,
+          _react2.default.createElement(_components.FileSummary, { data: this.state.files, id: this.state.id, images: this.state.images }),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            _reactFlexboxGrid.Row,
+            null,
+            _react2.default.createElement(
+              _reactFlexboxGrid.Col,
+              { xs: 12 },
+              _react2.default.createElement(
+                _Paper2.default,
+                { zDepth: 1, className: 'box-content', style: { paddingTop: '20px' } },
+                _react2.default.createElement(
+                  'h3',
+                  { className: 'title-xs color-secondary bold' },
+                  'Fichas relacionadas'
+                ),
+                this.state.files.length > 0 && _react2.default.createElement(_components.FileCarousel, { data: this.state.files })
+              )
+            )
+          ),
+          _react2.default.createElement(_components.FileComment, null)
+        )
+      );
+    }
+  }]);
+
+  return FileSummaryPage;
+}(_react2.default.Component);
+
+var _default = FileSummaryPage;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(FileSummaryPage, 'FileSummaryPage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FileSummaryPage/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/pages/FileSummaryPage/index.js');
+}();
+
+;

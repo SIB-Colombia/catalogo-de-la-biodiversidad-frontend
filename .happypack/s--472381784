@@ -1,0 +1,30 @@
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: inline-block;\n  font-size: ', ';\n  color: ', ';\n  width: 1em;\n  height: 1em;\n  margin: 0.1em;\n  box-sizing: border-box;\n\n  & > svg {\n    width: 100%;\n    height: 100%;\n    fill: currentcolor;\n    stroke: currentcolor;\n  }\n'], ['\n  display: inline-block;\n  font-size: ', ';\n  color: ', ';\n  width: 1em;\n  height: 1em;\n  margin: 0.1em;\n  box-sizing: border-box;\n\n  & > svg {\n    width: 100%;\n    height: 100%;\n    fill: currentcolor;\n    stroke: currentcolor;\n  }\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { palette } from 'styled-theme';
+import { ifProp } from 'styled-tools';
+
+export var fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height ? height / 16 + 'rem' : '1.25em';
+};
+
+var Wrapper = styled.span(_templateObject, fontSize, ifProp('palette', palette({ grayscale: 0 }, 1), 'currentcolor'));
+
+var Icon = function Icon(_ref2) {
+  var icon = _ref2.icon,
+      props = _objectWithoutProperties(_ref2, ['icon']);
+
+  var svg = require('!raw-loader!./icons/' + icon + '.svg');
+  return React.createElement(Wrapper, _extends({}, props, { dangerouslySetInnerHTML: { __html: svg } }));
+};
+
+export default Icon;

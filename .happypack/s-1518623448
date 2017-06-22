@@ -1,0 +1,163 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\nposition:fixed;\ntop:0%;\nwidth:100%;\nz-index: 2000;\n\n\n\n.box-nav-search-content{\n\n\ttext-align: center;\n\tbackground: #eee;\n\n\t.box-nav-advance{\n\t  cursor: pointer;\n\t  &:hover{\n\t    opacity: 0.5;\n\t  }\n\t}\n\n\t.box-nav-search{\n\t  padding: 8px;\n\t}\n\n\t.box-nav-icon{\n\t  padding: 18px;\n\n\t}\n}\n\nsvg{\n\tcolor: #555 !important;\n}\n\n.box-link{\n\n\ttext-align:right;\n\ta {\n\t\theight:100% !important;\n\t\tline-height: 4 !important;\n\t}\n}\n\n.brand-logo {\n position: absolute;\n color: #fff;\n display: inline-block;\n font-size: 2.1rem;\n padding: 0;\n white-space: nowrap;\n\tmargin-top: 11px;\n}\n'], ['\n\nposition:fixed;\ntop:0%;\nwidth:100%;\nz-index: 2000;\n\n\n\n.box-nav-search-content{\n\n\ttext-align: center;\n\tbackground: #eee;\n\n\t.box-nav-advance{\n\t  cursor: pointer;\n\t  &:hover{\n\t    opacity: 0.5;\n\t  }\n\t}\n\n\t.box-nav-search{\n\t  padding: 8px;\n\t}\n\n\t.box-nav-icon{\n\t  padding: 18px;\n\n\t}\n}\n\nsvg{\n\tcolor: #555 !important;\n}\n\n.box-link{\n\n\ttext-align:right;\n\ta {\n\t\theight:100% !important;\n\t\tline-height: 4 !important;\n\t}\n}\n\n.brand-logo {\n position: absolute;\n color: #fff;\n display: inline-block;\n font-size: 2.1rem;\n padding: 0;\n white-space: nowrap;\n\tmargin-top: 11px;\n}\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\ndisplay:inline-block;\nvertical-align: middle;\ncolor:#616161;\n'], ['\ndisplay:inline-block;\nvertical-align: middle;\ncolor:#616161;\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\nb{\n\tmargin-right: 2px;\n}\n'], ['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\nb{\n\tmargin-right: 2px;\n}\n']),
+    _templateObject4 = _taggedTemplateLiteral(['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\n'], ['\nfont-size:14px;\ntext-transform: uppercase;\nline-height:1;\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import Tune from 'material-ui/svg-icons/image/tune';
+import Search from 'material-ui/svg-icons/action/search';
+
+import { IconLink, Link, HeaderSearchAdvance } from 'components';
+
+var Wrapper = styled.nav(_templateObject);
+var Title = styled.div(_templateObject2);
+var TitleMain = styled.div(_templateObject3);
+var TitleSub = styled.div(_templateObject4);
+
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Header);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Header.__proto__ || Object.getPrototypeOf(Header)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      open: false
+    }, _this.handleOpen = function () {
+      _this.setState({ open: true });
+    }, _this.handleClose = function () {
+      _this.setState({ open: false });
+    }, _this.handleSearch = function () {
+      console.log('buscar');
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+
+      var actions = [React.createElement(FlatButton, { label: 'Cancelar', primary: true,
+        onTouchTap: this.handleClose }), React.createElement(RaisedButton, { label: 'Buscar', primary: true,
+        onTouchTap: this.handleSearch })];
+
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Paper,
+          null,
+          React.createElement(
+            Grid,
+            { fluid: true },
+            React.createElement(
+              Row,
+              null,
+              React.createElement(
+                Col,
+                { xs: 3, sm: 3, md: 3, lg: 3 },
+                React.createElement(
+                  IconLink,
+                  { to: '/', icon: 'catalogo', className: 'brand-logo' },
+                  React.createElement(
+                    Title,
+                    null,
+                    React.createElement(
+                      TitleMain,
+                      null,
+                      React.createElement(
+                        'b',
+                        null,
+                        'Cat\xE1logo'
+                      ),
+                      'de'
+                    ),
+                    React.createElement(
+                      TitleSub,
+                      null,
+                      'la Biodiversidad'
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                Col,
+                { xs: 6, sm: 6, md: 6, lg: 6, className: 'box-nav-search-content' },
+                React.createElement(
+                  Row,
+                  null,
+                  React.createElement(
+                    Col,
+                    { xs: 1, sm: 2, md: 2, lg: 1, className: 'box-nav-icon' },
+                    React.createElement(Search, null)
+                  ),
+                  React.createElement(
+                    Col,
+                    { xs: 10, sm: 8, md: 8, lg: 10, className: 'box-nav-search' },
+                    React.createElement(TextField, { hintText: 'Buscar...', fullWidth: true })
+                  ),
+                  React.createElement(
+                    Col,
+                    { xs: 1, sm: 1, md: 2, lg: 1, className: 'box-nav-icon' },
+                    React.createElement(
+                      'a',
+                      { onTouchTap: this.handleOpen, className: 'box-nav-advance' },
+                      React.createElement(Tune, null)
+                    )
+                  )
+                )
+              ),
+              React.createElement(
+                Col,
+                { xs: 3, sm: 3, md: 3, lg: 3, className: 'box-link' },
+                React.createElement(
+                  Link,
+                  { to: '/login/signup', onlyActiveOnIndex: true, className: 'grey-text text-darken-2', activeClassName: 'active' },
+                  React.createElement(FlatButton, { label: 'Registrarse' })
+                ),
+                React.createElement(
+                  Link,
+                  { to: '/login/signin', onlyActiveOnIndex: true, className: 'grey-text text-darken-2', activeClassName: 'active' },
+                  React.createElement(FlatButton, { label: 'Ingresar' })
+                )
+              )
+            )
+          ),
+          React.createElement(
+            Dialog,
+            { titleClassName: 'modal-header-style', title: 'B\xFAsqueda avanzada', actions: actions, modal: false, open: this.state.open, onRequestClose: this.handleClose, autoScrollBodyContent: true },
+            React.createElement(HeaderSearchAdvance, null)
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(React.Component);
+
+export default Header;

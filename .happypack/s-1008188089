@@ -4,36 +4,69 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\nbody {\n\tmargin: 0;\n}\n'], ['\nbody {\n\tmargin: 0;\n}\n']);
+var _templateObject = _taggedTemplateLiteral(['', ''], ['', '']),
+    _templateObject2 = _taggedTemplateLiteral(['\n    body{\n      background: ', ';\n    }\n  '], ['\n    body{\n      background: ', ';\n    }\n  ']);
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = require('react-router-dom');
+
 var _styledComponents = require('styled-components');
+
+var _components = require('components');
+
+var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
 var _default2 = require('./themes/default');
 
 var _default3 = _interopRequireDefault(_default2);
 
+var _style = require('./themes/style');
+
+var _style2 = _interopRequireDefault(_style);
+
+var _auth = require('../auth');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-(0, _styledComponents.injectGlobal)(_templateObject);
+(0, _styledComponents.injectGlobal)(_templateObject, _style2.default);
 
-var App = function App(_ref) {
-  var children = _ref.children;
+var App = function App() {
+
+  window.scrollTo(0, 0);
+
+  (0, _styledComponents.injectGlobal)(_templateObject2, _default3.default.palette.grayscale[1]);
 
   return _react2.default.createElement(
-    _styledComponents.ThemeProvider,
-    { theme: _default3.default },
-    children
+    _MuiThemeProvider2.default,
+    null,
+    _react2.default.createElement(
+      _styledComponents.ThemeProvider,
+      { theme: _default3.default },
+      _react2.default.createElement(
+        _reactRouterDom.Switch,
+        null,
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _components.HomePage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login/signin', component: _components.LoginSigninPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login/signup', component: _components.LoginSignupPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login/recover', component: _components.LoginRecoverPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/static/about', component: _components.StaticPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/file/summary/:id', component: _components.FileSummaryPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/file/detail/:id', component: _components.FileDetailPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/file/search', component: _components.FileSearchPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/user/profile', component: _components.UserProfilePage }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/admin', component: (0, _auth.middleware)(_components.AdminPage, _components.NotFoundPage, ['admin']) }),
+        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/admin/users', component: _components.AdminUserPage }),
+        _react2.default.createElement(_reactRouterDom.Route, { component: _components.NotFoundPage })
+      )
+    )
   );
-};
-
-App.propTypes = {
-  children: _react.PropTypes.any
 };
 
 var _default = App;

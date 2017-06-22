@@ -1,0 +1,73 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\ntext-align: center;\npadding: 40px 0px;\n\nh3{\n  margin: 0;\n  color:#333;\n  font-weight: lighter;\n}\n.brand-logo{\n  font-size: 10em;\n}\n.login-content{\n  padding: 20px;\n  height: 100%;\n}\n.po{\n  height: 100% !important;\n}\n'], ['\n\ntext-align: center;\npadding: 40px 0px;\n\nh3{\n  margin: 0;\n  color:#333;\n  font-weight: lighter;\n}\n.brand-logo{\n  font-size: 10em;\n}\n.login-content{\n  padding: 20px;\n  height: 100%;\n}\n.po{\n  height: 100% !important;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React, { PropTypes } from 'react';
+import styled from 'styled-components';
+import Divider from 'material-ui/Divider';
+import Paper from 'material-ui/Paper';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import { IconLink, Link } from 'components';
+
+var Wrapper = styled.div(_templateObject);
+
+var LoginRecover = function (_React$Component) {
+  _inherits(LoginRecover, _React$Component);
+
+  function LoginRecover() {
+    _classCallCheck(this, LoginRecover);
+
+    return _possibleConstructorReturn(this, (LoginRecover.__proto__ || Object.getPrototypeOf(LoginRecover)).apply(this, arguments));
+  }
+
+  _createClass(LoginRecover, [{
+    key: 'render',
+    value: function render() {
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { xs: 10, sm: 6, md: 4, lg: 4, lgOffset: 4, mdOffset: 4, smOffset: 3, xsOffset: 1 },
+              React.createElement(
+                Paper,
+                { zDepth: 1, className: 'login-content animated fadeIn' },
+                React.createElement(IconLink, { to: '/', icon: 'catalogo', className: 'brand-logo' }),
+                React.createElement(
+                  'h3',
+                  null,
+                  'Recuperar contrase\xF1a'
+                ),
+                React.createElement(TextField, { hintText: 'Ingrese aqu\xED su correo electr\xF3nico', type: 'email', floatingLabelText: 'Ingrese su correo electr\xF3nico', fullWidth: true }),
+                React.createElement('br', null),
+                React.createElement('br', null),
+                React.createElement(RaisedButton, { label: 'Aceptar', primary: true, fullWidth: true })
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return LoginRecover;
+}(React.Component);
+
+export default LoginRecover;

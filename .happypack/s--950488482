@@ -1,0 +1,58 @@
+var _templateObject = _taggedTemplateLiteral(['\n\nposition: absolute;\nright: 0;\nbottom: 0;\nleft: 0;\npadding: 15px 0px;\nbackground-color: #212121;\ntext-align: center;\n\na{\n\tmargin:0px 5px;\n\tcolor:#f5f5f5;\n\ttext-decoration: none;\n}\n'], ['\n\nposition: absolute;\nright: 0;\nbottom: 0;\nleft: 0;\npadding: 15px 0px;\nbackground-color: #212121;\ntext-align: center;\n\na{\n\tmargin:0px 5px;\n\tcolor:#f5f5f5;\n\ttext-decoration: none;\n}\n']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import styled from 'styled-components';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+// import {Block, Footer} from 'components'
+// import { Footer } from 'react-materialize';
+
+import { Link } from 'components';
+
+var Wrapper = styled.footer(_templateObject);
+var FooterPage = function FooterPage(props) {
+  return React.createElement(
+    Wrapper,
+    null,
+    React.createElement(
+      Grid,
+      { fluid: true },
+      React.createElement(
+        Row,
+        null,
+        React.createElement(
+          Col,
+          { xs: 12, sm: 6, md: 6, lg: 6 },
+          React.createElement(
+            Link,
+            { to: 'static/about' },
+            'Sobre el Cat\xE1logo'
+          ),
+          '|',
+          React.createElement(
+            Link,
+            { to: 'static/about' },
+            'SIB Colombia'
+          ),
+          '|',
+          React.createElement(
+            Link,
+            { to: 'static/about' },
+            'T\xE9rminos'
+          )
+        ),
+        React.createElement(
+          Col,
+          { xs: 12, sm: 6, md: 6, lg: 6 },
+          React.createElement(
+            Link,
+            { to: 'static/about' },
+            'SIB Colombia'
+          )
+        )
+      )
+    )
+  );
+};
+export default FooterPage;

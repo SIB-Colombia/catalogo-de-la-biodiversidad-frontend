@@ -1,0 +1,203 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+import React, { PropTypes } from 'react';
+import Paper from 'material-ui/Paper';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import { SchemaForm, utils } from 'react-schema-form';
+import RcSelect from 'react-schema-form-rc-select/lib/RcSelect';
+
+import { PageTemplate, Header, Footer } from 'components';
+
+var FileDetailPage = function (_React$Component) {
+  _inherits(FileDetailPage, _React$Component);
+
+  function FileDetailPage(props) {
+    _classCallCheck(this, FileDetailPage);
+
+    var _this = _possibleConstructorReturn(this, (FileDetailPage.__proto__ || Object.getPrototypeOf(FileDetailPage)).call(this, props));
+
+    _this.state = {
+      id: null,
+      validationResult: {},
+      schema: {},
+      form: [],
+      model: {},
+      schemaJson: '',
+      formJson: ''
+    };
+    _this.onModelChange = _this.onModelChange.bind(_this);
+    _this.onValidate = _this.onValidate.bind(_this);
+    _this.onFormChange = _this.onFormChange.bind(_this);
+    _this.onSchemaChange = _this.onSchemaChange.bind(_this);
+    return _this;
+  }
+
+  _createClass(FileDetailPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {}
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+
+      this.setState({ id: this.props.params.id });
+
+      this.setState({
+        "schema": {
+          "type": "object",
+          "title": "Comment",
+          "properties": {
+            "name": {
+              "title": "Nombre",
+              "type": "string",
+              "default": "Leonardo R"
+            },
+            "email": {
+              "title": "Email",
+              "type": "string",
+              "pattern": "^\\S+@\\S+$",
+              "validationMessage": "Email must be of proper format: example@example",
+              "description": "Email will be used for evil."
+            },
+            "environment": {
+              "type": "string",
+              "title": "Environment",
+              "enum": ["LOCAL", "SIT1", "SIT2", "SIT3", "UAT1", "UAT2"]
+            },
+            "comment": {
+              "title": "Comment",
+              "type": "string",
+              "maxLength": 20,
+              "validationMessage": "Don't be greedy! 20 Characters max please :)",
+              "description": "Please write your comment here."
+            }
+          },
+          "required": ["name", "email", "comment"]
+        },
+        "form": ["name", "email", "environment", {
+          "key": "comment",
+          "type": "textarea",
+          "placeholder": "Make a comment"
+        }]
+
+      });
+    }
+  }, {
+    key: 'onModelChange',
+    value: function onModelChange(key, val) {
+      console.log('ExamplePage.onModelChange:', key, val);
+      var newModel = this.state.model;
+      utils.selectOrSet(key, newModel, val);
+      this.setState({ model: newModel });
+      console.log(this.state.model);
+    }
+  }, {
+    key: 'onValidate',
+    value: function onValidate() {
+      console.log('ExamplePage.onValidate is called');
+      var result = utils.validateBySchema(this.state.schema, this.state.model);
+      this.setState({ validationResult: result });
+    }
+  }, {
+    key: 'onFormChange',
+    value: function onFormChange(val) {
+      try {
+        var f = JSON.parse(val);
+        this.setState({ formJson: val, form: f });
+      } catch (e) {}
+    }
+  }, {
+    key: 'onSchemaChange',
+    value: function onSchemaChange() {
+      try {
+        var s = JSON.parse(val);
+        this.setState({ schemaJson: val, schema: s });
+      } catch (e) {}
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      var mapper = {
+        "rc-select": RcSelect
+      };
+
+      return React.createElement(
+        PageTemplate,
+        { header: React.createElement(Header, null), footer: React.createElement(Footer, null) },
+        React.createElement(
+          Grid,
+          null,
+          React.createElement(
+            Row,
+            null,
+            React.createElement(
+              Col,
+              { xs: 12 },
+              React.createElement(
+                Paper,
+                { style: {
+                    'padding': '20px'
+                  } },
+                React.createElement(
+                  'h3',
+                  null,
+                  'Schema:'
+                ),
+                React.createElement(
+                  'pre',
+                  null,
+                  JSON.stringify(this.state.schema, undefined, 2, 2)
+                ),
+                React.createElement(
+                  'h3',
+                  null,
+                  'Form:'
+                ),
+                React.createElement(
+                  'pre',
+                  null,
+                  JSON.stringify(this.state.form, undefined, 2, 2)
+                ),
+                React.createElement(SchemaForm, { schema: this.state.schema, form: this.state.form, model: this.state.model, onModelChange: this.onModelChange, mapper: mapper }),
+                ' ',
+                React.createElement(
+                  'h3',
+                  null,
+                  'Model:'
+                ),
+                React.createElement(
+                  'pre',
+                  null,
+                  JSON.stringify(this.state.model, undefined, 2, 2)
+                ),
+                React.createElement(
+                  'h3',
+                  null,
+                  'Validation:'
+                ),
+                React.createElement(RaisedButton, { primary: true, label: 'Validate', onTouchTap: this.onValidate }),
+                React.createElement(
+                  'pre',
+                  null,
+                  JSON.stringify(this.state.validationResult, undefined, 2, 2)
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileDetailPage;
+}(React.Component);
+
+export default FileDetailPage;

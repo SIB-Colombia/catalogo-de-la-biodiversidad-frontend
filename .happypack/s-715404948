@@ -1,0 +1,74 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fontSize = undefined;
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _templateObject = _taggedTemplateLiteral(['\n  display: inline-block;\n  font-size: ', ';\n  color: ', ';\n  width: 1em;\n  height: 1em;\n  margin: 0.1em;\n  box-sizing: border-box;\n\n  & > svg {\n    width: 100%;\n    height: 100%;\n    fill: currentcolor;\n    stroke: currentcolor;\n  }\n'], ['\n  display: inline-block;\n  font-size: ', ';\n  color: ', ';\n  width: 1em;\n  height: 1em;\n  margin: 0.1em;\n  box-sizing: border-box;\n\n  & > svg {\n    width: 100%;\n    height: 100%;\n    fill: currentcolor;\n    stroke: currentcolor;\n  }\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _styledTools = require('styled-tools');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var fontSize = exports.fontSize = function fontSize(_ref) {
+  var height = _ref.height;
+  return height ? height / 16 + 'rem' : '1.25em';
+};
+
+var Wrapper = _styledComponents2.default.span(_templateObject, fontSize, (0, _styledTools.ifProp)('palette', (0, _styledTheme.palette)({ grayscale: 0 }, 1), 'currentcolor'));
+
+var Icon = function Icon(_ref2) {
+  var icon = _ref2.icon,
+      props = _objectWithoutProperties(_ref2, ['icon']);
+
+  var svg = require('!raw-loader!./icons/' + icon + '.svg');
+  return _react2.default.createElement(Wrapper, _extends({}, props, { dangerouslySetInnerHTML: { __html: svg } }));
+};
+//
+// Icon.propTypes = {
+//   icon: PropTypes.string.isRequired,
+//   height: PropTypes.number,
+//   palette: PropTypes.string,
+//   reverse: PropTypes.bool,
+// }
+
+var _default = Icon;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(fontSize, 'fontSize', '/home/leo/htdocs/bio/src/components/atoms/Icon/index.js');
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/bio/src/components/atoms/Icon/index.js');
+
+  __REACT_HOT_LOADER__.register(Icon, 'Icon', '/home/leo/htdocs/bio/src/components/atoms/Icon/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/atoms/Icon/index.js');
+}();
+
+;

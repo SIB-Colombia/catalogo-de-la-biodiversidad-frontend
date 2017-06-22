@@ -1,0 +1,200 @@
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n\n.box-search{\n  margin-top: 8px;\n}\n'], ['\n\n.box-search{\n  margin-top: 8px;\n}\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// https://github.com/diegohaz/arc/wiki/Atomic-Design
+import React from 'react';
+import styled from 'styled-components';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import SelectField from 'material-ui/SelectField';
+import TextField from 'material-ui/TextField';
+import MenuItem from 'material-ui/MenuItem';
+import Checkbox from 'material-ui/Checkbox';
+import Subheader from 'material-ui/Subheader';
+import DatePicker from 'material-ui/DatePicker';
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
+
+var Wrapper = styled.div(_templateObject);
+
+var HeaderSearchAdvance = function (_React$Component) {
+  _inherits(HeaderSearchAdvance, _React$Component);
+
+  function HeaderSearchAdvance(props) {
+    _classCallCheck(this, HeaderSearchAdvance);
+
+    var _this = _possibleConstructorReturn(this, (HeaderSearchAdvance.__proto__ || Object.getPrototypeOf(HeaderSearchAdvance)).call(this, props));
+
+    _this.handleChange = function (event, index, value) {
+      _this.setState({ value: value });
+    };
+
+    _this.state = {
+      value: 1
+    };
+
+    return _this;
+  }
+
+  _createClass(HeaderSearchAdvance, [{
+    key: 'render',
+    value: function render() {
+      var items = [];
+      for (var i = 0; i < 10; i++) {
+        items.push(React.createElement(MenuItem, { value: i, key: i, primaryText: 'Fichas ' + i }));
+      }
+
+      return React.createElement(
+        Wrapper,
+        null,
+        React.createElement(
+          Row,
+          { className: 'box-search' },
+          React.createElement(
+            Col,
+            { xs: 12, sm: 12, md: 12, lg: 2 },
+            React.createElement(
+              SelectField,
+              { fullWidth: true, value: this.state.value, onChange: this.handleChange, maxHeight: 200 },
+              items
+            )
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 12, md: 12, lg: 10 },
+            React.createElement(TextField, { hintText: 'Buscar...', fullWidth: true })
+          )
+        ),
+        React.createElement(
+          Row,
+          null,
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 3, lg: 3 },
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Grupo biol\xF3gico', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            )
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 3, lg: 3 },
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Departamentos', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            )
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 3, lg: 3 },
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Ecosistema', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            )
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 3, lg: 3 },
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Estado de amenaza', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            )
+          )
+        ),
+        React.createElement('br', null),
+        React.createElement(
+          Row,
+          null,
+          React.createElement(
+            Subheader,
+            null,
+            'Mostrar'
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 6, lg: 6 },
+            React.createElement(Checkbox, { label: 'Salvaje' }),
+            React.createElement(Checkbox, { label: 'En cautividad' }),
+            React.createElement(Checkbox, { label: 'Verificable' }),
+            React.createElement(Checkbox, { label: 'Grado de investigaci\xF3n' }),
+            React.createElement(Checkbox, { label: 'Necesita identificador' })
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 6, lg: 6 },
+            React.createElement(Checkbox, { label: 'Amenazado' }),
+            React.createElement(Checkbox, { label: 'Introducida' }),
+            React.createElement(Checkbox, { label: 'Popular' }),
+            React.createElement(Checkbox, { label: 'Tiene sonidos' }),
+            React.createElement(Checkbox, { label: 'Tiene Fotos' })
+          )
+        ),
+        React.createElement(
+          Row,
+          null,
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 6, lg: 6 },
+            React.createElement(
+              Subheader,
+              null,
+              'Revisada'
+            ),
+            React.createElement(
+              RadioButtonGroup,
+              { name: 'shipSpeed', defaultSelected: 'not_light' },
+              React.createElement(RadioButton, { value: 'indiferente', label: 'Cualquiera' }),
+              React.createElement(RadioButton, { value: 'si', label: 'S\xED' }),
+              React.createElement(RadioButton, { value: 'no', label: 'No' })
+            ),
+            React.createElement('br', null),
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Rango', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            ),
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Ordenado por', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            )
+          ),
+          React.createElement(
+            Col,
+            { xs: 12, sm: 6, md: 6, lg: 6 },
+            React.createElement(TextField, { floatingLabelText: 'Persona', fullWidth: true }),
+            React.createElement(TextField, { floatingLabelText: 'Proyecto', fullWidth: true }),
+            React.createElement(DatePicker, { floatingLabelText: 'Fecha observaci\xF3n', mode: 'landscape', fullWidth: true }),
+            React.createElement(
+              SelectField,
+              { fullWidth: true, floatingLabelText: 'Licencia', value: this.state.value, onChange: this.handleChange },
+              React.createElement(MenuItem, { value: 1, primaryText: 'Opci\xF3n 1' }),
+              React.createElement(MenuItem, { value: 2, primaryText: 'Opci\xF3n 2' })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return HeaderSearchAdvance;
+}(React.Component);
+
+export default HeaderSearchAdvance;

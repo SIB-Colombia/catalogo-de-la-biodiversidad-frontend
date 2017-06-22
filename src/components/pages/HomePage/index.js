@@ -1,17 +1,20 @@
-import React, {PropTypes} from 'react';
-import config from '../../config';
-import fetch from 'isomorphic-fetch';
-import {Row, Col, ProgressBar} from 'react-materialize';
+import React from 'react';
 import {
   PageTemplate,
   Header,
-  Hero,
   Footer,
-  FileList,
-  CategoryList,
-  GroupList,
-  CommunityList
-} from 'components'
+  HomeCarousel,
+  FileCarousel,
+  CategoryCarousel,
+  GroupCarousel,
+  CommunityCarousel,
+  HomePrinciples,
+  HomeCommunity,
+  HomeJoin,
+  HomeFooter
+} from 'components';
+
+import * as FileService from '../../../services/FileService';
 
 class HomePage extends React.Component {
 
@@ -19,70 +22,38 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       files: [],
-      categories: [],
-      groups: [],
-      communities: []
+      value: 1,
+      user: null
     }
-  }
 
-  componentDidMount() {
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
-    document.title = 'Inicio';
   }
+  componentDidMount() {}
 
   componentWillMount() {
 
-    var options = {
-      method: 'GET',
-      // mode: 'cors',
-      // headers: new Headers({
-      // 'Authorization': 'bearer example'
-      // })
-    };
-
-    fetch(`${config.server}/api/hello/home`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({files: data})
-    })
-
-    fetch(`${config.server}/api/hello/home`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({categories: data})
-    })
-
-    fetch(`${config.server}/api/hello/home`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({groups: data})
-    })
-
-    fetch(`${config.server}/api/hello/home`, options).then((response) => {
-      return response.json()
-    }).then((data) => {
-      this.setState({communities: data})
+    // console.log(this.props.location.pathname);
+    FileService.getLastUpdatedRecords().then(data => {
+      this.setState({files: data});
+    }).catch(err => {
+      console.log(err);
     })
   }
+
+  handleChange = (event, index, value) => this.setState({value});
+
   render() {
+
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
-        <Hero/> {this.state.files.length > 0
-          ? <FileList data={this.state.files}/>
-          : <div>Cargando Fichas....
-            <ProgressBar/></div>}
-        {this.state.categories.length > 0
-          ? <CategoryList data={this.state.categories}/>
-          : <div>Cargando Categorías....
-            <ProgressBar/></div>}
-        {this.state.groups.length > 0
-          ? <GroupList data={this.state.groups}/>
-          : <div>Cargando Grupos....
-            <ProgressBar/></div>}
-        {this.state.communities.length > 0
-          ? <CommunityList data={this.state.communities}/>
-          : <div>Cargando Comunidad....
-            <ProgressBar/></div>}
+        {this.state.files.length > 0 && <HomeCarousel/>}
+        <CategoryCarousel/>
+        {this.state.files.length > 0 && <FileCarousel data={this.state.files} title="Fichas recientes"/>}<br/>
+        <HomePrinciples/>
+        <HomeCommunity />
+        <HomeJoin />
+        {/* <HomeFooter /> */}
+        {/* {this.state.files.length > 0 && <GroupCarousel data={this.state.files}/>} */}
+        {/* {this.state.files.length > 0 && <CommunityCarousel data={this.state.files}/>} */}
       </PageTemplate>
     )
   }

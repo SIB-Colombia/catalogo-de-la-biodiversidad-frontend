@@ -1,0 +1,31 @@
+var _templateObject = _taggedTemplateLiteral(['\n  display: flex;\n  flex-direction: column;\n  padding-top: 3.75rem;\n  min-height: 100vh;\n  box-sizing: border-box;\n'], ['\n  display: flex;\n  flex-direction: column;\n  padding-top: 3.75rem;\n  min-height: 100vh;\n  box-sizing: border-box;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n'], ['\n  width: 100%;\n  box-sizing: border-box;\n  margin: 2rem auto;\n  max-width: 920px;\n']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+var Wrapper = styled.div(_templateObject);
+
+var Content = styled.section(_templateObject2);
+
+var GenericTemplate = function GenericTemplate(_ref) {
+  var children = _ref.children,
+      props = _objectWithoutProperties(_ref, ['children']);
+
+  return React.createElement(
+    Wrapper,
+    props,
+    React.createElement(
+      Content,
+      null,
+      children
+    )
+  );
+};
+
+export default GenericTemplate;

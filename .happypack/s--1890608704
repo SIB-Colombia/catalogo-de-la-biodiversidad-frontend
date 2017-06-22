@@ -10,17 +10,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _config = require('../../config');
-
-var _config2 = _interopRequireDefault(_config);
-
-var _isomorphicFetch = require('isomorphic-fetch');
-
-var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
-
-var _reactMaterialize = require('react-materialize');
-
 var _components = require('components');
+
+var _FileService = require('../../../services/FileService');
+
+var FileService = _interopRequireWildcard(_FileService);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,86 +34,53 @@ var HomePage = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (HomePage.__proto__ || Object.getPrototypeOf(HomePage)).call(this, props));
 
+    _this.handleChange = function () {
+      return _this.__handleChange__REACT_HOT_LOADER__.apply(_this, arguments);
+    };
+
     _this.state = {
       files: [],
-      categories: [],
-      groups: [],
-      communities: []
+      value: 1,
+      user: null
     };
+
     return _this;
   }
 
   _createClass(HomePage, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {
-      $('.carousel.carousel-slider').carousel({ fullWidth: true });
-      document.title = 'Inicio';
-    }
+    value: function componentDidMount() {}
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
       var _this2 = this;
 
-      var options = {
-        method: 'GET'
-      };
-
-      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
-        return response.json();
-      }).then(function (data) {
+      // console.log(this.props.location.pathname);
+      FileService.getLastUpdatedRecords().then(function (data) {
         _this2.setState({ files: data });
+      }).catch(function (err) {
+        console.log(err);
       });
-
-      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.setState({ categories: data });
-      });
-
-      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.setState({ groups: data });
-      });
-
-      (0, _isomorphicFetch2.default)(_config2.default.server + '/api/hello/home', options).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this2.setState({ communities: data });
-      });
+    }
+  }, {
+    key: '__handleChange__REACT_HOT_LOADER__',
+    value: function __handleChange__REACT_HOT_LOADER__(event, index, value) {
+      return this.setState({ value: value });
     }
   }, {
     key: 'render',
     value: function render() {
+
       return _react2.default.createElement(
         _components.PageTemplate,
         { header: _react2.default.createElement(_components.Header, null), footer: _react2.default.createElement(_components.Footer, null) },
-        _react2.default.createElement(_components.Hero, null),
-        ' ',
-        this.state.files.length > 0 ? _react2.default.createElement(_components.FileList, { data: this.state.files }) : _react2.default.createElement(
-          'div',
-          null,
-          'Cargando Fichas....',
-          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
-        ),
-        this.state.categories.length > 0 ? _react2.default.createElement(_components.CategoryList, { data: this.state.categories }) : _react2.default.createElement(
-          'div',
-          null,
-          'Cargando Categor\xEDas....',
-          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
-        ),
-        this.state.groups.length > 0 ? _react2.default.createElement(_components.GroupList, { data: this.state.groups }) : _react2.default.createElement(
-          'div',
-          null,
-          'Cargando Grupos....',
-          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
-        ),
-        this.state.communities.length > 0 ? _react2.default.createElement(_components.CommunityList, { data: this.state.communities }) : _react2.default.createElement(
-          'div',
-          null,
-          'Cargando Comunidad....',
-          _react2.default.createElement(_reactMaterialize.ProgressBar, null)
-        )
+        this.state.files.length > 0 && _react2.default.createElement(_components.HomeCarousel, null),
+        _react2.default.createElement(_components.CategoryCarousel, null),
+        this.state.files.length > 0 && _react2.default.createElement(_components.FileCarousel, { data: this.state.files, title: 'Fichas recientes' }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(_components.HomePrinciples, null),
+        _react2.default.createElement(_components.HomeCommunity, null),
+        _react2.default.createElement(_components.HomeJoin, null)
       );
     }
   }]);

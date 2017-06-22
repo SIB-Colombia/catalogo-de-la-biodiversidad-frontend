@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\nh5{\n  padding: 10px 0px;\n  font-weight: bold;\n}\n.material-placeholder{\n\n  display:inline-block !important;\n  margin:2px 5px;\n}\n'], ['\nh5{\n  padding: 10px 0px;\n  font-weight: bold;\n}\n.material-placeholder{\n\n  display:inline-block !important;\n  margin:2px 5px;\n}\n']);
+var _templateObject = _taggedTemplateLiteral(['\n.cc{\n  svg{\n    line-height: 0;\n    vertical-align: middle;\n    margin-right: 3px;\n    margin-top: -3px;\n  }\n  .i-social{\n    svg{\n      color: #316971 !important;\n    }\n  }\n}\n.cursive{\n  font-style: italic;\n}\n.box{\n  margin-bottom: 1rem;\n}\n'], ['\n.cc{\n  svg{\n    line-height: 0;\n    vertical-align: middle;\n    margin-right: 3px;\n    margin-top: -3px;\n  }\n  .i-social{\n    svg{\n      color: #316971 !important;\n    }\n  }\n}\n.cursive{\n  font-style: italic;\n}\n.box{\n  margin-bottom: 1rem;\n}\n']);
 
 var _react = require('react');
 
@@ -20,7 +20,69 @@ var _styledTheme = require('styled-theme');
 
 var _components = require('components');
 
-var _reactMaterialize = require('react-materialize');
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _List = require('material-ui/List');
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _Tabs = require('material-ui/Tabs');
+
+var _Slider = require('material-ui/Slider');
+
+var _Slider2 = _interopRequireDefault(_Slider);
+
+var _Avatar = require('material-ui/Avatar');
+
+var _Avatar2 = _interopRequireDefault(_Avatar);
+
+var _Subheader = require('material-ui/Subheader');
+
+var _Subheader2 = _interopRequireDefault(_Subheader);
+
+var _assignment = require('material-ui/svg-icons/action/assignment');
+
+var _assignment2 = _interopRequireDefault(_assignment);
+
+var _insertChart = require('material-ui/svg-icons/editor/insert-chart');
+
+var _insertChart2 = _interopRequireDefault(_insertChart);
+
+var _copyright = require('material-ui/svg-icons/action/copyright');
+
+var _copyright2 = _interopRequireDefault(_copyright);
+
+var _info = require('material-ui/svg-icons/action/info');
+
+var _info2 = _interopRequireDefault(_info);
+
+var _Table = require('material-ui/Table');
+
+var _IconButton = require('material-ui/IconButton');
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
+var _reactSlick = require('react-slick');
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
+
+var _reactTooltip = require('react-tooltip');
+
+var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -32,194 +94,516 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var Wrapper = (0, _styledComponents2.default)(_components.Block)(_templateObject);
+var CarouselPreview = require('react-responsive-carousel').Carousel;
+
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
 
 var FileSummary = function (_React$Component) {
   _inherits(FileSummary, _React$Component);
 
-  function FileSummary() {
+  function FileSummary(props) {
     _classCallCheck(this, FileSummary);
 
-    return _possibleConstructorReturn(this, (FileSummary.__proto__ || Object.getPrototypeOf(FileSummary)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (FileSummary.__proto__ || Object.getPrototypeOf(FileSummary)).call(this, props));
   }
 
   _createClass(FileSummary, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      $('.materialboxed').materialbox();
+    key: 'getCommonNames',
+    value: function getCommonNames() {
+      try {
+        return this.props.complete.commonNamesAtomizedApprovedInUse.commonNamesAtomized;
+      } catch (err) {
+        return [];
+      }
+    }
+  }, {
+    key: 'getTaxo',
+    value: function getTaxo() {
+      try {
+        return this.props.complete.hierarchyApprovedInUse.hierarchy[0];
+      } catch (err) {
+        return 'Sin información';
+      }
+    }
+  }, {
+    key: 'getAbstract',
+    value: function getAbstract() {
+      try {
+        return this.props.complete.abstractApprovedInUse.abstract;
+      } catch (err) {
+        return 'Sin información';
+      }
+    }
+  }, {
+    key: 'getHabitat',
+    value: function getHabitat() {
+      try {
+        return this.props.complete.habitatsApprovedInUse.habitats.habitatUnstructured;
+      } catch (err) {
+        return 'Sin información';
+      }
+    }
+
+    // componentDidMount() {
+    //   var event = document.createEvent('HTMLEvents');
+    //   event.initEvent('resize', true, false);
+    //   setTimeout(function() {
+    //     window.dispatchEvent(event);
+    //   }, 500);
+    // }
+
+  }, {
+    key: 'changeTab',
+    value: function changeTab(tab) {
+
+      console.log(tab.props['data-route']);
     }
   }, {
     key: 'render',
     value: function render() {
 
-      var settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        draggable: false,
-        centerMode: true,
-        responsive: [{
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1
-          }
-        }, {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 2
-          }
-        }, {
-          breakpoint: 2000,
-          settings: {
-            slidesToShow: 4
-          }
-        }, {
-          breakpoint: 100000,
-          settings: 'unslick'
-        }]
-      };
+      var background = ['i3.jpg', 'i2.jpg', 'i1.jpg', 'i4.jpg', 'i5.jpg'];
+
       return _react2.default.createElement(
         Wrapper,
-        { className: '' },
+        null,
         _react2.default.createElement(
-          _reactMaterialize.Row,
+          _reactFlexboxGrid.Row,
           null,
           _react2.default.createElement(
-            _reactMaterialize.Col,
-            { l: 12 },
+            _reactFlexboxGrid.Col,
+            { xs: 12, lg: 8 },
             _react2.default.createElement(
-              'h5',
-              { className: 'cyan-text text-darken-4' },
-              'Im\xE1genes'
-            ),
-            _react2.default.createElement(
-              'center',
+              _reactFlexboxGrid.Row,
               null,
-              this.props.data.images.map(function (record, i) {
-                return _react2.default.createElement('img', { width: '150', key: i, className: 'materialboxed', 'data-caption': 'Autor: ' + record.author, src: record.url });
-              })
-            )
-          ),
-          _react2.default.createElement(
-            _reactMaterialize.Col,
-            { l: 8, m: 12, s: 12 },
-            _react2.default.createElement(
-              'h5',
-              { className: 'cyan-text text-darken-4' },
-              'Nombres Comunes'
-            ),
-            this.props.data.names.map(function (record, i) {
-              return _react2.default.createElement(
-                _reactMaterialize.Col,
-                { s: 6, key: i },
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
                 _react2.default.createElement(
-                  'div',
-                  null,
-                  record.title
-                ),
-                _react2.default.createElement(
-                  'div',
-                  null,
-                  record.description
-                ),
-                _react2.default.createElement('br', null)
-              );
-            }),
-            _react2.default.createElement(
-              'h5',
-              { className: 'cyan-text text-darken-4' },
-              'Distribuci\xF3n'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              'Mapa de registro publicados'
-            ),
-            _react2.default.createElement('img', { src: 'https://assets.metrolatam.com/co/2015/03/20/captura-de-pantalla-2015-03-20-a-las-12-42-23-1200x600.jpg', className: 'responsive-img' })
-          ),
-          _react2.default.createElement(
-            _reactMaterialize.Col,
-            { l: 4 },
-            _react2.default.createElement(
-              'h5',
-              { className: 'cyan-text text-darken-4' },
-              'Editores'
-            ),
-            this.props.data.editors.map(function (record, i) {
-              return _react2.default.createElement(
-                'div',
-                { className: 'center-align', key: i },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'chip' },
-                  _react2.default.createElement('img', { src: record.url, alt: 'Contact Person' }),
-                  ' ',
-                  record.name
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
+                  _react2.default.createElement(
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-3' },
+                    'Im\xE1genes'
+                  ),
+                  _react2.default.createElement(
+                    CarouselPreview,
+                    { showArrows: true, dynamicHeight: true },
+                    background.map(function (record, i) {
+                      return _react2.default.createElement(
+                        'div',
+                        { key: i },
+                        _react2.default.createElement('img', { className: '', src: '/demo/' + record }),
+                        _react2.default.createElement(
+                          'p',
+                          { className: 'legend' },
+                          'Autor: Ejemplo ',
+                          i
+                        )
+                      );
+                    })
+                  )
                 )
-              );
-            }),
-            _react2.default.createElement(
-              'h5',
-              { className: 'cyan-text text-darken-4' },
-              'Actividad reciente'
+              )
             ),
             _react2.default.createElement(
-              'ul',
-              { className: 'collection' },
-              this.props.data.activity.map(function (record, i) {
-                return _react2.default.createElement(
-                  'li',
-                  { key: i, className: 'collection-item avatar' },
-                  _react2.default.createElement('img', { src: record.url, className: 'circle' }),
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 t100 align-justify title-xxs color-text box' },
+                  this.getAbstract(),
+                  '...'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'align-center' },
+                  _react2.default.createElement(_FlatButton2.default, { fullWidth: true, label: 'Ver m\xE1s', primary: true })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
                   _react2.default.createElement(
-                    'span',
-                    { className: 'title' },
-                    record.name
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-3' },
+                    'Observaciones'
                   ),
                   _react2.default.createElement(
-                    'p',
-                    null,
-                    record.description,
-                    _react2.default.createElement('br', null),
-                    ' ',
-                    record.description
+                    'div',
+                    { className: 'align-center' },
+                    _react2.default.createElement(
+                      _Paper2.default,
+                      { zDepth: 2 },
+                      _react2.default.createElement(_components.HumboldtMap, null)
+                    )
                   )
-                );
-              })
+                )
+              )
             ),
             _react2.default.createElement(
-              'h5',
-              { className: 'cyan-text text-darken-4' },
-              'Grupos'
-            ),
-            _react2.default.createElement(
-              'ul',
-              { className: 'collection' },
-              this.props.data.groups.map(function (record, i) {
-                return _react2.default.createElement(
-                  'li',
-                  { key: i, className: 'collection-item avatar' },
-                  _react2.default.createElement('img', { src: record.url, className: 'circle' }),
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3' },
                   _react2.default.createElement(
-                    'span',
-                    { className: 'title' },
-                    record.name
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-3' },
+                    'Distribuci\xF3n (Descripci\xF3n general de la distribuci\xF3n)'
                   ),
                   _react2.default.createElement(
-                    'p',
-                    null,
-                    record.description,
-                    _react2.default.createElement('br', null),
-                    ' ',
-                    record.description
+                    'div',
+                    { className: 'align-justify t100 color-text' },
+                    _react2.default.createElement(
+                      'span',
+                      { className: 'color-basescale-3 t400' },
+                      'Habitat:'
+                    ),
+                    this.getHabitat()
                   )
-                );
-              })
+                )
+              )
             )
+          ),
+          _react2.default.createElement(
+            _reactFlexboxGrid.Col,
+            { xs: 12, lg: 4 },
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-2 cc box' },
+                  _react2.default.createElement(
+                    _reactFlexboxGrid.Row,
+                    null,
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { xs: 6, sm: 6, md: 6, lg: 6, className: 'align-left' },
+                      _react2.default.createElement(_copyright2.default, null),
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'i-cc' },
+                        'CC - BY - 0'
+                      )
+                    ),
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Col,
+                      { xs: 6, sm: 6, md: 6, lg: 6, className: 'align-right' },
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'i-social' },
+                        _react2.default.createElement(_info2.default, null)
+                      ),
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'i-social' },
+                        _react2.default.createElement(_info2.default, null)
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
+                  _react2.default.createElement(
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-2' },
+                    'Nombres comunes'
+                  ),
+                  this.getCommonNames().map(function (record, i) {
+                    return _react2.default.createElement(
+                      'li',
+                      { className: 'color-basescale-3 title-xxs align-left', key: i, 'data-tip': record.language },
+                      record.name
+                    );
+                  })
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
+                  _react2.default.createElement(
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-2' },
+                    'Taxonom\xEDa'
+                  ),
+                  _react2.default.createElement(
+                    _Table.Table,
+                    { className: 'tb-color-base-scale-3' },
+                    _react2.default.createElement(
+                      _Table.TableBody,
+                      { displayRowCheckbox: false },
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'Reino'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          this.getTaxo().kingdom
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'Phylum'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          this.getTaxo().phylum
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'Clase'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          this.getTaxo().classHierarchy
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'Orden'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          this.getTaxo().order
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'Familia'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          this.getTaxo().family
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'G\xE9nero'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          this.getTaxo().genus
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _Table.TableRow,
+                        null,
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          null,
+                          _react2.default.createElement(
+                            'b',
+                            null,
+                            'Especie'
+                          )
+                        ),
+                        _react2.default.createElement(
+                          _Table.TableRowColumn,
+                          { className: 'cursive' },
+                          this.getTaxo().parentTaxon
+                        )
+                      )
+                    )
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
+                  _react2.default.createElement(
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-2' },
+                    'Editores'
+                  ),
+                  _react2.default.createElement(
+                    _List.List,
+                    null,
+                    _react2.default.createElement(_List.ListItem, { primaryText: 'Chelsea Otakan', leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar3.png' }) }),
+                    _react2.default.createElement(_List.ListItem, { primaryText: 'James Anderson', leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar4.png' }) })
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
+                  _react2.default.createElement(
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-2' },
+                    'Actividad reciente'
+                  ),
+                  _react2.default.createElement(
+                    _List.List,
+                    null,
+                    _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar.png' }), primaryText: 'Brunch this weekend?', secondaryText: _react2.default.createElement(
+                        'p',
+                        null,
+                        ' ',
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'color-it' },
+                          'Brendan Lim'
+                        ),
+                        ' - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch ? '
+                      ), secondaryTextLines: 2 }),
+                    _react2.default.createElement(_Divider2.default, { inset: true }),
+                    _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar3.png' }), primaryText: _react2.default.createElement(
+                        'p',
+                        null,
+                        ' Summer BBQ ',
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'color-it-light' },
+                          ' 4 '
+                        )
+                      ), secondaryText: _react2.default.createElement(
+                        'p',
+                        null,
+                        ' ',
+                        _react2.default.createElement(
+                          'span',
+                          { className: 'color-it' },
+                          'to me, Scott, Jennifer'
+                        ),
+                        '--Wish I could come, but I & apos; m out of town this weekend. '
+                      ), secondaryTextLines: 2 })
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Paper2.default,
+                  { zDepth: 1, className: 'paper-padding-3 box' },
+                  _react2.default.createElement(
+                    _components.TitleSection,
+                    { lighter: 600, className: 'padding-bottom-2' },
+                    'Colecciones en l\xEDnea'
+                  ),
+                  _react2.default.createElement(
+                    _List.List,
+                    null,
+                    _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { icon: _react2.default.createElement(_assignment2.default, null),
+                        backgroundColor: '#333' }), primaryText: 'Aves de Colombia', secondaryText: 'Jan 20, 2014' }),
+                    _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { icon: _react2.default.createElement(_insertChart2.default, null),
+                        backgroundColor: '#333' }), primaryText: 'Aves de Colombia', secondaryText: 'Jan 10, 2014' })
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement('br', null)
           )
-        )
+        ),
+        _react2.default.createElement(_reactTooltip2.default, null)
       );
     }
   }]);
@@ -235,6 +619,8 @@ var _temp = function () {
   if (typeof __REACT_HOT_LOADER__ === 'undefined') {
     return;
   }
+
+  __REACT_HOT_LOADER__.register(CarouselPreview, 'CarouselPreview', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSummary/index.js');
 
   __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/FileSummary/index.js');
 

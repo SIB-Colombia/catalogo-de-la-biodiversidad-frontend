@@ -1,25 +1,27 @@
-import React from 'react'
-import {render} from 'react-dom'
-import {AppContainer} from 'react-hot-loader'
-import {createHistory} from 'history'
-import {Router, useRouterHistory} from 'react-router'
+import 'react-hot-loader/patch';
+import React from 'react';
+import {render} from 'react-dom';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
-import routes from 'routes'
+import {BrowserRouter} from 'react-router-dom';
 
-const root = document.getElementById('app')
-const history = useRouterHistory(createHistory)({basename: process.env.PUBLIC_PATH})
+import {basename} from 'config';
+import App from 'components/App';
+
 
 const renderApp = () => (
-  <AppContainer>
-    <Router key={Math.random()} history={history} routes={routes}/>
-  </AppContainer>
-)
+  <BrowserRouter basename={basename}>
+    <App/>
+  </BrowserRouter>
+);
 
-render(renderApp(), root)
+const root = document.getElementById('app');
+render(renderApp(), root);
 
 if (module.hot) {
-  module.hot.accept('routes', () => {
-    require('routes')
-    render(renderApp(), root)
+  module.hot.accept('components/App', () => {
+    require('components/App');
+    render(renderApp(), root);
   })
 }

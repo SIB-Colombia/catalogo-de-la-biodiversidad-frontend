@@ -1,0 +1,132 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.perpendicularAxis = exports.perpendicularOpposite = exports.perpendicular = exports.opposite = undefined;
+
+var _templateObject = _taggedTemplateLiteral(['\n  position: relative;\n\n  &:before,\n  &:after {\n    position: absolute;\n    pointer-events: none;\n    display: block;\n    opacity: 0;\n    transition: opacity 100ms ease-in-out, ', ' 100ms ease-in-out;\n    will-change: ', ';\n  }\n\n  &:hover:before,\n  &:focus:before {\n    opacity: 1;\n    ', ': calc(100% + 1rem);\n  }\n\n  &:hover:after,\n  &:focus:after {\n    opacity: 1;\n    ', ': 100%;\n  }\n\n  &:before {\n    content: attr(data-title);\n    font-family: ', ';\n    white-space: nowrap;\n    text-transform: none;\n    font-size: 0.8125rem;\n    line-height: 1.5;\n    text-align: center;\n    color: ', ';\n    background-color: ', ';\n    border-radius: 0.15384em;\n    padding: 0.75em 1em;\n    ', ': calc(100% + 2rem);\n    ', '\n  }\n\n  &:after {\n    ', ': calc(100% + 1rem);\n    ', ': 50%;\n    border: solid transparent;\n    content: \'\';\n    height: 0;\n    width: 0;\n    border-', '-color: ', ';\n    border-width: 0.5rem;\n    margin-', ': -0.5rem;\n  }\n'], ['\n  position: relative;\n\n  &:before,\n  &:after {\n    position: absolute;\n    pointer-events: none;\n    display: block;\n    opacity: 0;\n    transition: opacity 100ms ease-in-out, ', ' 100ms ease-in-out;\n    will-change: ', ';\n  }\n\n  &:hover:before,\n  &:focus:before {\n    opacity: 1;\n    ', ': calc(100% + 1rem);\n  }\n\n  &:hover:after,\n  &:focus:after {\n    opacity: 1;\n    ', ': 100%;\n  }\n\n  &:before {\n    content: attr(data-title);\n    font-family: ', ';\n    white-space: nowrap;\n    text-transform: none;\n    font-size: 0.8125rem;\n    line-height: 1.5;\n    text-align: center;\n    color: ', ';\n    background-color: ', ';\n    border-radius: 0.15384em;\n    padding: 0.75em 1em;\n    ', ': calc(100% + 2rem);\n    ', '\n  }\n\n  &:after {\n    ', ': calc(100% + 1rem);\n    ', ': 50%;\n    border: solid transparent;\n    content: \'\';\n    height: 0;\n    width: 0;\n    border-', '-color: ', ';\n    border-width: 0.5rem;\n    margin-', ': -0.5rem;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n          ', ': 0;\n        '], ['\n          ', ': 0;\n        ']),
+    _templateObject3 = _taggedTemplateLiteral(['\n          ', ': 50%;\n          transform: translate', '(-50%);\n        '], ['\n          ', ': 50%;\n          transform: translate', '(-50%);\n        ']),
+    _templateObject4 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _styledTheme = require('styled-theme');
+
+var _styledTools = require('styled-tools');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var opposites = {
+  top: 'bottom',
+  right: 'left',
+  bottom: 'top',
+  left: 'right'
+};
+
+var opposite = exports.opposite = function opposite(_ref) {
+  var position = _ref.position;
+  return opposites[position];
+};
+
+var perpendicular = exports.perpendicular = function perpendicular(_ref2) {
+  var position = _ref2.position;
+  return position === 'left' || position === 'right' ? 'top' : 'left';
+};
+
+var perpendicularOpposite = exports.perpendicularOpposite = function perpendicularOpposite(props) {
+  return opposites[perpendicular(props)];
+};
+
+var perpendicularAxis = exports.perpendicularAxis = function perpendicularAxis(_ref3) {
+  var position = _ref3.position;
+  return position === 'left' || position === 'right' ? 'Y' : 'X';
+};
+
+var backgroundColor = (0, _styledTools.ifProp)('reverse', 'rgba(255, 255, 255, 0.85)', 'rgba(0, 0, 0, 0.85)');
+
+var styles = (0, _styledComponents.css)(_templateObject, opposite, opposite, opposite, opposite, (0, _styledTheme.font)('primary'), (0, _styledTools.ifProp)('reverse', 'black', 'white'), backgroundColor, opposite, function (_ref4) {
+  var align = _ref4.align;
+
+  switch (align) {
+    case 'start':
+      return (0, _styledComponents.css)(_templateObject2, perpendicular);
+    case 'center':
+      return (0, _styledComponents.css)(_templateObject3, perpendicular, perpendicularAxis);
+    default:
+      return (0, _styledComponents.css)(_templateObject2, perpendicularOpposite);
+  }
+}, opposite, perpendicular, function (_ref5) {
+  var position = _ref5.position;
+  return position;
+}, backgroundColor, perpendicular);
+
+var Tooltip = (0, _styledComponents2.default)(function (_ref6) {
+  var position = _ref6.position,
+      align = _ref6.align,
+      reverse = _ref6.reverse,
+      children = _ref6.children,
+      theme = _ref6.theme,
+      props = _objectWithoutProperties(_ref6, ['position', 'align', 'reverse', 'children', 'theme']);
+
+  return _react2.default.cloneElement(children, props);
+})(_templateObject4, styles);
+
+Tooltip.propTypes = {
+  position: _propTypes2.default.oneOf(['top', 'right', 'bottom', 'left']),
+  align: _propTypes2.default.oneOf(['start', 'center', 'end']),
+  reverse: _propTypes2.default.bool,
+  'data-title': _propTypes2.default.string.isRequired,
+  children: _propTypes2.default.element.isRequired
+};
+
+Tooltip.defaultProps = {
+  position: 'top',
+  align: 'center',
+  tabIndex: 0
+};
+
+var _default = Tooltip;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(opposites, 'opposites', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(opposite, 'opposite', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(perpendicular, 'perpendicular', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(perpendicularOpposite, 'perpendicularOpposite', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(perpendicularAxis, 'perpendicularAxis', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(backgroundColor, 'backgroundColor', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(styles, 'styles', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(Tooltip, 'Tooltip', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/atoms/Tooltip/index.js');
+}();
+
+;

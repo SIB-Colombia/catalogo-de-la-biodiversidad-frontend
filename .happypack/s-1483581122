@@ -1,0 +1,448 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\npadding-top: 120px;\n\n.map{\n  padding: 20px;\n  img{\n    width: 100%;\n\n  }\n}\nh3{\n  text-align: center;\n  margin: 0;\n  color:#444;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.main-title{\n  text-align: left;\n  color: white;\n  font-size: 43px;\n  text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;\n\n}\n.box-content{\n  padding: 20px;\n}\n.colorTab > div:first-child{\n    /* background-color: #009688 !important;*/\n}\n'], ['\npadding-top: 120px;\n\n.map{\n  padding: 20px;\n  img{\n    width: 100%;\n\n  }\n}\nh3{\n  text-align: center;\n  margin: 0;\n  color:#444;\n  margin-bottom: 30px;\n  font-weight: bold;\n}\n.main-title{\n  text-align: left;\n  color: white;\n  font-size: 43px;\n  text-shadow: rgb(99, 99, 99) 1px 1px 0px, rgb(55, 55, 55) 1px 1px 5px, #a2a2a2 4px 2px 40px;\n\n}\n.box-content{\n  padding: 20px;\n}\n.colorTab > div:first-child{\n    /* background-color: #009688 !important;*/\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+var _Tabs = require('material-ui/Tabs');
+
+var _Slider = require('material-ui/Slider');
+
+var _Slider2 = _interopRequireDefault(_Slider);
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _components = require('components');
+
+var _Avatar = require('material-ui/Avatar');
+
+var _Avatar2 = _interopRequireDefault(_Avatar);
+
+var _List = require('material-ui/List');
+
+var _Subheader = require('material-ui/Subheader');
+
+var _Subheader2 = _interopRequireDefault(_Subheader);
+
+var _assignment = require('material-ui/svg-icons/action/assignment');
+
+var _assignment2 = _interopRequireDefault(_assignment);
+
+var _info = require('material-ui/svg-icons/action/info');
+
+var _info2 = _interopRequireDefault(_info);
+
+var _insertChart = require('material-ui/svg-icons/editor/insert-chart');
+
+var _insertChart2 = _interopRequireDefault(_insertChart);
+
+var _colors = require('material-ui/styles/colors');
+
+var _chatBubble = require('material-ui/svg-icons/communication/chat-bubble');
+
+var _chatBubble2 = _interopRequireDefault(_chatBubble);
+
+var _reactSlick = require('react-slick');
+
+var _reactSlick2 = _interopRequireDefault(_reactSlick);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var FileSummary = function (_React$Component) {
+  _inherits(FileSummary, _React$Component);
+
+  function FileSummary(props) {
+    _classCallCheck(this, FileSummary);
+
+    return _possibleConstructorReturn(this, (FileSummary.__proto__ || Object.getPrototypeOf(FileSummary)).call(this, props));
+  }
+
+  _createClass(FileSummary, [{
+    key: 'changeTab',
+    value: function changeTab(tab) {
+      console.log(tab.props['data-route']);
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactFlexboxGrid.Row,
+          null,
+          _react2.default.createElement(
+            _reactFlexboxGrid.Col,
+            { xs: 12, lg: 12 },
+            _react2.default.createElement(
+              'h3',
+              { className: 'main-title' },
+              'Coragyps Atratus'
+            ),
+            _react2.default.createElement(
+              _reactFlexboxGrid.Row,
+              null,
+              _react2.default.createElement(
+                _reactFlexboxGrid.Col,
+                { xs: 12, lg: 12 },
+                _react2.default.createElement(
+                  _Tabs.Tabs,
+                  { initialSelectedIndex: 0, className: 'colorTab' },
+                  _react2.default.createElement(
+                    _Tabs.Tab,
+                    { label: 'Resumen' },
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Row,
+                      null,
+                      _react2.default.createElement(
+                        _reactFlexboxGrid.Col,
+                        { xs: 12, lg: 12 },
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                          _Paper2.default,
+                          { zDepth: 1, className: 'box-content' },
+                          _react2.default.createElement(
+                            _Subheader2.default,
+                            null,
+                            'Im\xE1genes'
+                          ),
+                          _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(_components.Gallery, { images: this.props.images })
+                          )
+                        )
+                      )
+                    ),
+                    _react2.default.createElement('br', null),
+                    _react2.default.createElement(
+                      _reactFlexboxGrid.Row,
+                      null,
+                      _react2.default.createElement(
+                        _reactFlexboxGrid.Col,
+                        { xs: 12, lg: 8 },
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _List.List,
+                                null,
+                                _react2.default.createElement(
+                                  _Subheader2.default,
+                                  null,
+                                  'Nombres comunes'
+                                ),
+                                _react2.default.createElement(
+                                  _reactFlexboxGrid.Row,
+                                  null,
+                                  _react2.default.createElement(
+                                    _reactFlexboxGrid.Col,
+                                    { xs: 12, lg: 6 },
+                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Chulo', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  ),
+                                  _react2.default.createElement(
+                                    _reactFlexboxGrid.Col,
+                                    { xs: 12, lg: 6 },
+                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Gallinazo', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  ),
+                                  _react2.default.createElement(
+                                    _reactFlexboxGrid.Col,
+                                    { xs: 12, lg: 6 },
+                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Gamuro', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  ),
+                                  _react2.default.createElement(
+                                    _reactFlexboxGrid.Col,
+                                    { xs: 12, lg: 6 },
+                                    _react2.default.createElement(_List.ListItem, { primaryText: 'Gamuro', secondaryText: 'Hola Mundo Hola Mundo Hola Mundo' })
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        ),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _Subheader2.default,
+                                null,
+                                'Distribuci\xF3n'
+                              ),
+                              _react2.default.createElement(
+                                'div',
+                                { className: 'align-center map' },
+                                _react2.default.createElement(
+                                  _Paper2.default,
+                                  { zDepth: 2 },
+                                  _react2.default.createElement('img', { src: '../../map.jpg' })
+                                ),
+                                _react2.default.createElement('br', null),
+                                _react2.default.createElement('br', null),
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.'
+                              ),
+                              _react2.default.createElement(
+                                'div',
+                                { className: 'align-right' },
+                                _react2.default.createElement(_FlatButton2.default, { label: 'Ver m\xE1s', primary: true })
+                              )
+                            )
+                          )
+                        ),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _Subheader2.default,
+                                null,
+                                'Historia natural'
+                              ),
+                              _react2.default.createElement(
+                                'div',
+                                { className: 'align-justify' },
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel urna at mauris cursus imperdiet ut at turpis. Praesent eget dolor non lorem tincidunt porttitor.',
+                                _react2.default.createElement(
+                                  'div',
+                                  { className: 'align-right' },
+                                  _react2.default.createElement(_FlatButton2.default, { label: 'Ver m\xE1s', primary: true })
+                                )
+                              )
+                            )
+                          )
+                        )
+                      ),
+                      _react2.default.createElement(
+                        _reactFlexboxGrid.Col,
+                        { xs: 12, lg: 4 },
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _List.List,
+                                null,
+                                _react2.default.createElement(
+                                  _Subheader2.default,
+                                  null,
+                                  'Editores'
+                                ),
+                                _react2.default.createElement(_List.ListItem, { primaryText: 'Chelsea Otakan', leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar3.png' }) }),
+                                _react2.default.createElement(_List.ListItem, { primaryText: 'James Anderson', leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar4.png' }) })
+                              ),
+                              _react2.default.createElement(_RaisedButton2.default, { label: 'A\xF1adir secci\xF3n de ficha', primary: true, fullWidth: true })
+                            )
+                          )
+                        ),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _List.List,
+                                null,
+                                _react2.default.createElement(
+                                  _Subheader2.default,
+                                  null,
+                                  'Activida reciente'
+                                ),
+                                _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar.png' }), primaryText: 'Brunch this weekend?', secondaryText: _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    ' ',
+                                    _react2.default.createElement(
+                                      'span',
+                                      { style: {
+                                          color: _colors.darkBlack
+                                        } },
+                                      'Brendan Lim'
+                                    ),
+                                    ' - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch ? '
+                                  ), secondaryTextLines: 2 }),
+                                _react2.default.createElement(_Divider2.default, { inset: true }),
+                                _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { src: '../../avatar3.png' }), primaryText: _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    ' Summer BBQ ',
+                                    _react2.default.createElement(
+                                      'span',
+                                      { style: { color: _colors.lightBlack } },
+                                      ' 4 '
+                                    )
+                                  ), secondaryText: _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    ' ',
+                                    _react2.default.createElement(
+                                      'span',
+                                      { style: {
+                                          color: _colors.darkBlack
+                                        } },
+                                      'to me, Scott, Jennifer'
+                                    ),
+                                    '--Wish I could come, but I & apos; m out of town this weekend. '
+                                  ), secondaryTextLines: 2 })
+                              )
+                            )
+                          )
+                        ),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _List.List,
+                                null,
+                                _react2.default.createElement(
+                                  _Subheader2.default,
+                                  null,
+                                  'Grupos'
+                                ),
+                                _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { icon: _react2.default.createElement(_assignment2.default, null),
+                                    backgroundColor: _colors.blue500 }), primaryText: 'Aves de Colombia', secondaryText: 'Jan 20, 2014' }),
+                                _react2.default.createElement(_List.ListItem, { leftAvatar: _react2.default.createElement(_Avatar2.default, { icon: _react2.default.createElement(_insertChart2.default, null),
+                                    backgroundColor: _colors.yellow600 }), primaryText: 'Aves de Colombia', secondaryText: 'Jan 10, 2014' })
+                              )
+                            )
+                          )
+                        ),
+                        _react2.default.createElement('br', null),
+                        _react2.default.createElement(
+                          _reactFlexboxGrid.Row,
+                          null,
+                          _react2.default.createElement(
+                            _reactFlexboxGrid.Col,
+                            { xs: 12, lg: 12 },
+                            _react2.default.createElement(
+                              _Paper2.default,
+                              { zDepth: 1, className: 'box-content' },
+                              _react2.default.createElement(
+                                _List.List,
+                                null,
+                                _react2.default.createElement(
+                                  _Subheader2.default,
+                                  null,
+                                  'Informaci\xF3n b\xE1sica de la ficha'
+                                ),
+                                _react2.default.createElement(_List.ListItem, { primaryText: 'Fecha de elaboraci\xF3n', secondaryText: 'Jan 20, 2014' }),
+                                _react2.default.createElement(_List.ListItem, { primaryText: 'Fecha de elaboraci\xF3n', secondaryText: 'Jan 20, 2014' }),
+                                _react2.default.createElement(_List.ListItem, { primaryText: 'Fecha de elaboraci\xF3n', secondaryText: 'Jan 20, 2014' })
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(_Tabs.Tab, { label: 'Detalles', 'data-route': '/file/detail/' + this.props.id, onActive: this.changeTab }),
+                  _react2.default.createElement(_Tabs.Tab, { label: 'Im\xE1genes', 'data-route': '/file/images/' + this.props.id, onActive: this.changeTab }),
+                  _react2.default.createElement(_Tabs.Tab, { label: 'Mapas', 'data-route': '/file/maps/' + this.props.id, onActive: this.changeTab }),
+                  _react2.default.createElement(_Tabs.Tab, { label: 'Comunidad', 'data-route': '/file/community/' + this.props.id, onActive: this.changeTab }),
+                  _react2.default.createElement(_Tabs.Tab, { label: 'Comentarios', 'data-route': '/file/comments/' + this.props.id, onActive: this.changeTab })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return FileSummary;
+}(_react2.default.Component);
+
+var _default = FileSummary;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/bio/src/components/organisms/FileSummary/index.js');
+
+  __REACT_HOT_LOADER__.register(FileSummary, 'FileSummary', '/home/leo/htdocs/bio/src/components/organisms/FileSummary/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/organisms/FileSummary/index.js');
+}();
+
+;

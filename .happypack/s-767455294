@@ -1,0 +1,30 @@
+SyntaxError: Adjacent JSX elements must be wrapped in an enclosing tag (71:17)
+
+[0m [90m 69 | [39m              [33m<[39m[33mMenuItem[39m value[33m=[39m{[35m4[39m} primaryText[33m=[39m[32m"Fichas por actualizar"[39m[33m/[39m[33m>[39m
+ [90m 70 | [39m            [33m<[39m[33m/[39m[33mDropDownMenu[39m[33m>[39m
+[31m[1m>[22m[39m[90m 71 | [39m          [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m [33m<[39m [33mFileCarousel[39m data [33m=[39m {
+ [90m    | [39m                 [31m[1m^[22m[39m
+ [90m 72 | [39m            [36mthis[39m[33m.[39mstate[33m.[39mfiles
+ [90m 73 | [39m          } [33m/[39m[33m>[39m
+ [90m 74 | [39m          [33m:[39m [33m<[39m[33mdiv[39m[33m>[39m[33mCargando[39m [33mFichas[39m[33m...[39m[33m.[39m[0m
+
+BabelLoaderError: SyntaxError: Adjacent JSX elements must be wrapped in an enclosing tag (71:17)
+
+[0m [90m 69 | [39m              [33m<[39m[33mMenuItem[39m value[33m=[39m{[35m4[39m} primaryText[33m=[39m[32m"Fichas por actualizar"[39m[33m/[39m[33m>[39m
+ [90m 70 | [39m            [33m<[39m[33m/[39m[33mDropDownMenu[39m[33m>[39m
+[31m[1m>[22m[39m[90m 71 | [39m          [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m [33m<[39m [33mFileCarousel[39m data [33m=[39m {
+ [90m    | [39m                 [31m[1m^[22m[39m
+ [90m 72 | [39m            [36mthis[39m[33m.[39mstate[33m.[39mfiles
+ [90m 73 | [39m          } [33m/[39m[33m>[39m
+ [90m 74 | [39m          [33m:[39m [33m<[39m[33mdiv[39m[33m>[39m[33mCargando[39m [33mFichas[39m[33m...[39m[33m.[39m[0m
+
+    at transpile (/home/leo/htdocs/bio/node_modules/babel-loader/lib/index.js:61:13)
+    at Object.module.exports (/home/leo/htdocs/bio/node_modules/babel-loader/lib/index.js:163:20)
+    at applySyncOrAsync (/home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:341:21)
+    at apply (/home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:268:5)
+    at /home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:131:7
+    at applyPitchLoader (/home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:184:14)
+    at applyPitchLoader (/home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:192:14)
+    at applyPitchLoaders (/home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:222:4)
+    at applyLoaders (/home/leo/htdocs/bio/node_modules/happypack/lib/applyLoaders.js:116:3)
+    at HappyWorker.compile (/home/leo/htdocs/bio/node_modules/happypack/lib/HappyWorker.js:32:3)

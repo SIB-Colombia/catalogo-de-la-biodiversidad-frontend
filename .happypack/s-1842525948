@@ -16,11 +16,7 @@ var NotFoundPage = function NotFoundPage() {
   return _react2.default.createElement(
     _components.PageTemplate,
     { header: _react2.default.createElement(_components.Header, null), footer: _react2.default.createElement(_components.Footer, null) },
-    _react2.default.createElement(
-      _components.Heading,
-      null,
-      '404 Not Found'
-    )
+    _react2.default.createElement(_components.NotFound, null)
   );
 };
 

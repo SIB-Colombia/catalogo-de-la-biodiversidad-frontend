@@ -1,0 +1,36 @@
+Duplicate declaration "theme"
+
+[0m [90m 24 | [39m[36mimport[39m {blue500[33m,[39m yellow600} from [32m'material-ui/styles/colors'[39m[33m;[39m
+ [90m 25 | [39m[36mimport[39m [33mCommunicationChatBubble[39m from [32m'material-ui/svg-icons/communication/chat-bubble'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 26 | [39m[36mimport[39m theme from [32m'../../themes/default'[39m[33m;[39m
+ [90m    | [39m       [31m[1m^[22m[39m
+ [90m 27 | [39m
+ [90m 28 | [39m[36mconst[39m [33mWrapper[39m [33m=[39m styled[33m.[39mdiv [32m`[39m
+ [90m 29 | [39m[32mpadding-top: 200px;[39m[0m
+
+BabelLoaderError: Duplicate declaration "theme"
+
+[0m [90m 24 | [39m[36mimport[39m {blue500[33m,[39m yellow600} from [32m'material-ui/styles/colors'[39m[33m;[39m
+ [90m 25 | [39m[36mimport[39m [33mCommunicationChatBubble[39m from [32m'material-ui/svg-icons/communication/chat-bubble'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 26 | [39m[36mimport[39m theme from [32m'../../themes/default'[39m[33m;[39m
+ [90m    | [39m       [31m[1m^[22m[39m
+ [90m 27 | [39m
+ [90m 28 | [39m[36mconst[39m [33mWrapper[39m [33m=[39m styled[33m.[39mdiv [32m`[39m
+ [90m 29 | [39m[32mpadding-top: 200px;[39m[0m
+
+    at transpile (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/babel-loader/lib/index.js:61:13)
+    at Object.module.exports (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/babel-loader/lib/index.js:163:20)
+    at applySyncOrAsync (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:341:21)
+    at apply (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:268:5)
+    at /home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:131:7
+    at applyPitchLoader (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:184:14)
+    at applyPitchLoader (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:192:14)
+    at applyPitchLoaders (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:222:4)
+    at applyLoaders (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/applyLoaders.js:116:3)
+    at HappyWorker.compile (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/HappyWorker.js:32:3)
+    at Object.compile (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/HappyForegroundThreadPool.js:61:14)
+    at HappyPlugin.compileAndUpdateCache (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/HappyPlugin.js:344:14)
+    at HappyPlugin.compileInForeground (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/HappyPlugin.js:321:25)
+    at HappyPlugin.compile (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/HappyPlugin.js:237:32)
+    at Object.HappyLoader (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/happypack/lib/HappyLoader.js:42:15)
+    at LOADER_EXECUTION (/home/leo/htdocs/biodiversity_catalogue_v2_frontend/node_modules/loader-runner/lib/LoaderRunner.js:119:14)

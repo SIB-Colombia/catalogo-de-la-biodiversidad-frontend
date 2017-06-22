@@ -1,10 +1,10 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n\na{\n\tmargin:0px 5px;\n}\n'], ['\n\na{\n\tmargin:0px 5px;\n}\n']);
+var _templateObject = _taggedTemplateLiteral(['\nposition: absolute;\nright: 0;\nbottom: 0;\nleft: 0;\ncolor:white;\nbackground-color: #00292B;\n.footer-a{\n\tpadding: 28px 0;\n\t.t1{\n\t  img{\n\t    vertical-align: middle;\n\t    max-width: 300px;\n\t  }\n\t}\n\t.t2{\n\t  line-height: 3.3;\n\t  a{\n\t    margin: 10px;\n\t\t\tfont-weight: 500;\n\t  }\n\t}\n}\n.footer-b{\n\tbackground-color: #111;\n\t.footer-license{\n\t\tpadding: 10px 0px;\n\t\tfont-weight: lighter;\n\t\tfont-size: 14px;\n\t}\n}\n\na{\n\tmargin:0px 5px;\n\tfont-size: 13px;\n\tfont-weight: bold;\n\tcolor:', ';\n\ttext-decoration: none;\n}\n\n'], ['\nposition: absolute;\nright: 0;\nbottom: 0;\nleft: 0;\ncolor:white;\nbackground-color: #00292B;\n.footer-a{\n\tpadding: 28px 0;\n\t.t1{\n\t  img{\n\t    vertical-align: middle;\n\t    max-width: 300px;\n\t  }\n\t}\n\t.t2{\n\t  line-height: 3.3;\n\t  a{\n\t    margin: 10px;\n\t\t\tfont-weight: 500;\n\t  }\n\t}\n}\n.footer-b{\n\tbackground-color: #111;\n\t.footer-license{\n\t\tpadding: 10px 0px;\n\t\tfont-weight: lighter;\n\t\tfont-size: 14px;\n\t}\n}\n\na{\n\tmargin:0px 5px;\n\tfont-size: 13px;\n\tfont-weight: bold;\n\tcolor:', ';\n\ttext-decoration: none;\n}\n\n']);
 
 var _react = require('react');
 
@@ -14,65 +14,88 @@ var _styledComponents = require('styled-components');
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _styledTheme = require('styled-theme');
-
 var _components = require('components');
+
+var _reactFlexboxGrid = require('react-flexbox-grid');
+
+var _styledTheme = require('styled-theme');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-// import { Footer } from 'react-materialize';
-
-var Wrapper = (0, _styledComponents2.default)(_components.Footer)(_templateObject);
+var Wrapper = _styledComponents2.default.footer(_templateObject, (0, _styledTheme.palette)('option', 0));
 var FooterPage = function FooterPage(props) {
-  return _react2.default.createElement(
-    Wrapper,
-    { className: 'page-footer grey darken-4' },
-    _react2.default.createElement(
-      'div',
-      { className: 'footer-copyright' },
-      _react2.default.createElement(
-        'div',
-        { className: 'container' },
-        _react2.default.createElement(
-          'a',
-          { className: 'grey-text text-lighten-4 left', href: '' },
-          'Sobre el Cat\xE1logo |'
-        ),
-        _react2.default.createElement(
-          'a',
-          { className: 'grey-text text-lighten-4 left', href: '' },
-          'SIB Colombia |'
-        ),
-        _react2.default.createElement(
-          'a',
-          { className: 'grey-text text-lighten-4 left', href: '' },
-          'T\xE9rminos'
-        ),
-        _react2.default.createElement(
-          'a',
-          { className: 'grey-text text-lighten-4 right', href: '' },
-          'SIB Colombia'
-        )
-      )
-    )
-  );
+
+	//console.log(props);
+	return _react2.default.createElement(
+		Wrapper,
+		null,
+		_react2.default.createElement(
+			_reactFlexboxGrid.Grid,
+			{ className: 'footer-a' },
+			_react2.default.createElement(
+				_reactFlexboxGrid.Row,
+				null,
+				_react2.default.createElement(
+					_reactFlexboxGrid.Col,
+					{ xs: 12, sm: 6, md: 6, lg: 6 },
+					_react2.default.createElement(
+						'div',
+						{ className: 'align-center t1' },
+						_react2.default.createElement('img', { src: '/SiB-Footer-02.svg' })
+					)
+				),
+				_react2.default.createElement(
+					_reactFlexboxGrid.Col,
+					{ xs: 12, sm: 6, md: 6, lg: 6 },
+					_react2.default.createElement(
+						'div',
+						{ className: 'align-center t2' },
+						_react2.default.createElement(
+							_components.Link,
+							{ to: '/static/about' },
+							'Sobre el Cat\xE1logo'
+						),
+						'|',
+						_react2.default.createElement(
+							_components.Link,
+							{ to: '/static/about' },
+							'T\xE9rminos de uso'
+						)
+					)
+				)
+			)
+		),
+		_react2.default.createElement(
+			_reactFlexboxGrid.Grid,
+			{ fluid: true, className: 'footer-b' },
+			_react2.default.createElement(
+				_reactFlexboxGrid.Row,
+				null,
+				_react2.default.createElement(
+					_reactFlexboxGrid.Col,
+					{ xs: 12, sm: 12, md: 12, lg: 12, className: 'align-center footer-license' },
+					'Creative Commons 4.0 - 2017'
+				)
+			)
+		)
+	);
 };
 var _default = FooterPage;
 exports.default = _default;
 ;
 
 var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
 
-  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
+	__REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
 
-  __REACT_HOT_LOADER__.register(FooterPage, 'FooterPage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
+	__REACT_HOT_LOADER__.register(FooterPage, 'FooterPage', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
 
-  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
+	__REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/organisms/Footer/index.js');
 }();
 
 ;

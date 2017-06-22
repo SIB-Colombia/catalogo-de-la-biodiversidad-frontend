@@ -1,0 +1,89 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n\nhtml {\n  height: 100%;\n  box-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\nbody {\n  background-color: #e4e4e4;\n  position: relative;\n  margin: 0;\n  min-height: calc(100% - 65px);\n  font-family: \'Roboto\', sans-serif;\n}\n\n.modal-header-style{\n      color:white !important;\n\t    background: #00bcd4;\n}\n\n\n  .align-center{\n    text-align: center;\n  }\n  .align-justify{\n    text-align: justify;\n  }\n  .align-left{\n    text-align: left;\n  }\n  .align-right{\n    text-align: right;\n  }\n'], ['\n\nhtml {\n  height: 100%;\n  box-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\nbody {\n  background-color: #e4e4e4;\n  position: relative;\n  margin: 0;\n  min-height: calc(100% - 65px);\n  font-family: \'Roboto\', sans-serif;\n}\n\n.modal-header-style{\n      color:white !important;\n\t    background: #00bcd4;\n}\n\n\n  .align-center{\n    text-align: center;\n  }\n  .align-justify{\n    text-align: justify;\n  }\n  .align-left{\n    text-align: left;\n  }\n  .align-right{\n    text-align: right;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  body{\n    ', '\n  }\n  '], ['\n  body{\n    ', '\n  }\n  ']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _styledComponents = require('styled-components');
+
+var _default2 = require('./themes/default');
+
+var _default3 = _interopRequireDefault(_default2);
+
+var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
+
+var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+// https://github.com/diegohaz/arc/wiki/Styling
+
+
+(0, _styledComponents.injectGlobal)(_templateObject);
+
+var App = function App(_ref) {
+  var children = _ref.children;
+
+
+  var styles = '';
+
+  switch (children.props.route.path) {
+    case '/login':
+      styles = 'background-image: url(\'../background5.jpg\');';
+      break;
+    case '/static':
+      styles = 'background-image: url(\'../background3.png\');';
+      break;
+    case '/file':
+      styles = 'background-image: url(\'../../background9.jpg\');';
+      break;
+    default:
+  }
+
+  if (styles) {
+    styles += '\n    background-size: cover;\n    background-attachment:fixed;\n    ';
+  } else {
+    styles = 'background: #eaeaea;';
+  }
+
+  (0, _styledComponents.injectGlobal)(_templateObject2, styles);
+
+  return _react2.default.createElement(
+    _MuiThemeProvider2.default,
+    { theme: _default3.default },
+    children
+  );
+};
+
+App.propTypes = {
+  children: _propTypes2.default.any
+};
+
+var _default = App;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(App, 'App', '/home/leo/htdocs/bio/src/components/App.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/bio/src/components/App.js');
+}();
+
+;

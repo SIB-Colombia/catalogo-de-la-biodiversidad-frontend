@@ -1,0 +1,39 @@
+var _templateObject = _taggedTemplateLiteral(['\n  font-family: ', ';\n  text-decoration: none;\n  font-weight: 500;\n  color: ', ';\n\n  &:hover {\n    text-decoration: underline;\n  }\n'], ['\n  font-family: ', ';\n  text-decoration: none;\n  font-weight: 500;\n  color: ', ';\n\n  &:hover {\n    text-decoration: underline;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['', ''], ['', '']);
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
+import { font, palette } from 'styled-theme';
+import { Link as RouterLink } from 'react-router';
+
+var styles = css(_templateObject, font('primary'), palette({ grayscale: 0 }, 1));
+
+var StyledLink = styled(function (_ref) {
+  var theme = _ref.theme,
+      reverse = _ref.reverse,
+      palette = _ref.palette,
+      props = _objectWithoutProperties(_ref, ['theme', 'reverse', 'palette']);
+
+  return React.createElement(RouterLink, props);
+})(_templateObject2, styles);
+var Anchor = styled.a(_templateObject2, styles);
+
+var Link = function Link(_ref2) {
+  var props = _objectWithoutProperties(_ref2, []);
+
+  if (props.to) {
+    return React.createElement(StyledLink, props);
+  }
+  return React.createElement(Anchor, props);
+};
+
+Link.defaultProps = {
+  palette: 'primary'
+};
+
+export default Link;

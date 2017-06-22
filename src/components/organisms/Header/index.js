@@ -1,125 +1,217 @@
-import React from 'react'
-import styled from 'styled-components'
-import {
-  Button,
-  Card,
-  Row,
-  Col,
-  Input,
-  Icon,
-  Modal
-} from 'react-materialize';
-import {
-  IconLink,
-  PrimaryNavigation,
-  Link,
-  ModalUI,
-  SelectUI,
-  Title
-} from 'components'
+import React from 'react';
+import styled from 'styled-components';
+import {IconLink, Link, HeaderSearchAdvance, HeaderUserMenu} from 'components';
+import {Grid, Row, Col} from 'react-flexbox-grid';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import Tune from 'material-ui/svg-icons/image/tune';
+import Search from 'material-ui/svg-icons/action/search';
+import {size, palette} from 'styled-theme';
+// import {me, isAuthenticated} from '../../../auth';
+import {isAuthenticated} from '../../../auth';
 
 const Wrapper = styled.nav `
 position:fixed;
 top:0%;
 width:100%;
-z-index: 99999;
-.box-search {
-	.row{
-		margin-bottom:0px !important;
+background: red !important;
+z-index: 10 !important;
+.box-nav-search-content{
+	text-align: center;
+	padding: 6px 0px;
+	@media ${size('xs')}{
+		display: none;
 	}
-	.material-icons{
-		margin-top: 4px;
+	.box-search-color{
+		/*background: ${palette('grayscale', 0)};*/
+		hr{
+			display: none;
+		}
+
+	}
+	.box-nav-advance{
+	  cursor: pointer;
+	  &:hover{
+	    opacity: 0.5;
+	  }
+	}
+	.box-nav-search{
+	  padding:2px;
+	}
+	.box-nav-icon{
+	  padding-top: 13px;
+	}
+
+}
+svg{
+	font-weight: lighter;
+	color: ${palette('grayscale', 5)} !important;
+}
+.box-logo{
+	@media ${size('xs')}{
+		text-align: center;
 	}
 }
-.input-field input{
-	padding-left:0px !important;
-}
-.modal{
-	color:initial;
-}
-.input-advance{
-	.input-field{
-		border: 1px solid #e0e0e0;
-		height: 45px;
-		padding: 5px;
-		line-height: 2;
+.box-link{
+	text-align:right;
+	a {
+		height:100% !important;
+		line-height: 4 !important;
+	}
+	@media ${size('xs')}{
+		display: none;
 	}
 }
-.hover-cursor{
-  cursor: pointer;
-  &:hover .material-icons{
-    opacity: 0.5;
-  }
+.brand-logo {
+	display: inline-block;
+	font-size: 43px;
+	padding: 0;
+	white-space: nowrap;
+	margin-top: 1px;
+	svg{
+		color:red !important;
+	}
 }
 `
 
+const Title = styled.div `
+display:inline-block;
+vertical-align: middle;
+color: ${palette('grayscale', 5)};
+`
+const TitleMain = styled.div `
+font-size:14px;
+text-transform: uppercase;
+margin-top: -5px;
+line-height: 1;
+b{
+	margin-right: 2px;
+}
+
+`
+const TitleSub = styled.div `
+font-size:14px;
+text-transform: uppercase;
+line-height:1;
+`
+
+//Get user from Redis [Once time], this module remember promise
+
+// const getMe = me();
+
 class Header extends React.Component {
 
-  openAdvance = () => {
-    $('#modalAdvance').modal('open');
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null,
+      open: false
+    }
   }
 
-  render() {
-    return (
-      <Wrapper className="nav-wrapper grey lighten-5">
-        <Row>
-          <Col s={3}>
-            <IconLink to="/" icon="catalogo" className="brand-logo">
-              <Title/>
-            </IconLink>
-          </Col>
-          <Col s={6} className="box-search grey lighten-3 hide-on-med-and-down">
-            <Row>
-              <Col s={1} className="grey-text text-darken-2 center-align">
-                <Icon>
-                  search
-                </Icon>
-              </Col>
-              <Input s={10} label="Buscar..." className="grey-text text-darken-2"></Input>
-              <Col s={1} className="grey-text text-darken-2 center-align">
-                <span onClick={this.openAdvance} className="hover-cursor">
-                  <Icon>
-                    tune
-                  </Icon>
-                </span>
-              </Col>
-            </Row>
-          </Col>
-          <Col s={3}>
-            <PrimaryNavigation reverse/>
-          </Col>
-        </Row>
-        <ModalUI title="Búsqueda Avanzada" refe="modalAdvance">
-          <Row>
-            <Col l={12} s={12}>
-              <Col l={2} s={12}>
-                <SelectUI title="" hover="Fichas"/>
-              </Col>
-              <Col l={10} s={12} className="input-advance">
-                <Input l={12} s={12} placeholder="Buscar..." className="grey-text text-darken-2"></Input>
-              </Col>
-            </Col>
-            <Col l={3} s={12}>
-              <SelectUI title="Grupo Biológico" hover="Seleccionar"/>
-            </Col>
-            <Col l={3} s={12}>
-              <SelectUI title="Departamentos" hover="Seleccionar"/>
-            </Col>
-            <Col l={3} s={12}>
-              <SelectUI title="Ecosistema" hover="Seleccionar"/>
-            </Col>
-            <Col l={3} s={12}>
-              <SelectUI title="Estado Amenaza" hover="Seleccionar"/>
-            </Col>
-            <Col l={12} s={12} className="center-align">
-              <a className="btn waves-effect waves-light cyan darken-3">Buscar</a>
-            </Col>
-          </Row>
-        </ModalUI>
+  componentWillMount() {
+    /*getMe.then(data => {
+      //console.log('res me',data);
+      if (data) {
+        console.log('user logged->', data);
+        // this.setState({user: isAuthenticated()});
+      } else {
+        console.log('user not login :(');
+      }
+    })*/
 
+
+  }
+
+  handleOpen = () => {
+    this.setState({open: true});
+  };
+
+  handleClose = () => {
+    this.setState({open: false});
+  };
+
+  handleSearch = () => {
+    console.log('buscar');
+  };
+
+  render() {
+
+    const actions = [ < FlatButton label = "Cancelar" primary = {
+        true
+      }
+      onTouchTap = {
+        this.handleClose
+      } />, < Link to = "/file/search" > < RaisedButton label = "Buscar" className = "btn-secondary-modal" onTouchTap = {
+        this.handleSearch
+      } /> </Link>
+    ];
+
+    const customContentStyle = {
+      width: '90%',
+      maxWidth: 'none'
+    };
+
+    return (
+      <Wrapper>
+        <Paper>
+          <Grid fluid>
+            <Row>
+              <Col xs={12} sm={3} md={3} lg={3} className="box-logo">
+                {this.props.filter}
+                <IconLink to="/" icon="catalogo" className="brand-logo">
+                  <Title>
+                    <TitleMain>
+                      <b>Catálogo</b>
+                      de
+                    </TitleMain>
+                    <TitleSub>
+                      la Biodiversidad
+                    </TitleSub>
+                  </Title>
+                </IconLink>
+              </Col>
+              <Col xs={12} sm={5} md={6} lg={6} className="box-nav-search-content">
+                <div className="box-search-color">
+                  <Row>
+                    <Col xs={1} sm={2} md={2} lg={1} className="box-nav-icon">
+                      <Search/>
+                    </Col>
+                    <Col xs={10} sm={8} md={8} lg={10} className="box-nav-search">
+                      <TextField hintText="Buscar..." fullWidth={true}/>
+                    </Col>
+                    <Col xs={1} sm={1} md={2} lg={1} className="box-nav-icon">
+                      <a onTouchTap={this.handleOpen} className="box-nav-advance">
+                        <Tune/>
+                      </a>
+                    </Col>
+                  </Row>
+                </div>
+              </Col>
+              {!isAuthenticated() && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
+                <Link to="/login/signup" activeClassName="active">
+                  <FlatButton label="Registrarse"/>
+                </Link>
+                <Link to="/login/signin" activeClassName="active">
+                  <FlatButton label="Ingresar"/>
+                </Link>
+              </Col>}
+              {isAuthenticated() && <Col xs={12} sm={4} md={3} lg={3} className="box-link">
+                <HeaderUserMenu />
+              </Col>}
+            </Row>
+          </Grid>
+          <Dialog titleClassName="modal-header-style" title="Búsqueda avanzada" contentStyle={customContentStyle} actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} autoScrollBodyContent={true}>
+            <HeaderSearchAdvance/>
+          </Dialog>
+        </Paper>
       </Wrapper>
     )
   }
 }
 
-export default Header
+export default Header;

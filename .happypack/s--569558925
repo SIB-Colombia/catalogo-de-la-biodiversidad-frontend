@@ -1,0 +1,93 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n.leaflet-container {\n    height: 400px;\n    width: 100%;\n}\n'], ['\n.leaflet-container {\n    height: 400px;\n    width: 100%;\n}\n']);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _styledComponents = require('styled-components');
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _reactLeaflet = require('react-leaflet');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var Wrapper = _styledComponents2.default.div(_templateObject);
+
+var position = [4.36, -74.04];
+
+var HumboldtMap = function (_React$Component) {
+  _inherits(HumboldtMap, _React$Component);
+
+  function HumboldtMap(props) {
+    _classCallCheck(this, HumboldtMap);
+
+    return _possibleConstructorReturn(this, (HumboldtMap.__proto__ || Object.getPrototypeOf(HumboldtMap)).call(this, props));
+  }
+
+  _createClass(HumboldtMap, [{
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        Wrapper,
+        null,
+        _react2.default.createElement(
+          _reactLeaflet.Map,
+          { center: position, zoom: 5 },
+          _react2.default.createElement(_reactLeaflet.TileLayer, {
+            url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+            attribution: '\xA9 <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          })
+        )
+      );
+      /*
+      <Marker position={position}>
+      <Popup>
+      	<span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+      </Popup>
+      </Marker>
+      */
+    }
+  }]);
+
+  return HumboldtMap;
+}(_react2.default.Component);
+
+var _default = HumboldtMap;
+exports.default = _default;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Wrapper, 'Wrapper', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HumboldtMap/index.js');
+
+  __REACT_HOT_LOADER__.register(position, 'position', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HumboldtMap/index.js');
+
+  __REACT_HOT_LOADER__.register(HumboldtMap, 'HumboldtMap', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HumboldtMap/index.js');
+
+  __REACT_HOT_LOADER__.register(_default, 'default', '/home/leo/htdocs/biodiversity_catalogue_v2_frontend/src/components/molecules/HumboldtMap/index.js');
+}();
+
+;

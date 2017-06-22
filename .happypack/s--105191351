@@ -1,0 +1,50 @@
+var _templateObject = _taggedTemplateLiteral(['\n\nhtml {\n  height: 100%;\n  box-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n*{\n  font-family: \'Open Sans\', sans-serif !important;\n}\n\nbody {\n  background-color: #e4e4e4;\n  position: relative;\n  margin: 0;\n  min-height: calc(100% - 65px);\n}\n\n.modal-header-style{\n      color:white !important;\n\t    background: #00bcd4;\n}\n\n\n  .align-center{\n    text-align: center;\n  }\n  .align-justify{\n    text-align: justify;\n  }\n  .align-left{\n    text-align: left;\n  }\n  .align-right{\n    text-align: right;\n  }\n'], ['\n\nhtml {\n  height: 100%;\n  box-sizing: border-box;\n}\n\n*,\n*:before,\n*:after {\n  box-sizing: inherit;\n}\n\n*{\n  font-family: \'Open Sans\', sans-serif !important;\n}\n\nbody {\n  background-color: #e4e4e4;\n  position: relative;\n  margin: 0;\n  min-height: calc(100% - 65px);\n}\n\n.modal-header-style{\n      color:white !important;\n\t    background: #00bcd4;\n}\n\n\n  .align-center{\n    text-align: center;\n  }\n  .align-justify{\n    text-align: justify;\n  }\n  .align-left{\n    text-align: left;\n  }\n  .align-right{\n    text-align: right;\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  body{\n    ', '\n  }\n  '], ['\n  body{\n    ', '\n  }\n  ']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { injectGlobal, ThemeProvider } from 'styled-components';
+
+// https://github.com/diegohaz/arc/wiki/Styling
+import theme from './themes/default';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+injectGlobal(_templateObject);
+
+var App = function App(_ref) {
+  var children = _ref.children;
+
+
+  var styles = '';
+
+  switch (children.props.route.path) {
+    case '/login':
+      styles = 'background-image: url(\'../background5.jpg\');';
+      break;
+    case '/static':
+      styles = 'background-image: url(\'../background3.png\');';
+      break;
+    case '/file':
+      styles = 'background-image: url(\'../../background9.jpg\');';
+      break;
+    default:
+  }
+
+  if (styles) {
+    styles += '\n    background-size: cover;\n    background-attachment:fixed;\n    ';
+  } else {
+    styles = 'background: #eaeaea;';
+  }
+
+  injectGlobal(_templateObject2, styles);
+
+  return React.createElement(
+    MuiThemeProvider,
+    { theme: theme },
+    children
+  );
+};
+
+export default App;

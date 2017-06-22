@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-import {PageTemplate, Header, Footer, Heading} from 'components'
+import {PageTemplate, Header, Footer, NotFound} from 'components';
 
 const NotFoundPage = () => {
   return (
     <PageTemplate header={< Header />} footer={< Footer />}>
-      <Heading>404 Not Found</Heading>
+      <NotFound/>
     </PageTemplate>
   )
 }
 
-export default NotFoundPage
+export default NotFoundPage;
