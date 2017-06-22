@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, FileCard} from 'components';
+import {Link, FileCard, HomeTitle} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -20,6 +20,7 @@ import Badge from 'material-ui/Badge';
 
 const Wrapper = styled.div `
 
+padding: 40px 0;
 .space-card{
   margin: 0px 10px;
 }
@@ -61,37 +62,30 @@ class FileCarousel extends React.Component {
       draggable: false,
       responsive: [
         {
-          breakpoint: 768,
+          breakpoint: '49rem',
           settings: {
             slidesToShow: 1
           }
         }, {
-          breakpoint: 1024,
+          breakpoint: '65rem',
           settings: {
             slidesToShow: 3
           }
         }, {
-          breakpoint: 1368,
+          breakpoint: '1000rem',
           settings: {
             slidesToShow: 5
           }
-        }, {
-          breakpoint: 2000,
-          settings: {
-            slidesToShow: 5
-          }
-        }, {
-          breakpoint: 100000,
-          settings: 'unslick'
         }
       ]
     };
 
     return (
-      <Wrapper className="paper-padding-4">
-        <Grid>
+      <Wrapper>
+        <Grid className="container">
           <Row>
             <Col xs={12}>
+              <HomeTitle text={this.props.title} />
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
@@ -106,7 +100,7 @@ class FileCarousel extends React.Component {
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
             <Link to={`/file/search`}>
-              <RaisedButton label="Ver todas las fichas" default={true}/>
+              <RaisedButton label="Ver más" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
           </div>

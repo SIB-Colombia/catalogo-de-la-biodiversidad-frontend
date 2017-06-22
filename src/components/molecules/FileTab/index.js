@@ -11,27 +11,19 @@ const Wrapper = styled.div `
 	/*margin-top:20px;*/
 }
 .tabs > div:first-child{
-	background-color: ${palette('grayscale', 1)} !important;
-	border: 1px solid #d2d2d2 !important;
+	background-color: ${palette('grayscale', 0)} !important;
+	/*border: 1px solid #d2d2d2 !important;*/
 }
 .tabs > div:nth-child(2) div{
 	background-color: ${palette('secondary', 0)} !important;
+	display: none !important;
 }
 .tabs > div > button{
   color: ${palette('grayscale', 6)} !important;
-  font-weight: 700 !important;
 	a{
-		color: ${palette('grayscale', 6)} !important;
-		font-weight: 700 !important;
-		text-decoration: none;
-    width: 100%;
-    height: 100%;
-    vertical-align: middle;
-    line-height: 3.3;
+		color:${palette('basescale', 3)};
+		font-weight: bold;
 	}
-  &:not(:last-child){
-    border-right: 1px solid ${palette('grayscale', 2)} !important;
-  }
 }
 `
 class FileTab extends React.Component {

@@ -42,6 +42,7 @@ class HeaderUserMenu extends React.Component {
 
   constructor(props) {
     super(props);
+
   }
 
   exit() {
@@ -51,17 +52,16 @@ class HeaderUserMenu extends React.Component {
   render() {
     return (
       <Wrapper>
-        <IconMenu className='iconUser' iconButtonElement={< IconButton > <img src={isAuthenticated().photo || '/avatar3.png'} className="picture"/> < /IconButton>} anchorOrigin={{
+        <IconMenu className='iconUser' iconButtonElement={< IconButton > <img src={isAuthenticated().photo || '/human.png'} className="picture"/> < /IconButton>} anchorOrigin={{
           horizontal: 'right',
           vertical: 'top'
         }} targetOrigin={{
           horizontal: 'right',
           vertical: 'top'
         }}>
-          <MenuItem primaryText="Escritorio" leftIcon={< Home />}/>
-          <Link to={'/user/profile'}><MenuItem primaryText="Perfil" leftIcon={< Account />} /></Link>
+          <Link to={'/'}><MenuItem primaryText="Escritorio" leftIcon={< Home />}/></Link>
+          <Link to={'/user/profile'}><MenuItem primaryText="Perfil" leftIcon={< Account />}/></Link>
           <MenuItem primaryText="Notificaciones" leftIcon={< Info />}/>
-          <MenuItem primaryText="Ajustes de cuenta" leftIcon={< Settings />}/>
           <Divider/>
           <MenuItem primaryText="Cerrar sesión" onTouchTap={() => {
             this.exit()

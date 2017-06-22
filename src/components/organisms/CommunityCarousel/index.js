@@ -82,7 +82,7 @@ class CommunityCarousel extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3">Comunidad</TitleSection>
+              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3">Usuarios</TitleSection>
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
@@ -97,7 +97,7 @@ class CommunityCarousel extends React.Component {
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
             <Link to={`/file/detail/11`}>
-              <RaisedButton label="Ver toda la comunidad" default={true}/>
+              <RaisedButton label="Ver más" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
           </div>

@@ -1,12 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, HomeCard} from 'components';
+import {Link, HomeCard, Video,HomeStadistics} from 'components';
 import {Grid, Row, Col} from 'react-flexbox-grid';
-import Carousel from 'react-slick';
 import RaisedButton from 'material-ui/RaisedButton';
+import {size, palette} from 'styled-theme';
+const CarouselPreview = require('react-responsive-carousel').Carousel;
+// import {Polar} from 'react-chartjs-2';
 
 const Wrapper = styled.div `
 
+  .slide-background{
+    background: #fff;
+    padding: 50px;
+    overflow: auto;
+  }
+  .carousel .slide{
+    background: #fff !important;
+  }
+  .control-dots{
+    margin: 50px 0 !important;
+    @media ${size('sm')}{
+      margin: 70px 0 !important;
+    }
+  }
+  .carousel .control-dots .dot{
+    width: 12px;
+    height: 12px;
+  }
 `
 class HomeCarousel extends React.Component {
 
@@ -14,7 +34,8 @@ class HomeCarousel extends React.Component {
     super(props);
     this.state = {
       width: 0,
-      height: 0
+      height: 0,
+      dona: null
     }
 
     this.updateDimensions = this.updateDimensions.bind(this);
@@ -29,7 +50,26 @@ class HomeCarousel extends React.Component {
   }
 
   componentWillMount() {
+
     this.updateDimensions();
+
+    this.setState({
+      dona: {
+        datasets: [
+          {
+            data: [
+              11, 16, 7, 3, 14
+            ],
+            backgroundColor: [
+              '#FF6384', '#4BC0C0', '#FFCE56', '#E7E9ED', '#36A2EB'
+            ],
+            label: 'My dataset' // for legend
+          }
+        ],
+        labels: ['Animal', 'Vegetal', 'Protista', 'Fungi', 'Mónera']
+      }
+    });
+
   }
 
   componentWillUnmount() {
@@ -38,48 +78,38 @@ class HomeCarousel extends React.Component {
 
   render() {
 
-    const settings = {
-      dots: true,
-      arrows: false,
-      infinite: true,
-      speed: 500,
-      autoplay: true,
-      lazyLoad: true,
-      slidesToShow: 1,
-      adaptiveHeight: true,
-      slidesToScroll: 1,
-      draggable: true,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {}
-        }, {
-          breakpoint: 1024,
-          settings: {}
-        }, {
-          breakpoint: 1368,
-          settings: {}
-        }, {
-          breakpoint: 2000,
-          settings: {}
-        }, {
-          breakpoint: 100000,
-          settings: 'unslick'
-        }
-      ]
-    };
-
-    const background = ['89714_orig.jpg','11285_orig.jpg', '77419_orig.jpg', '53388_orig.jpg'];
+    const background = [
+      {
+        type: 'image',
+        url: 'main.jpg',
+        copyright : 'Ejemplo de pie de página número 1'
+      }, {
+        type: 'video',
+        url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0'
+        // url: 'https://www.youtube.com/embed/Rh4txXeKlME?rel=0&amp;controls=0&amp;showinfo=0;autoplay=1'
+      }, {
+        type: 'image',
+        url: '89714_orig.jpg',
+        copyright : 'Ejemplo de pie de página número 3'
+      }
+    ];
 
     return (
-      <Wrapper className="grey lighten-4">
-        <Carousel ref={c => this.slider = c} {...settings}>
+      <Wrapper>
+        <CarouselPreview showThumbs={false}>
           {background.map((record, i) => (
-            <div key={i}>
-              <HomeCard record={record} height={this.state.height}/>
+            <div key={i} className={(record.type === 'chart'
+              ? 'slide-background'
+              : 'default-back')}>
+              {record.type === 'video' && <Video record={record} height={this.state.height}/>}
+              {record.type === 'image' && <HomeCard record={record} height={this.state.height}/>}
+              {/* {record.type === 'chart' && <Polar data={this.state.dona} width={250} height={250} options={{
+                maintainAspectRatio: false
+              }}/>} */}
             </div>
           ))}
-        </Carousel>
+        </CarouselPreview>
+        <HomeStadistics />
       </Wrapper>
     )
   }

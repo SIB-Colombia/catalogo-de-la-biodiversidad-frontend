@@ -40,8 +40,8 @@ class LoginSignup extends React.Component {
                 <TextField name='lastname' value={this.props.form.lastname} onChange={this.props.update} hintText="Escriba aquí su apellido" floatingLabelText="Apellido" fullWidth={true}/>
                 <TextField name='username' value={this.props.form.username} onChange={this.props.update} hintText="Escriba aquí su nombre usuario" floatingLabelText="Nombre de usuario" fullWidth={true}/>
                 <TextField name='email' value={this.props.form.email} onChange={this.props.update} hintText="Escriba aquí su correo" floatingLabelText="Correo electrónico" fullWidth={true}/>
-                <TextField name='pass' value={this.props.form.pass} onChange={this.props.update} hintText="Escriba aquí su contraseña" floatingLabelText="Contraseña" type="password" fullWidth={true}/>
-                <TextField name='passverify' value={this.props.form.passverify} onChange={this.props.update} hintText="Escriba aquí nuevamente su contraseña" floatingLabelText="Verificar contraseña" type="password" fullWidth={true}/>
+                <TextField name='password' value={this.props.form.password} onChange={this.props.update} hintText="Escriba aquí su contraseña" floatingLabelText="Contraseña" type="password" fullWidth={true}/>
+                <TextField name='verify' value={this.props.form.verify} onChange={this.props.update} hintText="Escriba aquí nuevamente su contraseña" floatingLabelText="Verificar contraseña" type="password" fullWidth={true}/>
                 <br/>
                 <TitleSection align='center' color='basescale-7' size="xxs">{this.props.form.error}</TitleSection>
                 <br/>

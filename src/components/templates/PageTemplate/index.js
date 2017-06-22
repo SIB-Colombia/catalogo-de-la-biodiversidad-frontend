@@ -9,7 +9,7 @@ const Header = styled.header `
 `
 const Content = styled.section `
   height: 100%;
-  padding-bottom: 53px;
+  padding-bottom: 152px;
 `
 const Footer = styled.footer `
   margin-top: 10px;
@@ -43,10 +43,13 @@ const PageTemplate = ({
         case 'File':
           injectGlobal `
       body{
-        background-image: url(/background/tucan.jpg);
+        background-image: url(/paper.png);
         background-size: cover;
-        background-position: center center;
+        /*background-position: center center;*/
+        background-position: top center;
         background-attachment:fixed;
+        background-repeat: no-repeat;
+        background-color: white;
       }
     `
           break;

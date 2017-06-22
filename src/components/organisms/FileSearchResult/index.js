@@ -21,9 +21,7 @@ import ViewList from 'material-ui/svg-icons/action/view-list';
 import {palette} from 'styled-theme';
 
 const Wrapper = styled.div `
-.paper{
-  padding: 10px 0 0px 0;
-}
+
 .col-grid{
   margin: 10px 0px;
 }
@@ -59,10 +57,9 @@ class FileSearchResult extends React.Component {
     return (
       <Wrapper>
         <Grid>
-          <Row className="animated fadeInDown">
+          <Row>
             <Col xs={12}>
               <br/>
-              <Paper className="paper">
                 <Row>
                   <Col xs={12} sm={6} md={6} lg={6}></Col>
                   <Col xs={12} sm={6} md={6} lg={6}>
@@ -96,10 +93,9 @@ class FileSearchResult extends React.Component {
                     </Row>
                   </Col>
                 </Row>
-              </Paper>
             </Col>
           </Row>
-          <br/>
+
           <Masonry>
             {this.state.mode == 'grid' && this.props.data.map((record, i) => (
               <Col key={i} xs={12} sm={6} md={3} lg={3} className="col-grid">

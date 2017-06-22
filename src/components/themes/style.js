@@ -6,6 +6,7 @@ html {
   box-sizing: border-box;
 }
 body {
+  overflow-x:hidden;
   position: relative;
   margin: 0;
   min-height: calc(100% - 65px);
@@ -24,6 +25,26 @@ a{
 .modal-header-style{
   /*color:white !important;*/
   /*background:  ${theme.palette.secondary[0]};*/
+}
+
+/*Fixed Grid*/
+.container{
+  @media ${theme.sizes.xs}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media ${theme.sizes.sm}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media ${theme.sizes.md}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+  @media ${theme.sizes.lg}{
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
 }
 
 /*Titles*/
@@ -84,6 +105,36 @@ a{
     font-weight: bold;
   }
 }
+
+/*text*/
+.t100{
+    font-weight: 100 !important;
+}
+.t200{
+    font-weight: 200 !important;
+}
+.t300{
+    font-weight: 300 !important;
+}
+.t400{
+    font-weight: 400 !important;
+}
+.t500{
+    font-weight: 500 !important;
+}
+.t600{
+    font-weight: 600 !important;
+}
+.t700{
+    font-weight: 700 !important;
+}
+.t800{
+    font-weight: 800 !important;
+}
+.t900{
+    font-weight: 900 !important;
+}
+
 
 /*Colors*/
 
@@ -155,6 +206,10 @@ a{
 }
 .color-basescale-9{
   color: ${theme.palette.basescale[9]} !important;
+}
+
+.tb-color-base-scale-3 td{
+  color: ${theme.palette.basescale[3]} !important;
 }
 
 /*Papers*/
@@ -257,25 +312,27 @@ a{
 /*Badges */
 
 .badge{
-    &.cr,&.ex,&.en{
-      span{
-        color:white !important;
-        font-weight: bold !important;
-      }
+    float: right;
+    span{
+      font-size:11px;
+      padding:5px 5px;
+      border-radius: 0% !important;
+      color:white !important;
+      font-weight: bold !important;
     }
-    &.cr{
+    &.CR{
       span{
         background: ${theme.palette.basescale[9]} !important;
       }
     }
-    &.ex{
+    &.EX{
       span{
         background: ${theme.palette.basescale[7]} !important;
       }
     }
-    &.en{
+    &.EN{
       span{
-        background: ${theme.palette.basescale[8]} !important;
+        background: ${theme.palette.basescale[11]} !important;
       }
     }
 }
@@ -319,6 +376,11 @@ span[role=menuitem] {
 
 .bold{
   font-weight:bold !important;
+}
+
+.carousel .slide iframe{
+  margin: 0 !important;
+  width: 100% !important;
 }
 
 `;

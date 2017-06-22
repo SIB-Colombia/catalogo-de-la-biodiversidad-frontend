@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link, GroupCard,TitleSection} from 'components';
+import {Link, GroupCard, TitleSection} from 'components';
 import Carousel from 'react-slick';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import {
@@ -16,8 +16,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ArrowBack from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import ArrowForward from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
 import {palette} from 'styled-theme';
-
-
 
 const Wrapper = styled.div `
 background: ${palette('grayscale', 3)};
@@ -99,11 +97,11 @@ class GroupCarousel extends React.Component {
         <Grid>
           <Row>
             <Col xs={12}>
-              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3" >Grupos</TitleSection>
+              <TitleSection align="center" color="grayscale-6" className="padding-top-3 padding-bottom-3">Comunidades</TitleSection>
               <Carousel ref={c => this.slider = c} {...settings}>
                 {this.props.data.map((record, i) => (
                   <div key={i}>
-                    <GroupCard record={record}/>
+                    <GroupCard record={record} />
                   </div>
                 ))}
               </Carousel>
@@ -114,7 +112,7 @@ class GroupCarousel extends React.Component {
           <div className="align-center">
             <FlatButton icon={< ArrowBack />} onTouchTap={this.previous}/>
             <Link to={`/`}>
-              <RaisedButton label="Ver todos los grupos" default={true}/>
+              <RaisedButton label="Ver más" default={true}/>
             </Link>
             <FlatButton icon={< ArrowForward />} onTouchTap={this.next}/>
           </div>
