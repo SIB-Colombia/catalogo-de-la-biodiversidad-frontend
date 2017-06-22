@@ -12,7 +12,8 @@ import {
   FileComment,
   FileHeader,
   FileTab,
-  FileMostRecent
+  FileMostRecent,
+  Loading
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -67,8 +68,8 @@ class FileDetailPage extends React.Component {
               <FileDetail complete={this.state.fileComplete}/>
             </Col>
           </Row>
-        </Grid>}
-        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/>}
+        </Grid> || <Loading text='Cargando detalles...'/>}
+        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/> || <Loading/>}
       </PageTemplate>
     )
   }
