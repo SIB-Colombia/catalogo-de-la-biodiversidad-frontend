@@ -26,7 +26,7 @@ const Wrapper = styled.div `
 
 
 .box{
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
   overflow: auto !important;
   .main-box{
 
@@ -37,9 +37,9 @@ const Wrapper = styled.div `
   }
   .menu-scrollspy{
     .index{
-      color:333;
+      color: #444;
       font-weight: 600;
-      font-size: 20px;
+      font-size: 25px;
       text-align: center;
       padding: 15px 5px 15px 5px;
       border-bottom: 1px solid #e8e8e8;
@@ -157,7 +157,7 @@ class FileDetail extends React.Component {
         <Row>
           <Col lg={3} xs={12}>
             <Paper className="menu-scrollspy">
-              <div className="index">Índice de Ficha</div>
+              <div className="index">Índice de ficha</div>
               <ul>
                 {Object.keys(this.state.sections).map((section,i) => (
                   <li><Scrollchor to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link">{section}</Scrollchor></li>

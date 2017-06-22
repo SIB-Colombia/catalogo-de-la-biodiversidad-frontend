@@ -56,6 +56,9 @@ const Wrapper = styled.div `
 .cursive{
   font-style: italic;
 }
+.box{
+  margin-bottom: 1rem;
+}
 `
 
 class FileSummary extends React.Component {
@@ -127,12 +130,11 @@ class FileSummary extends React.Component {
             </Paper>
           </Col>
         </Row> */}
-        <br/>
         <Row>
           <Col xs={12} lg={8}>
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-3">Imágenes</TitleSection>
                   <CarouselPreview showArrows={true} dynamicHeight={true}>
                     {background.map((record, i) => (
@@ -145,10 +147,10 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3 t100 align-justify title-xxs color-text">
+                <Paper zDepth={1} className="paper-padding-3 t100 align-justify title-xxs color-text box">
                   {this.getAbstract()}...
                 </Paper>
                 <div className="align-center">
@@ -156,11 +158,11 @@ class FileSummary extends React.Component {
                 </div>
               </Col>
             </Row>
-            <br/>
+
 
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-3">Observaciones</TitleSection>
                   <div className="align-center">
                     <Paper zDepth={2}>
@@ -171,7 +173,7 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-3">
@@ -183,14 +185,13 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
           </Col>
 
           <Col xs={12} lg={4}>
 
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-2 cc">
+                <Paper zDepth={1} className="paper-padding-2 cc box">
                   <Row>
                     <Col xs={6} sm={6} md={6} lg={6} className="align-left">
                       <Copyright/>
@@ -208,11 +209,11 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
 
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Nombres comunes</TitleSection>
 
                   {this.getCommonNames().map((record, i) => (
@@ -224,10 +225,11 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
+
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Taxonomía</TitleSection>
 
                   <Table className="tb-color-base-scale-3">
@@ -280,10 +282,11 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
+
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Editores</TitleSection>
                   <List>
                     <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../avatar3.png" />}/>
@@ -293,10 +296,11 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
+
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Actividad reciente</TitleSection>
                   <List>
                     <ListItem leftAvatar={< Avatar src = "../../avatar.png" />} primaryText="Brunch this weekend?" secondaryText={< p > <span className="color-it">Brendan Lim</span> - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch
@@ -309,10 +313,11 @@ class FileSummary extends React.Component {
                 </Paper>
               </Col>
             </Row>
-            <br/>
+
+
             <Row>
               <Col xs={12} lg={12}>
-                <Paper zDepth={1} className="paper-padding-3">
+                <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Colecciones en línea</TitleSection>
                   <List>
                     <ListItem leftAvatar={< Avatar icon = { < ActionAssignment />
