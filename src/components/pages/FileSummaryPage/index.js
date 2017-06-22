@@ -9,7 +9,8 @@ import {
   FileSummary,
   FileHeader,
   FileSummaryMenu,
-  FileMostRecent
+  FileMostRecent,
+  Loading
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -67,8 +68,8 @@ class FileSummaryPage extends React.Component {
               <FileSummary complete={this.state.fileComplete} images={this.state.images}/>
             </Col>
           </Row>
-        </Grid>}
-        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/>}
+        </Grid> || <Loading text='Cargando resumen...'/>}
+        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/> || <Loading/>}
       </PageTemplate>
     )
   }

@@ -10,6 +10,7 @@ import {IconLink, Link} from 'components';
 
 const Wrapper = styled.div `
 padding-top: 150px;
+padding-bottom: 40px;
 text-align: center;
 .img-size{
   width: 60%;
@@ -46,7 +47,7 @@ class StaticAbout extends React.Component {
   render() {
     return (
       <Wrapper>
-        <Grid>
+        <Grid className="container">
           <Row>
             <Col xs={12}>
               <Paper zDepth={1} className="static-content animated fadeIn">
@@ -59,13 +60,13 @@ class StaticAbout extends React.Component {
                 <h3 className="about-main-subtitle">¿Qué tipo de información se puede aportar?</h3>
                 <Row>
                   {Array(8).fill(1).map((el, i) => <Col key={i} xs={12} sm={6} md={4} lg={3}>
-                    <img src="/zoo9.png" className="img-size"/>
+                    <img src="/file.jpg" className="img-size"/>
                     <h3 className="about-section-title">
                       Taxonomía
                     </h3>
                     <p className="align-justify">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta sollicitudin justo, a rhoncus urna cursus vel. Ut eleifend libero id velit faucibus vulputate. Integer id velit a lacus semper lobortis ut a libero
-                    </p >
+                    </p>
                   </Col>)}
                 </Row>
               </Paper>

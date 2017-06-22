@@ -12,7 +12,9 @@ import {
   FileComment,
   FileHeader,
   FileTab,
-  FileMostRecent
+  FileMostRecent,
+  Loading,
+  FileDetailMenu
 } from 'components';
 
 import * as FileService from '../../../services/FileService';
@@ -59,7 +61,7 @@ class FileDetailPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
+      <PageTemplate header={<Header filter={this.state.fileComplete && <FileDetailMenu complete={this.state.fileComplete} />} />}  footer={< Footer />} wallpaper='File'>
         {this.state.fileComplete && <Grid className="container" >
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
@@ -67,8 +69,8 @@ class FileDetailPage extends React.Component {
               <FileDetail complete={this.state.fileComplete}/>
             </Col>
           </Row>
-        </Grid>}
-        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/>}
+        </Grid> || <Loading text='Cargando detalles...'/>}
+        {this.state.files.length > 0 && <FileMostRecent id={this.state.id} data={this.state.files}/> || <Loading/>}
       </PageTemplate>
     )
   }

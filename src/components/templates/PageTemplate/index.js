@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, {injectGlobal} from 'styled-components';
+import {size, palette} from 'styled-theme';
 
 const Wrapper = styled.div `
 `
@@ -10,6 +11,9 @@ const Header = styled.header `
 const Content = styled.section `
   height: 100%;
   padding-bottom: 152px;
+  @media ${size('xs')}{
+    padding-bottom: 202px;
+  }
 `
 const Footer = styled.footer `
   margin-top: 10px;
@@ -43,7 +47,7 @@ const PageTemplate = ({
         case 'File':
           injectGlobal `
       body{
-        background-image: url(/paper.png);
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-moluscos.png');
         background-size: cover;
         /*background-position: center center;*/
         background-position: top center;
@@ -56,7 +60,7 @@ const PageTemplate = ({
         case 'Login':
           injectGlobal `
       body{
-        background-image: url(/background/23890_orig.jpg);
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-mamifero.png');
         background-size: cover;
         background-position: center center;
         background-attachment:fixed;
@@ -66,7 +70,17 @@ const PageTemplate = ({
         case 'Static':
           injectGlobal `
       body{
-        background-image: url(/background/82168_orig.jpg);
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-reptil.png');
+        background-size: cover;
+        background-position: center center;
+        background-attachment:fixed;
+      }
+    `
+          break;
+        case 'profile':
+          injectGlobal `
+      body{
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-ave.png');
         background-size: cover;
         background-position: center center;
         background-attachment:fixed;

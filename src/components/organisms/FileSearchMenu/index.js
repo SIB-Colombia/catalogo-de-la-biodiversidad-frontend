@@ -29,9 +29,7 @@ width: 35px;
       width: 30px !important;
   }
 }
-.drawer{
-  margin-top: 65px;
-}
+
 .btnFilters{
     /*position: fixed;
     left: 0px;
