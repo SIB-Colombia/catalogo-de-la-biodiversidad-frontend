@@ -56,7 +56,7 @@ class FileSearchResult extends React.Component {
 
     return (
       <Wrapper>
-        <Grid>
+        <Grid className="container">
           <Row>
             <Col xs={12}>
               <br/>
