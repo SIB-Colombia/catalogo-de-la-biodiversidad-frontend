@@ -43,7 +43,7 @@ const PageTemplate = ({
         case 'File':
           injectGlobal `
       body{
-        background-image: url(/paper.png);
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-moluscos.png');
         background-size: cover;
         /*background-position: center center;*/
         background-position: top center;
