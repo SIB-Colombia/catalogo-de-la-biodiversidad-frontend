@@ -65,14 +65,14 @@ class HomeCommunity extends React.Component {
     const communities = [
       {
         name: 'Brigitte Baptiste',
-        rol: 'Directora, Instituo Humboldt',
+        rol: 'Directora, Instituto Humboldt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu'
       }, {
         name: 'Brigitte Baptiste',
-        rol: 'Directora, Instituo Humboldt',
+        rol: 'Directora, Instituto Humboldt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu'
       }, {
-        name: 'Brigitte Baptiste',
+        name: 'Brigitte Instituto',
         rol: 'Directora, Instituo Humboldt',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin, lectus efficitur viverra tincidunt, purus ex feugiat est, nec congue ipsum nisl non mi. Integer eu'
       }
@@ -84,7 +84,7 @@ class HomeCommunity extends React.Component {
           <HomeTitle text='Comunidad'/>
           <Row>
             <Col xs={12} sm={12} md={12} lg={12}>
-              <CarouselPreview showThumbs={false}>
+              <CarouselPreview showThumbs={false} showStatus={false}>
                 {communities.map((record, i) => (
 
                   <Row key={i} className="box">

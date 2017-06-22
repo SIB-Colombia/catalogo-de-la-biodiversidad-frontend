@@ -136,7 +136,7 @@ class FileSummary extends React.Component {
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-3">Imágenes</TitleSection>
-                  <CarouselPreview showArrows={true} dynamicHeight={true}>
+                  <CarouselPreview showArrows={true} dynamicHeight={true} showStatus={false} emulateTouch={true}>
                     {background.map((record, i) => (
                       <div key={i}>
                         <img className="" src={'/demo/' + record}/>

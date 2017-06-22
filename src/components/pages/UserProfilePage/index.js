@@ -19,7 +19,7 @@ class UserProfilePage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={< Header />} footer={< Footer />}>
+      <PageTemplate header={< Header />} footer={< Footer />} wallpaper={'profile'}>
         <UserProfile/>
       </PageTemplate>
     )

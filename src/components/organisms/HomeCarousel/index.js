@@ -96,7 +96,7 @@ class HomeCarousel extends React.Component {
 
     return (
       <Wrapper>
-        <CarouselPreview showThumbs={false}>
+        <CarouselPreview showThumbs={false} showStatus={false}>
           {background.map((record, i) => (
             <div key={i} className={(record.type === 'chart'
               ? 'slide-background'
