@@ -11,7 +11,8 @@ import {
   HomePrinciples,
   HomeCommunity,
   HomeJoin,
-  HomeFooter
+  HomeFooter,
+  Loading
 } from 'components';
 
 import {isAuthenticated} from '../../../auth';
@@ -46,9 +47,9 @@ class HomePage extends React.Component {
 
     return (
       <PageTemplate header={< Header />} footer={< Footer />}>
-        {this.state.files.length > 0 && <HomeCarousel/>}
+        {this.state.files.length > 0 && <HomeCarousel/> || <Loading/>}
         <CategoryCarousel/>
-        {this.state.files.length > 0 && <FileCarousel data={this.state.files} title="Fichas recientes"/>}<br/>
+        {this.state.files.length > 0 && <FileCarousel data={this.state.files} title="Fichas recientes"/> || <Loading/>}<br/>
         <HomePrinciples/>
         <HomeCommunity />
         {!isAuthenticated() && <HomeJoin />}
