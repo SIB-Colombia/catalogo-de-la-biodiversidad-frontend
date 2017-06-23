@@ -35,6 +35,32 @@ const Wrapper = styled.div `
       overflow: auto;
     }
   }
+  .paragraph{
+    line-height: 1.8;
+    margin: 10px 0;
+  }
+  .block-container{
+    padding: 15px 20px;
+    background: #f7f7f7 !important;
+
+    .block-child{
+      padding: 20px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      /*border: 1px solid #dedede;*/
+      /*border-radius: 5px;*/
+      /*background: #fbfbfb;*/
+      color: #7f969a !important;
+      font-size: 14px;
+      font-weight: lighter;
+      .paragraph{
+
+      }
+      .paragraph-list{
+
+      }
+    }
+  }
 }
 
 .viewMore{
@@ -60,10 +86,7 @@ const Wrapper = styled.div `
   .spacing{
     margin-bottom: 20px;
   }
-  .paragraph{
-    line-height: 1.8;
-    margin: 10px 0;
-  }
+
 
 `
 
@@ -73,7 +96,8 @@ class FileDetail extends React.Component {
     super(props);
     this.state ={
       sections: [],
-      expanded: []
+      expanded: [],
+      expandedreferences: []
     }
     //console.log(this.props.complete.migratoryApprovedInUse);
   }
@@ -92,6 +116,63 @@ class FileDetail extends React.Component {
     this.setState({sections :sections});
   }
 
+
+  references(keyName,obj){
+
+      let array = [];
+      //console.log('cantidad', obj);
+
+      obj.forEach((elem,i )=> {
+
+        let block = [];
+
+        for (let child in elem) {
+
+          if (elem.hasOwnProperty(child)) {
+            if(typeof elem[child] == 'object' && elem[child] && elem[child].length > 0){
+
+              let list = [];
+
+              elem[child].forEach((elem,j) => {
+                if(elem){
+                  list[j] = (<li key={Math.random()} >{elem}</li>);
+                }
+              });
+
+              if(list.length > 0){
+                block.push(<div key={Math.random()} className="paragraph-list"><b>{child}:</b><ul>{list}</ul></div>);
+              }
+
+            }else{
+              if(elem[child] && typeof elem[child] == 'string' && !child.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)){
+                block.push(<div key={Math.random()} className="paragraph" ><b>{child}:</b> {elem[child]}</div>);
+              }
+            }
+          }
+        }
+        // for (let author in elem.authors) {
+        //     authors.push(<li key={Math.random()} >{elem.authors[author]}</li>);
+        // }
+        array.push(<Paper key={Math.random()} className="block-child">{block}</Paper>);
+      });
+
+      //let rara = `sa${Math.floor(Math.random() * 10000) + 1}`
+
+      return (<Paper key={Math.random()}  className="block-container"><b>{keyName}: </b>{array}</Paper>);
+
+      //  obj[rara] = (<Paper key={Math.random()}  className="block-container"><b onTouchTap={(e) => this.viewMoreRef(e, rara,array)} >{keyName}: </b>{this.state.expandedreferences['lol']}</Paper>);
+      //let obja = this.state.expandedreferences;
+      // obja[rara]['ele'] = array;
+      //obja[rara]= 'jajaja';
+
+    //  this.setState({expandedreferences: obja});
+
+    //  return (<Paper key={Math.random()} className="block-container"><b ref={rara} onTouchTap={(e) => this.viewMoreRef(e, this)} >{keyName}: </b>jejeje</Paper>);
+
+
+  }
+
+
   scan(obj, array, stack) {
 
     for (var property in obj) {
@@ -99,12 +180,19 @@ class FileDetail extends React.Component {
         if (typeof obj[property] == "object") {
 
           let keyName =  stack + '.' + property;
-          if(keyName.split('.').length == 2){
-              // console.log(`${keyName}->`);
-              array.push(<FileDetailTitle key={Math.random()} text={keyName.replace('.','')}/>);
-          }
 
-          this.scan(obj[property], array, keyName);
+          //console.log(keyName);
+          // console.log('stack',stack);
+          if(keyName.indexOf('reference') > -1 && obj[property].length > 0){
+            //this.references('Referencias',obj[property]);
+            array.push(this.references('Referencias',obj[property]));
+          }else{
+            if(keyName.split('.').length == 2){
+                // console.log(`${keyName}->`);
+                array.push(<FileDetailTitle key={Math.random()} text={keyName.replace('.','')}/>);
+            }
+            this.scan(obj[property], array, keyName);
+          }
         } else {
           if(obj[property] && !property.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)){
             //console.log('>',stack);
@@ -130,8 +218,36 @@ class FileDetail extends React.Component {
     this.setState({expanded: obj});
   };
 
+  viewMoreRef(e, element) {
+
+
+    //this.setState({sections :sections});
+    // console.log(e);
+    // console.log(element);
+    //  console.log(e);
+    //  console.log(rara);
+    //console.log(array);
+    //console.log(this.refs[refName])
+
+    // console.log(rara);
+    // let obj = this.state.expandedreferences;
+    // console.log(obj);
+    //console.log('ddd');
+    // let obja = this.state.expandedreferences;
+    // obja[rara]['ele'] = array;
+    // obja[0]= 'jojo';
+
+    // this.setState({expandedreferences: obja});
+    // obj[rara] = !obj[rara];
+    // obj['lol'] = 'jejejej';
+    // obj[rara] = 'jejejeje';
+    // console.log(obj);
+    // this.setState({expandedreferences: obj});
+
+  };
+
   initalShow(obj){
-    return obj.slice(0, 4);
+    return obj.slice(0, 3);
   }
 
 
