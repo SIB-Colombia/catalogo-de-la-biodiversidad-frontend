@@ -19,51 +19,25 @@ import {
 
 import {palette} from 'styled-theme';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
+import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Scrollchor from 'react-scrollchor';
 
 
 const Wrapper = styled.div `
 
-
 .box{
   margin-bottom: 1rem;
-  overflow: auto !important;
-  .main-box{
-
+  .box-content{
+    height: 180px;
+    overflow: hidden;
+    &.more{
+      height: auto;
+      overflow: auto;
+    }
   }
 }
-  .fx{
-    /*position: fixed;*/
-  }
-  /*.menu-scrollspy{
-    .index{
-      color: #444;
-      font-weight: 600;
-      font-size: 25px;
-      text-align: center;
-      padding: 15px 5px 15px 5px;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    padding: 5px;
-    overflow: auto;
-      li{
-        padding: 8px 5px;
-      }
-      a{
-          font-size: 13px;
-          color: ${palette('grayscale', 6)} !important;
-          &:hover{
-              color: ${palette('primary', 0)} !important;
-          }
-      }
-     .is-current{
-      color: ${palette('primary', 0)} !important;
-      a{
-        color: ${palette('primary', 0)} !important;
-      }
-    }
-  }*/
-  .viewMore{
+
+.viewMore{
     text-align: right;
     margin-top: 10px;
     button{
@@ -82,7 +56,7 @@ const Wrapper = styled.div `
         vertical-align: middle;
       }
     }
-  }
+}
   .spacing{
     margin-bottom: 20px;
   }
@@ -98,7 +72,8 @@ class FileDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      sections: []
+      sections: [],
+      expanded: []
     }
     //console.log(this.props.complete.migratoryApprovedInUse);
   }
@@ -108,7 +83,6 @@ class FileDetail extends React.Component {
     //this.scan(this.props.complete.migratoryApprovedInUse,array,'');
     //console.log(this.props.complete['migratoryApprovedInUse']);
     for (var property in this.props.complete) {
-
       if(property.indexOf('InUse') > -1){
         let array = [];
         this.scan(this.props.complete[property], array, '');
@@ -150,6 +124,17 @@ class FileDetail extends React.Component {
     }
   }
 
+  viewMore(e, idx) {
+    let obj = this.state.expanded;
+    obj[idx] = !obj[idx];
+    this.setState({expanded: obj});
+  };
+
+  initalShow(obj){
+    return obj.slice(0, 4);
+  }
+
+
   render() {
     //console.log('r',this.state.sections);
     return (
@@ -173,10 +158,13 @@ class FileDetail extends React.Component {
               <Col xs={12} sm={12} md={12} lg={12} className="main-box">
                 <FileDetailTitleBlock text={section} id={section} />
                 <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text box">
-                  {this.state.sections[section]}
+                  <div className={`box-content animated ${(this.state.expanded[i] ? 'more' : '')}`}>
+                    {this.state.expanded[i] ? this.state.sections[section] : this.initalShow(this.state.sections[section])}
+                  </div>
                   <div className="viewMore">
-                    <button>VER MÁS
-                      <ArrowDropDown/>
+                    <button onTouchTap={(e) => this.viewMore(e, i)} >
+                      {this.state.expanded[i] ? 'VER MENOS': 'VER MÁS'  }
+                      {this.state.expanded[i] ? <ArrowDropUp/>  : <ArrowDropDown/>}
                     </button>
                   </div>
                 </Paper>
