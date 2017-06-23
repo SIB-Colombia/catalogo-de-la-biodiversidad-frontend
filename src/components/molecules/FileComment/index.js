@@ -96,7 +96,7 @@ class FileComment extends React.Component {
                     {record.text}
                     {record.replies.map((subrecord, j) => (
                       <Card key={j} className="animated fadeInLeft">
-                        <CardHeader title={`${subrecord.postedBy.name} ${subrecord.postedBy.lastname}`} subtitle={`@${subrecord.postedBy.username} - ${subrecord.date}`} avatar={subrecord.postedBy.photo || '/avatar3.png'}/>
+                        <CardHeader title={`${subrecord.postedBy.name} ${subrecord.postedBy.lastname}`} subtitle={`@${subrecord.postedBy.username} - ${subrecord.date}`} avatar={subrecord.postedBy.photo || '/human.png'}/>
                         <CardText className="box-comment">
                           {subrecord.text}
                         </CardText>
