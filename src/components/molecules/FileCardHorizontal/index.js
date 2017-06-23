@@ -28,7 +28,15 @@ const Wrapper = styled.div `
     padding: 10px 20px 20px 20px;
 
   }
-
+.card{
+  transition: .5s ease;
+  -webkit-transition: .5s ease;
+  &:hover{
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
 
 .card-title{
   text-overflow: ellipsis;
@@ -76,8 +84,7 @@ class FileCardHorizontal extends React.Component {
     return (
       <Wrapper>
         <Link to={`/file/summary/${this.props.record.id}`}>
-          <Paper>
-
+          <Paper className="card">
             <Row>
               <Col xs={12} sm={4} md={4} lg={4} className="img-media">
                 <img src={`https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png`}/>
