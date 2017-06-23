@@ -34,12 +34,20 @@ width: 35px;
   }
 }
 .index{
-  color: #444;
+  color: #555;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
   padding: 15px 5px 15px 5px;
   border-bottom: 1px solid #e8e8e8;
+}
+
+.nav-link{
+  span{
+    font-weight: 400 !important;
+    
+    font-size: 13px !important;
+  }
 }
 
 .style-btn{
