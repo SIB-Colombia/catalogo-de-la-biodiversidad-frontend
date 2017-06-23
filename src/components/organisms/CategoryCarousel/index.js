@@ -22,12 +22,19 @@ padding: 80px 0px 80px 0px;
     height: 130px;
     width: 130px;
     margin: 10px 15px;
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
     img{
       width: 100%;
     }
     &:hover{
       cursor: pointer;
-      opacity: 0.7;
+      opacity: 0.9;
+      box-shadow: inset 0 0 0 25px #53a7ea;
+      -webkit-transform: rotateZ(-30deg);
+      -ms-transform: rotateZ(-30deg);
+      transform: rotateZ(-30deg);
+
     }
   }
 }

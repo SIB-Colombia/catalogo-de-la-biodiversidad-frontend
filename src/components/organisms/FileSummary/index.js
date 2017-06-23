@@ -23,6 +23,8 @@ import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
 import Copyright from 'material-ui/svg-icons/action/copyright';
 import Info from 'material-ui/svg-icons/action/info';
+import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
+import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 
 import {
   Table,
@@ -59,12 +61,36 @@ const Wrapper = styled.div `
 .box{
   margin-bottom: 1rem;
 }
+.viewMore{
+    text-align: right;
+    margin-top: 10px;
+    button{
+      text-decoration: none;
+      transition: .5s ease;
+      padding: 5px 25px;
+      border:none;
+      font-weight: bold;
+      color: ${palette('grayscale', 5)};
+      background: ${palette('grayscale', 1)};
+      cursor: pointer;
+      &:hover{
+        opacity: 0.8;
+      }
+      svg{
+        vertical-align: middle;
+      }
+    }
+}
 `
 
 class FileSummary extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      expanded: []
+    }
+
   }
 
   getCommonNames() {
@@ -106,6 +132,14 @@ class FileSummary extends React.Component {
   //     window.dispatchEvent(event);
   //   }, 500);
   // }
+
+
+  viewMore(e, idx) {
+      let obj = this.state.expanded;
+      obj[idx] = !obj[idx];
+      this.setState({expanded: obj});
+  };
+
 
   changeTab(tab) {
 
@@ -151,11 +185,14 @@ class FileSummary extends React.Component {
             <Row>
               <Col xs={12} lg={12}>
                 <Paper zDepth={1} className="paper-padding-3 t100 align-justify title-xxs color-text box">
-                  {this.getAbstract()}...
+                  {this.getAbstract()}
+                  <div className="viewMore">
+                    <button onTouchTap={(e) => this.viewMore(e, 'abstract')} >
+                      {this.state.expanded['abstract'] ? 'VER MENOS': 'VER MÁS'  }
+                      {this.state.expanded['abstract'] ? <ArrowDropUp/>  : <ArrowDropDown/>}
+                    </button>
+                  </div>
                 </Paper>
-                <div className="align-center">
-                  <FlatButton fullWidth={true} label="Ver más" primary={true}/>
-                </div>
               </Col>
             </Row>
 
@@ -289,8 +326,8 @@ class FileSummary extends React.Component {
                 <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Editores</TitleSection>
                   <List>
-                    <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../avatar3.png" />}/>
-                    <ListItem primaryText="James Anderson" leftAvatar={< Avatar src = "../../avatar4.png" />}/>
+                    <ListItem primaryText="Chelsea Otakan" leftAvatar={< Avatar src = "../../human.png" />}/>
+                    <ListItem primaryText="James Anderson" leftAvatar={< Avatar src = "../../human.png" />}/>
                   </List>
                   {/* <RaisedButton label="Añadir sección de ficha" primary={true} fullWidth={true}/> */}
                 </Paper>
@@ -303,10 +340,10 @@ class FileSummary extends React.Component {
                 <Paper zDepth={1} className="paper-padding-3 box">
                   <TitleSection lighter={600} className="padding-bottom-2">Actividad reciente</TitleSection>
                   <List>
-                    <ListItem leftAvatar={< Avatar src = "../../avatar.png" />} primaryText="Brunch this weekend?" secondaryText={< p > <span className="color-it">Brendan Lim</span> - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch
+                    <ListItem leftAvatar={< Avatar src = "../../human.png" />} primaryText="Brunch this weekend?" secondaryText={< p > <span className="color-it">Brendan Lim</span> - ll be in your neighborhood doing errands this weekend.Do you want to grab brunch
                       ? </p>} secondaryTextLines={2}/>
                     <Divider inset={true}/>
-                    <ListItem leftAvatar={< Avatar src = "../../avatar3.png" />} primaryText={< p > Summer BBQ < span className = "color-it-light" > 4 < /span></p >} secondaryText={< p > <span className="color-it">to me, Scott, Jennifer</span>--Wish I could come,
+                    <ListItem leftAvatar={< Avatar src = "../../human.png" />} primaryText={< p > Summer BBQ < span className = "color-it-light" > 4 < /span></p >} secondaryText={< p > <span className="color-it">to me, Scott, Jennifer</span>--Wish I could come,
                     but I & apos;
                     m out of town this weekend. < /p>} secondaryTextLines={2}/>
                   </List>
