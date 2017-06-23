@@ -19,8 +19,13 @@ const Wrapper = styled.div `
 
 .card{
 
+  transition: .5s ease;
+  -webkit-transition: .5s ease;
   &:hover{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 8px, rgba(0, 0, 0, 0.23) 0px 3px 8px !important;
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
   }
 }
 
