@@ -33,7 +33,7 @@ const Wrapper = styled.div `
   /*box-shadow: 0 -22px 180px 80px ${palette('grayscale',0)};*/
 }
 
- margin-top: 80px;
+ margin-top: 30px;
 /*box-shadow: 0 -22px 180px 50vh rgba(266,231,231,0.99);*/
 
 .bar-middle{
@@ -53,9 +53,12 @@ const Wrapper = styled.div `
     border-style: solid;
     border-width: 0 10px 10px 10px;
     border-color: transparent transparent #316971 transparent;
-    position: relative;
+    /*position: relative;
     top: -48px;
-    left: 22px;
+    left: 22px;*/
+    position: absolute;
+    top: -10px;
+    margin-left: 1px;
   }
 }
 .background-1{
