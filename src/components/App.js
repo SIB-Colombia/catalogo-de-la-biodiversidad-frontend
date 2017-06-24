@@ -11,6 +11,7 @@ import {
   FileSummaryPage,
   FileDetailPage,
   FileSearchPage,
+  FileMultimediaPage,
   UserProfilePage,
   AdminPage,
   AdminUserPage,
@@ -45,6 +46,7 @@ const App = () => {
           <Route exact path="/static/about" component={StaticPage}/>
           <Route exact path="/file/summary/:id" component={FileSummaryPage}/>
           <Route exact path="/file/detail/:id" component={FileDetailPage}/>
+          <Route exact path="/file/multimedia/:id" component={FileMultimediaPage}/>
           <Route exact path="/file/search" component={FileSearchPage}/>
           <Route exact path="/user/profile" component={UserProfilePage}/>
           <Route exact path="/admin" component={middleware(AdminPage, NotFoundPage, ['admin'])}/>
