@@ -1,1 +1,0 @@
-{"version":3,"sources":["src/components/config.js"],"names":["server","serverAmazon"],"mappings":";;;;;eAAe;AACbA,UAAS,uBADI;AAEbC,gBAAe;AAFF,C","file":"config.js","sourceRoot":"/home/leo/htdocs/bio","sourcesContent":["export default {\n  server : 'http://localhost:8000',\n  serverAmazon : 'http://ec2-52-200-3-121.compute-1.amazonaws.com'\n}\n"]}

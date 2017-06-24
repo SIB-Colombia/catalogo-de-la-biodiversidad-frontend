@@ -45,7 +45,7 @@ width: 35px;
 .nav-link{
   span{
     font-weight: 400 !important;
-    
+
     font-size: 13px !important;
   }
 }
@@ -64,25 +64,16 @@ width: 35px;
 }
 
 `
-class FileDetailMenu extends React.Component {
+class FileMultimediaMenu extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      open: false,
-      sections: []
+      open: false
     }
   }
 
   componentWillMount() {
-
-    let sections = [];
-    for (var property in this.props.complete) {
-      if(property.indexOf('InUse') > -1){
-        sections[property] = true;
-      }
-    }
-    this.setState({sections :sections});
   }
 
   handleToggleMenu = () => this.setState({
@@ -91,7 +82,6 @@ class FileDetailMenu extends React.Component {
 
 
   render() {
-
     return (
       <Wrapper>
         <div className="btnFilters animated fadeInLeft">
@@ -100,8 +90,8 @@ class FileDetailMenu extends React.Component {
           </FloatingActionButton>
         </div>
         <Drawer open={this.state.open} containerClassName="drawer">
-            <div className="index">Índice de ficha</div>
-            {Object.keys(this.state.sections).map((section,i) => (
+            <div className="index">Multimedia</div>
+            {Object.keys(this.props.complete).map((section,i) => (
               <Scrollchor key={i} to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link"><MenuItem>{section}</MenuItem></Scrollchor>
             ))}
         </Drawer>
@@ -110,4 +100,4 @@ class FileDetailMenu extends React.Component {
   }
 }
 
-export default FileDetailMenu;
+export default FileMultimediaMenu;
