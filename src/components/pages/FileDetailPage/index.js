@@ -61,7 +61,7 @@ class FileDetailPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={<Header filter={this.state.fileComplete && <FileDetailMenu complete={this.state.fileComplete} />} />}  footer={< Footer />} wallpaper='File'>
+      <PageTemplate header={<Header/>}  footer={< Footer />} wallpaper='File'>
         {this.state.fileComplete && <Grid className="container" >
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
