@@ -23,7 +23,7 @@ import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Scrollchor from 'react-scrollchor';
 import Masonry from 'react-masonry-component';
 import ReactAudioPlayer from 'react-audio-player';
-
+import MenuItem from 'material-ui/MenuItem';
 
 const Wrapper = styled.div `
 
@@ -34,7 +34,6 @@ const Wrapper = styled.div `
     overflow: hidden;
     &.more{
       height: auto;
-      overflow: auto;
     }
   }
   .paragraph{
@@ -89,51 +88,93 @@ const Wrapper = styled.div `
 
   }
 
+  .player{
+    margin-bottom: 10px;
+    audio{
+      width: 100% !important;
+    }
+    .title-player{
+      padding: 2px;
+      color: #316971;
+      font-weight: 600;
+    }
+  }
+
+  .box-menu{
+    margin-bottom: 20px;
+    overflow: auto;
+    .title-menu{
+      color: #555;
+      font-weight: 600;
+      font-size: 20px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link{
+      span{
+        font-weight: 400 !important;
+
+        font-size: 15px !important;
+      }
+    }
+  }
+
 `
 
 class FileMultimedia extends React.Component {
 
   constructor(props) {
     super(props);
-    // this.state = {}
+    this.state = {
+      sections: []
+    }
   }
 
   componentWillMount() {
+
   }
 
   render() {
     return (
       <Wrapper>
         <Row>
-          <Col xs={12} sm={12} md={12} lg={12}>
+          <Col xs={12} sm={12} md={3} lg={3}>
+            <Paper zDepth={1} className="box-menu">
+              <div className="paper-padding-3 title-menu">Multimedia</div>
+              {Object.keys(this.props.complete).map((section,i) => (
+                <Scrollchor key={i} to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link"><MenuItem>{section}</MenuItem></Scrollchor>
+              ))}
+            </Paper>
+          </Col>
+          <Col xs={12} sm={12} md={9} lg={9}>
           {Object.keys(this.props.complete).map((section,i) => (<div key={Math.random()} >
                 <FileDetailTitleBlock text={section} id={section} />
                 <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text box">
-                  <div className={`box-content  more`}>
-                    {section == 'images' && <Masonry>
+                  <div className={`box-content more`}>
+                    {section == 'Imágenes' && <Masonry>
                       {this.props.complete[section].map((child,i) => (
                         <div key={i}  className="col-grid">
                           <img src={child} />
                         </div>
                       ))}
                     </Masonry>}
-                    {section == 'audio' && <div>
+                    {section == 'Sonidos' && <Row>
                       {this.props.complete[section].map((child,i) => (
-                        <div key={i}  className="">
+                        <Col key={i} xs={12} sm={12} md={6} lg={6} className="player">
+                          <div className="title-player">Título</div>
                           <ReactAudioPlayer
                             src={child}
                             controls
                           />
-                        </div>
+                        </Col>
                       ))}
-                    </div>}
+                    </Row>}
                   </div>
                 </Paper>
             </div>
           ))}
           </Col>
         </Row>
-
       </Wrapper>
     )
   }
