@@ -44,45 +44,45 @@ class FileMultimediaPage extends React.Component {
       console.log(err);
     });
 
-    let obj = {};
-
-    obj['images'] = [
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://i.dailymail.co.uk/i/pix/2014/01/08/article-2535743-1A7C03F700000578-450_634x750.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'https://c402277.ssl.cf1.rackcdn.com/photos/1876/images/story_full_width/Snow-Leopard_08.15.2012_Find-Your-Inner-Animal.jpg?1345554887',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://www.erdekesseg.hu/wp-content/uploads/2014/09/allatos-szelfik-00010.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-      'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg'
-    ];
-
-    obj['audio'] = [
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-      '/demo/sound.mp3',
-    ];
+    let obj = {
+      'Imágenes' : [
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://i.dailymail.co.uk/i/pix/2014/01/08/article-2535743-1A7C03F700000578-450_634x750.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'https://c402277.ssl.cf1.rackcdn.com/photos/1876/images/story_full_width/Snow-Leopard_08.15.2012_Find-Your-Inner-Animal.jpg?1345554887',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://www.erdekesseg.hu/wp-content/uploads/2014/09/allatos-szelfik-00010.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
+        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg'
+      ],
+      'Sonidos' : [
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3',
+        '/demo/sound.mp3'
+      ],
+      'Otros' : []
+    };
 
     this.setState({sections: obj});
 
@@ -102,12 +102,12 @@ class FileMultimediaPage extends React.Component {
   render() {
 
     return (
-      <PageTemplate header={<Header filter={this.state.fileComplete && <FileMultimediaMenu complete={this.state.sections} />} />}  footer={< Footer />} wallpaper='File'>
-        {this.state.fileComplete && <Grid className="container" >
+      <PageTemplate header={<Header/>} footer={<Footer/>} wallpaper='File'>
+        {this.state.fileComplete && <Grid className="container">
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>
               <FileHeader title={this.title()} subtitle={this.subtitle()} id={this.state.id} active="multimedia"/>
-              <FileMultimedia complete={this.state.sections} />
+              <FileMultimedia complete={this.state.sections}/>
             </Col>
           </Row>
         </Grid> || <Loading text='Cargando multimedia...'/>}
