@@ -21,7 +21,7 @@ import {palette} from 'styled-theme';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Scrollchor from 'react-scrollchor';
-
+import MenuItem from 'material-ui/MenuItem';
 
 const Wrapper = styled.div `
 
@@ -87,6 +87,25 @@ const Wrapper = styled.div `
     margin-bottom: 20px;
   }
 
+
+  .box-menu{
+    margin-bottom: 20px;
+    overflow: auto;
+    .title-menu{
+      color: #555;
+      font-weight: 600;
+      font-size: 20px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .nav-link{
+      span{
+        font-weight: 400 !important;
+
+        font-size: 15px !important;
+      }
+    }
+  }
 
 `
 
@@ -220,7 +239,6 @@ class FileDetail extends React.Component {
 
   viewMoreRef(e, element) {
 
-
     //this.setState({sections :sections});
     // console.log(e);
     // console.log(element);
@@ -256,19 +274,19 @@ class FileDetail extends React.Component {
     return (
       <Wrapper>
         <Row>
-          {/* <Col lg={3} xs={12}>
-            <Paper className="menu-scrollspy">
-              <div className="index">Índice de ficha</div>
-              <ul>
-                {Object.keys(this.state.sections).map((section,i) => (
-                  <li><Scrollchor to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link">{section}</Scrollchor></li>
-                ))}
-              </ul>
-            </Paper>
-            <br/>
-          </Col> */}
 
-          <Col lg={12} xs={12}>
+          <Col xs={12} sm={12} md={3} lg={3}>
+            <Paper zDepth={1} className="box-menu">
+              <div className="paper-padding-3 title-menu">Índice de ficha</div>
+              {Object.keys(this.state.sections).map((section,i) => (
+                <Scrollchor key={i} to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link"><MenuItem>{section}</MenuItem></Scrollchor>
+              ))}
+            </Paper>
+          </Col>
+
+
+
+          <Col xs={12} sm={12} md={9} lg={9} >
 
             {Object.keys(this.state.sections).map((section,i) => (<Row key={Math.random()} >
               <Col xs={12} sm={12} md={12} lg={12} className="main-box">
