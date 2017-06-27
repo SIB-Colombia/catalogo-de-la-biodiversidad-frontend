@@ -81,7 +81,14 @@ class FileMultimediaPage extends React.Component {
         '/demo/sound.mp3',
         '/demo/sound.mp3'
       ],
-      'Otros' : []
+      'Otros' : [
+        'https://opensource.org/licenses/MIT',
+        'https://opensource.org/licenses/MIT',
+        'https://opensource.org/licenses/MIT',
+        'https://opensource.org/licenses/MIT',
+        'https://opensource.org/licenses/MIT',
+        'https://opensource.org/licenses/MIT'
+      ]
     };
 
     this.setState({sections: obj});
