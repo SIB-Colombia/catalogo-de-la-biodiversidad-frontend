@@ -169,6 +169,13 @@ class FileMultimedia extends React.Component {
                         </Col>
                       ))}
                     </Row>}
+                    {section == 'Otros' && <Row>
+                      {this.props.complete[section].map((child,i) => (
+                        <Col key={i} xs={12} sm={12} md={6} lg={6} className="align-center">
+                          <a href={child} target="_blank" >{child}</a>
+                        </Col>
+                      ))}
+                    </Row>}
                   </div>
                 </Paper>
             </div>
