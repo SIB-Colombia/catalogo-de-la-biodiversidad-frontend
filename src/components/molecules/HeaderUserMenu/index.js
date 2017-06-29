@@ -16,7 +16,8 @@ import Settings from 'material-ui/svg-icons/action/settings';
 import Exit from 'material-ui/svg-icons/action/exit-to-app';
 import Account from 'material-ui/svg-icons/action/account-circle';
 import Info from 'material-ui/svg-icons/action/info';
-import {logout, isAuthenticated} from '../../../auth';
+import Dashboard from 'material-ui/svg-icons/action/timeline';
+import {logout, isAuthenticated, hasRole} from '../../../auth';
 
 const Wrapper = styled.div `
 float: right;
@@ -59,6 +60,7 @@ class HeaderUserMenu extends React.Component {
           horizontal: 'right',
           vertical: 'top'
         }}>
+          {hasRole(['admin'],isAuthenticated().roles) && <Link to={'/admin'}><MenuItem primaryText="Administración" leftIcon={< Dashboard />}/></Link>}
           <Link to={'/'}><MenuItem primaryText="Escritorio" leftIcon={< Home />}/></Link>
           <Link to={'/user/profile'}><MenuItem primaryText="Perfil" leftIcon={< Account />}/></Link>
           <MenuItem primaryText="Notificaciones" leftIcon={< Info />}/>
