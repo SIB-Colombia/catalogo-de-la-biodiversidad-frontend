@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import {PageTemplate, Header, Footer, LoginRecover} from 'components';
+import {PageTemplate, Header, Footer} from 'components';
 
 class AdminPage extends React.Component {
 
@@ -15,7 +15,7 @@ class AdminPage extends React.Component {
   render() {
     return (
       <PageTemplate header={< Header />} footer={< Footer />}  wallpaper=''>
-        hi admin
+        hi admin, show statistics
       </PageTemplate>
     )
   }
