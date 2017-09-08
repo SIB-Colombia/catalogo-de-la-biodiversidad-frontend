@@ -46,27 +46,10 @@ class FileMultimediaPage extends React.Component {
 
     let obj = {
       'Imágenes' : [
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://i.dailymail.co.uk/i/pix/2014/01/08/article-2535743-1A7C03F700000578-450_634x750.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'https://c402277.ssl.cf1.rackcdn.com/photos/1876/images/story_full_width/Snow-Leopard_08.15.2012_Find-Your-Inner-Animal.jpg?1345554887',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://www.erdekesseg.hu/wp-content/uploads/2014/09/allatos-szelfik-00010.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg',
-        'http://illuzone.net/wp-content/uploads/2015/01/Red-Panda-4.jpg'
+        'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36192444754_eff43f93ed_k.jpg',
+        'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36219992913_caa44eccca_k.jpg',
+        'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36220009163_78e344dabc_k2.jpg',
+        'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36630866500_31537e7c27_h.jpg'
       ],
       'Sonidos' : [
         '/demo/sound.mp3',
