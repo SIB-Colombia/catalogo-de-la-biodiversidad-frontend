@@ -148,7 +148,14 @@ class FileSummary extends React.Component {
 
   render() {
 
-    const background = ['i3.jpg', 'i2.jpg', 'i1.jpg', 'i4.jpg', 'i5.jpg'];
+    const background = /*['i3.jpg', 'i2.jpg', 'i1.jpg', 'i4.jpg', 'i5.jpg'];*/
+['https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36192444754_eff43f93ed_k.jpg',
+'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36219992913_caa44eccca_k.jpg',
+'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36220009163_78e344dabc_k2.jpg',
+'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36630866500_31537e7c27_h.jpg']  ;
+    
+    
+    
 
     return (
       <Wrapper>
@@ -173,8 +180,8 @@ class FileSummary extends React.Component {
                   <CarouselPreview showArrows={true} dynamicHeight={true} showStatus={false} emulateTouch={true}>
                     {background.map((record, i) => (
                       <div key={i}>
-                        <img className="" src={'/demo/' + record}/>
-                        <p className="legend">Autor: Ejemplo {i}</p>
+                        <img className="" src={record}/>
+                        <p className="legend">Autor: Autor Número {i}</p>
                       </div>
                     ))}
                   </CarouselPreview>
