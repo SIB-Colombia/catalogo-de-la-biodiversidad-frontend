@@ -42,12 +42,13 @@ const PageTemplate = ({
     } else {
 
       //Module wallpaper
+      //https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-moluscos.png
 
       switch (wallpaper) {
         case 'File':
           injectGlobal `
       body{
-        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/png/f-moluscos.png');
+        background-image: url('https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/Alouatta-seniculus.jpg');
         background-size: cover;
         /*background-position: center center;*/
         background-position: top center;
