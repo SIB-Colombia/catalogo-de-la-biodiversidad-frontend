@@ -66,16 +66,17 @@ class AdminUser extends React.Component {
 
   delete = (record) => {
     console.log(record);
-    let ref = this;
-    setTimeout(function () {
       if(confirm(`Está seguro que desea eliminar el registro con username "${record.username}"?`)){
           UserService.deleteUser(record._id).then(result => {
             if(result.ok){
-              ref.load();
+              if(this.state.docs.length == 1 && this.state.page != 1){
+                  this.setState({page: (this.state.page - 1)}, () => this.load())
+              }else{
+                  this.load();
+              }
             }
           });
       }
-    }, 200);
   };
 
   //Modal edit

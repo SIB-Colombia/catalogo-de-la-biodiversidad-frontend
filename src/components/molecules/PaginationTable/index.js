@@ -32,7 +32,7 @@ class PaginationTable extends React.Component {
 
     return (
       <Wrapper>
-        <Table className="" selectable={true}>
+        <Table className="" selectable={false}>
           <TableHeader displaySelectAll={false}>
             <TableRow>
               {this.props.headers.map((elem,i) => (
