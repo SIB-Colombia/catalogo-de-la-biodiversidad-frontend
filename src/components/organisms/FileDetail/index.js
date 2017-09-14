@@ -1,13 +1,13 @@
-import React, {PropTypes} from 'react'
+import React, { PropTypes } from 'react'
 import styled from 'styled-components'
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
-import {Tabs, Tab} from 'material-ui/Tabs';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import {
   IconLink,
   Link,
@@ -17,13 +17,13 @@ import {
   FileDetailTitleBlock
 } from 'components'
 
-import {palette} from 'styled-theme';
+import { palette } from 'styled-theme';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Scrollchor from 'react-scrollchor';
 import MenuItem from 'material-ui/MenuItem';
 
-const Wrapper = styled.div `
+const Wrapper = styled.div`
 
 .box{
   margin-bottom: 1rem;
@@ -113,8 +113,9 @@ class FileDetail extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state ={
+    this.state = {
       sections: [],
+      groups: [],
       expanded: [],
       expandedreferences: []
     }
@@ -126,63 +127,155 @@ class FileDetail extends React.Component {
     //this.scan(this.props.complete.migratoryApprovedInUse,array,'');
     //console.log(this.props.complete['migratoryApprovedInUse']);
     for (var property in this.props.complete) {
-      if(property.indexOf('InUse') > -1){
+      if (property.indexOf('InUse') > -1) {
         let array = [];
         this.scan(this.props.complete[property], array, '');
         sections[property] = array;
       }
     }
-    this.setState({sections :sections});
+    // console.log('cc->', sections);
+
+    this.setState({ sections: sections });
+
+
+    let groups = [
+      {
+        category: 'Nomenclatura y Clasificación',
+        items: [
+          'taxonRecordNameApprovedInUse',
+          'hierarchyApprovedInUse',
+          'commonNamesAtomizedApprovedInUse',
+          'abstractApprovedInUse'
+        ]
+      },
+      {
+        category: 'Descripción taxonómica',
+        items: [
+          'fullDescriptionApprovedInUse',
+          'identificationKeysApprovedInUse'
+        ]
+      },
+      {
+        category: 'Historial Natural I',
+        items: [
+          'lifeCycleApprovedInUse',
+          'lifeFormApprovedInUse',
+          'reproductionApprovedInUse',
+          'feedingApprovedInUse',
+          'dispersalApprovedInUse'
+        ]
+      },
+      {
+        category: 'Historial Natural II',
+        items: [
+          'behaviorApprovedInUse',
+          'interactionsApprovedInUse',
+          'molecularDataApprovedInUse',
+          'migratoryApprovedInUse',
+          'ecologicalSignificanceApprovedInUse'
+        ]
+      },
+      {
+        category: 'Invasividad',
+        items: [
+          'invasivenessApprovedInUse'
+        ]
+      },
+      {
+        category: 'Hábitat y Distribución',
+        items: [
+          'habitatsApprovedInUse',
+          'distributionApprovedInUse',
+        ]
+      },
+      {
+        category: 'Dinámica poblacional y Amenazas',
+        items: [
+          'territoryApprovedInUse',
+          'populationBiologyApprovedInUse',
+          'threatStatusApprovedInUse',
+          'directThreatsApprovedInUse'
+        ]
+      },
+      {
+        category: 'Usos, Manejo y Conservación',
+        items: [
+          'usesManagementAndConservationApprovedInUse'
+        ]
+      },
+      {
+        category: 'Partes Asociadas',
+        items: [
+          'associatedPartyApprovedInUse'
+        ]
+      },
+      {
+        category: 'Referencias',
+        items: [
+          'referencesApprovedInUse',
+        ]
+      },
+      {
+        category: 'Información Adicional',
+        items: [
+          'ancillaryDataApprovedInUse',
+        ],
+      }
+    ];
+
+    this.setState({ groups });
+
+
   }
 
 
-  references(keyName,obj){
+  references(keyName, obj) {
 
-      let array = [];
-      //console.log('cantidad', obj);
+    let array = [];
+    //console.log('cantidad', obj);
 
-      obj.forEach((elem,i )=> {
+    obj.forEach((elem, i) => {
 
-        let block = [];
+      let block = [];
 
-        for (let child in elem) {
+      for (let child in elem) {
 
-          if (elem.hasOwnProperty(child)) {
-            if(typeof elem[child] == 'object' && elem[child] && elem[child].length > 0){
+        if (elem.hasOwnProperty(child)) {
+          if (typeof elem[child] == 'object' && elem[child] && elem[child].length > 0) {
 
-              let list = [];
+            let list = [];
 
-              elem[child].forEach((elem,j) => {
-                if(elem){
-                  list[j] = (<li key={Math.random()} >{elem}</li>);
-                }
-              });
-
-              if(list.length > 0){
-                block.push(<div key={Math.random()} className="paragraph-list"><b>{child}:</b><ul>{list}</ul></div>);
+            elem[child].forEach((elem, j) => {
+              if (elem) {
+                list[j] = (<li key={Math.random()} >{elem}</li>);
               }
+            });
 
-            }else{
-              if(elem[child] && typeof elem[child] == 'string' && !child.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)){
-                block.push(<div key={Math.random()} className="paragraph" ><b>{child}:</b> {elem[child]}</div>);
-              }
+            if (list.length > 0) {
+              block.push(<div key={Math.random()} className="paragraph-list"><b>{child}:</b><ul>{list}</ul></div>);
+            }
+
+          } else {
+            if (elem[child] && typeof elem[child] == 'string' && !child.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)) {
+              block.push(<div key={Math.random()} className="paragraph" ><b>{child}:</b> {elem[child]}</div>);
             }
           }
         }
-        // for (let author in elem.authors) {
-        //     authors.push(<li key={Math.random()} >{elem.authors[author]}</li>);
-        // }
-        array.push(<Paper key={Math.random()} className="block-child">{block}</Paper>);
-      });
+      }
+      // for (let author in elem.authors) {
+      //     authors.push(<li key={Math.random()} >{elem.authors[author]}</li>);
+      // }
+      array.push(<Paper key={Math.random()} className="block-child">{block}</Paper>);
+    });
 
-      //let rara = `sa${Math.floor(Math.random() * 10000) + 1}`
+    //let rara = `sa${Math.floor(Math.random() * 10000) + 1}`
 
-      return (<Paper key={Math.random()}  className="block-container"><b>{keyName}: </b>{array}</Paper>);
+    return (<Paper key={Math.random()} className="block-container"><b>{keyName}: </b>{array}</Paper>);
 
-      //  obj[rara] = (<Paper key={Math.random()}  className="block-container"><b onTouchTap={(e) => this.viewMoreRef(e, rara,array)} >{keyName}: </b>{this.state.expandedreferences['lol']}</Paper>);
-      //let obja = this.state.expandedreferences;
-      // obja[rara]['ele'] = array;
-      //obja[rara]= 'jajaja';
+    //  obj[rara] = (<Paper key={Math.random()}  className="block-container"><b onTouchTap={(e) => this.viewMoreRef(e, rara,array)} >{keyName}: </b>{this.state.expandedreferences['lol']}</Paper>);
+    //let obja = this.state.expandedreferences;
+    // obja[rara]['ele'] = array;
+    //obja[rara]= 'jajaja';
 
     //  this.setState({expandedreferences: obja});
 
@@ -198,30 +291,30 @@ class FileDetail extends React.Component {
       if (obj.hasOwnProperty(property)) {
         if (typeof obj[property] == "object") {
 
-          let keyName =  stack + '.' + property;
+          let keyName = stack + '.' + property;
 
           //console.log(keyName);
           // console.log('stack',stack);
-          if(keyName.indexOf('reference') > -1 && obj[property].length > 0){
+          if (keyName.indexOf('reference') > -1 && obj[property].length > 0) {
             //this.references('Referencias',obj[property]);
-            array.push(this.references('Referencias',obj[property]));
-          }else{
-            if(keyName.split('.').length == 2){
-                // console.log(`${keyName}->`);
-                array.push(<FileDetailTitle key={Math.random()} text={keyName.replace('.','')}/>);
+            array.push(this.references('Referencias', obj[property]));
+          } else {
+            if (keyName.split('.').length == 2) {
+              // console.log(`${keyName}->`);
+              array.push(<FileDetailTitle key={Math.random()} text={keyName.replace('.', '')} />);
             }
             this.scan(obj[property], array, keyName);
           }
         } else {
-          if(obj[property] && !property.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)){
+          if (obj[property] && !property.match(/^_id$|^__t$|^id_record$|^id_user$|^version$/)) {
             //console.log('>',stack);
-            if(Number.isInteger(parseInt(property))){
+            if (Number.isInteger(parseInt(property))) {
               let nameParent = stack.split('.')[1];
-              let transform = stack.replace(/\d/g,' ').replace(/\./g,' ');
+              let transform = stack.replace(/\d/g, ' ').replace(/\./g, ' ');
               // let transform = stack.replace(/\d/g,'/').replace(/\./g,' ').replace(nameParent,'');
               array.push(<div className="paragraph" key={Math.random()} ><b>{transform}:</b> {obj[property]}</div>);
               // console.log(`<b>${transform}:</b> ${obj[property]}`);
-            }else{
+            } else {
               array.push(<div className="paragraph" key={Math.random()} ><b>{property}:</b> {obj[property]}</div>);
               // let temp = this.state.detail;
             }
@@ -234,7 +327,7 @@ class FileDetail extends React.Component {
   viewMore(e, idx) {
     let obj = this.state.expanded;
     obj[idx] = !obj[idx];
-    this.setState({expanded: obj});
+    this.setState({ expanded: obj });
   };
 
   viewMoreRef(e, element) {
@@ -264,7 +357,7 @@ class FileDetail extends React.Component {
 
   };
 
-  initalShow(obj){
+  initalShow(obj) {
     return obj.slice(0, 3);
   }
 
@@ -278,9 +371,12 @@ class FileDetail extends React.Component {
           <Col xs={12} sm={12} md={3} lg={3}>
             <Paper zDepth={1} className="box-menu">
               <div className="paper-padding-3 title-menu">Índice de ficha</div>
-              {Object.keys(this.state.sections).map((section,i) => (
-                <Scrollchor key={i} to={`#${section}`} animate={{offset: -80, duration: 600}}  className="nav-link"><MenuItem>{section}</MenuItem></Scrollchor>
+              {Object.keys(this.state.groups).map((i) => (
+                <Scrollchor key={i} to={`#${this.state.groups[i].items[0]}`} animate={{ offset: -80, duration: 600 }} className="nav-link"><MenuItem>{this.state.groups[i].category}</MenuItem></Scrollchor>
               ))}
+              {/* {Object.keys(this.state.sections).map((section, i) => (
+                <Scrollchor key={i} to={`#${section}`} animate={{ offset: -80, duration: 600 }} className="nav-link"><MenuItem>{section}</MenuItem></Scrollchor>
+              ))} */}
             </Paper>
           </Col>
 
@@ -288,7 +384,7 @@ class FileDetail extends React.Component {
 
           <Col xs={12} sm={12} md={9} lg={9} >
 
-            {Object.keys(this.state.sections).map((section,i) => (<Row key={Math.random()} >
+            {Object.keys(this.state.sections).map((section, i) => (<Row key={Math.random()} >
               <Col xs={12} sm={12} md={12} lg={12} className="main-box">
                 <FileDetailTitleBlock text={section} id={section} />
                 <Paper zDepth={1} className="paper-padding-3 t100 align-justify color-text box">
@@ -297,14 +393,14 @@ class FileDetail extends React.Component {
                   </div>
                   <div className="viewMore">
                     <button onTouchTap={(e) => this.viewMore(e, i)} >
-                      {this.state.expanded[i] ? 'VER MENOS': 'VER MÁS'  }
-                      {this.state.expanded[i] ? <ArrowDropUp/>  : <ArrowDropDown/>}
+                      {this.state.expanded[i] ? 'VER MENOS' : 'VER MÁS'}
+                      {this.state.expanded[i] ? <ArrowDropUp /> : <ArrowDropDown />}
                     </button>
                   </div>
                 </Paper>
               </Col>
             </Row>
-          ))}
+            ))}
 
           </Col>
         </Row>

@@ -38,7 +38,7 @@ var mock = null;
 
 export function middleware(component, redirect, rolesRequired) {
 
-  console.log('mock', mock);
+  //console.log('mock', mock);
 
   let current = mock || JSON.parse(localStorage.getItem(Const.USER));
 
