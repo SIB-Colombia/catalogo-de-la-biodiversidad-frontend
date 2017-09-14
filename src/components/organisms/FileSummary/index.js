@@ -153,9 +153,9 @@ class FileSummary extends React.Component {
 'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36219992913_caa44eccca_k.jpg',
 'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36220009163_78e344dabc_k2.jpg',
 'https://s3.amazonaws.com/sib-resources/images/catalogo/destacadas/jpg/36630866500_31537e7c27_h.jpg']  ;
-    
-    
-    
+
+
+
 
     return (
       <Wrapper>
@@ -381,7 +381,7 @@ class FileSummary extends React.Component {
             <br/>
           </Col>
         </Row>
-        <ReactTooltip/>
+        <ReactTooltip />
       </Wrapper>
     )
   }
