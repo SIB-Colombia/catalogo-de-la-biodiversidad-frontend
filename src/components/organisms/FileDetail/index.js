@@ -14,14 +14,16 @@ import {
   FileHeader,
   TitleSection,
   FileDetailTitle,
-  FileDetailTitleBlock
-} from 'components'
+  FileDetailTitleBlock,
+  FormDynamic
+} from 'components';
 
 import { palette } from 'styled-theme';
 import ArrowDropDown from 'material-ui/svg-icons/navigation/arrow-drop-down';
 import ArrowDropUp from 'material-ui/svg-icons/navigation/arrow-drop-up';
 import Scrollchor from 'react-scrollchor';
 import MenuItem from 'material-ui/MenuItem';
+
 
 const Wrapper = styled.div`
 
@@ -133,7 +135,8 @@ class FileDetail extends React.Component {
         sections[property] = array;
       }
     }
-    // console.log('cc->', sections);
+
+    // console.log('cc->', this.props.complete);
 
     this.setState({ sections: sections });
 
@@ -362,6 +365,11 @@ class FileDetail extends React.Component {
   }
 
 
+  onModelChange(obj) {
+
+    //console.log('ss', obj);
+  }
+
   render() {
     //console.log('r',this.state.sections);
     return (
@@ -392,6 +400,7 @@ class FileDetail extends React.Component {
                     {this.state.expanded[i] ? this.state.sections[section] : this.initalShow(this.state.sections[section])}
                   </div>
                   <div className="viewMore">
+                    <FormDynamic onModelChange={this.onModelChange} data={this.props.complete[section]} title={section} />
                     <button onTouchTap={(e) => this.viewMore(e, i)} >
                       {this.state.expanded[i] ? 'VER MENOS' : 'VER MÁS'}
                       {this.state.expanded[i] ? <ArrowDropUp /> : <ArrowDropDown />}
