@@ -79,7 +79,20 @@ class FileCardHorizontal extends React.Component {
   subtitle(text){
     return text.split(' ').slice(2).join(' ');
   }
-
+  
+  formatDate(date) {
+    let d = new Date(date).toISOString()
+    return d.substring(0, 10)+" "+d.substring(11, 16);
+  }
+  
+  imagen(record){
+    if (record.imageInfo.thumbnailImage)
+      return record.imageInfo.thumbnailImage
+    else if(this.props.record.imageInfo.mainImage)
+      return this.props.record.imageInfo.mainImage
+    return "https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png"
+  }
+  
   render() {
     return (
       <Wrapper>
@@ -87,7 +100,7 @@ class FileCardHorizontal extends React.Component {
           <Paper className="card">
             <Row>
               <Col xs={12} sm={4} md={4} lg={4} className="img-media">
-                <img src={`https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png`}/>
+                <img src={this.imagen(this.props.record)}/>
               </Col>
               <Col xs={12} sm={8} md={8} lg={8} className="card-right">
                 <div className="options">
@@ -98,7 +111,7 @@ class FileCardHorizontal extends React.Component {
                     Lorem ipsum dolor sit amet, consectetur piscing elipiscing elipiscing eliadipiscing elit. Morbi luctus leo non sapien tempus, ac cursus lectus tristique. Donec vitae mattis ante. Donec vitae mattis ante
                   </p>
                   <div className="align-left padding card-footer">
-                    {this.props.record.creation_date}
+                    {this.formatDate(this.props.record.creation_date)}
                   </div>
                 </div>
               </Col>

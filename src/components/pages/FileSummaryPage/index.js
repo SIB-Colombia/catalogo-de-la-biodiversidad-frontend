@@ -49,18 +49,38 @@ class FileSummaryPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     console.log(this.props.match.params.id);
   }
+  
+  has(obj, key) {
+      return key.split(".").every(function(x) {
+          if(typeof obj != "object" || obj === null || ! x in obj)
+              return false;
+          obj = obj[x];
+          return true;
+      });
+  }
 
   title() {
-    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple;
+    if (this.has(this.state.fileComplete, 'taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple'))
+      return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple
+    return ""
   }
   subtitle() {
-    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple;
+    if (this.has(this.state.fileComplete, 'taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple'))
+      return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple
+    return ""
   }
 
   render() {
 
+    let file="File"
+
+    if(this.has(this.state, 'fileComplete.imageInfo.mainImage')){
+      console.log("--- ", this.state.fileComplete.imageInfo.mainImage)
+      file = this.state.fileComplete.imageInfo.mainImage
+    }
+
     return (
-      <PageTemplate header={< Header />} footer={< Footer />} wallpaper='File'>
+      <PageTemplate header={< Header />} footer={< Footer />} wallpaper={file}>
         <FileSummaryMenu/> {this.state.fileComplete && <Grid className="container">
           <Row className="animated fadeIn">
             <Col xs={12} lg={12}>

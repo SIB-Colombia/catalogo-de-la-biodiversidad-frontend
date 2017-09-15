@@ -29,7 +29,7 @@ const PageTemplate = ({
   if (wallpaper) {
 
     //Custom wallpaper
-    if (wallpaper.indexOf('.jpg') > -1 || wallpaper.indexOf('.png') > -1) {
+    if (wallpaper.indexOf('.jpg') > -1 || wallpaper.indexOf('.png') > -1 || wallpaper.indexOf('.svg') > -1) {
 
       injectGlobal `
   body{
@@ -89,7 +89,6 @@ const PageTemplate = ({
     `
           break;
         default:
-
       }
     }
   }
