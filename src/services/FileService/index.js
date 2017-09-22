@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import Const from '../../const';
 import {http} from '../../auth';
+import {http2} from '../../auth';
 
 export function getFiles() {
 
@@ -123,7 +124,8 @@ export function getLastUpdatedRecords() {
 
 }
 
-//Get individual Record v1.5 / example: 56c4fe28f0106c67230e7394
+
+
 export function getFile(id) {
 
   return fetch(`${Const.server.api_v1_5}/record/${id}`, http('GET')).then((response) => {
@@ -321,3 +323,35 @@ export function getFullDescription(id) {
 //   })
 //
 // }
+
+
+
+
+
+export function getCampo(id, campo, version) {
+  return fetch(`${Const.server.api_v1_5}/record/`+id+`/`+campo+`/`+version, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+}
+
+export function postCampo(id, campo, valor) {
+
+  console.log("Haciendo un pedido post", `${Const.server.api_v1_5}/record/`+id+`/`+campo);
+  console.log("parametros");
+  console.log(valor);
+
+  return fetch(`${Const.server.api_v1_5}/record/`+id+`/`+campo, 
+      {
+          method: 'POST',
+          body: JSON.stringify(valor),
+          headers: {'Content-Type': 'application/json'} 
+      }
+    ).then((response) => {
+      return response.json()
+  }).then((data) => {
+    return data
+  })
+}
+
