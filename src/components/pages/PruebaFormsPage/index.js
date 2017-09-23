@@ -62,8 +62,19 @@ class PruebaFormsPage extends React.Component {
     dato["id_user"] = this.state.correo;
     FileService.postCampo('5661b2a2f3b30194336dc7a6', 'full_description', dato).then(data => {
       console.log("El resultado del post es: ", data);
-      console.log("El dato del get es: ", data);
-      alert(data.message+" - Versión: "+data.version);
+      if (!data.errors){
+        alert(data.message+" - Versión: "+data.version);
+      }else{
+        let errores = "";
+        let enter = "";
+        for(let i=0;i<data.errors.length;i++){
+          let d = data.errors[i];
+          errores += enter+d.message;
+          enter = "\n";
+        }
+        alert(errores);
+      }
+      
     }).catch(err => {
       console.log(err);
     })
