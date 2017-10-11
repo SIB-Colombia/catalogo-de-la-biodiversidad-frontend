@@ -55,7 +55,14 @@ class FileDetailPage extends React.Component {
     return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalName.simple;
   }
   subtitle() {
-    return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple;
+    if (this.state.fileComplete)
+      if (this.state.fileComplete.taxonRecordNameApprovedInUse)
+        if (this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName)
+          if (this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName)
+            if (this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship)
+              return this.state.fileComplete.taxonRecordNameApprovedInUse.taxonRecordName.scientificName.canonicalAuthorship.simple;
+
+    return ""
   }
 
   render() {
