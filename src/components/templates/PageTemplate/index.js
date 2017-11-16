@@ -35,7 +35,7 @@ const PageTemplate = ({
   body{
     background-image: url('${wallpaper}');
     background-size: cover;
-    background-position: center center;
+    background-position: center top;
     background-attachment:fixed;
   }
 `
