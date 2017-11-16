@@ -85,6 +85,20 @@ class FileCard extends React.Component {
   subtitle(text){
     return text.split(' ').slice(2).join(' ');
   }
+  
+  formatDate(date) {
+    let d = new Date(date).toISOString()
+    return d.substring(0, 10)+" "+d.substring(11, 16);
+  }
+  
+  imagen(record){
+    if (record.imageInfo.thumbnailImage)
+      return record.imageInfo.thumbnailImage
+    else if(this.props.record.imageInfo.mainImage)
+      return this.props.record.imageInfo.mainImage
+    return "https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png"
+  }
+  
 
   render() {
 
@@ -93,13 +107,13 @@ class FileCard extends React.Component {
         <Link to={`/file/summary/${this.props.record._id}`}>
           <Card className="space-card card">
             <CardMedia>
-              <img src={`https://s3.amazonaws.com/sib-resources/images/catalogo/miniatura/png/t-anfibios.png`}/>
+              <img src={this.imagen(this.props.record)}/>
             </CardMedia>
             <FileStatus title="EN"/>
             <CardTitle title={this.title(this.props.record.scientificNameSimple)} className="card-title" subtitle={this.subtitle(this.props.record.scientificNameSimple)}/>
             <CardActions className="card-actions align-center">
               <div className="align-left padding card-footer">
-                {this.props.record.creation_date}
+                {this.formatDate(this.props.record.creation_date)}
               </div>
               {/* <FlatButton fullWidth={true} className="align-left padding footer-card">
                 {this.props.record.creation_date}

@@ -111,6 +111,11 @@ class Header extends React.Component {
       user: null,
       open: false
     }
+
+    this.url = null
+    this.changeUrl = this.changeUrl.bind(this)
+    this.handleTouchTap = this.handleTouchTap.bind(this)
+    this.handleRequestClose = this.handleRequestClose.bind(this)    
   }
 
   componentWillMount() {
@@ -123,8 +128,29 @@ class Header extends React.Component {
         console.log('user not login :(');
       }
     })*/
+  }
 
 
+  handleSearch = () => {
+    console.log("________ URL ", this.url)
+    window.location.href = `/file/search?${this.url !== null ? this.url : ''}`
+  };
+
+  handleTextFieldKeyDown = event => {
+    switch (event.key) {
+      case 'Enter':
+        console.log('Enter')
+        window.location.href = `/file/search?q=${event.target.value}`
+        break
+      case 'Escape':
+        // etc...
+        break
+      default: break
+    }
+  };
+
+  changeUrl(url) {
+    this.url = url
   }
 
   handleOpen = () => {
@@ -134,21 +160,37 @@ class Header extends React.Component {
   handleClose = () => {
     this.setState({open: false});
   };
+  
+  handleTouchTap = (event) => {
+    // This prevents ghost click.
+    event.preventDefault()
 
-  handleSearch = () => {
-    console.log('buscar');
-  };
+    this.setState({
+      openD: true,
+      anchorEl: event.currentTarget,
+    })
+  }
+
+  handleRequestClose = () => {
+    this.setState({
+      openD: false,
+    })
+  }
 
   render() {
-
-    const actions = [ < FlatButton label = "Cancelar" primary = {
-        true
-      }
-      onTouchTap = {
-        this.handleClose
-      } />, < Link to = "/file/search" > < RaisedButton label = "Buscar" className = "btn-secondary-modal" onTouchTap = {
-        this.handleSearch
-      } /> </Link>
+    const actions = [
+      <FlatButton
+        label="Cancelar"
+        primary
+        onTouchTap={
+          this.handleClose
+        }
+      />,
+      <RaisedButton
+        label="Buscar"
+        className="btn-secondary-modal"
+        onTouchTap={this.handleSearch}
+      />,
     ];
 
     const customContentStyle = {
@@ -182,7 +224,7 @@ class Header extends React.Component {
                       <Search/>
                     </Col>
                     <Col xs={10} sm={8} md={8} lg={10} className="box-nav-search">
-                      <TextField hintText="Buscar..." fullWidth={true}/>
+                      <TextField hintText="Buscar..." fullWidth={true}  onKeyDown={this.handleTextFieldKeyDown} />
                     </Col>
                     <Col xs={1} sm={1} md={2} lg={1} className="box-nav-icon">
                       <a onTouchTap={this.handleOpen} className="box-nav-advance">
@@ -205,8 +247,8 @@ class Header extends React.Component {
               </Col>}
             </Row>
           </Grid>
-          <Dialog titleClassName="modal-header-style" title="Búsqueda avanzada" contentStyle={customContentStyle} actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} autoScrollBodyContent={true}>
-            <HeaderSearchAdvance/>
+          <Dialog titleClassName="modal-header-style" title="Filtros de búsqueda" contentStyle={customContentStyle} actions={actions} modal={false} open={this.state.open} onRequestClose={this.handleClose} autoScrollBodyContent>
+            <HeaderSearchAdvance url={this.changeUrl} />
           </Dialog>
         </Paper>
       </Wrapper>

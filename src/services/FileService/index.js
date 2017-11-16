@@ -112,9 +112,32 @@ export function getList() {
 
 // Api Humboldt
 
+
+export function getRecordSearch(params, page){
+  const offset = page ? `page=${page}` : ''
+  let extra = params ? params+'?'+offset:offset
+  extra = extra+"&size=20"
+  return fetch(`${Const.server.api_v1_5}/record_search/advanced_search`+extra, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+}
+
+export function getRecordBasicSearch(params, page){
+  const offset = page ? `page=${page}` : ''
+  let extra = params ? params+'?'+offset:offset
+  extra = extra+"&size=20"
+  return fetch(`${Const.server.api_v1_5}/record_search/search`+extra, http('GET')).then((response) => {
+    return response.json()
+  }).then((data) => {
+    return data
+  })
+}
+
+
 //Get last update record
 export function getLastUpdatedRecords() {
-
   return fetch(`${Const.server.api_v1_5}/last_updated_records`, http('GET')).then((response) => {
     return response.json()
   }).then((data) => {
